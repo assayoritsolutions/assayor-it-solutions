@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html ng-app="companyApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Software Solutions & Oracle HCM Consulting</title>
+  
+  <!-- AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* CSS Variables & Reset */
+    :root {
+      --primary-dark: #0a192f;
+      --secondary-dark: #112240;
+      --accent-coral: #e05638;
+      --accent-blue: #0071e3;
+      --text-main: #333333;
+      --text-muted: #666666;
+      --bg-light: #f8f9fa;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-main);
+      background-color: #ffffff;
+      line-height: 1.6;
+    }
+
+    /* Fixed Navigation Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .logo-container img {
+      height: 38px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--primary-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    nav a:hover {
+      color: var(--accent-coral);
+    }
+
+    .btn-contact {
+      background-color: var(--accent-coral);
+      color: #ffffff !important;
+      padding: 0.6rem 1.4rem;
+      border-radius: 4px;
+      transition: background 0.3s !important;
+    }
+
+    .btn-contact:hover {
+      background-color: #c84327 !important;
+    }
+
+    /* Hero Section (With Animated GIF Background) */
+    .hero-section {
+      margin-top: 70px;
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      /* Replace this background image link with your hero GIF file path */
+      background: linear-gradient(rgba(10, 25, 47, 0.82), rgba(10, 25, 47, 0.82)),
+                  url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+      padding: 0 10%;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .hero-content h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #ccd6f6;
+      margin-bottom: 2rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background-color: var(--accent-coral);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      border: none;
+    }
+
+    /* Common Section Styling */
+    section {
+      padding: 5rem 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title h4 {
+      text-transform: uppercase;
+      color: var(--accent-blue);
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: var(--primary-dark);
+    }
+
+    /* Why Choose Us Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background-color: #f0f4f9;
+      padding: 2rem 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-card i {
+      font-size: 2rem;
+      color: var(--accent-blue);
+      margin-bottom: 1rem;
+    }
+
+    /* About Us Section */
+    .about-section {
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .about-img {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+    }
+
+    .about-img img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .about-content {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-list {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .about-list li {
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .about-list i {
+      color: var(--accent-blue);
+      font-size: 1.2rem;
+      margin-top: 4px;
+    }
+
+    /* Services Section Layouts */
+    .services-section {
+      background-color: var(--bg-light);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 2.5rem 1.8rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+      transition: all 0.3s ease;
+    }
+
+    .service-card.highlight {
+      border: 2px solid var(--accent-blue);
+      position: relative;
+    }
+
+    .service-card .badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: var(--accent-blue);
+      color: white;
+      padding: 2px 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 12px;
+      text-transform: uppercase;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+    }
+
+    .service-card i {
+      font-size: 2.2rem;
+      color: var(--accent-blue);
+      margin-bottom: 1.2rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--primary-dark);
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Our Work Section (Case Studies Layout) */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .work-card {
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+
+    .work-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .work-card-body {
+      padding: 1.5rem;
+    }
+
+    .work-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+    }
+
+    .work-card h4 {
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+      color: var(--primary-dark);
+    }
+
+    .work-stat {
+      background: #f0f4f9;
+      padding: 0.5rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    /* Contact Form Section */
+    .contact-section {
+      background-color: #ffffff;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .contact-form .full-width {
+      grid-column: span 2;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 0.9rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: var(--accent-blue);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-dark);
+      color: #a8b2d1;
+      padding: 4rem 8% 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand h3 {
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links h4 {
+      color: #ffffff;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-links a {
+      color: #a8b2d1;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+
+    .copyright {
+      text-align: center;
+      border-top: 1px solid #233554;
+      padding-top: 2rem;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .contact-form { grid-template-columns: 1fr; }
+      .contact-form .full-width { grid-column: span 1; }
+      .footer-grid { grid-template-columns: 1fr; }
+      nav ul { gap: 1rem; }
+    }
+  </style>
+</head>
+
+<body ng-controller="MainController">
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="logo-container">
+      <i class="fa-solid fa-cubes-stacked" style="color: var(--accent-blue);"></i>
+      <span>{{ companyName }}</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a ng-click="scrollTo('home')">Home</a></li>
+        <li><a ng-click="scrollTo('about')">About Us</a></li>
+        <li><a ng-click="scrollTo('services')">Services</a></li>
+        <li><a ng-click="scrollTo('work')">Our Work</a></li>
+        <li><a ng-click="scrollTo('contact')" class="btn-contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Hero Section with GIF Background -->
+  <section id="home" class="hero-section">
+    <div class="hero-content">
+      <h1>Crafting Forward-Thinking Solutions to Transform Ideas into Impactful Realities</h1>
+      <p>Empowering global enterprises through specialized Oracle HCM implementation, Salesforce technology, Software Testing, and Digital Transformation.</p>
+      <button class="cta-btn" ng-click="scrollTo('contact')">Get In Touch</button>
+    </div>
+  </section>
+
+  <!-- Reasons / Core Highlights Section -->
+  <section>
+    <div class="section-title">
+      <h4>Why Choose Us</h4>
+      <h2>Top Reasons to Partner With Us</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card" ng-repeat="reason in reasons">
+        <i class="fa-solid {{ reason.icon }}"></i>
+        <h3>{{ reason.title }}</h3>
+        <p>{{ reason.desc }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" class="about-section">
+    <div class="about-img">
+      <!-- Reference image layout representation -->
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="Oracle HCM Solution">
+    </div>
+    <div class="about-content">
+      <div class="section-title" style="text-align: left; margin-bottom: 1.5rem;">
+        <h4>About Us</h4>
+        <h2>Best Talent, Competitive Edge, Incredible IT Service</h2>
+      </div>
+      <p>We are a leading IT consulting firm providing specialized technology consulting and strategic enterprise software services to accelerate digital maturity for businesses worldwide.</p>
+      
+      <ul class="about-list">
+        <li>
+          <i class="fa-solid fa-circle-check"></i>
+          <div>
+            <strong>Core Focus in Oracle HCM & Cloud Enterprise</strong>
+            <p>Specialized expertise in optimizing human capital operations and enterprise architecture.</p>
+          </div>
+        </li>
+        <li>
+          <i class="fa-solid fa-chart-line"></i>
+          <div>
+            <strong>Proven Business Impact & Market Entry</strong>
+            <p>Strategic technology insights designed to boost overall business performance and speed to market.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services-section">
+    <div class="section-title">
+      <h4>Services</h4>
+      <h2>Our Core Service Capabilities</h2>
+    </div>
+    <div class="services-grid">
+      
+      <!-- Oracle HCM (Primary Strength) -->
+      <div class="service-card highlight">
+        <span class="badge">Core Practice</span>
+        <i class="fa-solid fa-users-gear"></i>
+        <h3>Oracle HCM Solutions</h3>
+        <p>End-to-end deployment, customization, and optimization of Oracle Human Capital Management Cloud modules to transform your global workforce management.</p>
+      </div>
+
+      <!-- Salesforce Platforms -->
+      <div class="service-card">
+        <i class="fa-cloud fa-solid"></i>
+        <h3>Salesforce Platforms</h3>
+        <p>Tailored Salesforce CRM implementations, custom integrations, and workflow automation to drive customer relationship management and business growth.</p>
+      </div>
+
+      <!-- Digital Transformation -->
+      <div class="service-card">
+        <i class="fa-solid fa-network-wired"></i>
+        <h3>Digital Transformation</h3>
+        <p>Modernizing legacy architectures through cloud adoption, modernized workflows, and enterprise application integration.</p>
+      </div>
+
+      <!-- Software Assurance Testing -->
+      <div class="service-card">
+        <i class="fa-solid fa-vial-circle-check"></i>
+        <h3>Software Assurance Testing</h3>
+        <p>Comprehensive automated and manual QA services ensuring scalable, secure, and defect-free enterprise software deployments.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Our Work / Case Studies Section -->
+  <section id="work">
+    <div class="section-title">
+      <h4>Case Studies</h4>
+      <h2>Real Results Across Industries</h2>
+    </div>
+    <div class="work-grid">
+      <div class="work-card" ng-repeat="item in workItems">
+        <img ng-src="{{ item.image }}" alt="Case study image">
+        <div class="work-card-body">
+          <span class="work-tag">{{ item.category }}</span>
+          <h4>{{ item.title }}</h4>
+          <p style="font-size: 0.88rem; color: #666;">{{ item.description }}</p>
+          <div class="work-stat"><i class="fa-solid fa-chart-simple"></i> {{ item.metric }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section id="contact" class="contact-section">
+    <div class="section-title">
+      <h4>Contact Us</h4>
+      <h2>Get In Touch</h2>
+    </div>
+    <form class="contact-form" ng-submit="submitForm()">
+      <input type="text" placeholder="Name" ng-model="form.name" required>
+      <input type="email" placeholder="E-mail" ng-model="form.email" required>
+      <input type="tel" placeholder="Phone Number" ng-model="form.phone">
+      <input type="text" placeholder="Your Website" ng-model="form.website">
+      <textarea class="full-width" rows="5" placeholder="Your Message Here" ng-model="form.message" required></textarea>
+      <button type="submit" class="cta-btn full-width" style="margin-top: 1rem;">SEND MESSAGE</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>{{ companyName }}</h3>
+        <p>Empowering businesses with cutting-edge IT solutions, high-reliability software testing, and tailored support.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a ng-click="scrollTo('home')">Home</a></li>
+          <li><a ng-click="scrollTo('about')">About Us</a></li>
+          <li><a ng-click="scrollTo('services')">Services</a></li>
+          <li><a ng-click="scrollTo('work')">Our Work</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Oracle HCM Cloud</a></li>
+          <li><a href="#">Salesforce Solutions</a></li>
+          <li><a href="#">Digital Transformations</a></li>
+          <li><a href="#">Assurance Testing</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact Info</h4>
+        <ul>
+          <li><i class="fa-solid fa-envelope"></i> contact@yourcompany.com</li>
+          <li><i class="fa-solid fa-phone"></i> +1 800-555-0199</li>
+          <li><i class="fa-solid fa-location-dot"></i> Tech City, Global Hub</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; {{ currentYear }} {{ companyName }}. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- AngularJS Application Code -->
+  <script>
+    var app = angular.module('companyApp', []);
+
+    app.controller('MainController', ['$scope', '$location', '$anchorScroll', function($scope, $location, $anchorScroll) {
+      
+      $scope.companyName = "ASSAYOR";
+      $scope.currentYear = new Date().getFullYear();
+
+      // Smooth scroll navigation
+      $scope.scrollTo = function(id) {
+        $location.hash(id);
+        $anchorScroll();
+      };
+
+      // Reasons data
+      $scope.reasons = [
+        { icon: 'fa-bullseye', title: 'Solution Driven', desc: 'End-to-end tailored software solutions designed around your precise business goals.' },
+        { icon: 'fa-user-check', title: 'Customer Focused', desc: 'We prioritize close collaboration to ensure high-satisfaction outcomes.' },
+        { icon: 'fa-shield-halved', title: 'Proven Results', desc: 'Demonstrated track record of enterprise-level software delivery.' },
+        { icon: 'fa-chart-line', title: 'Business Impact', desc: 'Measurable efficiency gains and streamlined operational performance.' }
+      ];
+
+      // Work / Case studies data
+      $scope.workItems = [
+        {
+          category: 'Banking & Finance',
+          title: 'Workforce Modernization with Oracle HCM Cloud',
+          description: 'Automated HR workflows and strategic talent management analytics for global operations.',
+          metric: '70% Faster Onboarding',
+          image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=600&auto=format&fit=crop'
+        },
+        {
+          category: 'Manufacturing',
+          title: 'Salesforce CRM & Digital Transformation',
+          description: 'Streamlined multi-channel client interaction and digitized enterprise core processes.',
+          metric: '40% Increased Sales Efficiency',
+          image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop'
+        },
+        {
+          category: 'Healthcare',
+          title: 'Enterprise Software Assurance & QA Testing',
+          description: 'End-to-end testing suite for zero-downtime deployment in high-compliance environments.',
+          metric: '99.9% Defect-Free Deployment',
+          image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=600&auto=format&fit=crop'
+        }
+      ];
+
+      // Form handler
+      $scope.form = {};
+      $scope.submitForm = function() {
+        alert("Thank you! Your message has been sent successfully.");
+        $scope.form = {};
+      };
+
+    }]);
+  </script>
+</body>
+</html>

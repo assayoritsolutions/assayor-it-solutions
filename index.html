@@ -37,6 +37,7 @@
       color: var(--text-main);
       background-color: #ffffff;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     /* Fixed Navigation Header */
@@ -63,8 +64,15 @@
       color: var(--primary-dark);
     }
 
-    .logo-container img {
-      height: 38px;
+    /* Mobile Hamburger Menu Toggle Button */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      color: var(--primary-dark);
+      cursor: pointer;
+      padding: 5px;
     }
 
     nav ul {
@@ -99,7 +107,7 @@
       background-color: #c84327 !important;
     }
 
-    /* Hero Section (With Animated GIF Background) */
+    /* Hero Section */
     .hero-section {
       margin-top: 70px;
       position: relative;
@@ -109,10 +117,9 @@
       justify-content: center;
       text-align: center;
       color: #ffffff;
-      /* Replace this background image link with your hero GIF file path */
       background: linear-gradient(rgba(10, 25, 47, 0.82), rgba(10, 25, 47, 0.82)),
                   url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
-      padding: 0 10%;
+      padding: 3rem 5%;
     }
 
     .hero-content {
@@ -120,14 +127,14 @@
     }
 
     .hero-content h1 {
-      font-size: 2.8rem;
+      font-size: clamp(1.8rem, 4vw + 1rem, 2.8rem);
       margin-bottom: 1.2rem;
       font-weight: 700;
-      line-height: 1.2;
+      line-height: 1.25;
     }
 
     .hero-content p {
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 1.5vw + 0.5rem, 1.2rem);
       color: #ccd6f6;
       margin-bottom: 2rem;
     }
@@ -142,16 +149,17 @@
       border-radius: 4px;
       cursor: pointer;
       border: none;
+      font-size: 1rem;
     }
 
     /* Common Section Styling */
     section {
-      padding: 5rem 8%;
+      padding: 4rem 5%;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 3.5rem;
+      margin-bottom: 2.5rem;
     }
 
     .section-title h4 {
@@ -163,14 +171,14 @@
     }
 
     .section-title h2 {
-      font-size: 2.2rem;
+      font-size: clamp(1.5rem, 2.5vw + 1rem, 2.2rem);
       color: var(--primary-dark);
     }
 
     /* Why Choose Us Grid */
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.5rem;
     }
 
@@ -197,25 +205,25 @@
       background-color: #ffffff;
       display: flex;
       align-items: center;
-      gap: 4rem;
+      gap: 3rem;
       flex-wrap: wrap;
     }
 
     .about-img {
-      flex: 1;
-      min-width: 300px;
+      flex: 1 1 350px;
       position: relative;
+      width: 100%;
     }
 
     .about-img img {
       width: 100%;
+      height: auto;
       border-radius: 8px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
     .about-content {
-      flex: 1;
-      min-width: 300px;
+      flex: 1 1 350px;
     }
 
     .about-list {
@@ -243,14 +251,14 @@
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
     }
 
     .service-card {
       background: var(--card-bg);
       border-radius: 8px;
-      padding: 2.5rem 1.8rem;
+      padding: 2rem 1.5rem;
       border: 1px solid #e2e8f0;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
       transition: all 0.3s ease;
@@ -295,11 +303,11 @@
       font-size: 0.95rem;
     }
 
-    /* Our Work Section (Case Studies Layout) */
+    /* Our Work Section */
     .work-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
     }
 
     .work-card {
@@ -366,6 +374,7 @@
       border-radius: 4px;
       font-family: inherit;
       outline: none;
+      font-size: 1rem;
     }
 
     .contact-form input:focus, .contact-form textarea:focus {
@@ -376,14 +385,14 @@
     footer {
       background-color: var(--primary-dark);
       color: #a8b2d1;
-      padding: 4rem 8% 2rem;
+      padding: 3rem 5% 2rem;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 2.5rem;
-      margin-bottom: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2.5rem;
     }
 
     .footer-brand h3 {
@@ -418,15 +427,67 @@
     .copyright {
       text-align: center;
       border-top: 1px solid #233554;
-      padding-top: 2rem;
+      padding-top: 1.5rem;
       font-size: 0.85rem;
     }
 
+    /* Mobile Responsive Breakpoints */
     @media (max-width: 768px) {
-      .contact-form { grid-template-columns: 1fr; }
-      .contact-form .full-width { grid-column: span 1; }
-      .footer-grid { grid-template-columns: 1fr; }
-      nav ul { gap: 1rem; }
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        display: none;
+        padding: 1rem 0;
+      }
+
+      nav.nav-open {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      nav ul li {
+        width: 100%;
+        text-align: center;
+      }
+
+      nav a {
+        display: block;
+        padding: 0.8rem 1rem;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .btn-contact {
+        margin: 0.8rem 1rem 0;
+        display: inline-block;
+      }
+
+      .about-section {
+        gap: 2rem;
+      }
+
+      .contact-form {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form .full-width {
+        grid-column: span 1;
+      }
+
+      section {
+        padding: 3rem 5%;
+      }
     }
   </style>
 </head>
@@ -439,7 +500,13 @@
       <i class="fa-solid fa-cubes-stacked" style="color: var(--accent-blue);"></i>
       <span>{{ companyName }}</span>
     </div>
-    <nav>
+
+    <!-- Mobile Hamburger Button -->
+    <button class="menu-toggle" ng-click="toggleMenu()" aria-label="Toggle navigation">
+      <i class="fa-solid" ng-class="isMenuOpen ? 'fa-xmark' : 'fa-bars'"></i>
+    </button>
+
+    <nav ng-class="{'nav-open': isMenuOpen}">
       <ul>
         <li><a ng-click="scrollTo('home')">Home</a></li>
         <li><a ng-click="scrollTo('about')">About Us</a></li>
@@ -477,7 +544,6 @@
   <!-- About Us Section -->
   <section id="about" class="about-section">
     <div class="about-img">
-      <!-- Reference image layout representation -->
       <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="Oracle HCM Solution">
     </div>
     <div class="about-content">
@@ -609,14 +675,14 @@
       <div class="footer-links">
         <h4>Contact Info</h4>
         <ul>
-          <li><i class="fa-solid fa-envelope"></i> contact@yourcompany.com</li>
+          <li><i class="fa-solid fa-envelope"></i> contact@assayor.com</li>
           <li><i class="fa-solid fa-phone"></i> +1 800-555-0199</li>
           <li><i class="fa-solid fa-location-dot"></i> Tech City, Global Hub</li>
         </ul>
       </div>
     </div>
     <div class="copyright">
-      &copy; {{ currentYear }} {{ companyName }}. All rights reserved..
+      &copy; {{ currentYear }} {{ companyName }}. All rights reserved.
     </div>
   </footer>
 
@@ -628,9 +694,16 @@
       
       $scope.companyName = "ASSAYOR";
       $scope.currentYear = new Date().getFullYear();
+      $scope.isMenuOpen = false;
 
-      // Smooth scroll navigation
+      // Toggle Mobile Menu
+      $scope.toggleMenu = function() {
+        $scope.isMenuOpen = !$scope.isMenuOpen;
+      };
+
+      // Smooth scroll navigation and close menu on select
       $scope.scrollTo = function(id) {
+        $scope.isMenuOpen = false;
         $location.hash(id);
         $anchorScroll();
       };

@@ -63,6 +63,11 @@
       font-weight: 700;
       color: var(--primary-dark);
     }
+    .logo-container img {
+      height: 40px;      /* Adjust height to fit your header */
+      width: auto;       /* Maintains aspect ratio */
+      object-fit: contain;
+    }
 
     /* Mobile Hamburger Menu Toggle Button */
     .menu-toggle {
@@ -497,7 +502,7 @@
   <!-- Navigation Header -->
   <header>
     <div class="logo-container">
-      <i class="fa-solid fa-cubes-stacked" style="color: var(--accent-blue);"></i>
+      <img src="images/logo.png" alt="ASSAYOR Logo">
       <span>{{ companyName }}</span>
     </div>
 

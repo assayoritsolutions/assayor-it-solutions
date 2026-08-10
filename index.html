@@ -87,6 +87,10 @@
       align-items: center;
     }
 
+    nav li {
+      position: relative;
+    }
+
     nav a {
       text-decoration: none;
       color: var(--primary-dark);
@@ -100,8 +104,157 @@
       color: var(--accent-coral);
     }
 
+    .services-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--primary-dark);
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .services-toggle:hover,
+    .services-toggle:focus-visible {
+      color: var(--accent-coral);
+    }
+
+    .services-toggle i {
+      font-size: 0.75rem;
+      transition: transform 0.2s ease;
+    }
+
+    .dropdown-open > .services-toggle i {
+      transform: rotate(180deg);
+    }
+
+    .services-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      display: block;
+      width: min(920px, calc(100vw - 32px));
+      padding: 0;
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 24px;
+      box-shadow: 0 24px 60px rgba(16, 24, 40, 0.18);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 1001;
+    }
+
+    .services-dropdown > .mega-menu {
+      width: 100%;
+    }
+
+    .mega-menu {
+      display: grid;
+      grid-template-columns: 245px 1fr;
+      min-height: 410px;
+      overflow: hidden;
+      list-style: none;
+    }
+
+    .mega-menu-sidebar {
+      display: flex;
+      flex-direction: column;
+      padding: 36px 28px;
+      background: #1d1c29;
+    }
+
+    .mega-menu-tab {
+      min-height: 150px;
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 22px;
+      background: #292834;
+      color: #ffffff;
+      font: inherit;
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .mega-menu-tab.active,
+    .mega-menu-tab:hover,
+    .mega-menu-tab:focus-visible {
+      background: #ffffff;
+      color: var(--primary-dark);
+      outline: none;
+    }
+
+    .mega-menu-content {
+      padding: 40px;
+      background: #ffffff;
+    }
+
+    .mega-menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .mega-service-card {
+      display: block;
+      min-height: 145px;
+      padding: 1.5rem;
+      min-width: 0;
+      border-radius: 14px;
+      background: #f7f8fa;
+      color: var(--primary-dark);
+      text-decoration: none;
+      overflow-wrap: normal;
+      word-break: normal;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .mega-service-card:hover,
+    .mega-service-card:focus-visible {
+      background: #eef3ff;
+      color: var(--primary-dark);
+      outline: none;
+      transform: translateY(-3px);
+    }
+
+    .mega-service-card strong {
+      display: block;
+      color: var(--accent-blue);
+      font-size: 1rem;
+      line-height: 1.35;
+      overflow-wrap: normal;
+      word-break: normal;
+    }
+
+    .mega-service-card strong::before {
+      content: '\2192';
+      margin-right: 0.55rem;
+      font-size: 1.3rem;
+    }
+
+    .mega-service-card p {
+      margin-top: 0.7rem;
+      color: #4b5563;
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    nav li:hover > .services-dropdown,
+    nav li:focus-within > .services-dropdown,
+    nav li.dropdown-open > .services-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
     .btn-contact {
-      background-color: var(--accent-coral);
+      background-color: green;
       color: #ffffff !important;
       padding: 0.6rem 1.4rem;
       border-radius: 4px;
@@ -109,7 +262,7 @@
     }
 
     .btn-contact:hover {
-      background-color: #c84327 !important;
+      background-color: #218838 !important;
     }
 
     /* Hero Section */
@@ -267,6 +420,12 @@
       border: 1px solid #e2e8f0;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
       transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .service-card:focus-visible {
+      outline: 3px solid var(--accent-coral);
+      outline-offset: 3px;
     }
 
     .service-card.highlight {
@@ -291,6 +450,14 @@
       box-shadow: 0 12px 20px rgba(0,0,0,0.08);
     }
 
+    .service-card-image {
+      display: block;
+      width: calc(100% + 3rem);
+      height: 150px;
+      margin: -2rem -1.5rem 1.2rem;
+      object-fit: cover;
+    }
+
     .service-card i {
       font-size: 2.2rem;
       color: var(--accent-blue);
@@ -306,6 +473,48 @@
     .service-card p {
       color: var(--text-muted);
       font-size: 0.95rem;
+    }
+
+    .service-details-section {
+      background-color: #ffffff;
+      scroll-margin-top: 90px;
+    }
+
+    .service-details-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-left: 4px solid var(--accent-blue);
+      background-color: var(--bg-light);
+    }
+
+    .service-details-content i {
+      color: var(--accent-blue);
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-details-content h2 {
+      color: var(--primary-dark);
+      margin-bottom: 0.8rem;
+    }
+
+    .service-details-content p {
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .service-details-content ul {
+      list-style: none;
+    }
+
+    .service-details-content li {
+      margin-bottom: 0.6rem;
+    }
+
+    .service-details-content li i {
+      font-size: 0.9rem;
+      margin: 0 0.5rem 0 0;
     }
 
     /* Our Work Section */
@@ -467,6 +676,71 @@
         text-align: center;
       }
 
+      nav.nav-open .services-dropdown {
+        position: static;
+        display: none;
+        width: 100%;
+        padding: 0;
+        box-shadow: none;
+        border: 0;
+        border-radius: 0;
+        transform: none;
+        max-height: calc(100vh - 90px);
+        overflow-y: auto;
+      }
+
+      nav.nav-open li.dropdown-open > .services-dropdown {
+        display: block;
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mega-menu {
+        display: block;
+        min-height: 0;
+      }
+
+      .mega-menu-sidebar {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 12px;
+      }
+
+      .mega-menu-tab {
+        min-height: 54px;
+        border-radius: 12px;
+        font-size: 0.9rem;
+      }
+
+      .mega-menu-content {
+        padding: 16px;
+      }
+
+      .mega-menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .mega-service-card {
+        min-height: 0;
+        padding: 0.85rem;
+      }
+
+      .mega-service-card strong {
+        font-size: 0.82rem;
+      }
+
+      .mega-service-card p {
+        margin-top: 0.45rem;
+        font-size: 0.75rem;
+      }
+
+      .services-toggle {
+        padding: 0.8rem 1rem;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
       nav a {
         display: block;
         padding: 0.8rem 1rem;
@@ -515,7 +789,39 @@
       <ul>
         <li><a ng-click="scrollTo('home')">Home</a></li>
         <li><a ng-click="scrollTo('about')">About Us</a></li>
-        <li><a ng-click="scrollTo('services')">Services</a></li>
+        <li ng-class="{'dropdown-open': isServicesOpen}">
+          <button type="button" class="services-toggle" ng-click="isServicesOpen = !isServicesOpen" aria-haspopup="true" ng-attr-aria-expanded="{{ isServicesOpen }}">
+            <span>Services</span>
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <ul class="services-dropdown">
+            <li class="mega-menu">
+              <div class="mega-menu-sidebar">
+                <div class="mega-menu-tab active">Service Offerings</div>
+              </div>
+              <div class="mega-menu-content">
+                <div class="mega-menu-grid">
+                  <a class="mega-service-card" href="#service-details" ng-click="selectService('oracle'); scrollTo('service-details')">
+                    <strong>Oracle HCM Solutions</strong>
+                    <p>Transform workforce operations with connected Oracle HCM Cloud solutions.</p>
+                  </a>
+                  <a class="mega-service-card" href="#service-details" ng-click="selectService('salesforce'); scrollTo('service-details')">
+                    <strong>Salesforce Platforms</strong>
+                    <p>Build stronger customer relationships with tailored CRM platforms.</p>
+                  </a>
+                  <a class="mega-service-card" href="#service-details" ng-click="selectService('digital-transformation'); scrollTo('service-details')">
+                    <strong>Digital Transformation</strong>
+                    <p>Modernize systems, workflows, and enterprise technology foundations.</p>
+                  </a>
+                  <a class="mega-service-card" href="#service-details" ng-click="selectService('software-testing'); scrollTo('service-details')">
+                    <strong>Software Assurance Testing</strong>
+                    <p>Improve release confidence with reliable quality assurance services.</p>
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
         <li><a ng-click="scrollTo('work')">Our Work</a></li>
         <li><a ng-click="scrollTo('contact')" class="btn-contact">Contact Us</a></li>
       </ul>
@@ -586,34 +892,56 @@
     <div class="services-grid">
       
       <!-- Oracle HCM (Primary Strength) -->
-      <div class="service-card highlight">
+      <div class="service-card highlight" ng-click="selectService('oracle'); scrollTo('service-details')" role="button" tabindex="0">
         <span class="badge">Core Practice</span>
+        <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="Oracle HCM Solutions">
         <i class="fa-solid fa-users-gear"></i>
         <h3>Oracle HCM Solutions</h3>
         <p>End-to-end deployment, customization, and optimization of Oracle Human Capital Management Cloud modules to transform your global workforce management.</p>
       </div>
 
       <!-- Salesforce Platforms -->
-      <div class="service-card">
+      <div class="service-card" ng-click="selectService('salesforce'); scrollTo('service-details')" role="button" tabindex="0">
+        <img class="service-card-image" src="./images/SF_IMG2.jpg" alt="Salesforce Platforms">
         <i class="fa-cloud fa-solid"></i>
         <h3>Salesforce Platforms</h3>
         <p>Tailored Salesforce CRM implementations, custom integrations, and workflow automation to drive customer relationship management and business growth.</p>
       </div>
 
       <!-- Digital Transformation -->
-      <div class="service-card">
+      <div class="service-card" ng-click="selectService('digital-transformation'); scrollTo('service-details')" role="button" tabindex="0">
+        <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="Digital Transformation">
         <i class="fa-solid fa-network-wired"></i>
         <h3>Digital Transformation</h3>
         <p>Modernizing legacy architectures through cloud adoption, modernized workflows, and enterprise application integration.</p>
       </div>
 
       <!-- Software Assurance Testing -->
-      <div class="service-card">
+      <div class="service-card" ng-click="selectService('software-testing'); scrollTo('service-details')" role="button" tabindex="0">
+        <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="Software Assurance Testing">
         <i class="fa-solid fa-vial-circle-check"></i>
         <h3>Software Assurance Testing</h3>
         <p>Comprehensive automated and manual QA services ensuring scalable, secure, and defect-free enterprise software deployments.</p>
       </div>
 
+    </div>
+  </section>
+
+  <!-- Selected Service Details -->
+  <section id="service-details" class="service-details-section">
+    <div class="section-title">
+      <h4>Service Details</h4>
+      <h2>{{ selectedService.title }}</h2>
+    </div>
+    <div class="service-details-content">
+      <i class="fa-solid {{ selectedService.icon }}" aria-hidden="true"></i>
+      <h2>{{ selectedService.title }}</h2>
+      <p>{{ selectedService.description }}</p>
+      <ul>
+        <li ng-repeat="benefit in selectedService.benefits">
+          <i class="fa-solid fa-circle-check" aria-hidden="true"></i>{{ benefit }}
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -697,13 +1025,31 @@
 
     app.controller('MainController', ['$scope', '$location', '$anchorScroll', function($scope, $location, $anchorScroll) {
       
+      $location.hash('');
+      window.scrollTo(0, 0);
       $scope.companyName = "ASSAYOR";
       $scope.currentYear = new Date().getFullYear();
       $scope.isMenuOpen = false;
+      $scope.isServicesOpen = false;
+      $scope.selectedService = {
+        title: 'Oracle HCM Solutions',
+        icon: 'fa-users-gear',
+        description: 'End-to-end deployment, customization, and optimization of Oracle Human Capital Management Cloud modules to transform your global workforce management.',
+        benefits: [
+          'Oracle HCM Cloud implementation and module configuration',
+          'HR process automation for global teams',
+          'Workforce reporting, analytics, and system optimization'
+        ]
+      };
 
       // Toggle Mobile Menu
       $scope.toggleMenu = function() {
         $scope.isMenuOpen = !$scope.isMenuOpen;
+      };
+
+      $scope.selectService = function(serviceKey) {
+        $scope.isServicesOpen = false;
+        $scope.selectedService = $scope.services[serviceKey];
       };
 
       // Smooth scroll navigation and close menu on select
@@ -711,6 +1057,40 @@
         $scope.isMenuOpen = false;
         $location.hash(id);
         $anchorScroll();
+      };
+
+      $scope.services = {
+        oracle: $scope.selectedService,
+        salesforce: {
+          title: 'Salesforce Platforms',
+          icon: 'fa-cloud',
+          description: 'Tailored Salesforce CRM implementations, custom integrations, and workflow automation to drive customer relationship management and business growth.',
+          benefits: [
+            'Salesforce CRM implementation and customization',
+            'Workflow automation and third-party integrations',
+            'User adoption support and platform optimization'
+          ]
+        },
+        'digital-transformation': {
+          title: 'Digital Transformation',
+          icon: 'fa-network-wired',
+          description: 'Modernizing legacy architectures through cloud adoption, modernized workflows, and enterprise application integration.',
+          benefits: [
+            'Technology and process modernization planning',
+            'Cloud adoption and enterprise application integration',
+            'Scalable workflows designed around measurable outcomes'
+          ]
+        },
+        'software-testing': {
+          title: 'Software Assurance Testing',
+          icon: 'fa-vial-circle-check',
+          description: 'Comprehensive automated and manual QA services ensuring scalable, secure, and defect-free enterprise software deployments.',
+          benefits: [
+            'Manual and automated functional testing',
+            'Regression, integration, and performance testing',
+            'Defect tracking and release-readiness support'
+          ]
+        }
       };
 
       // Reasons data

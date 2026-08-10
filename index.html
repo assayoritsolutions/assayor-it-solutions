@@ -414,23 +414,85 @@
     }
 
     .service-card {
+      height: 390px;
+      perspective: 1000px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .service-card-inner {
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.65s ease;
+    }
+
+    .service-card:hover .service-card-inner,
+    .service-card:focus-within .service-card-inner,
+    .service-card.is-flipped .service-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .service-card-front,
+    .service-card-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
       background: var(--card-bg);
       border-radius: 8px;
       padding: 2rem 1.5rem;
       border: 1px solid #e2e8f0;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-      transition: all 0.3s ease;
-      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .service-card-back {
+      transform: rotateY(180deg);
+      overflow-y: auto;
+    }
+
+    .service-card-front {
+      padding: 0;
+    }
+
+    .service-card:hover .service-card-front,
+    .service-card:focus-within .service-card-front,
+    .service-card.is-flipped .service-card-front {
+      visibility: hidden;
+    }
+
+    .service-card-front,
+    .service-card-back {
+      visibility: visible;
+    }
+
+    .service-card-front .service-card-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      object-fit: cover;
+    }
+
+    .service-card-front h3 {
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      left: 1rem;
+      z-index: 1;
+      margin: 0;
+      padding: 0.7rem 0.85rem;
+      border-radius: 6px;
+      background: rgba(10, 25, 47, 0.88);
+      color: #ffffff;
+      text-align: center;
     }
 
     .service-card:focus-visible {
       outline: 3px solid var(--accent-coral);
       outline-offset: 3px;
-    }
-
-    .service-card.highlight {
-      border: 2px solid var(--accent-blue);
-      position: relative;
     }
 
     .service-card .badge {
@@ -446,7 +508,8 @@
       text-transform: uppercase;
     }
 
-    .service-card:hover {
+    .service-card:hover .service-card-front,
+    .service-card:hover .service-card-back {
       box-shadow: 0 12px 20px rgba(0,0,0,0.08);
     }
 
@@ -456,6 +519,39 @@
       height: 150px;
       margin: -2rem -1.5rem 1.2rem;
       object-fit: cover;
+    }
+
+    .service-card-back .service-card-image {
+      width: calc(100% + 3rem);
+      height: 112px;
+      margin: -2rem -1.5rem 1.1rem;
+    }
+
+    .service-card-back h3 {
+      margin-bottom: 0.7rem;
+    }
+
+    .service-card-back p {
+      margin-bottom: 1rem;
+    }
+
+    .service-card-benefits {
+      list-style: none;
+    }
+
+    .service-card-benefits li {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.55rem;
+      color: var(--text-main);
+      font-size: 0.88rem;
+      line-height: 1.35;
+    }
+
+    .service-card-benefits i {
+      flex: 0 0 auto;
+      font-size: 0.85rem;
+      margin: 0.15rem 0 0;
     }
 
     .service-card i {
@@ -468,6 +564,11 @@
       font-size: 1.3rem;
       margin-bottom: 0.8rem;
       color: var(--primary-dark);
+    }
+
+    .service-card-front h3 {
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
     }
 
     .service-card p {
@@ -736,6 +837,11 @@
         font-size: 0.75rem;
       }
 
+      .service-card,
+      .service-card-inner {
+        height: 340px;
+      }
+
       .services-toggle {
         padding: 0.8rem 1rem;
         border-bottom: 1px solid #f1f5f9;
@@ -892,36 +998,75 @@
     <div class="services-grid">
       
       <!-- Oracle HCM (Primary Strength) -->
-      <div class="service-card highlight" ng-click="selectService('oracle'); scrollTo('service-details')" role="button" tabindex="0">
-        <span class="badge">Core Practice</span>
-        <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="Oracle HCM Solutions">
-        <i class="fa-solid fa-users-gear"></i>
-        <h3>Oracle HCM Solutions</h3>
-        <p>End-to-end deployment, customization, and optimization of Oracle Human Capital Management Cloud modules to transform your global workforce management.</p>
+      <div class="service-card highlight" ng-class="{'is-flipped': flippedService === 'oracle'}" ng-click="toggleServiceCard('oracle')" role="button" tabindex="0" aria-label="Oracle HCM Solutions service details">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="Oracle HCM Solutions">
+            <h3>Oracle HCM Solutions</h3>
+          </div>
+          <div class="service-card-back">
+            <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="">
+            <h3>Oracle HCM Solutions</h3>
+            <p>{{ services.oracle.description }}</p>
+            <ul class="service-card-benefits">
+              <li ng-repeat="benefit in services.oracle.benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <!-- Salesforce Platforms -->
-      <div class="service-card" ng-click="selectService('salesforce'); scrollTo('service-details')" role="button" tabindex="0">
-        <img class="service-card-image" src="./images/SF_IMG2.jpg" alt="Salesforce Platforms">
-        <i class="fa-cloud fa-solid"></i>
-        <h3>Salesforce Platforms</h3>
-        <p>Tailored Salesforce CRM implementations, custom integrations, and workflow automation to drive customer relationship management and business growth.</p>
+      <div class="service-card" ng-class="{'is-flipped': flippedService === 'salesforce'}" ng-click="toggleServiceCard('salesforce')" role="button" tabindex="0" aria-label="Salesforce Platforms service details">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <img class="service-card-image" src="./images/SF_IMG2.jpg" alt="Salesforce Platforms">
+            <h3>Salesforce Platforms</h3>
+          </div>
+          <div class="service-card-back">
+            <img class="service-card-image" src="./images/SF_IMG2.jpg" alt="">
+            <h3>Salesforce Platforms</h3>
+            <p>{{ services.salesforce.description }}</p>
+            <ul class="service-card-benefits">
+              <li ng-repeat="benefit in services.salesforce.benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <!-- Digital Transformation -->
-      <div class="service-card" ng-click="selectService('digital-transformation'); scrollTo('service-details')" role="button" tabindex="0">
-        <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="Digital Transformation">
-        <i class="fa-solid fa-network-wired"></i>
-        <h3>Digital Transformation</h3>
-        <p>Modernizing legacy architectures through cloud adoption, modernized workflows, and enterprise application integration.</p>
+      <div class="service-card" ng-class="{'is-flipped': flippedService === 'digital-transformation'}" ng-click="toggleServiceCard('digital-transformation')" role="button" tabindex="0" aria-label="Digital Transformation service details">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="Digital Transformation">
+            <h3>Digital Transformation</h3>
+          </div>
+          <div class="service-card-back">
+            <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="">
+            <h3>Digital Transformation</h3>
+            <p>{{ services['digital-transformation'].description }}</p>
+            <ul class="service-card-benefits">
+              <li ng-repeat="benefit in services['digital-transformation'].benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <!-- Software Assurance Testing -->
-      <div class="service-card" ng-click="selectService('software-testing'); scrollTo('service-details')" role="button" tabindex="0">
-        <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="Software Assurance Testing">
-        <i class="fa-solid fa-vial-circle-check"></i>
-        <h3>Software Assurance Testing</h3>
-        <p>Comprehensive automated and manual QA services ensuring scalable, secure, and defect-free enterprise software deployments.</p>
+      <div class="service-card" ng-class="{'is-flipped': flippedService === 'software-testing'}" ng-click="toggleServiceCard('software-testing')" role="button" tabindex="0" aria-label="Software Assurance Testing service details">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="Software Assurance Testing">
+            <h3>Software Assurance Testing</h3>
+          </div>
+          <div class="service-card-back">
+            <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="">
+            <h3>Software Assurance Testing</h3>
+            <p>{{ services['software-testing'].description }}</p>
+            <ul class="service-card-benefits">
+              <li ng-repeat="benefit in services['software-testing'].benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -1031,6 +1176,7 @@
       $scope.currentYear = new Date().getFullYear();
       $scope.isMenuOpen = false;
       $scope.isServicesOpen = false;
+      $scope.flippedService = null;
       $scope.selectedService = {
         title: 'Oracle HCM Solutions',
         icon: 'fa-users-gear',
@@ -1050,6 +1196,11 @@
       $scope.selectService = function(serviceKey) {
         $scope.isServicesOpen = false;
         $scope.selectedService = $scope.services[serviceKey];
+      };
+
+      $scope.toggleServiceCard = function(serviceKey) {
+        $scope.selectService(serviceKey);
+        $scope.flippedService = $scope.flippedService === serviceKey ? null : serviceKey;
       };
 
       // Smooth scroll navigation and close menu on select

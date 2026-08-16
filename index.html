@@ -64,14 +64,16 @@
       color: var(--primary-dark);
     }
     .logo-container img {
-      height: 40px;      /* Adjust height to fit your header */
+      height: 48px;      /* Slightly larger for clarity */
+      max-height: 56px;
       width: auto;       /* Maintains aspect ratio */
       object-fit: contain;
+      display: block;
     }
     .logo-container .name-logo {
-      height: 40px;
+      height: 40px; /* increase wordmark size for clarity */
       width: auto;
-      margin-left: 8px;
+      margin-left: 12px;
       object-fit: contain;
       display: inline-block;
       vertical-align: middle;
@@ -287,6 +289,13 @@
                   url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
       padding: 3rem 5%;
     }
+
+    /* Match About page hero logo sizing */
+    .hero-section .hero-logo img { height: 96px; width: auto; display: block; }
+    @media (max-width: 768px) { .hero-section .hero-logo img { height: 64px; } }
+    .hero-section .hero-logo { margin-bottom: 12px; }
+    .hero-section .assayor-method { margin-top: 8px; }
+    .hero-section .cta-btn { margin-top: 18px; }
 
     .hero-content {
       max-width: 900px;
@@ -882,6 +891,11 @@
         padding: 3rem 5%;
       }
 
+      @media (max-width: 1024px) {
+        .logo-container .name-logo {
+          height: 32px;
+        }
+      }
       @media (max-width: 768px) {
         .logo-container .name-logo {
           display: none;
@@ -948,11 +962,17 @@
     </nav>
   </header>
 
-  <!-- Main Hero Section with GIF Background -->
+  <!-- Main Hero Section (mirrors About page top image section) -->
   <section id="home" class="hero-section">
     <div class="hero-content">
-      <h1>Crafting Forward-Thinking Solutions to Transform Ideas into Impactful Realities</h1>
-      <p>Empowering global enterprises through specialized Oracle HCM implementation, Salesforce technology, Software Testing, and Digital Transformation.</p>
+      <h1>ASSAYOR</h1>
+      <h2>We Assay. You Accelarate</h2>
+      <p>Business Transformations, Powered By.</p>
+      <div class="assayor-method" aria-hidden="false">
+        <span class="am-the">THE</span>
+        <span class="am-assayor">ASSAYOR</span>
+        <span class="am-method">METHOD</span><sup class="am-tm">™</sup>
+      </div>
       <button class="cta-btn" ng-click="scrollTo('contact')">Get In Touch</button>
     </div>
   </section>
@@ -975,7 +995,21 @@
   <!-- About Us Section -->
   <section id="about" class="about-section">
     <div class="about-img">
-      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" alt="Oracle HCM Solution">
+      <div class="about-hero" style="background:linear-gradient(rgba(10,25,47,0.72),rgba(10,25,47,0.72)),url('https://images.unsplash.com/photo-1508830524289-0adcbe822b40?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;padding:2.4rem;border-radius:8px;color:#fff;display:flex;align-items:center;justify-content:center;min-height:320px;">
+        <div class="hero-content" style="max-width:700px;text-align:center">
+          <div class="hero-logo" style="display:flex;justify-content:center;margin-bottom:0.6rem">
+            <img src="./images/logo_trans.png" alt="ASSAYOR Logo" style="height:84px;width:auto;display:block">
+          </div>
+          <h1 style="font-size:2rem;margin-bottom:.4rem;font-weight:800;letter-spacing:1px">ASSAYOR</h1>
+          <h2 style="font-size:1.05rem;margin-bottom:.6rem;font-weight:700;color:#ffdca8">We Assay. You Accelarate</h2>
+          <p style="font-size:0.95rem;color:#e6eefc;margin-bottom:0.6rem">Business Transformations, Powered By.</p>
+          <div class="assayor-method" aria-hidden="false" style="margin-top:0.6rem;display:flex;align-items:center;justify-content:center;gap:.6rem;font-weight:900;font-size:1.25rem;text-shadow:0 3px 10px rgba(0,0,0,0.45)">
+            <span class="am-the" style="color:white">THE</span>
+            <span class="am-assayor" style="color:var(--accent-coral)">ASSAYOR</span>
+            <span class="am-method" style="color:white">METHOD</span><sup class="am-tm" style="font-size:0.45rem;vertical-align:super;color:var(--primary-dark);margin-left:4px">™</sup>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="about-content">
       <div class="section-title" style="text-align: left; margin-bottom: 1.5rem;">

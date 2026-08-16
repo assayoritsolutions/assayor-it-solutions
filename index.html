@@ -68,6 +68,14 @@
       width: auto;       /* Maintains aspect ratio */
       object-fit: contain;
     }
+    .logo-container .name-logo {
+      height: 40px;
+      width: auto;
+      margin-left: 8px;
+      object-fit: contain;
+      display: inline-block;
+      vertical-align: middle;
+    }
 
     /* Mobile Hamburger Menu Toggle Button */
     .menu-toggle {
@@ -873,6 +881,12 @@
       section {
         padding: 3rem 5%;
       }
+
+      @media (max-width: 768px) {
+        .logo-container .name-logo {
+          display: none;
+        }
+      }
     }
   </style>
 </head>
@@ -881,10 +895,10 @@
 
   <!-- Navigation Header -->
   <header>
-    <div class="logo-container">
-      <img src="./images/logo.PNG" alt="ASSAYOR Logo">
-      <span>{{ companyName }}</span>
-    </div>
+    <a class="logo-container" ng-click="scrollTo('home')" ng-href="#home" aria-label="Go to Home">
+      <img src="./images/logo_trans.png" alt="ASSAYOR Logo">
+      <img src="./images/assayor_name_logo.png" alt="ASSAYOR Wordmark" class="name-logo">
+    </a>
 
     <!-- Mobile Hamburger Button -->
     <button class="menu-toggle" ng-click="toggleMenu()" aria-label="Toggle navigation">
@@ -893,8 +907,8 @@
 
     <nav ng-class="{'nav-open': isMenuOpen}">
       <ul>
-        <li><a ng-click="scrollTo('home')">Home</a></li>
-        <li><a ng-click="scrollTo('about')">About Us</a></li>
+        <!-- About page now separate -->
+        <li><a href="about.html">About Us</a></li>
         <li ng-class="{'dropdown-open': isServicesOpen}">
           <button type="button" class="services-toggle" ng-click="isServicesOpen = !isServicesOpen" aria-haspopup="true" ng-attr-aria-expanded="{{ isServicesOpen }}">
             <span>Services</span>
@@ -1135,10 +1149,10 @@
       <div class="footer-links">
         <h4>Quick Links</h4>
         <ul>
-          <li><a ng-click="scrollTo('home')">Home</a></li>
-          <li><a ng-click="scrollTo('about')">About Us</a></li>
-          <li><a ng-click="scrollTo('services')">Services</a></li>
-          <li><a ng-click="scrollTo('work')">Our Work</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#work">Our Work</a></li>
         </ul>
       </div>
       <div class="footer-links">

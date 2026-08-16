@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - ASSAYOR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{--primary-dark:#0a192f;--accent-coral:#e05638;--accent-blue:#0071e3;--text-main:#333}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;color:var(--text-main);background:#fff}
+    header{position:fixed;top:0;left:0;width:100%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.08);z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:1rem 5%}
+    .logo-container{display:flex;align-items:center;gap:12px;font-size:1.4rem;font-weight:700;color:var(--primary-dark);text-decoration:none}
+    .logo-container img{height:56px;width:auto}
+    nav ul{display:flex;list-style:none;gap:2rem;align-items:center}
+    nav a{text-decoration:none;color:var(--primary-dark);font-weight:600}
+      .assayor-method{margin-top:1rem;display:flex;align-items:center;justify-content:center;gap:.6rem;font-weight:900;font-size:2rem;text-shadow:0 3px 10px rgba(0,0,0,0.55)}
+      .assayor-method .am-the,.assayor-method .am-method{color:white;background:transparent}
+      .assayor-method .am-assayor{color:var(--accent-coral)}
+      .assayor-method .am-tm{font-size:0.45rem;vertical-align:super;color:var(--primary-dark);margin-left:4px}
+    nav a:hover{color:var(--accent-coral)}
+    .hero-section{margin-top:70px;min-height:60vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background:linear-gradient(rgba(10,25,47,.72),rgba(10,25,47,.72)),url('https://images.unsplash.com/photo-1508830524289-0adcbe822b40?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;padding:6rem 5%}
+    .hero-content{max-width:900px}
+    .hero-content .hero-logo{display:flex;justify-content:center;margin-bottom:0.6rem}
+    .hero-content .hero-logo img{height:96px;width:auto;display:block}
+    .hero-content h1{font-size:3.4rem;margin-bottom:.6rem;font-weight:800}
+    .hero-content h2{font-size:1.4rem;margin-bottom:.6rem;font-weight:700;color:#ffdca8}
+    .hero-content p{font-size:1rem;color:#e6eefc}
+    main{padding:3rem 5%}
+    footer{background:var(--primary-dark);color:#a8b2d1;padding:2.5rem 5%}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo-container" href="index.html" aria-label="Back to Home">
+      <img src="./images/logo_trans.png" alt="ASSAYOR Logo">
+      <span>ASSAYOR</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#work">Our Work</a></li>
+        <li><a href="index.html#contact" class="btn-contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-logo">
+        <img src="./images/logo_trans.png" alt="ASSAYOR Logo">
+      </div>
+      <h1>ASSAYOR</h1>
+      <h2>We Assay. You Accelarate</h2>
+      <p>Business Transformations, Powered By.</p>
+        <div class="assayor-method" aria-hidden="false">
+          <span class="am-the">THE</span>
+          <span class="am-assayor">ASSAYOR</span>
+          <span class="am-method">METHOD</span><sup class="am-tm">™</sup>
+        </div>
+    </div>
+  </section>
+
+  <main>
+    <section>
+      <h3>Our Mission</h3>
+      <p>ASSAYOR delivers enterprise technology solutions, focused on Oracle HCM, Salesforce, Digital Transformation and Quality Assurance. We partner with clients to accelerate measurable outcomes.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+      <div>
+        <h3 style="color:#fff">ASSAYOR</h3>
+        <p style="max-width:320px;color:#cbd5e1">Empowering businesses with cutting-edge IT solutions, high-reliability software testing, and tailored support.</p>
+      </div>
+      <div>
+        <h4 style="color:#fff">Quick Links</h4>
+        <ul style="list-style:none;padding:0">
+          <li><a href="index.html" style="color:#a8b2d1;text-decoration:none">Home</a></li>
+          <li><a href="about.html" style="color:#a8b2d1;text-decoration:none">About Us</a></li>
+          <li><a href="index.html#services" style="color:#a8b2d1;text-decoration:none">Services</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:1.25rem;color:#99a2bf">&copy; 2026 ASSAYOR. All rights reserved.</div>
+  </footer>
+</body>
+</html>

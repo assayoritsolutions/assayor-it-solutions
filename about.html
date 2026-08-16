@@ -29,6 +29,61 @@
     .hero-content p{font-size:1rem;color:#e6eefc}
     main{padding:3rem 5%}
     footer{background:var(--primary-dark);color:#a8b2d1;padding:2.5rem 5%}
+    /* Insight section styles */
+    .insight-section{padding:3rem 5%;background:#ffffff}
+    .insight-intro{max-width:900px;margin:0 auto 1rem}
+    /* (expand/collapse controls removed) */
+    .insight-intro h2{color:var(--accent-blue);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:0.4rem}
+    .insight-intro h3{color:var(--primary-dark);margin-bottom:0.6rem}
+    .insight-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:1100px;margin:1rem auto 0}
+    .insight-item{background:#f7f8fa;border-radius:10px;padding:1rem;position:relative;transition:transform .18s ease}
+    .insight-item:hover{transform:translateY(-6px)}
+    .insight-item .title-btn{display:block;width:100%;text-align:left;background:none;border:0;padding:0;font-weight:700;font-size:1rem;color:var(--primary-dark);cursor:pointer}
+    .insight-item .detail{max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .35s ease;margin-top:.6rem;color:var(--text-main);line-height:1.6}
+    .insight-item.active .detail{max-height:480px;opacity:1}
+    .insight-item .detail ul{margin:0.5rem 0 0 1.1rem}
+    @media (max-width:1100px){.insight-grid{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:800px){.insight-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:480px){.insight-grid{grid-template-columns:1fr}.insight-item{padding:0.85rem}}
+
+    /* Flow diagram styles */
+    .flow-wrap{max-width:1200px;margin:1.25rem auto;padding:1rem;}
+    .flow-track{display:flex;gap:18px;align-items:center;overflow-x:auto;padding:1rem 6px}
+    .flow-row{display:flex;gap:18px;align-items:center;justify-content:center}
+    .flow-node{flex:0 0 auto;background:linear-gradient(180deg,#fff,#f6fbff);border:1px solid #e6eef8;border-radius:10px;padding:14px 18px;min-width:220px;box-shadow:0 6px 18px rgba(6,40,90,0.04);cursor:pointer;transition:transform .18s,box-shadow .18s}
+    .flow-node:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(6,40,90,0.08)}
+    .flow-node .step{display:flex;align-items:center;gap:12px}
+    .flow-node .dot{width:52px;height:52px;border-radius:50%;background:linear-gradient(90deg,var(--accent-coral),#f39c5a);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:1.05rem}
+    .flow-node .dot i{font-size:1.1rem}
+    .flow-node .node-title{font-weight:700;color:var(--primary-dark);font-size:1rem}
+    .flow-arrow{flex:0 0 auto;width:40px;height:2px;background:linear-gradient(90deg,rgba(0,0,0,0.08),rgba(0,0,0,0.2));position:relative;transition:background .25s,transform .25s}
+    .flow-arrow::after{content:'';position:absolute;right:-6px;top:-6px;border-left:8px solid rgba(0,0,0,0.22);border-top:6px solid transparent;border-bottom:6px solid transparent;transition:border-color .25s}
+    .flow-arrow.active{background:linear-gradient(90deg,var(--accent-blue),var(--accent-coral));transform:scaleX(1.02)}
+    .flow-arrow.active::after{border-left-color:var(--accent-coral)}
+    .flow-arrow.vertical{width:2px;height:48px;margin:12px auto;background:linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.2));}
+    .flow-arrow.vertical::after{right:0;top:auto;left:50%;transform:translateX(-50%);border-left:0;border-top:8px solid rgba(0,0,0,0.22);border-right:8px solid transparent;border-left:8px solid transparent}
+    .flow-detail{max-width:1100px;margin:1rem auto 2rem;padding:1rem;border-radius:10px;background:#f9fbff;border-left:4px solid var(--accent-blue);min-height:120px;transition:all .25s ease}
+      .flow-grid{max-width:1200px;margin:1.25rem auto;padding:1rem;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:start}
+      .flow-tile{background:linear-gradient(180deg,#fff,#f6fbff);border:1px solid #e6eef8;border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(6,40,90,0.04);cursor:pointer;transition:transform .18s,box-shadow .18s;border-left:4px solid transparent}
+      .flow-tile:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(6,40,90,0.08)}
+      .flow-tile .step{display:flex;align-items:center;gap:14px}
+      .flow-tile .dot{width:64px;height:64px;border-radius:50%;background:linear-gradient(90deg,var(--accent-coral),#f39c5a);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:1.15rem}
+      .flow-tile .dot i{font-size:1.25rem}
+      .flow-tile .node-title{font-weight:800;color:var(--primary-dark);font-size:1.05rem}
+      .flow-tile.active{border-left-color:var(--accent-blue);box-shadow:0 14px 34px rgba(6,40,90,0.08)}
+      .flow-detail{max-width:1100px;margin:1rem auto 2rem;padding:1rem;border-radius:10px;background:#f9fbff;border-left:4px solid var(--accent-blue);min-height:120px;transition:all .25s ease}
+    .flow-detail h4{margin:0 0 .6rem;color:var(--accent-coral)}
+    .flow-detail p{margin:0;color:var(--text-main);line-height:1.6}
+    @media (max-width:720px){.flow-node{min-width:100%;padding:12px}.flow-arrow{width:2px;height:40px;display:block;margin:6px auto;background:linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.2));}
+      .flow-arrow::after{right:0;top:auto;left:50%;transform:translateX(-50%);border-left:0;border-top:8px solid rgba(0,0,0,0.22);border-right:8px solid transparent;border-left:8px solid transparent}
+      .flow-track{flex-direction:column;align-items:stretch}
+      .flow-row{flex-direction:column}
+      .flow-node .step{gap:10px}
+      }
+      @media (max-width:1100px){.flow-grid{grid-template-columns:repeat(3,1fr)}}
+      @media (max-width:800px){.flow-grid{grid-template-columns:repeat(2,1fr)}}
+      @media (max-width:480px){.flow-grid{grid-template-columns:1fr}.flow-tile{padding:14px}}
+    }
   </style>
 </head>
 <body>
@@ -65,11 +120,129 @@
   </section>
 
   <main>
-    <section>
-      <h3>Our Mission</h3>
-      <p>ASSAYOR delivers enterprise technology solutions, focused on Oracle HCM, Salesforce, Digital Transformation and Quality Assurance. We partner with clients to accelerate measurable outcomes.</p>
+    
+    <section class="about-details">
+      <div style="max-width:900px;margin:0 auto;">
+        <h2 style="text-transform:uppercase;color:var(--accent-blue);letter-spacing:1.2px;margin-bottom:0.6rem;">WHO WE ARE?</h2>
+
+        <div style="margin-top:1rem;color:var(--text-main);line-height:1.6">
+          <p>Assayor Software Solutions LLP was established with a vision that extends beyond traditional technology consulting.</p>
+
+          <p>Our journey began after years of working with organizations across industries, implementing enterprise solutions, advising business leaders, solving complex challenges, and witnessing both successful and unsuccessful transformation initiatives.</p>
+
+          <p>One common pattern became increasingly clear.</p>
+
+          <p>Most consulting engagements focused primarily on delivering technology. Very few focused on maximizing business value.</p>
+
+          <p>Projects were measured by implementation milestones, system configurations, project timelines, and technical deliverables.</p>
+
+          <p>Yet the questions that mattered most were often left unanswered.</p>
+
+          <ul style="margin:0.6rem 0 0 1.15rem;color:var(--text-main);line-height:1.6">
+            <li>Has the business become more efficient?</li>
+            <li>Are employees more productive?</li>
+            <li>Have operational costs reduced?</li>
+            <li>Is decision-making faster?</li>
+            <li>Has the technology investment delivered measurable value?</li>
+            <li>Is the organization better positioned for future growth?</li>
+          </ul>
+
+          <p style="margin-top:1rem;">These questions inspired the creation of Assayor.</p>
+
+          <p>We believed organizations deserved more than implementation partners. They deserved advisors who could understand their business, challenge assumptions, identify opportunities, and help them realize the full value of every technology investment.</p>
+
+          <p>That belief continues to define who we are today.</p>
+        </div>
+      </div>
     </section>
   </main>
+
+  <section class="insight-section">
+    <div class="insight-intro">
+      <h2>The Eight Reasons Why Transformations Fail</h2>
+      <h3>Technology should never define a business strategy. Business strategy should define how technology is used.</h3>
+      <p>Technology has never been more powerful. Organizations today have access to world-class enterprise applications, cloud platforms, automation tools, artificial intelligence, analytics, mobile technologies, and digital ecosystems capable of transforming the way businesses operate. Yet, despite these investments, many transformation initiatives fail to deliver the expected business value. The challenge is rarely the technology itself. More often, transformation falls short because organizations attempt to solve technology problems before understanding business problems. Technology becomes the destination instead of the enabler. At Assayor, we believe successful transformation begins by asking better business questions—not by selecting better software.</p>
+    </div>
+
+    <!-- expand/collapse controls removed -->
+
+    <div class="flow-wrap">
+      <div class="flow-grid" role="list">
+        <div class="flow-tile" role="listitem" data-index="0">
+          <div class="step"><div class="dot"><i class="fa-solid fa-microchip"></i></div><div class="node-title">Technology Becomes the Starting Point</div></div>
+        </div>
+        <div class="flow-tile" role="listitem" data-index="1">
+          <div class="step"><div class="dot"><i class="fa-solid fa-list-check"></i></div><div class="node-title">Existing Business Processes Not Understood</div></div>
+        </div>
+        <div class="flow-tile" role="listitem" data-index="2">
+          <div class="step"><div class="dot"><i class="fa-solid fa-bullseye"></i></div><div class="node-title">Business Objectives Not Clearly Defined</div></div>
+        </div>
+        <div class="flow-tile" role="listitem" data-index="3">
+          <div class="step"><div class="dot"><i class="fa-solid fa-users"></i></div><div class="node-title">Stakeholders Work in Isolation</div></div>
+        </div>
+
+        <div class="flow-tile" role="listitem" data-index="4">
+          <div class="step"><div class="dot"><i class="fa-solid fa-user-check"></i></div><div class="node-title">User Adoption Treated as Afterthought</div></div>
+        </div>
+        <div class="flow-tile" role="listitem" data-index="5">
+          <div class="step"><div class="dot"><i class="fa-solid fa-flag"></i></div><div class="node-title">Success Measured Only by Go-Live</div></div>
+        </div>
+        <div class="flow-tile" role="listitem" data-index="6">
+          <div class="step"><div class="dot"><i class="fa-solid fa-box-open"></i></div><div class="node-title">Technology Investments Underutilized</div></div>
+        </div>
+        <div class="flow-tile" role="listitem" data-index="7">
+          <div class="step"><div class="dot"><i class="fa-solid fa-sync"></i></div><div class="node-title">Continuous Improvement Never Happens</div></div>
+        </div>
+      </div>
+
+      <div class="flow-detail" id="flow-detail" aria-live="polite">
+        <h4 id="flow-detail-title">Select a step to view details</h4>
+        <p id="flow-detail-body">Click or hover a tile above to reveal more information about why transformations fail and how Assayor addresses each challenge.</p>
+      </div>
+    </div>
+
+    <script>
+      (function(){
+        var steps = [
+          {title:'Technology Becomes the Starting Point', body:'Many organizations begin by selecting a technology platform and then attempt to reshape their business around its capabilities. This often results in unnecessary customization, inefficient processes, resistance to change, and underutilized features. At Assayor, we reverse this approach by starting with the business and then identifying the technology that fits.'},
+          {title:'Existing Business Processes Are Never Fully Understood', body:'Organizations frequently automate inefficient processes instead of improving them. We analyze current processes, identify bottlenecks, remove unnecessary complexity, and design improved future-state processes so technology supports optimized operations.'},
+          {title:'Business Objectives Are Not Clearly Defined', body:'Transformation projects often start with technology goals rather than business goals. We focus on the business outcomes: what problem is being solved, how success will be measured, and what value will be delivered before recommending technology.'},
+          {title:'Stakeholders Work in Isolation', body:'Transformation affects multiple functions. When departments act independently, solutions become fragmented. We create alignment across leadership, HR, Finance, Operations, IT, and end users to ensure enterprise-wide value.'},
+          {title:'User Adoption Is Treated as an Afterthought', body:'Without communication, training, and change management, technology remains underutilized. We embed change activities to drive adoption and ensure people — not technology — determine success.'},
+          {title:'Success Is Measured Only by Go-Live', body:'Go-live is just the beginning. We define post-implementation measures such as efficiency, employee experience, customer satisfaction, and ROI to ensure continued value realization.'},
+          {title:'Technology Investments Are Underutilized', body:'Organizations often use only a fraction of purchased platform capabilities. We help maximize existing investments before recommending more solutions.'},
+          {title:'Continuous Improvement Never Happens', body:'Transformation is ongoing. We help organizations continuously evaluate and optimize processes, technology, and operations to sustain long-term growth.'}
+        ];
+
+        var tiles = document.querySelectorAll('.flow-tile');
+        var detailTitle = document.getElementById('flow-detail-title');
+        var detailBody = document.getElementById('flow-detail-body');
+
+        function clearActive(){ tiles.forEach(function(t){ t.classList.remove('active'); }); }
+
+        function showDetail(i){
+          if(!steps[i]) return;
+          detailTitle.textContent = (i+1) + '. ' + steps[i].title;
+          detailBody.textContent = steps[i].body;
+          document.getElementById('flow-detail').classList.add('open');
+          // highlight selected tile
+          clearActive();
+          if(tiles[i]) tiles[i].classList.add('active');
+        }
+
+        tiles.forEach(function(t){
+          var idx = parseInt(t.getAttribute('data-index'),10);
+          t.addEventListener('click', function(){ showDetail(idx); });
+          t.addEventListener('mouseenter', function(){ if(window.matchMedia('(min-width:769px)').matches){ showDetail(idx); } });
+        });
+
+        // expand/collapse all controls reuse: expand shows first step in detail
+        // expand/collapse controls removed
+        // no expand/collapse buttons to wire up
+
+      })();
+    </script>
+  </section>
 
   <footer>
     <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap">

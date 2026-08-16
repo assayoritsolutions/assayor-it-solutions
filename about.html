@@ -64,13 +64,17 @@
     .flow-arrow.vertical::after{right:0;top:auto;left:50%;transform:translateX(-50%);border-left:0;border-top:8px solid rgba(0,0,0,0.22);border-right:8px solid transparent;border-left:8px solid transparent}
     .flow-detail{max-width:1100px;margin:1rem auto 2rem;padding:1rem;border-radius:10px;background:#f9fbff;border-left:4px solid var(--accent-blue);min-height:120px;transition:all .25s ease}
       .flow-grid{max-width:1200px;margin:1.25rem auto;padding:1rem;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:start}
-      .flow-tile{background:linear-gradient(180deg,#fff,#f6fbff);border:1px solid #e6eef8;border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(6,40,90,0.04);cursor:pointer;transition:transform .18s,box-shadow .18s;border-left:4px solid transparent}
-      .flow-tile:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(6,40,90,0.08)}
-      .flow-tile .step{display:flex;align-items:center;gap:14px}
+      /* Tile base */
+      .flow-tile{perspective:1000px}
+      .flow-tile .tile-inner{position:relative;transition:transform .6s;transform-style:preserve-3d}
+      .flow-tile .tile-face{backface-visibility:hidden;position:relative;border-radius:12px;padding:18px;background:linear-gradient(180deg,#fff,#f6fbff);border:1px solid #e6eef8;box-shadow:0 6px 18px rgba(6,40,90,0.04);min-height:120px}
+      .flow-tile .tile-front{display:flex;align-items:center;gap:14px}
       .flow-tile .dot{width:64px;height:64px;border-radius:50%;background:linear-gradient(90deg,var(--accent-coral),#f39c5a);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:1.15rem}
       .flow-tile .dot i{font-size:1.25rem}
       .flow-tile .node-title{font-weight:800;color:var(--primary-dark);font-size:1.05rem}
-      .flow-tile.active{border-left-color:var(--accent-blue);box-shadow:0 14px 34px rgba(6,40,90,0.08)}
+      .flow-tile .tile-back{position:absolute;inset:0;transform:rotateY(180deg);padding:18px;background:#f9fbff;border-radius:12px;border:1px solid #e6eef8}
+      .flow-tile.is-flipped .tile-inner{transform:rotateY(180deg)}
+      .flow-tile:hover .tile-face{box-shadow:0 12px 30px rgba(6,40,90,0.08)}
       .flow-detail{max-width:1100px;margin:1rem auto 2rem;padding:1rem;border-radius:10px;background:#f9fbff;border-left:4px solid var(--accent-blue);min-height:120px;transition:all .25s ease}
     .flow-detail h4{margin:0 0 .6rem;color:var(--accent-coral)}
     .flow-detail p{margin:0;color:var(--text-main);line-height:1.6}
@@ -82,9 +86,47 @@
       }
       @media (max-width:1100px){.flow-grid{grid-template-columns:repeat(3,1fr)}}
       @media (max-width:800px){.flow-grid{grid-template-columns:repeat(2,1fr)}}
-      @media (max-width:480px){.flow-grid{grid-template-columns:1fr}.flow-tile{padding:14px}}
-    }
-  </style>
+      /* Mobile: disable 3D flip, show back as inline expandable content */
+      @media (max-width:768px){
+        .flow-grid{grid-template-columns:1fr}
+        .flow-tile .tile-inner{transform:none!important}
+        .flow-tile .tile-back{position:relative;transform:none;display:block;max-height:0;overflow:hidden;transition:max-height .32s ease;padding:0 18px}
+        .flow-tile.open .tile-back{padding:12px 18px;margin-top:10px;max-height:420px}
+      }
+
+      /* Color tiles styles */
+      .color-tiles-grid .color-tile{display:flex;flex-direction:column;align-items:center;justify-content:center}
+      .color-btn{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.9);padding:10px 22px;border-radius:4px;font-weight:700;letter-spacing:1px;cursor:pointer}
+      .color-btn:hover{background:rgba(255,255,255,0.06)}
+      @media (max-width:1100px){.color-tiles-grid{grid-template-columns:repeat(2,1fr)}}
+      @media (max-width:720px){.color-tiles-grid{grid-template-columns:1fr}.color-tile{padding:3.25rem 1.5rem}}
+
+      /* entry animation for color tiles */
+      .color-tiles-grid .color-tile{opacity:0;transform:translateY(18px);animation:tileIn .6s cubic-bezier(.2,.9,.2,1) forwards;position:relative}
+      .color-tiles-grid .color-tile:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 18px 40px rgba(6,40,90,0.12)}
+      /* Flip card inner structure */
+      .color-tile{perspective:900px}
+      .color-tile .ct-inner{position:relative;transition:transform .6s;transform-style:preserve-3d;border-radius:10px;min-height:260px}
+      .ct-front,.ct-back{backface-visibility:hidden;position:absolute;inset:0;border-radius:10px;box-sizing:border-box}
+      .ct-front{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.25rem;text-align:center}
+      .ct-back{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;padding:0;transform:rotateY(180deg);background:transparent;color:#fff;text-align:left}
+      .ct-back .back-content{padding:1.25rem;box-sizing:border-box;width:100%;flex:1;display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden}
+      .ct-front h3{margin:0 0 1rem}
+      .ct-back .back-content p{width:100%;white-space:normal;word-break:break-word;overflow-wrap:anywhere;word-wrap:break-word;hyphens:auto;font-size:0.95rem;line-height:1.5;margin:0;flex:1;overflow:auto}
+      .ct-back .back-content h4{margin:0 0 .6rem}
+      @media (max-width:720px){ .ct-back p{font-size:0.86rem} }
+      .color-tile.is-flipped .ct-inner{transform:rotateY(180deg)}
+      .ct-back .color-btn{margin-top:1rem}
+      @keyframes tileIn{to{opacity:1;transform:translateY(0)}}
+      .color-tiles-grid .color-tile:nth-child(1){animation-delay:0s}
+      .color-tiles-grid .color-tile:nth-child(2){animation-delay:0.06s}
+      .color-tiles-grid .color-tile:nth-child(3){animation-delay:0.12s}
+      .color-tiles-grid .color-tile:nth-child(4){animation-delay:0.18s}
+      .color-tiles-grid .color-tile:nth-child(5){animation-delay:0.24s}
+      .color-tiles-grid .color-tile:nth-child(6){animation-delay:0.30s}
+      .color-tiles-grid .color-tile:nth-child(7){animation-delay:0.36s}
+      .color-tiles-grid .color-tile:nth-child(8){animation-delay:0.42s}
+    </style>
 </head>
 <body>
   <header>
@@ -157,94 +199,200 @@
     </section>
   </main>
 
+  <section class="perspective-section" style="padding:2.5rem 5%;background:#ffffff">
+    <div style="max-width:900px;margin:0 auto;">
+      <h2 style="text-transform:uppercase;color:var(--accent-blue);letter-spacing:1.2px;margin-bottom:0.6rem;">OUR PERSPECTIVE</h2>
+      <h3 style="font-size:1.1rem;margin-bottom:0.6rem;color:var(--primary-dark);">We Believe Technology Should Follow Business Strategy</h3>
+
+      <div style="color:var(--text-main);line-height:1.7">
+        <p>We do not aspire to become just another technology implementation company.</p>
+
+        <p>We aspire to become a trusted business transformation partner.</p>
+
+        <p>Technology should never define a business strategy. Business strategy should define how technology is used.</p>
+
+        <p>Organizations do not invest in technology simply to deploy software.</p>
+
+        <p>They invest to improve their business.</p>
+
+        <p>Whether the objective is improving employee experience, streamlining operations, accelerating digital transformation, ensuring compliance, enhancing customer engagement, or enabling business growth, technology is only one part of the equation.</p>
+
+        <p>Successful transformation requires alignment between business strategy, people, processes, governance, and technology.</p>
+
+        <p>Unfortunately, many transformation initiatives begin by selecting a technology platform before understanding the business it is intended to support.</p>
+
+        <p>This often results in underutilized systems, fragmented processes, low user adoption, and limited return on investment.</p>
+
+        <p>At Assayor, we challenge this conventional approach.</p>
+
+        <p>We begin by understanding the business first.</p>
+
+        <p>We analyze strategic objectives, operational challenges, organizational processes, technology landscape, and long-term aspirations before recommending any solution.</p>
+
+        <p>Only after gaining this understanding do we design an implementation strategy that aligns technology with business outcomes.</p>
+
+        <p>This philosophy forms the foundation of everything we do.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="insight-section">
+    <div class="our-insights" style="max-width:900px;margin:0 auto 1rem;color:var(--text-main);line-height:1.7">
+      <h2 style="text-transform:uppercase;color:var(--accent-blue);letter-spacing:1.2px;margin-bottom:0.6rem;">OUR INSIGHTS</h2>
+      <p>Technology has never been more powerful.</p>
+
+      <p>Organizations today have access to world-class enterprise applications, cloud platforms, automation tools, artificial intelligence, analytics, mobile technologies, and digital ecosystems capable of transforming the way businesses operate.</p>
+
+      <p>Yet, despite these investments, many transformation initiatives fail to deliver the expected business value.</p>
+
+      <p>The challenge is rarely the technology itself.</p>
+
+      <p>More often, transformation falls short because organizations attempt to solve technology problems before understanding business problems.</p>
+
+      <p>Technology becomes the destination instead of the enabler.</p>
+
+      <p>At Assayor, we believe successful transformation begins by asking better business questions—not by selecting better software.</p>
+    </div>
     <div class="insight-intro">
-      <h2>The Eight Reasons Why Transformations Fail</h2>
-      <h3>Technology should never define a business strategy. Business strategy should define how technology is used.</h3>
-      <p>Technology has never been more powerful. Organizations today have access to world-class enterprise applications, cloud platforms, automation tools, artificial intelligence, analytics, mobile technologies, and digital ecosystems capable of transforming the way businesses operate. Yet, despite these investments, many transformation initiatives fail to deliver the expected business value. The challenge is rarely the technology itself. More often, transformation falls short because organizations attempt to solve technology problems before understanding business problems. Technology becomes the destination instead of the enabler. At Assayor, we believe successful transformation begins by asking better business questions—not by selecting better software.</p>
+      <h3>Why Transformations Fail</h3>
     </div>
 
     <!-- expand/collapse controls removed -->
 
     <div class="flow-wrap">
-      <div class="flow-grid" role="list">
-        <div class="flow-tile" role="listitem" data-index="0">
-          <div class="step"><div class="dot"><i class="fa-solid fa-microchip"></i></div><div class="node-title">Technology Becomes the Starting Point</div></div>
-        </div>
-        <div class="flow-tile" role="listitem" data-index="1">
-          <div class="step"><div class="dot"><i class="fa-solid fa-list-check"></i></div><div class="node-title">Existing Business Processes Not Understood</div></div>
-        </div>
-        <div class="flow-tile" role="listitem" data-index="2">
-          <div class="step"><div class="dot"><i class="fa-solid fa-bullseye"></i></div><div class="node-title">Business Objectives Not Clearly Defined</div></div>
-        </div>
-        <div class="flow-tile" role="listitem" data-index="3">
-          <div class="step"><div class="dot"><i class="fa-solid fa-users"></i></div><div class="node-title">Stakeholders Work in Isolation</div></div>
-        </div>
+      <div class="color-tiles-section" style="padding:1.5rem 0;background:transparent">
+        <div style="max-width:1200px;margin:0 auto;padding:0">
+          <div class="color-tiles-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0">
+            <div class="color-tile" style="background:rgb(192,67,41);color:#fff;padding:4.25rem 2rem;text-align:center">
+              <div class="ct-inner">
+                <div class="ct-front">
+                  <h3 style="text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1.25rem">Technology Before Business</h3>
+                  <button class="color-btn">Know More</button>
+                </div>
+                <div class="ct-back" aria-hidden="true">
+                  <div class="back-content"><p style="margin:0;color:#fff;line-height:1.6;">Many organizations begin by selecting a technology platform and then attempt to reshape their business around its capabilities. This often results in unnecessary customization, inefficient processes, resistance to change, and underutilized features. At Assayor, we reverse this approach. We begin with the business. Only then do we identify the technology best suited to achieve the desired outcomes.</p></div>
+                  <button class="color-btn back-close">Close</button>
+                </div>
+              </div>
+            </div>
+            <div class="color-tile" style="background:rgb(205,124,43);color:#fff;padding:4.25rem 2rem;text-align:center">
+              <div class="ct-inner">
+                <div class="ct-front">
+                  <h3 style="text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1.25rem">Automating the Wrong Process</h3>
+                  <button class="color-btn">Know More</button>
+                </div>
+                <div class="ct-back" aria-hidden="true">
+                  <div class="back-content"><p style="margin:0;color:#fff;line-height:1.6;">Organizations frequently automate inefficient processes instead of improving them.   Digital transformation should never mean digitizing existing inefficiencies.   Before recommending any solution, we analyze current business processes, identify operational bottlenecks, eliminate unnecessary complexity, and design improved future-state processes.   Technology should support optimized business operations—not inefficient ones.</p></div>
+                  <button class="color-btn back-close">Close</button>
+                </div>
+              </div>
+            </div>
+            <div class="color-tile" style="background:rgb(192,67,41);color:#fff;padding:4.25rem 2rem;text-align:center">
+              <div class="ct-inner">
+                <div class="ct-front">
+                  <h3 style="text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1.25rem">No Clear Business Goal</h3>
+                  <button class="color-btn">Know More</button>
+                </div>
+                <div class="ct-back" aria-hidden="true">
+                  <div class="back-content"><p style="margin:0;color:#fff;line-height:1.6;">Transformation projects often begin with respect to the technology objectives rather than the business objectives.</p>
+                  <p style="margin:0;color:#fff;line-height:1.6;">The real objectives should cover Business problem, Operational Challenges, Efficiency Improvements and Business value generation through technology investments. Technology becomes meaningful only when linked to measurable business outcomes.</p>
+                  </div>
+                  <button class="color-btn back-close">Close</button>
+                </div>
+              </div>
+            </div>
+            <div class="color-tile" style="background:rgb(205,124,43);color:#fff;padding:4.25rem 2rem;text-align:center">
+              <div class="ct-inner">
+                <div class="ct-front">
+                  <h3 style="text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1.25rem">Working in Silos</h3>
+                  <button class="color-btn">Know More</button>
+                </div>
+                <div class="ct-back" aria-hidden="true">
+                  <div class="back-content"><p style="margin:0;color:#fff;line-height:1.6;">Transformation affects multiple functions across an organization. Leadership, Human Resources, Finance, Operations, IT, and End Users each bring different expectations and priorities. When these stakeholders operate independently, organizations often implement fragmented solutions that fail to deliver enterprise-wide value. Successful transformation requires alignment—not just implementation.</p></div>
+                  <button class="color-btn back-close">Close</button>
+                </div>
+              </div>
+            </div>
 
-        <div class="flow-tile" role="listitem" data-index="4">
-          <div class="step"><div class="dot"><i class="fa-solid fa-user-check"></i></div><div class="node-title">User Adoption Treated as Afterthought</div></div>
+            <div class="color-tile" style="background:rgb(205,124,43);color:#fff;padding:4.25rem 2rem;text-align:center">
+              <div class="ct-inner">
+                <div class="ct-front">
+                  <h3 style="text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1.25rem">People Left Behind</h3>
+                  <button class="color-btn">Know More</button>
+                </div>
+                <div class="ct-back" aria-hidden="true">
+                  <div class="back-content"><p style="margin:0;color:#fff;line-height:1.6;">A technically successful implementation can still fail if users do not adopt the solution. Without effective communication, training, change management, and continuous engagement, even the most advanced technology becomes underutilized. People determine the success of technology—not the other way around.</p></div>
+                  <button class="color-btn back-close">Close</button>
+                </div>
+              </div>
+            </div>
+            <div class="color-tile" style="background:rgb(192,67,41);color:#fff;padding:4.25rem 2rem;text-align:center">
+              <div class="ct-inner">
+                <div class="ct-front">
+                  <h3 style="text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1.25rem">Go-Live ≠ Success</h3>
+                  <button class="color-btn">Know More</button>
+                </div>
+                <div class="ct-back" aria-hidden="true">
+                  <div class="back-content"><p style="margin:0;color:#fff;line-height:1.6;">A technically successful implementation can still fail if users do not adopt the solution. Without effective communication, training, change management, and continuous engagement, even the most advanced technology becomes underutilized. People determine the success of technology—not the other way around.</p></div>
+                  <button class="color-btn back-close">Close</button>
+                </div>
+              </div>
+            </div>
+            <div class="color-tile" style="background:rgb(205,124,43);color:#fff;padding:4.25rem 2rem;text-align:center">
+              <div class="ct-inner">
+                <div class="ct-front">
+                  <h3 style="text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1.25rem">Leaving Technology Untapped</h3>
+                  <button class="color-btn">Know More</button>
+                </div>
+                <div class="ct-back" aria-hidden="true">
+                  <div class="back-content"><p style="margin:0;color:#fff;line-height:1.6;">Many organizations invest in cutting-edge technology but fail to fully leverage its potential due to inadequate change management and user adoption strategies.</p></div>
+                  <button class="color-btn back-close">Close</button>
+                </div>
+              </div>
+            </div>
+            <div class="color-tile" style="background:rgb(192,67,41);color:#fff;padding:4.25rem 2rem;text-align:center">
+              <div class="ct-inner">
+                <div class="ct-front">
+                  <h3 style="text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1.25rem">Transformation Stops at Go-Live</h3>
+                  <button class="color-btn">Know More</button>
+                </div>
+                <div class="ct-back" aria-hidden="true">
+                  <div class="back-content"><p style="margin:0;color:#fff;line-height:1.6;">Transformation is not a one-time event. Businesses evolve.</p></div>
+                  <button class="color-btn back-close">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="flow-tile" role="listitem" data-index="5">
-          <div class="step"><div class="dot"><i class="fa-solid fa-flag"></i></div><div class="node-title">Success Measured Only by Go-Live</div></div>
-        </div>
-        <div class="flow-tile" role="listitem" data-index="6">
-          <div class="step"><div class="dot"><i class="fa-solid fa-box-open"></i></div><div class="node-title">Technology Investments Underutilized</div></div>
-        </div>
-        <div class="flow-tile" role="listitem" data-index="7">
-          <div class="step"><div class="dot"><i class="fa-solid fa-sync"></i></div><div class="node-title">Continuous Improvement Never Happens</div></div>
-        </div>
-      </div>
-
-      <div class="flow-detail" id="flow-detail" aria-live="polite">
-        <h4 id="flow-detail-title">Select a step to view details</h4>
-        <p id="flow-detail-body">Click or hover a tile above to reveal more information about why transformations fail and how Assayor addresses each challenge.</p>
       </div>
     </div>
-
-    <script>
-      (function(){
-        var steps = [
-          {title:'Technology Becomes the Starting Point', body:'Many organizations begin by selecting a technology platform and then attempt to reshape their business around its capabilities. This often results in unnecessary customization, inefficient processes, resistance to change, and underutilized features. At Assayor, we reverse this approach by starting with the business and then identifying the technology that fits.'},
-          {title:'Existing Business Processes Are Never Fully Understood', body:'Organizations frequently automate inefficient processes instead of improving them. We analyze current processes, identify bottlenecks, remove unnecessary complexity, and design improved future-state processes so technology supports optimized operations.'},
-          {title:'Business Objectives Are Not Clearly Defined', body:'Transformation projects often start with technology goals rather than business goals. We focus on the business outcomes: what problem is being solved, how success will be measured, and what value will be delivered before recommending technology.'},
-          {title:'Stakeholders Work in Isolation', body:'Transformation affects multiple functions. When departments act independently, solutions become fragmented. We create alignment across leadership, HR, Finance, Operations, IT, and end users to ensure enterprise-wide value.'},
-          {title:'User Adoption Is Treated as an Afterthought', body:'Without communication, training, and change management, technology remains underutilized. We embed change activities to drive adoption and ensure people — not technology — determine success.'},
-          {title:'Success Is Measured Only by Go-Live', body:'Go-live is just the beginning. We define post-implementation measures such as efficiency, employee experience, customer satisfaction, and ROI to ensure continued value realization.'},
-          {title:'Technology Investments Are Underutilized', body:'Organizations often use only a fraction of purchased platform capabilities. We help maximize existing investments before recommending more solutions.'},
-          {title:'Continuous Improvement Never Happens', body:'Transformation is ongoing. We help organizations continuously evaluate and optimize processes, technology, and operations to sustain long-term growth.'}
-        ];
-
-        var tiles = document.querySelectorAll('.flow-tile');
-        var detailTitle = document.getElementById('flow-detail-title');
-        var detailBody = document.getElementById('flow-detail-body');
-
-        function clearActive(){ tiles.forEach(function(t){ t.classList.remove('active'); }); }
-
-        function showDetail(i){
-          if(!steps[i]) return;
-          detailTitle.textContent = (i+1) + '. ' + steps[i].title;
-          detailBody.textContent = steps[i].body;
-          document.getElementById('flow-detail').classList.add('open');
-          // highlight selected tile
-          clearActive();
-          if(tiles[i]) tiles[i].classList.add('active');
-        }
-
-        tiles.forEach(function(t){
-          var idx = parseInt(t.getAttribute('data-index'),10);
-          t.addEventListener('click', function(){ showDetail(idx); });
-          t.addEventListener('mouseenter', function(){ if(window.matchMedia('(min-width:769px)').matches){ showDetail(idx); } });
-        });
-
-        // expand/collapse all controls reuse: expand shows first step in detail
-        // expand/collapse controls removed
-        // no expand/collapse buttons to wire up
-
-      })();
-    </script>
   </section>
 
+  <script>
+    (function(){
+      var tiles = Array.prototype.slice.call(document.querySelectorAll('.color-tiles-grid .color-tile'));
+      tiles.forEach(function(tile){
+        var frontBtn = tile.querySelector('.ct-front .color-btn');
+        var closeBtn = tile.querySelector('.ct-back .back-close');
+        if(frontBtn){
+          frontBtn.addEventListener('click', function(e){
+            e.stopPropagation();
+            // close others
+            tiles.forEach(function(t){ if(t!==tile) t.classList.remove('is-flipped'); });
+            tile.classList.toggle('is-flipped');
+          });
+        }
+        if(closeBtn){
+          closeBtn.addEventListener('click', function(e){ e.stopPropagation(); tile.classList.remove('is-flipped'); });
+        }
+      });
+      // click outside tiles closes all
+      document.addEventListener('click', function(e){ if(!e.target.closest('.color-tile')) tiles.forEach(function(t){ t.classList.remove('is-flipped'); }); });
+    })();
+  </script>
+
   <footer>
+    <!-- footer content moved - colorful tiles removed from footer to Insights section -->
     <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap">
       <div>
         <h3 style="color:#fff">ASSAYOR</h3>

@@ -15,10 +15,10 @@
     .logo-container img{height:56px;width:auto}
     nav ul{display:flex;list-style:none;gap:2rem;align-items:center}
     nav a{text-decoration:none;color:var(--primary-dark);font-weight:600}
-      .assayor-method{margin-top:1rem;display:flex;align-items:center;justify-content:center;gap:.6rem;font-weight:900;font-size:2rem;text-shadow:0 3px 10px rgba(0,0,0,0.55)}
-      .assayor-method .am-the,.assayor-method .am-method{color:white;background:transparent}
-      .assayor-method .am-assayor{color:var(--accent-coral)}
-      .assayor-method .am-tm{font-size:0.45rem;vertical-align:super;color:var(--primary-dark);margin-left:4px}
+    .assayor-method{margin-top:1rem;display:flex;align-items:center;justify-content:center;gap:.6rem;font-weight:900;font-size:2rem;text-shadow:0 3px 10px rgba(0,0,0,0.55)}
+    .assayor-method .am-the,.assayor-method .am-method{color:white;background:transparent}
+    .assayor-method .am-assayor{color:var(--accent-coral)}
+    .assayor-method .am-tm{font-size:0.45rem;vertical-align:super;color:var(--primary-dark);margin-left:4px}
     nav a:hover{color:var(--accent-coral)}
     .hero-section{margin-top:70px;min-height:60vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background:linear-gradient(rgba(10,25,47,.72),rgba(10,25,47,.72)),url('https://images.unsplash.com/photo-1508830524289-0adcbe822b40?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;padding:6rem 5%}
     .hero-content{max-width:900px}
@@ -29,104 +29,169 @@
     .hero-content p{font-size:1rem;color:#e6eefc}
     main{padding:3rem 5%}
     footer{background:var(--primary-dark);color:#a8b2d1;padding:2.5rem 5%}
-    /* Insight section styles */
+    
     .insight-section{padding:3rem 5%;background:#ffffff}
     .insight-intro{max-width:900px;margin:0 auto 1rem}
-    /* (expand/collapse controls removed) */
     .insight-intro h2{color:var(--accent-blue);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:0.4rem}
     .insight-intro h3{color:var(--primary-dark);margin-bottom:0.6rem}
-    .insight-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:1100px;margin:1rem auto 0}
-    .insight-item{background:#f7f8fa;border-radius:10px;padding:1rem;position:relative;transition:transform .18s ease}
-    .insight-item:hover{transform:translateY(-6px)}
-    .insight-item .title-btn{display:block;width:100%;text-align:left;background:none;border:0;padding:0;font-weight:700;font-size:1rem;color:var(--primary-dark);cursor:pointer}
-    .insight-item .detail{max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .35s ease;margin-top:.6rem;color:var(--text-main);line-height:1.6}
-    .insight-item.active .detail{max-height:480px;opacity:1}
-    .insight-item .detail ul{margin:0.5rem 0 0 1.1rem}
-    @media (max-width:1100px){.insight-grid{grid-template-columns:repeat(3,1fr)}}
-    @media (max-width:800px){.insight-grid{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:480px){.insight-grid{grid-template-columns:1fr}.insight-item{padding:0.85rem}}
 
     /* Flow diagram styles */
     .flow-wrap{max-width:1200px;margin:1.25rem auto;padding:1rem;}
-    .flow-track{display:flex;gap:18px;align-items:center;overflow-x:auto;padding:1rem 6px}
-    .flow-row{display:flex;gap:18px;align-items:center;justify-content:center}
-    .flow-node{flex:0 0 auto;background:linear-gradient(180deg,#fff,#f6fbff);border:1px solid #e6eef8;border-radius:10px;padding:14px 18px;min-width:220px;box-shadow:0 6px 18px rgba(6,40,90,0.04);cursor:pointer;transition:transform .18s,box-shadow .18s}
-    .flow-node:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(6,40,90,0.08)}
-    .flow-node .step{display:flex;align-items:center;gap:12px}
-    .flow-node .dot{width:52px;height:52px;border-radius:50%;background:linear-gradient(90deg,var(--accent-coral),#f39c5a);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:1.05rem}
-    .flow-node .dot i{font-size:1.1rem}
-    .flow-node .node-title{font-weight:700;color:var(--primary-dark);font-size:1rem}
-    .flow-arrow{flex:0 0 auto;width:40px;height:2px;background:linear-gradient(90deg,rgba(0,0,0,0.08),rgba(0,0,0,0.2));position:relative;transition:background .25s,transform .25s}
-    .flow-arrow::after{content:'';position:absolute;right:-6px;top:-6px;border-left:8px solid rgba(0,0,0,0.22);border-top:6px solid transparent;border-bottom:6px solid transparent;transition:border-color .25s}
-    .flow-arrow.active{background:linear-gradient(90deg,var(--accent-blue),var(--accent-coral));transform:scaleX(1.02)}
-    .flow-arrow.active::after{border-left-color:var(--accent-coral)}
-    .flow-arrow.vertical{width:2px;height:48px;margin:12px auto;background:linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.2));}
-    .flow-arrow.vertical::after{right:0;top:auto;left:50%;transform:translateX(-50%);border-left:0;border-top:8px solid rgba(0,0,0,0.22);border-right:8px solid transparent;border-left:8px solid transparent}
-    .flow-detail{max-width:1100px;margin:1rem auto 2rem;padding:1rem;border-radius:10px;background:#f9fbff;border-left:4px solid var(--accent-blue);min-height:120px;transition:all .25s ease}
-      .flow-grid{max-width:1200px;margin:1.25rem auto;padding:1rem;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:start}
-      /* Tile base */
-      .flow-tile{perspective:1000px}
-      .flow-tile .tile-inner{position:relative;transition:transform .6s;transform-style:preserve-3d}
-      .flow-tile .tile-face{backface-visibility:hidden;position:relative;border-radius:12px;padding:18px;background:linear-gradient(180deg,#fff,#f6fbff);border:1px solid #e6eef8;box-shadow:0 6px 18px rgba(6,40,90,0.04);min-height:120px}
-      .flow-tile .tile-front{display:flex;align-items:center;gap:14px}
-      .flow-tile .dot{width:64px;height:64px;border-radius:50%;background:linear-gradient(90deg,var(--accent-coral),#f39c5a);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:1.15rem}
-      .flow-tile .dot i{font-size:1.25rem}
-      .flow-tile .node-title{font-weight:800;color:var(--primary-dark);font-size:1.05rem}
-      .flow-tile .tile-back{position:absolute;inset:0;transform:rotateY(180deg);padding:18px;background:#f9fbff;border-radius:12px;border:1px solid #e6eef8}
-      .flow-tile.is-flipped .tile-inner{transform:rotateY(180deg)}
-      .flow-tile:hover .tile-face{box-shadow:0 12px 30px rgba(6,40,90,0.08)}
-      .flow-detail{max-width:1100px;margin:1rem auto 2rem;padding:1rem;border-radius:10px;background:#f9fbff;border-left:4px solid var(--accent-blue);min-height:120px;transition:all .25s ease}
-    .flow-detail h4{margin:0 0 .6rem;color:var(--accent-coral)}
-    .flow-detail p{margin:0;color:var(--text-main);line-height:1.6}
-    @media (max-width:720px){.flow-node{min-width:100%;padding:12px}.flow-arrow{width:2px;height:40px;display:block;margin:6px auto;background:linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.2));}
-      .flow-arrow::after{right:0;top:auto;left:50%;transform:translateX(-50%);border-left:0;border-top:8px solid rgba(0,0,0,0.22);border-right:8px solid transparent;border-left:8px solid transparent}
-      .flow-track{flex-direction:column;align-items:stretch}
-      .flow-row{flex-direction:column}
-      .flow-node .step{gap:10px}
-      }
-      @media (max-width:1100px){.flow-grid{grid-template-columns:repeat(3,1fr)}}
-      @media (max-width:800px){.flow-grid{grid-template-columns:repeat(2,1fr)}}
-      /* Mobile: disable 3D flip, show back as inline expandable content */
-      @media (max-width:768px){
-        .flow-grid{grid-template-columns:1fr}
-        .flow-tile .tile-inner{transform:none!important}
-        .flow-tile .tile-back{position:relative;transform:none;display:block;max-height:0;overflow:hidden;transition:max-height .32s ease;padding:0 18px}
-        .flow-tile.open .tile-back{padding:12px 18px;margin-top:10px;max-height:420px}
-      }
+    
+    /* Color tiles updated flip system */
+    .color-tiles-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    @media (max-width:1100px){.color-tiles-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:720px){.color-tiles-grid{grid-template-columns:1fr}}
 
-      /* Color tiles styles */
-      .color-tiles-grid .color-tile{display:flex;flex-direction:column;align-items:center;justify-content:center}
-      .color-btn{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.9);padding:10px 22px;border-radius:4px;font-weight:700;letter-spacing:1px;cursor:pointer}
-      .color-btn:hover{background:rgba(255,255,255,0.06)}
-      @media (max-width:1100px){.color-tiles-grid{grid-template-columns:repeat(2,1fr)}}
-      @media (max-width:720px){.color-tiles-grid{grid-template-columns:1fr}.color-tile{padding:3.25rem 1.5rem}}
+    .color-tile {
+      perspective: 1000px;
+      height: 320px;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: tileIn .6s cubic-bezier(.2,.9,.2,1) forwards;
+      background: transparent;
+    }
 
-      /* entry animation for color tiles */
-      .color-tiles-grid .color-tile{opacity:0;transform:translateY(18px);animation:tileIn .6s cubic-bezier(.2,.9,.2,1) forwards;position:relative}
-      .color-tiles-grid .color-tile:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 18px 40px rgba(6,40,90,0.12)}
-      /* Flip card inner structure */
-      .color-tile{perspective:900px}
-      .color-tile .ct-inner{position:relative;transition:transform .6s;transform-style:preserve-3d;border-radius:10px;min-height:260px}
-      .ct-front,.ct-back{backface-visibility:hidden;position:absolute;inset:0;border-radius:10px;box-sizing:border-box}
-      .ct-front{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.25rem;text-align:center}
-      .ct-back{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;padding:0;transform:rotateY(180deg);background:transparent;color:#fff;text-align:left}
-      .ct-back .back-content{padding:1.25rem;box-sizing:border-box;width:100%;flex:1;display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden}
-      .ct-front h3{margin:0 0 1rem}
-      .ct-back .back-content p{width:100%;white-space:normal;word-break:break-word;overflow-wrap:anywhere;word-wrap:break-word;hyphens:auto;font-size:0.95rem;line-height:1.5;margin:0;flex:1;overflow:auto}
-      .ct-back .back-content h4{margin:0 0 .6rem}
-      @media (max-width:720px){ .ct-back p{font-size:0.86rem} }
-      .color-tile.is-flipped .ct-inner{transform:rotateY(180deg)}
-      .ct-back .color-btn{margin-top:1rem}
-      @keyframes tileIn{to{opacity:1;transform:translateY(0)}}
-      .color-tiles-grid .color-tile:nth-child(1){animation-delay:0s}
-      .color-tiles-grid .color-tile:nth-child(2){animation-delay:0.06s}
-      .color-tiles-grid .color-tile:nth-child(3){animation-delay:0.12s}
-      .color-tiles-grid .color-tile:nth-child(4){animation-delay:0.18s}
-      .color-tiles-grid .color-tile:nth-child(5){animation-delay:0.24s}
-      .color-tiles-grid .color-tile:nth-child(6){animation-delay:0.30s}
-      .color-tiles-grid .color-tile:nth-child(7){animation-delay:0.36s}
-      .color-tiles-grid .color-tile:nth-child(8){animation-delay:0.42s}
-    </style>
+    .color-tile .ct-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+      border-radius: 10px;
+    }
+
+    .color-tile.is-flipped .ct-inner {
+      transform: rotateY(180deg);
+    }
+
+    .ct-front, .ct-back {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 6px 18px rgba(6,40,90,0.08);
+      color: #fff;
+    }
+
+    .ct-front {
+      z-index: 2;
+      transform: rotateY(0deg);
+    }
+
+    .ct-back {
+      transform: rotateY(180deg);
+      z-index: 1;
+      justify-content: space-between;
+    }
+
+    /* Tile Background Colors */
+    .tile-rust .ct-front, .tile-rust .ct-back {
+      background: rgb(192, 67, 41);
+    }
+    .tile-orange .ct-front, .tile-orange .ct-back {
+      background: rgb(205, 124, 43);
+    }
+
+    /* Back Content & Horizontal Scroll */
+    .ct-back .back-content {
+      width: 100%;
+      flex: 1;
+      overflow-x: auto;
+      overflow-y: auto;
+      text-align: left;
+      padding-right: 4px;
+      margin-bottom: 0.75rem;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.4) transparent;
+    }
+
+    .ct-back .back-content::-webkit-scrollbar {
+      height: 4px;
+      width: 4px;
+    }
+    .ct-back .back-content::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 4px;
+    }
+
+    .ct-back .back-content p {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      white-space: normal;
+    }
+
+    .color-btn {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.9);
+      padding: 8px 18px;
+      border-radius: 4px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .color-btn:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* Ensure proper pointer events handling during flip */
+    .ct-front {
+      pointer-events: auto;
+    }
+
+    .ct-back {
+      pointer-events: none;
+    }
+
+    .color-tile.is-flipped .ct-front {
+      pointer-events: none;
+    }
+
+    .color-tile.is-flipped .ct-back {
+      pointer-events: auto;
+    }
+
+    /* Scroll container configuration */
+    .ct-back .back-content {
+      width: 100%;
+      flex: 1;
+      overflow-x: auto;
+      overflow-y: auto;
+      text-align: left;
+      padding-right: 6px;
+      margin-bottom: 0.75rem;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+    }
+
+    @keyframes tileIn{to{opacity:1;transform:translateY(0)}}
+    .color-tiles-grid .color-tile:nth-child(1){animation-delay:0s}
+    .color-tiles-grid .color-tile:nth-child(2){animation-delay:0.06s}
+    .color-tiles-grid .color-tile:nth-child(3){animation-delay:0.12s}
+    .color-tiles-grid .color-tile:nth-child(4){animation-delay:0.18s}
+    .color-tiles-grid .color-tile:nth-child(5){animation-delay:0.24s}
+    .color-tiles-grid .color-tile:nth-child(6){animation-delay:0.30s}
+    .color-tiles-grid .color-tile:nth-child(7){animation-delay:0.36s}
+    .color-tiles-grid .color-tile:nth-child(8){animation-delay:0.42s}
+  </style>
 </head>
 <body>
   <header>
@@ -153,33 +218,25 @@
       <h1>ASSAYOR</h1>
       <h2>We Assay. You Accelarate</h2>
       <p>Business Transformations, Powered By.</p>
-        <div class="assayor-method" aria-hidden="false">
-          <span class="am-the">THE</span>
-          <span class="am-assayor">ASSAYOR</span>
-          <span class="am-method">METHOD</span><sup class="am-tm">™</sup>
-        </div>
+      <div class="assayor-method" aria-hidden="false">
+        <span class="am-the">THE</span>
+        <span class="am-assayor">ASSAYOR</span>
+        <span class="am-method">METHOD</span><sup class="am-tm">™</sup>
+      </div>
     </div>
   </section>
 
   <main>
-    
     <section class="about-details">
       <div style="max-width:900px;margin:0 auto;">
         <h2 style="text-transform:uppercase;color:var(--accent-blue);letter-spacing:1.2px;margin-bottom:0.6rem;">WHO WE ARE?</h2>
-
         <div style="margin-top:1rem;color:var(--text-main);line-height:1.6">
           <p>Assayor Software Solutions LLP was established with a vision that extends beyond traditional technology consulting.</p>
-
           <p>Our journey began after years of working with organizations across industries, implementing enterprise solutions, advising business leaders, solving complex challenges, and witnessing both successful and unsuccessful transformation initiatives.</p>
-
           <p>One common pattern became increasingly clear.</p>
-
           <p>Most consulting engagements focused primarily on delivering technology. Very few focused on maximizing business value.</p>
-
           <p>Projects were measured by implementation milestones, system configurations, project timelines, and technical deliverables.</p>
-
           <p>Yet the questions that mattered most were often left unanswered.</p>
-
           <ul style="margin:0.6rem 0 0 1.15rem;color:var(--text-main);line-height:1.6">
             <li>Has the business become more efficient?</li>
             <li>Are employees more productive?</li>
@@ -188,11 +245,8 @@
             <li>Has the technology investment delivered measurable value?</li>
             <li>Is the organization better positioned for future growth?</li>
           </ul>
-
           <p style="margin-top:1rem;">These questions inspired the creation of Assayor.</p>
-
           <p>We believed organizations deserved more than implementation partners. They deserved advisors who could understand their business, challenge assumptions, identify opportunities, and help them realize the full value of every technology investment.</p>
-
           <p>That belief continues to define who we are today.</p>
         </div>
       </div>
@@ -203,34 +257,20 @@
     <div style="max-width:900px;margin:0 auto;">
       <h2 style="text-transform:uppercase;color:var(--accent-blue);letter-spacing:1.2px;margin-bottom:0.6rem;">OUR PERSPECTIVE</h2>
       <h3 style="font-size:1.1rem;margin-bottom:0.6rem;color:var(--primary-dark);">We Believe Technology Should Follow Business Strategy</h3>
-
       <div style="color:var(--text-main);line-height:1.7">
         <p>We do not aspire to become just another technology implementation company.</p>
-
         <p>We aspire to become a trusted business transformation partner.</p>
-
         <p>Technology should never define a business strategy. Business strategy should define how technology is used.</p>
-
         <p>Organizations do not invest in technology simply to deploy software.</p>
-
         <p>They invest to improve their business.</p>
-
         <p>Whether the objective is improving employee experience, streamlining operations, accelerating digital transformation, ensuring compliance, enhancing customer engagement, or enabling business growth, technology is only one part of the equation.</p>
-
         <p>Successful transformation requires alignment between business strategy, people, processes, governance, and technology.</p>
-
         <p>Unfortunately, many transformation initiatives begin by selecting a technology platform before understanding the business it is intended to support.</p>
-
         <p>This often results in underutilized systems, fragmented processes, low user adoption, and limited return on investment.</p>
-
         <p>At Assayor, we challenge this conventional approach.</p>
-
         <p>We begin by understanding the business first.</p>
-
         <p>We analyze strategic objectives, operational challenges, organizational processes, technology landscape, and long-term aspirations before recommending any solution.</p>
-
         <p>Only after gaining this understanding do we design an implementation strategy that aligns technology with business outcomes.</p>
-
         <p>This philosophy forms the foundation of everything we do.</p>
       </div>
     </div>
@@ -240,128 +280,143 @@
     <div class="our-insights" style="max-width:900px;margin:0 auto 1rem;color:var(--text-main);line-height:1.7">
       <h2 style="text-transform:uppercase;color:var(--accent-blue);letter-spacing:1.2px;margin-bottom:0.6rem;">OUR INSIGHTS</h2>
       <p>Technology has never been more powerful.</p>
-
       <p>Organizations today have access to world-class enterprise applications, cloud platforms, automation tools, artificial intelligence, analytics, mobile technologies, and digital ecosystems capable of transforming the way businesses operate.</p>
-
       <p>Yet, despite these investments, many transformation initiatives fail to deliver the expected business value.</p>
-
       <p>The challenge is rarely the technology itself.</p>
-
       <p>More often, transformation falls short because organizations attempt to solve technology problems before understanding business problems.</p>
-
       <p>Technology becomes the destination instead of the enabler.</p>
-
       <p>At Assayor, we believe successful transformation begins by asking better business questions—not by selecting better software.</p>
     </div>
     <div class="insight-intro">
       <h3>Why Transformations Fail</h3>
     </div>
 
-    <!-- expand/collapse controls removed -->
-
     <div class="flow-wrap">
       <div class="color-tiles-section" style="padding:1.5rem 0;background:transparent">
         <div style="max-width:1200px;margin:0 auto;padding:0">
-          <div class="color-tiles-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0">
-            <div class="color-tile" style="background:rgb(192,67,41);color:#fff;padding:4.25rem 2rem;text-align:center">
+          <div class="color-tiles-grid">
+            
+            <div class="color-tile tile-rust">
               <div class="ct-inner">
                 <div class="ct-front">
                   <h3 style="text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1.25rem">Technology Before Business</h3>
                   <button class="color-btn">Know More</button>
                 </div>
                 <div class="ct-back" aria-hidden="true">
-                  <div class="back-content"><p style="margin:0;color:#fff;line-height:1.6;">Many organizations begin by selecting a technology platform and then attempt to reshape their business around its capabilities. This often results in unnecessary customization, inefficient processes, resistance to change, and underutilized features. At Assayor, we reverse this approach. We begin with the business. Only then do we identify the technology best suited to achieve the desired outcomes.</p></div>
+                  <div class="back-content">
+                    <p>Many organizations begin by selecting a technology platform and then attempt to reshape their business around its capabilities. This often results in unnecessary customization, inefficient processes, resistance to change, and underutilized features. At Assayor, we reverse this approach. We begin with the business. Only then do we identify the technology best suited to achieve the desired outcomes.</p>
+                  </div>
                   <button class="color-btn back-close">Close</button>
                 </div>
               </div>
             </div>
-            <div class="color-tile" style="background:rgb(205,124,43);color:#fff;padding:4.25rem 2rem;text-align:center">
+
+            <div class="color-tile tile-orange">
               <div class="ct-inner">
                 <div class="ct-front">
                   <h3 style="text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1.25rem">Automating the Wrong Process</h3>
                   <button class="color-btn">Know More</button>
                 </div>
                 <div class="ct-back" aria-hidden="true">
-                  <div class="back-content"><p style="margin:0;color:#fff;line-height:1.6;">Organizations frequently automate inefficient processes instead of improving them.   Digital transformation should never mean digitizing existing inefficiencies.   Before recommending any solution, we analyze current business processes, identify operational bottlenecks, eliminate unnecessary complexity, and design improved future-state processes.   Technology should support optimized business operations—not inefficient ones.</p></div>
+                  <div class="back-content">
+                    <p>Organizations frequently automate inefficient processes instead of improving them. Digital transformation should never mean digitizing existing inefficiencies. Before recommending any solution, we analyze current business processes, identify operational bottlenecks, eliminate unnecessary complexity, and design improved future-state processes. Technology should support optimized business operations—not inefficient ones.</p>
+                  </div>
                   <button class="color-btn back-close">Close</button>
                 </div>
               </div>
             </div>
-            <div class="color-tile" style="background:rgb(192,67,41);color:#fff;padding:4.25rem 2rem;text-align:center">
+
+            <div class="color-tile tile-rust">
               <div class="ct-inner">
                 <div class="ct-front">
                   <h3 style="text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1.25rem">No Clear Business Goal</h3>
                   <button class="color-btn">Know More</button>
                 </div>
                 <div class="ct-back" aria-hidden="true">
-                  <div class="back-content"><p style="margin:0;color:#fff;line-height:1.6;">Transformation projects often begin with respect to the technology objectives rather than the business objectives.</p>
-                  <p style="margin:0;color:#fff;line-height:1.6;">The real objectives should cover Business problem, Operational Challenges, Efficiency Improvements and Business value generation through technology investments. Technology becomes meaningful only when linked to measurable business outcomes.</p>
+                  <div class="back-content">
+                    <p>Transformation projects often begin with respect to the technology objectives rather than the business objectives.</p>
+                    <p>The real objectives should cover Business problem, Operational Challenges, Efficiency Improvements and Business value generation through technology investments. Technology becomes meaningful only when linked to measurable business outcomes.</p>
                   </div>
                   <button class="color-btn back-close">Close</button>
                 </div>
               </div>
             </div>
-            <div class="color-tile" style="background:rgb(205,124,43);color:#fff;padding:4.25rem 2rem;text-align:center">
+
+            <div class="color-tile tile-orange">
               <div class="ct-inner">
                 <div class="ct-front">
                   <h3 style="text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1.25rem">Working in Silos</h3>
                   <button class="color-btn">Know More</button>
                 </div>
                 <div class="ct-back" aria-hidden="true">
-                  <div class="back-content"><p style="margin:0;color:#fff;line-height:1.6;">Transformation affects multiple functions across an organization. Leadership, Human Resources, Finance, Operations, IT, and End Users each bring different expectations and priorities. When these stakeholders operate independently, organizations often implement fragmented solutions that fail to deliver enterprise-wide value. Successful transformation requires alignment—not just implementation.</p></div>
+                  <div class="back-content">
+                    <p>Transformation affects multiple functions across an organization. Leadership, Human Resources, Finance, Operations, IT, and End Users each bring different expectations and priorities. When these stakeholders operate independently, organizations often implement fragmented solutions that fail to deliver enterprise-wide value. Successful transformation requires alignment—not just implementation.</p>
+                  </div>
                   <button class="color-btn back-close">Close</button>
                 </div>
               </div>
             </div>
 
-            <div class="color-tile" style="background:rgb(205,124,43);color:#fff;padding:4.25rem 2rem;text-align:center">
+            <div class="color-tile tile-orange">
               <div class="ct-inner">
                 <div class="ct-front">
                   <h3 style="text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1.25rem">People Left Behind</h3>
                   <button class="color-btn">Know More</button>
                 </div>
                 <div class="ct-back" aria-hidden="true">
-                  <div class="back-content"><p style="margin:0;color:#fff;line-height:1.6;">A technically successful implementation can still fail if users do not adopt the solution. Without effective communication, training, change management, and continuous engagement, even the most advanced technology becomes underutilized. People determine the success of technology—not the other way around.</p></div>
+                  <div class="back-content">
+                    <p>A technically successful implementation can still fail if users do not adopt the solution. Without effective communication, training, change management, and continuous engagement, even the most advanced technology becomes underutilized. People determine the success of technology—not the other way around.</p>
+                  </div>
                   <button class="color-btn back-close">Close</button>
                 </div>
               </div>
             </div>
-            <div class="color-tile" style="background:rgb(192,67,41);color:#fff;padding:4.25rem 2rem;text-align:center">
+
+            <div class="color-tile tile-rust">
               <div class="ct-inner">
                 <div class="ct-front">
                   <h3 style="text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1.25rem">Go-Live ≠ Success</h3>
                   <button class="color-btn">Know More</button>
                 </div>
                 <div class="ct-back" aria-hidden="true">
-                  <div class="back-content"><p style="margin:0;color:#fff;line-height:1.6;">A technically successful implementation can still fail if users do not adopt the solution. Without effective communication, training, change management, and continuous engagement, even the most advanced technology becomes underutilized. People determine the success of technology—not the other way around.</p></div>
+                  <div class="back-content">
+                    <p>A technically successful implementation can still fail if users do not adopt the solution. Without effective communication, training, change management, and continuous engagement, even the most advanced technology becomes underutilized. People determine the success of technology—not the other way around.</p>
+                  </div>
                   <button class="color-btn back-close">Close</button>
                 </div>
               </div>
             </div>
-            <div class="color-tile" style="background:rgb(205,124,43);color:#fff;padding:4.25rem 2rem;text-align:center">
+
+            <div class="color-tile tile-orange">
               <div class="ct-inner">
                 <div class="ct-front">
                   <h3 style="text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1.25rem">Leaving Technology Untapped</h3>
                   <button class="color-btn">Know More</button>
                 </div>
                 <div class="ct-back" aria-hidden="true">
-                  <div class="back-content"><p style="margin:0;color:#fff;line-height:1.6;">Many organizations invest in cutting-edge technology but fail to fully leverage its potential due to inadequate change management and user adoption strategies.</p></div>
+                  <div class="back-content">
+                    <p>Many organizations invest in cutting-edge technology but fail to fully leverage its potential due to inadequate change management and user adoption strategies.</p>
+                  </div>
                   <button class="color-btn back-close">Close</button>
                 </div>
               </div>
             </div>
-            <div class="color-tile" style="background:rgb(192,67,41);color:#fff;padding:4.25rem 2rem;text-align:center">
+
+            <div class="color-tile tile-rust">
               <div class="ct-inner">
                 <div class="ct-front">
                   <h3 style="text-transform:uppercase;letter-spacing:1.6px;margin-bottom:1.25rem">Transformation Stops at Go-Live</h3>
                   <button class="color-btn">Know More</button>
                 </div>
                 <div class="ct-back" aria-hidden="true">
-                  <div class="back-content"><p style="margin:0;color:#fff;line-height:1.6;">Transformation is not a one-time event. Businesses evolve.</p></div>
+                  <div class="back-content">
+                    <p>Transformation is not a one-time event. Businesses evolve.</p>
+                  </div>
                   <button class="color-btn back-close">Close</button>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -369,30 +424,65 @@
   </section>
 
   <script>
-    (function(){
-      var tiles = Array.prototype.slice.call(document.querySelectorAll('.color-tiles-grid .color-tile'));
-      tiles.forEach(function(tile){
-        var frontBtn = tile.querySelector('.ct-front .color-btn');
-        var closeBtn = tile.querySelector('.ct-back .back-close');
-        if(frontBtn){
-          frontBtn.addEventListener('click', function(e){
-            e.stopPropagation();
-            // close others
-            tiles.forEach(function(t){ if(t!==tile) t.classList.remove('is-flipped'); });
-            tile.classList.toggle('is-flipped');
+  (function () {
+    var tiles = Array.prototype.slice.call(
+      document.querySelectorAll('.color-tiles-grid .color-tile')
+    );
+
+    tiles.forEach(function (tile) {
+      var frontBtn = tile.querySelector('.ct-front .color-btn');
+      var closeBtn = tile.querySelector('.ct-back .back-close');
+      var backContent = tile.querySelector('.ct-back .back-content');
+
+      // Flip on Know More
+      if (frontBtn) {
+        frontBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          tiles.forEach(function (t) {
+            if (t !== tile) t.classList.remove('is-flipped');
           });
-        }
-        if(closeBtn){
-          closeBtn.addEventListener('click', function(e){ e.stopPropagation(); tile.classList.remove('is-flipped'); });
-        }
-      });
-      // click outside tiles closes all
-      document.addEventListener('click', function(e){ if(!e.target.closest('.color-tile')) tiles.forEach(function(t){ t.classList.remove('is-flipped'); }); });
-    })();
-  </script>
+          tile.classList.toggle('is-flipped');
+        });
+      }
+
+      // Close on Close button
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          tile.classList.remove('is-flipped');
+        });
+      }
+
+      // Enable mouse wheel scrolling inside the back content
+      if (backContent) {
+        backContent.addEventListener(
+          'wheel',
+          function (e) {
+            // Scroll vertically or horizontally depending on overflow
+            if (backContent.scrollHeight > backContent.clientHeight) {
+              backContent.scrollTop += e.deltaY;
+            } else if (backContent.scrollWidth > backContent.clientWidth) {
+              backContent.scrollLeft += e.deltaY;
+            }
+            e.preventDefault();
+          },
+          { passive: false }
+        );
+      }
+    });
+
+    // Click outside to close all tiles
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.color-tile')) {
+        tiles.forEach(function (t) {
+          t.classList.remove('is-flipped');
+        });
+      }
+    });
+  })();
+</script>
 
   <footer>
-    <!-- footer content moved - colorful tiles removed from footer to Insights section -->
     <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap">
       <div>
         <h3 style="color:#fff">ASSAYOR</h3>

@@ -52,31 +52,40 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 5%;
+      padding: 0.2rem 5%;
     }
 
     .logo-container {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--primary-dark);
+      justify-content: center;
+      height: 72px;
+      min-width: 220px;
+      text-decoration: none;
+      padding: 0;
+      line-height: 0;
     }
     .logo-container img {
-      height: 48px;      /* Slightly larger for clarity */
-      max-height: 56px;
-      width: auto;       /* Maintains aspect ratio */
-      object-fit: contain;
       display: block;
+      height: 152px;
+      width: auto;
+      max-width: 220px;
+      object-fit: contain;
+      filter: none;
+      margin-top: 30px;
     }
     .logo-container .name-logo {
-      height: 40px; /* increase wordmark size for clarity */
-      width: auto;
-      margin-left: 12px;
-      object-fit: contain;
-      display: inline-block;
-      vertical-align: middle;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .logo-container {
+        min-width: 150px;
+      }
+      .logo-container img {
+        height: 38px;
+        max-width: 150px;
+      }
     }
 
     /* Mobile Hamburger Menu Toggle Button */
@@ -277,17 +286,24 @@
 
     /* Hero Section */
     .hero-section {
-      margin-top: 70px;
+      margin-top: 0;
       position: relative;
-      min-height: 85vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #ffffff;
-      background: linear-gradient(rgba(10, 25, 47, 0.82), rgba(10, 25, 47, 0.82)),
-                  url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
-      padding: 3rem 5%;
+      display: block;
+      width: 100%;
+      background: #ffffff;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .hero-banner {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: #ffffff;
+      margin: 0;
+      padding: 0;
     }
 
     /* Match About page hero logo sizing */
@@ -910,8 +926,7 @@
   <!-- Navigation Header -->
   <header>
     <a class="logo-container" ng-click="scrollTo('home')" ng-href="#home" aria-label="Go to Home">
-      <img src="./images/logo_trans.png" alt="ASSAYOR Logo">
-      <img src="./images/assayor_name_logo.png" alt="ASSAYOR Wordmark" class="name-logo">
+      <img src="./images/header_logo_2.png" alt="Company Logo">
     </a>
 
     <!-- Mobile Hamburger Button -->
@@ -962,19 +977,9 @@
     </nav>
   </header>
 
-  <!-- Main Hero Section (mirrors About page top image section) -->
-  <section id="home" class="hero-section">
-    <div class="hero-content">
-      <h1>ASSAYOR</h1>
-      <h2>We Assay. You Accelarate</h2>
-      <p>Business Transformations, Powered By.</p>
-      <div class="assayor-method" aria-hidden="false">
-        <span class="am-the">THE</span>
-        <span class="am-assayor">ASSAYOR</span>
-        <span class="am-method">METHOD</span><sup class="am-tm">™</sup>
-      </div>
-      <button class="cta-btn" ng-click="scrollTo('contact')">Get In Touch</button>
-    </div>
+  <!-- Main Hero Section -->
+  <section id="home" class="hero-section" aria-label="Company banner">
+    <img class="hero-banner" src="./images/comapny_banner.png" alt="Company banner">
   </section>
 
   <!-- Reasons / Core Highlights Section -->

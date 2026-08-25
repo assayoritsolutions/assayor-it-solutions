@@ -306,7 +306,7 @@
       background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
     }
 
-    /* Hero Section - Fully Responsive & Anti-Cropping */
+    /* Hero Section */
     .hero-section {
       margin-top: var(--header-height);
       position: relative;
@@ -454,51 +454,9 @@
       line-height: 1.55;
     }
 
-    /* About Us Section */
-    .about-section {
-      background-color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-
-    .about-img {
-      flex: 1 1 350px;
-      position: relative;
-      width: 100%;
-    }
-
-    .about-img img {
-      width: 100%;
-      height: auto;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-md);
-    }
-
-    .about-content {
-      flex: 1 1 350px;
-    }
-
-    .about-list {
-      list-style: none;
-      margin-top: 1.5rem;
-    }
-
-    .about-list li {
-      margin-bottom: 1.2rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .about-list i {
-      color: var(--accent-blue);
-      font-size: 1.2rem;
-      margin-top: 4px;
-    }
-
-    /* Services Section Layouts */
+    /* ========================================================
+       Services Section: Expandable Smooth Tile Cards
+       ======================================================== */
     .services-section {
       background-color: var(--bg-light);
       border-top: 1px solid var(--border-color);
@@ -511,129 +469,149 @@
       gap: 2rem;
       max-width: 1200px;
       margin: 0 auto;
+      align-items: start;
     }
 
     .service-card {
-      height: 400px;
-      perspective: 1200px;
-      position: relative;
-      cursor: pointer;
-    }
-
-    .service-card-inner {
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .service-card:hover .service-card-inner,
-    .service-card:focus-within .service-card-inner,
-    .service-card.is-flipped .service-card-inner {
-      transform: rotateY(180deg);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .service-card-front,
-    .service-card-back {
-      position: absolute;
-      inset: 0;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
       background: var(--card-bg);
-      border-radius: var(--radius-md);
       border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      outline: none;
+    }
+
+    .service-card:hover,
+    .service-card:focus-visible,
+    .service-card.is-expanded {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(0, 102, 204, 0.3);
+    }
+
+    .service-card:focus-visible {
+      outline: 3px solid var(--accent-coral);
+      outline-offset: 3px;
+    }
+
+    .service-card-header {
+      position: relative;
+      width: 100%;
+      height: 220px;
       overflow: hidden;
     }
 
-    .service-card-front {
-      padding: 0;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-
-    .service-card-front .service-card-image {
-      position: absolute;
-      inset: 0;
+    .service-card-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .service-card:hover .service-card-front .service-card-image {
-      transform: scale(1.05);
+    .service-card:hover .service-card-image,
+    .service-card.is-expanded .service-card-image {
+      transform: scale(1.06);
     }
 
-    .service-card-front::after {
-      content: '';
+    .service-card-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(10, 25, 47, 0.1) 0%, rgba(10, 25, 47, 0.85) 100%);
-      pointer-events: none;
-    }
-
-    .service-card-front h3 {
-      position: relative;
-      z-index: 2;
-      margin: 1.5rem;
-      padding: 0.9rem 1.2rem;
-      border-radius: var(--radius-sm);
-      background: rgba(10, 25, 47, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #ffffff;
-      font-size: 1.15rem;
-      font-weight: 700;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .service-card-back {
-      transform: rotateY(180deg);
-      padding: 1.8rem;
-      overflow-y: auto;
-      background: #ffffff;
+      background: linear-gradient(180deg, rgba(10, 25, 47, 0.15) 0%, rgba(10, 25, 47, 0.85) 100%);
       display: flex;
-      flex-direction: column;
+      align-items: flex-end;
+      padding: 1.4rem;
     }
 
-    .service-card-back .service-card-image {
-      display: none;
-    }
-
-    .service-card-back h3 {
-      font-size: 1.25rem;
+    .service-card-header h3 {
+      color: #ffffff;
+      font-size: 1.2rem;
       font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 0.6rem;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      margin: 0;
+    }
+
+    /* Expand / Collapse Action Indicator */
+    .expand-trigger {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: space-between;
+      padding: 0.9rem 1.4rem;
+      background: #ffffff;
+      border-top: 1px solid #f1f5f9;
+      color: var(--accent-blue);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
-    .service-card-back p {
+    .expand-trigger i {
+      font-size: 0.8rem;
+      transition: transform 0.35s ease;
+    }
+
+    .service-card:hover .expand-trigger,
+    .service-card.is-expanded .expand-trigger {
+      background: var(--accent-blue-light);
+      color: var(--accent-blue);
+    }
+
+    .service-card:hover .expand-trigger i,
+    .service-card.is-expanded .expand-trigger i {
+      transform: translateY(2px);
+    }
+
+    /* Expanding Details Body via CSS Grid auto-expansion */
+    .service-card-details {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #ffffff;
+    }
+
+    .service-card:hover .service-card-details,
+    .service-card:focus-within .service-card-details,
+    .service-card.is-expanded .service-card-details {
+      grid-template-rows: 1fr;
+    }
+
+    .service-card-details-inner {
+      overflow: hidden;
+      padding: 0 1.4rem;
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s, padding 0.45s ease;
+    }
+
+    .service-card:hover .service-card-details-inner,
+    .service-card:focus-within .service-card-details-inner,
+    .service-card.is-expanded .service-card-details-inner {
+      opacity: 1;
+      transform: translateY(0);
+      padding: 0.5rem 1.4rem 1.4rem;
+    }
+
+    .service-card-details p {
       color: var(--text-muted);
-      font-size: 0.88rem;
-      line-height: 1.5;
-      margin-bottom: 1.2rem;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      margin-bottom: 1.1rem;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 0.85rem;
     }
 
     .service-card-benefits {
       list-style: none;
-      margin-top: auto;
-      border-top: 1px solid #f1f5f9;
-      padding-top: 1rem;
     }
 
     .service-card-benefits li {
       display: flex;
-      gap: 0.6rem;
+      gap: 0.65rem;
       margin-bottom: 0.65rem;
       color: var(--text-main);
       font-size: 0.85rem;
@@ -646,11 +624,6 @@
       font-size: 0.9rem;
       margin-top: 2px;
       flex-shrink: 0;
-    }
-
-    .service-card:focus-visible {
-      outline: 3px solid var(--accent-coral);
-      outline-offset: 3px;
     }
 
     /* Selected Service Details Section */
@@ -708,54 +681,6 @@
     .service-details-content li i {
       color: #10b981;
       font-size: 1rem;
-    }
-
-    /* Our Work Section */
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
-    }
-
-    .work-card {
-      background: #ffffff;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .work-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .work-card-body {
-      padding: 1.5rem;
-    }
-
-    .work-tag {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--accent-blue);
-      text-transform: uppercase;
-    }
-
-    .work-card h4 {
-      margin: 0.5rem 0;
-      font-size: 1.1rem;
-      color: var(--primary-dark);
-    }
-
-    .work-stat {
-      background: #f0f4f9;
-      padding: 0.5rem;
-      border-radius: 4px;
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--primary-dark);
     }
 
     /* Contact Form Section */
@@ -1003,9 +928,8 @@
         padding: 3.5rem 5%;
       }
 
-      .service-card,
-      .service-card-inner {
-        height: 380px;
+      .services-grid {
+        grid-template-columns: 1fr;
       }
 
       .features-grid {
@@ -1064,10 +988,10 @@
                     <strong>Oracle HCM Solutions</strong>
                     <p>Transform workforce operations with connected Oracle HCM Cloud solutions.</p>
                   </a>
-                  <a class="mega-service-card" href="#service-details" ng-click="selectService('salesforce'); scrollTo('service-details')">
+                  <!-- <a class="mega-service-card" href="#service-details" ng-click="selectService('salesforce'); scrollTo('service-details')">
                     <strong>Salesforce Platforms</strong>
                     <p>Build stronger customer relationships with tailored CRM platforms.</p>
-                  </a>
+                  </a> -->
                   <a class="mega-service-card" href="#service-details" ng-click="selectService('digital-transformation'); scrollTo('service-details')">
                     <strong>Digital Transformation</strong>
                     <p>Modernize systems, workflows, and enterprise technology foundations.</p>
@@ -1092,7 +1016,7 @@
     <img class="hero-banner" src="./images/comapny_banner.png" alt="Company banner">
   </section>
 
-  <!-- Services Section -->
+  <!-- Services Section (Expandable Tiles) -->
   <section id="services" class="services-section">
     <div class="section-title">
       <h4>Services</h4>
@@ -1101,15 +1025,19 @@
     <div class="services-grid">
       
       <!-- Oracle HCM -->
-      <div class="service-card highlight" ng-class="{'is-flipped': flippedService === 'oracle'}" ng-click="toggleServiceCard('oracle')" role="button" tabindex="0" aria-label="Oracle HCM Solutions service details">
-        <div class="service-card-inner">
-          <div class="service-card-front">
-            <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="Oracle HCM Solutions">
+      <div class="service-card highlight" ng-class="{'is-expanded': expandedService === 'oracle'}" ng-click="toggleServiceCard('oracle')" role="button" tabindex="0" aria-label="Oracle HCM Solutions service details">
+        <div class="service-card-header">
+          <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="Oracle HCM Solutions">
+          <div class="service-card-overlay">
             <h3>Oracle HCM Solutions</h3>
           </div>
-          <div class="service-card-back">
-            <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="">
-            <h3>Oracle HCM Solutions</h3>
+        </div>
+        <div class="expand-trigger">
+          <span>{{ expandedService === 'oracle' ? 'Hide Details' : 'View Details' }}</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="service-card-details">
+          <div class="service-card-details-inner">
             <p>{{ services.oracle.description }}</p>
             <ul class="service-card-benefits">
               <li ng-repeat="benefit in services.oracle.benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
@@ -1119,15 +1047,19 @@
       </div>
 
       <!-- Digital Transformation -->
-      <div class="service-card" ng-class="{'is-flipped': flippedService === 'digital-transformation'}" ng-click="toggleServiceCard('digital-transformation')" role="button" tabindex="0" aria-label="Digital Transformation service details">
-        <div class="service-card-inner">
-          <div class="service-card-front">
-            <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="Digital Transformation">
+      <div class="service-card" ng-class="{'is-expanded': expandedService === 'digital-transformation'}" ng-click="toggleServiceCard('digital-transformation')" role="button" tabindex="0" aria-label="Digital Transformation service details">
+        <div class="service-card-header">
+          <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="Digital Transformation">
+          <div class="service-card-overlay">
             <h3>Digital Transformation</h3>
           </div>
-          <div class="service-card-back">
-            <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="">
-            <h3>Digital Transformation</h3>
+        </div>
+        <div class="expand-trigger">
+          <span>{{ expandedService === 'digital-transformation' ? 'Hide Details' : 'View Details' }}</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="service-card-details">
+          <div class="service-card-details-inner">
             <p>{{ services['digital-transformation'].description }}</p>
             <ul class="service-card-benefits">
               <li ng-repeat="benefit in services['digital-transformation'].benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
@@ -1137,15 +1069,19 @@
       </div>
 
       <!-- Software Assurance Testing -->
-      <div class="service-card" ng-class="{'is-flipped': flippedService === 'software-testing'}" ng-click="toggleServiceCard('software-testing')" role="button" tabindex="0" aria-label="Software Assurance Testing service details">
-        <div class="service-card-inner">
-          <div class="service-card-front">
-            <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="Software Assurance Testing">
+      <div class="service-card" ng-class="{'is-expanded': expandedService === 'software-testing'}" ng-click="toggleServiceCard('software-testing')" role="button" tabindex="0" aria-label="Software Assurance Testing service details">
+        <div class="service-card-header">
+          <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="Software Assurance Testing">
+          <div class="service-card-overlay">
             <h3>Software Assurance Testing</h3>
           </div>
-          <div class="service-card-back">
-            <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="">
-            <h3>Software Assurance Testing</h3>
+        </div>
+        <div class="expand-trigger">
+          <span>{{ expandedService === 'software-testing' ? 'Hide Details' : 'View Details' }}</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="service-card-details">
+          <div class="service-card-details-inner">
             <p>{{ services['software-testing'].description }}</p>
             <ul class="service-card-benefits">
               <li ng-repeat="benefit in services['software-testing'].benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
@@ -1228,7 +1164,7 @@
         <h4>Services</h4>
         <ul>
           <li><a href="#">Oracle HCM Cloud</a></li>
-          <li><a href="#">Salesforce Solutions</a></li>
+          <!-- <li><a href="#">Salesforce Solutions</a></li> -->
           <li><a href="#">Digital Transformations</a></li>
           <li><a href="#">Assurance Testing</a></li>
         </ul>
@@ -1259,7 +1195,7 @@
       $scope.currentYear = new Date().getFullYear();
       $scope.isMenuOpen = false;
       $scope.isServicesOpen = false;
-      $scope.flippedService = null;
+      $scope.expandedService = null;
       $scope.selectedService = {
         title: 'Oracle HCM Solutions',
         icon: 'fa-users-gear',
@@ -1281,9 +1217,10 @@
         $scope.selectedService = $scope.services[serviceKey];
       };
 
+      // Toggle Expandable Card on Click / Tap
       $scope.toggleServiceCard = function(serviceKey) {
         $scope.selectService(serviceKey);
-        $scope.flippedService = $scope.flippedService === serviceKey ? null : serviceKey;
+        $scope.expandedService = $scope.expandedService === serviceKey ? null : serviceKey;
       };
 
       // Smooth scroll navigation and close menu on select

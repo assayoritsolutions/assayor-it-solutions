@@ -1,0 +1,10 @@
+{
+  "name": "gcf-send-contact",
+  "version": "1.0.0",
+  "engines": {
+    "node": "18"
+  },
+  "dependencies": {
+    "googleapis": "^143.0.0"
+  }
+}

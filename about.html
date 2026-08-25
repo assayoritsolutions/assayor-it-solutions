@@ -11,8 +11,27 @@
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'Inter',sans-serif;color:var(--text-main);background:#fff}
     header{position:fixed;top:0;left:0;width:100%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.08);z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:1rem 5%}
-    .logo-container{display:flex;align-items:center;gap:12px;font-size:1.4rem;font-weight:700;color:var(--primary-dark);text-decoration:none}
-    .logo-container img{height:56px;width:auto}
+    /* .logo-container{display:flex;align-items:center;gap:12px;font-size:1.4rem;font-weight:700;color:var(--primary-dark);text-decoration:none}
+    .logo-container img{height:56px;width:auto} */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 52px;
+      min-width: 220px;
+      text-decoration: none;
+      padding: 0;
+      line-height: 0;
+    }
+    .logo-container img {
+      display: block;
+      height: 152px;
+      width: auto;
+      max-width: 220px;
+      object-fit: contain;
+      filter: none;
+      margin-top: 30px;
+    }
     nav ul{display:flex;list-style:none;gap:2rem;align-items:center}
     nav a{text-decoration:none;color:var(--primary-dark);font-weight:600}
     .assayor-method{margin-top:1rem;display:flex;align-items:center;justify-content:center;gap:.6rem;font-weight:900;font-size:2rem;text-shadow:0 3px 10px rgba(0,0,0,0.55)}
@@ -191,13 +210,44 @@
     .color-tiles-grid .color-tile:nth-child(6){animation-delay:0.30s}
     .color-tiles-grid .color-tile:nth-child(7){animation-delay:0.36s}
     .color-tiles-grid .color-tile:nth-child(8){animation-delay:0.42s}
+
+    /* Assayor Method section styles */
+    .assayor-method-section {
+      padding: 2.5rem 5%;
+      background: #f8fafc;
+    }
+
+    .assayor-method-section .container {
+      max-width: 900px;
+      margin: 0 auto;
+      color: var(--text-main);
+    }
+
+    .assayor-method-section h2 {
+      color: var(--accent-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .am-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 1rem 2rem;
+      align-items: start;
+    }
+
+    .am-grid h3 { margin: 0 0 0.35rem 0; }
+
+    .am-grid ul { margin: 0 0 0.75rem 1rem; }
+
+    @media (max-width: 768px) {
+      .am-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
   <header>
     <a class="logo-container" href="index.html" aria-label="Back to Home">
-      <img src="./images/logo_trans.png" alt="ASSAYOR Logo">
-      <span>ASSAYOR</span>
+      <img src="./images/header_logo_2.png" alt="Company Logo">
     </a>
     <nav>
       <ul>
@@ -419,6 +469,55 @@
 
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="assayor-method-section" aria-label="The Assayor Method">
+    <div class="container">
+      <h2>The Assayor Method™</h2>
+      <p style="font-weight:800;margin-bottom:0.6rem;text-align:center;font-size:1.05rem">Assay • Architect • Accelerate</p>
+
+      <div class="am-tiles-grid" aria-hidden="false">
+        <article class="am-tile">
+          <h3>Transformation Practices</h3>
+          <ul>
+            <li>Human Capital Transformation</li>
+            <li>Digital Transformation</li>
+            <li>Quality Engineering &amp; Assurance</li>
+          </ul>
+        </article>
+
+        <article class="am-tile">
+          <h3>Current Core Expertise</h3>
+          <p>Oracle Fusion HCM Cloud</p>
+        </article>
+
+        <article class="am-tile">
+          <h3>Delivery Models</h3>
+          <ul>
+            <li>Fixed Price</li>
+            <li>Time &amp; Material</li>
+            <li>Dedicated Team</li>
+            <li>Staff Augmentation</li>
+            <li>Managed Services</li>
+          </ul>
+        </article>
+
+        <article class="am-tile">
+          <h3>Delivery Coverage</h3>
+          <p>Global Remote Delivery<br>Hybrid Engagement<br>On-site Consulting</p>
+        </article>
+
+        <article class="am-tile">
+          <h3>Engagement Philosophy</h3>
+          <p>Long-term Business Partnership</p>
+        </article>
+
+        <article class="am-tile">
+          <h3>Success Measurement</h3>
+          <p>Business Outcomes<br>Not Implementation Completion</p>
+        </article>
       </div>
     </div>
   </section>

@@ -368,9 +368,12 @@
 
     /* Why Choose Us Grid */
     .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      display: flex;
       gap: 1.5rem;
+      align-items: stretch;
+      overflow-x: auto;
+      padding-bottom: 0.25rem; /* allow space for scrollbars on some platforms */
+      -webkit-overflow-scrolling: touch;
     }
 
     .feature-card {
@@ -379,6 +382,8 @@
       border-radius: 8px;
       text-align: center;
       transition: transform 0.3s;
+      flex: 0 0 260px; /* keep each tile a stable width so they fit on one row */
+      min-width: 220px;
     }
 
     .feature-card:hover {
@@ -903,6 +908,17 @@
         grid-column: span 1;
       }
 
+      /* On small screens, revert reasons layout to stack vertically */
+      .features-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        flex: unset;
+        min-width: unset;
+      }
+
       section {
         padding: 3rem 5%;
       }
@@ -1065,6 +1081,24 @@
     </div>
   </section>
 
+  <!-- Selected Service Details -->
+  <section id="service-details" class="service-details-section">
+    <div class="section-title">
+      <h4>Service Details</h4>
+      <h2>{{ selectedService.title }}</h2>
+    </div>
+    <div class="service-details-content">
+      <i class="fa-solid {{ selectedService.icon }}" aria-hidden="true"></i>
+      <h2>{{ selectedService.title }}</h2>
+      <p>{{ selectedService.description }}</p>
+      <ul>
+        <li ng-repeat="benefit in selectedService.benefits">
+          <i class="fa-solid fa-circle-check" aria-hidden="true"></i>{{ benefit }}
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <!-- Reasons / Core Highlights Section -->
   <section>
     <div class="section-title">
@@ -1125,26 +1159,10 @@
     </div>
   </section> -->
 
-  <!-- Selected Service Details -->
-  <section id="service-details" class="service-details-section">
-    <div class="section-title">
-      <h4>Service Details</h4>
-      <h2>{{ selectedService.title }}</h2>
-    </div>
-    <div class="service-details-content">
-      <i class="fa-solid {{ selectedService.icon }}" aria-hidden="true"></i>
-      <h2>{{ selectedService.title }}</h2>
-      <p>{{ selectedService.description }}</p>
-      <ul>
-        <li ng-repeat="benefit in selectedService.benefits">
-          <i class="fa-solid fa-circle-check" aria-hidden="true"></i>{{ benefit }}
-        </li>
-      </ul>
-    </div>
-  </section>
+  
 
   <!-- Our Work / Case Studies Section -->
-  <section id="work">
+  <!-- <section id="work">
     <div class="section-title">
       <h4>Case Studies</h4>
       <h2>Real Results Across Industries</h2>
@@ -1160,7 +1178,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- Contact Us Section -->
   <section id="contact" class="contact-section">

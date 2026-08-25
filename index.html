@@ -982,11 +982,94 @@
     <img class="hero-banner" src="./images/comapny_banner.png" alt="Company banner">
   </section>
 
+  <!-- Services Section -->
+  <section id="services" class="services-section">
+    <div class="section-title">
+      <h4>Services</h4>
+      <h2>Our Offerings</h2>
+    </div>
+    <div class="services-grid">
+      
+      <!-- Oracle HCM (Primary Strength) -->
+      <div class="service-card highlight" ng-class="{'is-flipped': flippedService === 'oracle'}" ng-click="toggleServiceCard('oracle')" role="button" tabindex="0" aria-label="Oracle HCM Solutions service details">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="Oracle HCM Solutions">
+            <h3>Oracle HCM Solutions</h3>
+          </div>
+          <div class="service-card-back">
+            <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="">
+            <h3>Oracle HCM Solutions</h3>
+            <p>{{ services.oracle.description }}</p>
+            <ul class="service-card-benefits">
+              <li ng-repeat="benefit in services.oracle.benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Salesforce Platforms -->
+      <!-- <div class="service-card" ng-class="{'is-flipped': flippedService === 'salesforce'}" ng-click="toggleServiceCard('salesforce')" role="button" tabindex="0" aria-label="Salesforce Platforms service details">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <img class="service-card-image" src="./images/SF_IMG2.jpg" alt="Salesforce Platforms">
+            <h3>Salesforce Platforms</h3>
+          </div>
+          <div class="service-card-back">
+            <img class="service-card-image" src="./images/SF_IMG2.jpg" alt="">
+            <h3>Salesforce Platforms</h3>
+            <p>{{ services.salesforce.description }}</p>
+            <ul class="service-card-benefits">
+              <li ng-repeat="benefit in services.salesforce.benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
+            </ul>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Digital Transformation -->
+      <div class="service-card" ng-class="{'is-flipped': flippedService === 'digital-transformation'}" ng-click="toggleServiceCard('digital-transformation')" role="button" tabindex="0" aria-label="Digital Transformation service details">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="Digital Transformation">
+            <h3>Digital Transformation</h3>
+          </div>
+          <div class="service-card-back">
+            <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="">
+            <h3>Digital Transformation</h3>
+            <p>{{ services['digital-transformation'].description }}</p>
+            <ul class="service-card-benefits">
+              <li ng-repeat="benefit in services['digital-transformation'].benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Software Assurance Testing -->
+      <div class="service-card" ng-class="{'is-flipped': flippedService === 'software-testing'}" ng-click="toggleServiceCard('software-testing')" role="button" tabindex="0" aria-label="Software Assurance Testing service details">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="Software Assurance Testing">
+            <h3>Software Assurance Testing</h3>
+          </div>
+          <div class="service-card-back">
+            <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="">
+            <h3>Software Assurance Testing</h3>
+            <p>{{ services['software-testing'].description }}</p>
+            <ul class="service-card-benefits">
+              <li ng-repeat="benefit in services['software-testing'].benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Reasons / Core Highlights Section -->
   <section>
     <div class="section-title">
-      <h4>Why Choose Us</h4>
-      <h2>Top Reasons to Partner With Us</h2>
+      <h4>WHY CHOOSE ASSAYOR</h4>
+      <h2>More Than Consultants. Your Business Transformation Partner.</h2>
     </div>
     <div class="features-grid">
       <div class="feature-card" ng-repeat="reason in reasons">
@@ -998,7 +1081,7 @@
   </section>
 
   <!-- About Us Section -->
-  <section id="about" class="about-section">
+  <!-- <section id="about" class="about-section">
     <div class="about-img">
       <div class="about-hero" style="background:linear-gradient(rgba(10,25,47,0.72),rgba(10,25,47,0.72)),url('https://images.unsplash.com/photo-1508830524289-0adcbe822b40?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;padding:2.4rem;border-radius:8px;color:#fff;display:flex;align-items:center;justify-content:center;min-height:320px;">
         <div class="hero-content" style="max-width:700px;text-align:center">
@@ -1040,90 +1123,7 @@
         </li>
       </ul>
     </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="services-section">
-    <div class="section-title">
-      <h4>Services</h4>
-      <h2>Our Core Service Capabilities</h2>
-    </div>
-    <div class="services-grid">
-      
-      <!-- Oracle HCM (Primary Strength) -->
-      <div class="service-card highlight" ng-class="{'is-flipped': flippedService === 'oracle'}" ng-click="toggleServiceCard('oracle')" role="button" tabindex="0" aria-label="Oracle HCM Solutions service details">
-        <div class="service-card-inner">
-          <div class="service-card-front">
-            <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="Oracle HCM Solutions">
-            <h3>Oracle HCM Solutions</h3>
-          </div>
-          <div class="service-card-back">
-            <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="">
-            <h3>Oracle HCM Solutions</h3>
-            <p>{{ services.oracle.description }}</p>
-            <ul class="service-card-benefits">
-              <li ng-repeat="benefit in services.oracle.benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Salesforce Platforms -->
-      <div class="service-card" ng-class="{'is-flipped': flippedService === 'salesforce'}" ng-click="toggleServiceCard('salesforce')" role="button" tabindex="0" aria-label="Salesforce Platforms service details">
-        <div class="service-card-inner">
-          <div class="service-card-front">
-            <img class="service-card-image" src="./images/SF_IMG2.jpg" alt="Salesforce Platforms">
-            <h3>Salesforce Platforms</h3>
-          </div>
-          <div class="service-card-back">
-            <img class="service-card-image" src="./images/SF_IMG2.jpg" alt="">
-            <h3>Salesforce Platforms</h3>
-            <p>{{ services.salesforce.description }}</p>
-            <ul class="service-card-benefits">
-              <li ng-repeat="benefit in services.salesforce.benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Digital Transformation -->
-      <div class="service-card" ng-class="{'is-flipped': flippedService === 'digital-transformation'}" ng-click="toggleServiceCard('digital-transformation')" role="button" tabindex="0" aria-label="Digital Transformation service details">
-        <div class="service-card-inner">
-          <div class="service-card-front">
-            <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="Digital Transformation">
-            <h3>Digital Transformation</h3>
-          </div>
-          <div class="service-card-back">
-            <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="">
-            <h3>Digital Transformation</h3>
-            <p>{{ services['digital-transformation'].description }}</p>
-            <ul class="service-card-benefits">
-              <li ng-repeat="benefit in services['digital-transformation'].benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Software Assurance Testing -->
-      <div class="service-card" ng-class="{'is-flipped': flippedService === 'software-testing'}" ng-click="toggleServiceCard('software-testing')" role="button" tabindex="0" aria-label="Software Assurance Testing service details">
-        <div class="service-card-inner">
-          <div class="service-card-front">
-            <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="Software Assurance Testing">
-            <h3>Software Assurance Testing</h3>
-          </div>
-          <div class="service-card-back">
-            <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="">
-            <h3>Software Assurance Testing</h3>
-            <p>{{ services['software-testing'].description }}</p>
-            <ul class="service-card-benefits">
-              <li ng-repeat="benefit in services['software-testing'].benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
+  </section> -->
 
   <!-- Selected Service Details -->
   <section id="service-details" class="service-details-section">
@@ -1299,10 +1299,12 @@
 
       // Reasons data
       $scope.reasons = [
-        { icon: 'fa-bullseye', title: 'Solution Driven', desc: 'End-to-end tailored software solutions designed around your precise business goals.' },
-        { icon: 'fa-user-check', title: 'Customer Focused', desc: 'We prioritize close collaboration to ensure high-satisfaction outcomes.' },
-        { icon: 'fa-shield-halved', title: 'Proven Results', desc: 'Demonstrated track record of enterprise-level software delivery.' },
-        { icon: 'fa-chart-line', title: 'Business Impact', desc: 'Measurable efficiency gains and streamlined operational performance.' }
+        { icon: 'fa-solid fa-business-time', title: 'Business-First Consulting', desc: 'We understand your business before recommending technology.' },
+        { icon: 'fa-solid fa-user-tie', title: 'Experienced Leadership', desc: 'Our projects are led by highly experienced consultants with over 15 years of enterprise consulting experience, ensuring strategic direction, strong governance, and delivery excellence.' },
+        { icon: 'fa-shield-halved', title: 'Senior-Led Delivery', desc: 'We believe complex business transformations require experienced leadership. Every engagement is guided by senior professionals who own delivery, stakeholder communication, and business outcomes.' },
+        { icon: 'fa-chart-line', title: 'End-to-End Transformation', desc: 'From advisory and implementation to optimization and managed services, we support the complete transformation lifecycle.' },
+        { icon: 'fa-solid fa-thumbs-up', title: 'Honest Recommendations', desc: 'We recommend solutions that best serve the client\'s interests, even when that means suggesting a more cost-effective engagement model.' },
+        { icon: 'fa-solid fa-handshake', title: 'Long-Term Partnership', desc: 'Our goal is to become your trusted transformation advisor—not just your implementation partner.' }
       ];
 
       // Work / Case studies data
@@ -1330,11 +1332,33 @@
         }
       ];
 
-      // Form handler
+      // Form handler — POST to Cloud Function endpoint (replace FUNCTION_URL below)
       $scope.form = {};
       $scope.submitForm = function() {
-        alert("Thank you! Your message has been sent successfully.");
-        $scope.form = {};
+        var FUNCTION_URL = 'https://REGION-PROJECT.cloudfunctions.net/sendContactEmail'; // replace with your function URL
+
+        var payload = {
+          name: $scope.form.name,
+          email: $scope.form.email,
+          phone: $scope.form.phone,
+          website: $scope.form.website,
+          message: $scope.form.message
+        };
+
+        fetch(FUNCTION_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).then(function(res) {
+          if (!res.ok) throw new Error('Network response was not ok');
+          // clear model and trigger digest safely
+          $scope.form = {};
+          try { $scope.$applyAsync && $scope.$applyAsync(); } catch(e){}
+          alert('Thank you! Your message has been sent.');
+        }).catch(function(err) {
+          console.error(err);
+          alert('Sending failed. Please try again or email sales@assayor.com');
+        });
       };
 
     }]);

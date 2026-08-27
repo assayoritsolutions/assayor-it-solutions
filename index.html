@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enterprise Software Solutions & Oracle HCM Consulting.</title>
+  <title>Enterprise Software Solutions & Oracle HCM Consulting</title>
   
   <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
@@ -91,10 +91,6 @@
 
     .logo-container:hover img {
       transform: scale(1.02);
-    }
-
-    .logo-container .name-logo {
-      display: none;
     }
 
     /* Mobile Hamburger Menu Toggle Button */
@@ -328,29 +324,6 @@
       margin: 0 auto;
     }
 
-    .hero-section .hero-logo img { height: 96px; width: auto; display: block; }
-    .hero-section .hero-logo { margin-bottom: 12px; }
-    .hero-section .assayor-method { margin-top: 8px; }
-    .hero-section .cta-btn { margin-top: 18px; }
-
-    .hero-content {
-      max-width: 900px;
-    }
-
-    .hero-content h1 {
-      font-size: clamp(2rem, 4vw + 1rem, 3.2rem);
-      margin-bottom: 1.2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-    }
-
-    .hero-content p {
-      font-size: clamp(1rem, 1.5vw + 0.5rem, 1.2rem);
-      color: #ccd6f6;
-      margin-bottom: 2rem;
-    }
-
     .cta-btn {
       display: inline-block;
       padding: 0.85rem 2.2rem;
@@ -402,11 +375,344 @@
       line-height: 1.25;
     }
 
-    /* Why Choose Us Grid */
+    /* ========================================================
+       Services Section: Expandable Hover/Click Cards
+       ======================================================== */
+    .services-section {
+      background-color: var(--bg-light);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      outline: none;
+    }
+
+    .service-card:hover,
+    .service-card:focus-visible,
+    .service-card.is-active {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(0, 102, 204, 0.4);
+    }
+
+    .service-card.is-active {
+      border-left: 4px solid var(--accent-coral);
+    }
+
+    .service-card:focus-visible {
+      outline: 3px solid var(--accent-coral);
+      outline-offset: 3px;
+    }
+
+    .service-card-header {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .service-card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .service-card:hover .service-card-image,
+    .service-card.is-active .service-card-image {
+      transform: scale(1.06);
+    }
+
+    .service-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 25, 47, 0.15) 0%, rgba(10, 25, 47, 0.88) 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.4rem;
+    }
+
+    .service-card-header h3 {
+      color: #ffffff;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      margin: 0;
+    }
+
+    .expand-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.4rem;
+      background: #ffffff;
+      border-top: 1px solid #f1f5f9;
+      color: var(--accent-blue);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .expand-trigger i {
+      font-size: 0.8rem;
+      transition: transform 0.35s ease;
+    }
+
+    .service-card:hover .expand-trigger,
+    .service-card.is-active .expand-trigger {
+      background: var(--accent-blue-light);
+      color: var(--accent-blue);
+    }
+
+    .service-card:hover .expand-trigger i,
+    .service-card.is-active .expand-trigger i {
+      transform: translateY(2px);
+    }
+
+    /* Expanding Details Body via CSS Grid auto-expansion */
+    .service-card-details {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #ffffff;
+    }
+
+    .service-card:hover .service-card-details,
+    .service-card:focus-within .service-card-details,
+    .service-card.is-active .service-card-details {
+      grid-template-rows: 1fr;
+    }
+
+    .service-card-details-inner {
+      overflow: hidden;
+      padding: 0 1.4rem;
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s, padding 0.45s ease;
+    }
+
+    .service-card:hover .service-card-details-inner,
+    .service-card:focus-within .service-card-details-inner,
+    .service-card.is-active .service-card-details-inner {
+      opacity: 1;
+      transform: translateY(0);
+      padding: 0.8rem 1.4rem 1.4rem;
+    }
+
+    .hover-section-heading {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--accent-coral);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 0.75rem;
+      border-bottom: 1.5px solid #f1f5f9;
+      padding-bottom: 0.4rem;
+    }
+
+    .service-card-benefits {
+      list-style: none;
+    }
+
+    .service-card-benefits li {
+      display: flex;
+      gap: 0.65rem;
+      margin-bottom: 0.55rem;
+      color: var(--text-main);
+      font-size: 0.85rem;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+
+    .service-card-benefits i {
+      color: var(--accent-blue);
+      font-size: 0.85rem;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    /* ========================================================
+       Deep-Dive Selected Service Details Section
+       ======================================================== */
+    .service-details-section {
+      background-color: #ffffff;
+      scroll-margin-top: 100px;
+    }
+
+    .service-details-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .service-details-header {
+      background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+      color: #ffffff;
+      padding: 2.8rem 3rem 2.2rem;
+      position: relative;
+    }
+
+    .service-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(224, 86, 56, 0.15);
+      border: 1px solid rgba(224, 86, 56, 0.4);
+      color: #ff8c73;
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .service-details-header h2 {
+      font-size: clamp(1.6rem, 2vw + 1rem, 2.2rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .service-tagline {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #93c5fd;
+      margin-bottom: 0.6rem;
+    }
+
+    .service-subtitle {
+      color: #cbd5e1;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      max-width: 900px;
+    }
+
+    .service-details-body {
+      padding: 2.5rem 3rem;
+      background: #ffffff;
+    }
+
+    .expertise-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .expertise-title i {
+      color: var(--accent-coral);
+    }
+
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .capability-item {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.4rem;
+      transition: all 0.25s ease;
+    }
+
+    .capability-item:hover {
+      border-color: rgba(0, 102, 204, 0.3);
+      background: var(--accent-blue-light);
+      transform: translateY(-2px);
+    }
+
+    .capability-item h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .capability-item h4 i {
+      color: var(--accent-blue);
+      font-size: 0.85rem;
+    }
+
+    .capability-item p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .approach-box {
+      background: #f0f7ff;
+      border-left: 4px solid var(--accent-blue);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1.4rem 1.8rem;
+      margin-top: 1rem;
+    }
+
+    .approach-box h4 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.4rem;
+    }
+
+    .approach-box p {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      font-weight: 600;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ========================================================
+       Why Choose Us Grid: Exactly 3 Columns on Web (3x2)
+       ======================================================== */
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.8rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .feature-card {
@@ -452,235 +758,6 @@
       color: var(--text-muted);
       font-size: 0.92rem;
       line-height: 1.55;
-    }
-
-    /* ========================================================
-       Services Section: Expandable Smooth Tile Cards
-       ======================================================== */
-    .services-section {
-      background-color: var(--bg-light);
-      border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      align-items: start;
-    }
-
-    .service-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      cursor: pointer;
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-      display: flex;
-      flex-direction: column;
-      outline: none;
-    }
-
-    .service-card:hover,
-    .service-card:focus-visible,
-    .service-card.is-expanded {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      border-color: rgba(0, 102, 204, 0.3);
-    }
-
-    .service-card:focus-visible {
-      outline: 3px solid var(--accent-coral);
-      outline-offset: 3px;
-    }
-
-    .service-card-header {
-      position: relative;
-      width: 100%;
-      height: 220px;
-      overflow: hidden;
-    }
-
-    .service-card-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .service-card:hover .service-card-image,
-    .service-card.is-expanded .service-card-image {
-      transform: scale(1.06);
-    }
-
-    .service-card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(10, 25, 47, 0.15) 0%, rgba(10, 25, 47, 0.85) 100%);
-      display: flex;
-      align-items: flex-end;
-      padding: 1.4rem;
-    }
-
-    .service-card-header h3 {
-      color: #ffffff;
-      font-size: 1.2rem;
-      font-weight: 700;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-      margin: 0;
-    }
-
-    /* Expand / Collapse Action Indicator */
-    .expand-trigger {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.9rem 1.4rem;
-      background: #ffffff;
-      border-top: 1px solid #f1f5f9;
-      color: var(--accent-blue);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
-      transition: background-color 0.25s ease, color 0.25s ease;
-    }
-
-    .expand-trigger i {
-      font-size: 0.8rem;
-      transition: transform 0.35s ease;
-    }
-
-    .service-card:hover .expand-trigger,
-    .service-card.is-expanded .expand-trigger {
-      background: var(--accent-blue-light);
-      color: var(--accent-blue);
-    }
-
-    .service-card:hover .expand-trigger i,
-    .service-card.is-expanded .expand-trigger i {
-      transform: translateY(2px);
-    }
-
-    /* Expanding Details Body via CSS Grid auto-expansion */
-    .service-card-details {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-      background: #ffffff;
-    }
-
-    .service-card:hover .service-card-details,
-    .service-card:focus-within .service-card-details,
-    .service-card.is-expanded .service-card-details {
-      grid-template-rows: 1fr;
-    }
-
-    .service-card-details-inner {
-      overflow: hidden;
-      padding: 0 1.4rem;
-      opacity: 0;
-      transform: translateY(-8px);
-      transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s, padding 0.45s ease;
-    }
-
-    .service-card:hover .service-card-details-inner,
-    .service-card:focus-within .service-card-details-inner,
-    .service-card.is-expanded .service-card-details-inner {
-      opacity: 1;
-      transform: translateY(0);
-      padding: 0.5rem 1.4rem 1.4rem;
-    }
-
-    .service-card-details p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.55;
-      margin-bottom: 1.1rem;
-      border-top: 1px solid #f1f5f9;
-      padding-top: 0.85rem;
-    }
-
-    .service-card-benefits {
-      list-style: none;
-    }
-
-    .service-card-benefits li {
-      display: flex;
-      gap: 0.65rem;
-      margin-bottom: 0.65rem;
-      color: var(--text-main);
-      font-size: 0.85rem;
-      line-height: 1.4;
-      font-weight: 500;
-    }
-
-    .service-card-benefits i {
-      color: #10b981;
-      font-size: 0.9rem;
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
-
-    /* Selected Service Details Section */
-    .service-details-section {
-      background-color: #ffffff;
-      scroll-margin-top: 100px;
-    }
-
-    .service-details-content {
-      max-width: 850px;
-      margin: 0 auto;
-      padding: 2.8rem;
-      border-radius: var(--radius-lg);
-      background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-      border: 1px solid var(--border-color);
-      border-left: 6px solid var(--accent-blue);
-      box-shadow: var(--shadow-md);
-    }
-
-    .service-details-content i.service-icon {
-      color: var(--accent-blue);
-      font-size: 2.2rem;
-      margin-bottom: 1.2rem;
-      display: inline-block;
-    }
-
-    .service-details-content h2 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--primary-dark);
-      margin-bottom: 0.8rem;
-    }
-
-    .service-details-content p {
-      color: var(--text-muted);
-      font-size: 1rem;
-      line-height: 1.65;
-      margin-bottom: 1.5rem;
-    }
-
-    .service-details-content ul {
-      list-style: none;
-    }
-
-    .service-details-content li {
-      margin-bottom: 0.85rem;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .service-details-content li i {
-      color: #10b981;
-      font-size: 1rem;
     }
 
     /* Contact Form Section */
@@ -796,14 +873,20 @@
       color: #64748b;
     }
 
-    /* Mobile Responsive Breakpoints */
+    /* Medium/Tablet Responsive Breakpoints (2x3) */
     @media (max-width: 992px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
       .footer-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
       }
     }
 
+    /* Mobile Responsive Breakpoints (1 Column) */
     @media (max-width: 768px) {
       :root {
         --header-height: 70px;
@@ -904,7 +987,6 @@
         border-radius: var(--radius-sm);
       }
 
-      /* Banner Full Visibility Fix for Mobile */
       .hero-section {
         margin-top: var(--header-height);
         width: 100%;
@@ -929,6 +1011,15 @@
       }
 
       .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-details-header,
+      .service-details-body {
+        padding: 1.8rem 1.4rem;
+      }
+
+      .capabilities-grid {
         grid-template-columns: 1fr;
       }
 
@@ -985,27 +1076,22 @@
               <div class="mega-menu-content">
                 <div class="mega-menu-grid">
                   <a class="mega-service-card" href="#service-details" ng-click="selectService('oracle'); scrollTo('service-details')">
-                    <strong>Oracle HCM Solutions</strong>
+                    <strong>Oracle Fusion HCM</strong>
                     <p>Transform workforce operations with connected Oracle HCM Cloud solutions.</p>
                   </a>
-                  <!-- <a class="mega-service-card" href="#service-details" ng-click="selectService('salesforce'); scrollTo('service-details')">
-                    <strong>Salesforce Platforms</strong>
-                    <p>Build stronger customer relationships with tailored CRM platforms.</p>
-                  </a> -->
                   <a class="mega-service-card" href="#service-details" ng-click="selectService('digital-transformation'); scrollTo('service-details')">
                     <strong>Digital Transformation</strong>
-                    <p>Modernize systems, workflows, and enterprise technology foundations.</p>
+                    <p>Turning ideas into scalable web, mobile, and enterprise digital experiences.</p>
                   </a>
                   <a class="mega-service-card" href="#service-details" ng-click="selectService('software-testing'); scrollTo('service-details')">
-                    <strong>Software Assurance Testing</strong>
-                    <p>Improve release confidence with reliable quality assurance services.</p>
+                    <strong>Software Quality Assurance</strong>
+                    <p>Quality engineered into every stage of delivery for reliable software.</p>
                   </a>
                 </div>
               </div>
             </li>
           </ul>
         </li>
-        <!-- <li><a ng-click="scrollTo('work')">Our Work</a></li> -->
         <li><a ng-click="scrollTo('contact')" class="btn-contact">Contact Us</a></li>
       </ul>
     </nav>
@@ -1016,38 +1102,40 @@
     <img class="hero-banner" src="./images/comapny_banner.png" alt="Company banner">
   </section>
 
-  <!-- Services Section (Expandable Tiles) -->
+  <!-- Services Section (Tiles with Hover/Click Preview) -->
   <section id="services" class="services-section">
     <div class="section-title">
-      <h4>Services</h4>
-      <h2>Our Offerings</h2>
+      <h2>Services</h2>
+      <h4>Our Offerings</h4>
     </div>
     <div class="services-grid">
       
-      <!-- Oracle HCM -->
-      <div class="service-card highlight" ng-class="{'is-expanded': expandedService === 'oracle'}" ng-click="toggleServiceCard('oracle')" role="button" tabindex="0" aria-label="Oracle HCM Solutions service details">
+      <!-- 01. Oracle Fusion HCM Tile -->
+      <div class="service-card" ng-class="{'is-active': selectedServiceKey === 'oracle'}" ng-click="selectService('oracle'); scrollTo('service-details')" role="button" tabindex="0" aria-label="Oracle Fusion HCM service details">
         <div class="service-card-header">
-          <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="Oracle HCM Solutions">
+          <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="Oracle Fusion HCM">
           <div class="service-card-overlay">
-            <h3>Oracle HCM Solutions</h3>
+            <h3>Oracle Fusion HCM</h3>
           </div>
         </div>
         <div class="expand-trigger">
-          <span>{{ expandedService === 'oracle' ? 'Hide Details' : 'View Details' }}</span>
-          <i class="fa-solid fa-chevron-down"></i>
+          <span>Explore Expertise</span>
+          <i class="fa-solid fa-arrow-down"></i>
         </div>
         <div class="service-card-details">
           <div class="service-card-details-inner">
-            <p>{{ services.oracle.description }}</p>
             <ul class="service-card-benefits">
-              <li ng-repeat="benefit in services.oracle.benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
+              <li ng-repeat="item in services.oracle.hoverItems">
+                <i class="fa-solid fa-check-circle"></i>
+                <span>{{ item }}</span>
+              </li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Digital Transformation -->
-      <div class="service-card" ng-class="{'is-expanded': expandedService === 'digital-transformation'}" ng-click="toggleServiceCard('digital-transformation')" role="button" tabindex="0" aria-label="Digital Transformation service details">
+      <!-- 02. Digital Transformation Tile -->
+      <div class="service-card" ng-class="{'is-active': selectedServiceKey === 'digital-transformation'}" ng-click="selectService('digital-transformation'); scrollTo('service-details')" role="button" tabindex="0" aria-label="Digital Transformation service details">
         <div class="service-card-header">
           <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="Digital Transformation">
           <div class="service-card-overlay">
@@ -1055,36 +1143,40 @@
           </div>
         </div>
         <div class="expand-trigger">
-          <span>{{ expandedService === 'digital-transformation' ? 'Hide Details' : 'View Details' }}</span>
-          <i class="fa-solid fa-chevron-down"></i>
+          <span>Explore Capabilities</span>
+          <i class="fa-solid fa-arrow-down"></i>
         </div>
         <div class="service-card-details">
           <div class="service-card-details-inner">
-            <p>{{ services['digital-transformation'].description }}</p>
             <ul class="service-card-benefits">
-              <li ng-repeat="benefit in services['digital-transformation'].benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
+              <li ng-repeat="item in services['digital-transformation'].hoverItems">
+                <i class="fa-solid fa-check-circle"></i>
+                <span>{{ item }}</span>
+              </li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Software Assurance Testing -->
-      <div class="service-card" ng-class="{'is-expanded': expandedService === 'software-testing'}" ng-click="toggleServiceCard('software-testing')" role="button" tabindex="0" aria-label="Software Assurance Testing service details">
+      <!-- 03. Software Quality Assurance Tile -->
+      <div class="service-card" ng-class="{'is-active': selectedServiceKey === 'software-testing'}" ng-click="selectService('software-testing'); scrollTo('service-details')" role="button" tabindex="0" aria-label="Software Quality Assurance service details">
         <div class="service-card-header">
-          <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="Software Assurance Testing">
+          <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="Software Quality Assurance">
           <div class="service-card-overlay">
-            <h3>Software Assurance Testing</h3>
+            <h3>Software Quality Assurance</h3>
           </div>
         </div>
         <div class="expand-trigger">
-          <span>{{ expandedService === 'software-testing' ? 'Hide Details' : 'View Details' }}</span>
-          <i class="fa-solid fa-chevron-down"></i>
+          <span>Explore Quality Engineering</span>
+          <i class="fa-solid fa-arrow-down"></i>
         </div>
         <div class="service-card-details">
           <div class="service-card-details-inner">
-            <p>{{ services['software-testing'].description }}</p>
             <ul class="service-card-benefits">
-              <li ng-repeat="benefit in services['software-testing'].benefits"><i class="fa-solid fa-circle-check"></i><span>{{ benefit }}</span></li>
+              <li ng-repeat="item in services['software-testing'].hoverItems">
+                <i class="fa-solid fa-check-circle"></i>
+                <span>{{ item }}</span>
+              </li>
             </ul>
           </div>
         </div>
@@ -1093,29 +1185,46 @@
     </div>
   </section>
 
-  <!-- Selected Service Details -->
+  <!-- Deep-Dive Selected Service Details Section -->
   <section id="service-details" class="service-details-section">
-    <div class="section-title">
-      <h4>Service Details</h4>
-      <h2>{{ selectedService.title }}</h2>
-    </div>
-    <div class="service-details-content">
-      <i class="fa-solid {{ selectedService.icon }} service-icon" aria-hidden="true"></i>
-      <h2>{{ selectedService.title }}</h2>
-      <p>{{ selectedService.description }}</p>
-      <ul>
-        <li ng-repeat="benefit in selectedService.benefits">
-          <i class="fa-solid fa-circle-check" aria-hidden="true"></i>{{ benefit }}
-        </li>
-      </ul>
+    <div class="service-details-container">
+      
+      <!-- Top Title Header -->
+      <div class="service-details-header">
+        <h2><i class="fa-solid {{ selectedService.icon }}" style="font-size: 1.8rem;"></i> {{ selectedService.title }}</h2>
+        <div class="service-tagline">{{ selectedService.tagline }}</div>
+        <p class="service-subtitle">{{ selectedService.subtitle }}</p>
+      </div>
+
+      <!-- In-Depth Capability Details -->
+      <div class="service-details-body">
+        <div class="expertise-title">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>{{ selectedService.expertiseHeading }}</span>
+        </div>
+
+        <div class="capabilities-grid">
+          <div class="capability-item" ng-repeat="cap in selectedService.capabilities">
+            <h4><i class="fa-solid fa-circle-dot"></i> {{ cap.title }}</h4>
+            <p>{{ cap.desc }}</p>
+          </div>
+        </div>
+
+        <!-- Our Approach -->
+        <div class="approach-box">
+          <h4>Our Approach</h4>
+          <p>{{ selectedService.approach }}</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- Reasons / Core Highlights Section -->
   <section>
     <div class="section-title">
-      <h4>WHY CHOOSE ASSAYOR</h4>
-      <h2>More Than Consultants. Your Business Transformation Partner.</h2>
+      <h2>WHY CHOOSE ASSAYOR</h2>
+      <h4>More Than Consultants. Your Business Transformation Partner.</h4>
     </div>
     <div class="features-grid">
       <div class="feature-card" ng-repeat="reason in reasons">
@@ -1130,8 +1239,8 @@
   <section id="contact" class="contact-section">
     <div class="contact-container">
       <div class="section-title" style="margin-bottom: 2rem;">
-        <h4>Contact Us</h4>
-        <h2>Get In Touch</h2>
+        <h2>Contact Us</h2>
+        <h4>Get In Touch</h4>
       </div>
       <form class="contact-form" ng-submit="submitForm()">
         <input type="text" placeholder="Name" ng-model="form.name" required>
@@ -1157,16 +1266,15 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="index.html#services">Services</a></li>
-          <li><a href="index.html#work">Our Work</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-links">
         <h4>Services</h4>
         <ul>
-          <li><a href="#">Oracle HCM Cloud</a></li>
-          <!-- <li><a href="#">Salesforce Solutions</a></li> -->
-          <li><a href="#">Digital Transformations</a></li>
-          <li><a href="#">Assurance Testing</a></li>
+          <li><a href="#service-details" ng-click="selectService('oracle'); scrollTo('service-details')">Oracle Fusion HCM</a></li>
+          <li><a href="#service-details" ng-click="selectService('digital-transformation'); scrollTo('service-details')">Digital Transformation</a></li>
+          <li><a href="#service-details" ng-click="selectService('software-testing'); scrollTo('service-details')">Quality Assurance</a></li>
         </ul>
       </div>
       <div class="footer-links">
@@ -1195,16 +1303,158 @@
       $scope.currentYear = new Date().getFullYear();
       $scope.isMenuOpen = false;
       $scope.isServicesOpen = false;
-      $scope.expandedService = null;
-      $scope.selectedService = {
-        title: 'Oracle HCM Solutions',
-        icon: 'fa-users-gear',
-        description: 'End-to-end deployment, customization, and optimization of Oracle Human Capital Management Cloud modules to transform your global workforce management.',
-        benefits: [
-          'Oracle HCM Cloud implementation and module configuration',
-          'HR process automation for global teams',
-          'Workforce reporting, analytics, and system optimization'
-        ]
+      $scope.selectedServiceKey = 'oracle';
+
+      // Full Service Data Model matching the requested specification
+      $scope.services = {
+        'oracle': {
+          title: 'Oracle Fusion HCM',
+          icon: 'fa-users-gear',
+          tagline: 'Transforming the way organizations manage their people.',
+          subtitle: 'We help organizations design, implement, integrate, optimize, and support Oracle Fusion HCM solutions aligned with their business processes and workforce strategy.',
+          expertiseHeading: 'Our Oracle HCM Expertise',
+          hoverItems: [
+            'Core HCM & Workforce Deployment',
+            'Talent Management & Workforce Development',
+            'Workforce Management & Rewards',
+            'Security & Approval Governance',
+            'Advanced Development & Extensibility',
+            'Integration & Analytics'
+          ],
+          capabilities: [
+            {
+              title: 'Core HCM & Workforce Deployment',
+              desc: 'Global HR, enterprise structures, workforce lifecycle, assignments, workforce directory, and organizational modeling.'
+            },
+            {
+              title: 'Talent Management & Workforce Development',
+              desc: 'Oracle Recruiting, Learning, Performance & Goals, Profiles, Succession Planning, and Talent Review.'
+            },
+            {
+              title: 'Workforce Management & Rewards',
+              desc: 'Absence Management, Time & Labor, Workforce Compensation, Benefits, and related workforce processes.'
+            },
+            {
+              title: 'Security & Approval Governance',
+              desc: 'Role-based security, data roles, Areas of Responsibility, Security Console, and BPM approval workflows.'
+            },
+            {
+              title: 'Advanced Development & Extensibility',
+              desc: 'HDL, HSDL, Visual Builder Studio, Sandbox configuration, personalization, and custom solutions.'
+            },
+            {
+              title: 'Integration & Analytics',
+              desc: 'Oracle Integration Cloud, HCM Extracts, REST APIs, OTBI, and BI Publisher reporting.'
+            }
+          ],
+          approach: 'Business-first HCM transformation — from process discovery and solution design to implementation, integration, adoption, optimization, and ongoing support.'
+        },
+
+        'digital-transformation': {
+          title: 'Digital Transformation',
+          icon: 'fa-network-wired',
+          tagline: 'Turning ideas into scalable digital experiences.',
+          subtitle: 'We help organizations transform business processes and customer experiences through web applications, mobile solutions, enterprise platforms, integrations, and modern digital experiences.',
+          expertiseHeading: 'Our Digital Transformation Capabilities',
+          hoverItems: [
+            'Web Application Development',
+            'Mobile App Development',
+            'Enterprise Solutions',
+            'System Integration',
+            'UI / UX Design',
+            'Process Automation',
+            'Digital Optimization'
+          ],
+          capabilities: [
+            {
+              title: 'Web Application Development',
+              desc: 'Scalable, secure, and user-focused web applications built around business requirements.'
+            },
+            {
+              title: 'Mobile App Development',
+              desc: 'iOS and Android applications designed to deliver seamless digital experiences.'
+            },
+            {
+              title: 'Enterprise Solutions',
+              desc: 'Business applications and platforms that simplify operations and enable growth.'
+            },
+            {
+              title: 'System Integration',
+              desc: 'Connecting applications, platforms, and data to create a seamless digital ecosystem.'
+            },
+            {
+              title: 'UI / UX Design',
+              desc: 'Intuitive, user-centric experiences designed around how people actually interact with technology.'
+            },
+            {
+              title: 'Process Automation',
+              desc: 'Digitizing and streamlining business processes to reduce manual effort and operational complexity.'
+            },
+            {
+              title: 'Digital Optimization',
+              desc: 'Continuous enhancement of applications, processes, and technology investments to maximize business value.'
+            }
+          ],
+          approach: 'Understand the business. Simplify the process. Design the experience. Build the solution. Accelerate the outcome.'
+        },
+
+        'software-testing': {
+          title: 'Software Quality Assurance',
+          icon: 'fa-vial-circle-check',
+          tagline: 'Quality engineered into every stage of delivery.',
+          subtitle: 'We help organizations reduce technology risk and deliver reliable digital solutions through comprehensive software testing and quality engineering.',
+          expertiseHeading: 'Our Quality Engineering Capabilities',
+          hoverItems: [
+            'Functional Testing',
+            'Automation Testing',
+            'Performance Testing',
+            'Security Validation',
+            'Oracle Application Testing',
+            'Integration Testing',
+            'Regression Testing'
+          ],
+          capabilities: [
+            {
+              title: 'Functional Testing',
+              desc: 'Validating business functionality, workflows, requirements, and end-to-end processes.'
+            },
+            {
+              title: 'Automation Testing',
+              desc: 'Automated testing frameworks that improve coverage, consistency, and release velocity.'
+            },
+            {
+              title: 'Performance Testing',
+              desc: 'Assessing application performance, scalability, stability, and responsiveness under varying workloads.'
+            },
+            {
+              title: 'Security Validation',
+              desc: 'Identifying security risks and validating application security controls.'
+            },
+            {
+              title: 'Oracle Application Testing',
+              desc: 'Testing Oracle applications and business processes to ensure reliable enterprise operations.'
+            },
+            {
+              title: 'Integration Testing',
+              desc: 'Validating data flow and interactions across applications, APIs, integrations, and enterprise systems.'
+            },
+            {
+              title: 'Regression Testing',
+              desc: 'Ensuring existing functionality remains stable as applications evolve and new features are introduced.'
+            }
+          ],
+          approach: 'Test early. Automate intelligently. Validate continuously. Deliver with confidence.'
+        }
+      };
+
+      // Set default selected service
+      $scope.selectedService = $scope.services['oracle'];
+
+      // Select Service Handler
+      $scope.selectService = function(serviceKey) {
+        $scope.selectedServiceKey = serviceKey;
+        $scope.selectedService = $scope.services[serviceKey];
+        $scope.isServicesOpen = false;
       };
 
       // Toggle Mobile Menu
@@ -1212,56 +1462,11 @@
         $scope.isMenuOpen = !$scope.isMenuOpen;
       };
 
-      $scope.selectService = function(serviceKey) {
-        $scope.isServicesOpen = false;
-        $scope.selectedService = $scope.services[serviceKey];
-      };
-
-      // Toggle Expandable Card on Click / Tap
-      $scope.toggleServiceCard = function(serviceKey) {
-        $scope.selectService(serviceKey);
-        $scope.expandedService = $scope.expandedService === serviceKey ? null : serviceKey;
-      };
-
-      // Smooth scroll navigation and close menu on select
+      // Smooth scroll navigation
       $scope.scrollTo = function(id) {
         $scope.isMenuOpen = false;
         $location.hash(id);
         $anchorScroll();
-      };
-
-      $scope.services = {
-        oracle: $scope.selectedService,
-        salesforce: {
-          title: 'Salesforce Platforms',
-          icon: 'fa-cloud',
-          description: 'Tailored Salesforce CRM implementations, custom integrations, and workflow automation to drive customer relationship management and business growth.',
-          benefits: [
-            'Salesforce CRM implementation and customization',
-            'Workflow automation and third-party integrations',
-            'User adoption support and platform optimization'
-          ]
-        },
-        'digital-transformation': {
-          title: 'Digital Transformation',
-          icon: 'fa-network-wired',
-          description: 'Modernizing legacy architectures through cloud adoption, modernized workflows, and enterprise application integration.',
-          benefits: [
-            'Technology and process modernization planning',
-            'Cloud adoption and enterprise application integration',
-            'Scalable workflows designed around measurable outcomes'
-          ]
-        },
-        'software-testing': {
-          title: 'Software Assurance Testing',
-          icon: 'fa-vial-circle-check',
-          description: 'Comprehensive automated and manual QA services ensuring scalable, secure, and defect-free enterprise software deployments.',
-          benefits: [
-            'Manual and automated functional testing',
-            'Regression, integration, and performance testing',
-            'Defect tracking and release-readiness support'
-          ]
-        }
       };
 
       // Reasons data
@@ -1272,31 +1477,6 @@
         { icon: 'fa-chart-line', title: 'End-to-End Transformation', desc: 'From advisory and implementation to optimization and managed services, we support the complete transformation lifecycle.' },
         { icon: 'fa-solid fa-thumbs-up', title: 'Honest Recommendations', desc: 'We recommend solutions that best serve the client\'s interests, even when that means suggesting a more cost-effective engagement model.' },
         { icon: 'fa-solid fa-handshake', title: 'Long-Term Partnership', desc: 'Our goal is to become your trusted transformation advisor—not just your implementation partner.' }
-      ];
-
-      // Work / Case studies data
-      $scope.workItems = [
-        {
-          category: 'Banking & Finance',
-          title: 'Workforce Modernization with Oracle HCM Cloud',
-          description: 'Automated HR workflows and strategic talent management analytics for global operations.',
-          metric: '70% Faster Onboarding',
-          image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=600&auto=format&fit=crop'
-        },
-        {
-          category: 'Manufacturing',
-          title: 'Salesforce CRM & Digital Transformation',
-          description: 'Streamlined multi-channel client interaction and digitized enterprise core processes.',
-          metric: '40% Increased Sales Efficiency',
-          image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop'
-        },
-        {
-          category: 'Healthcare',
-          title: 'Enterprise Software Assurance & QA Testing',
-          description: 'End-to-end testing suite for zero-downtime deployment in high-compliance environments.',
-          metric: '99.9% Defect-Free Deployment',
-          image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=600&auto=format&fit=crop'
-        }
       ];
 
       // Form handler
@@ -1323,7 +1503,7 @@
           alert('Thank you! Your message has been sent.');
         }).catch(function(err) {
           console.error(err);
-          alert('Sending failed. Please try again or email sales@assayor.com');
+          alert('Sending failed. Please try again or email reachout@assayor.com');
         });
       };
 

@@ -1452,8 +1452,11 @@
       ];
 
       $scope.form = {};
+      $scope.isSubmitting = false;
+
       $scope.submitForm = function() {
-        var FUNCTION_URL = 'https://REGION-PROJECT.cloudfunctions.net/sendContactEmail';
+        // Paste your Google Apps Script Web App URL here:
+        var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbytfrSm-XFgaEWsVplE7eXLHHfa-dIpnV30NO8WAVLjyrRNPZTUKjCEBTL96wdIOt-0/exec';
 
         var payload = {
           name: $scope.form.name,
@@ -1463,18 +1466,23 @@
           message: $scope.form.message
         };
 
-        fetch(FUNCTION_URL, {
+        $scope.isSubmitting = true;
+
+        fetch(SCRIPT_URL, {
           method: 'POST',
+          mode: 'no-cors', // Standard for Google Apps Script web endpoints to bypass CORS preflight
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
-        }).then(function(res) {
-          if (!res.ok) throw new Error('Network response was not ok');
+        }).then(function() {
           $scope.form = {};
-          try { $scope.$applyAsync && $scope.$applyAsync(); } catch(e){}
-          alert('Thank you! Your message has been sent.');
+          $scope.isSubmitting = false;
+          if (!$scope.$$phase) { $scope.$apply(); }
+          alert('Thank you! Your message has been received and our team will get in touch soon.');
         }).catch(function(err) {
           console.error(err);
-          alert('Sending failed. Please try again or email reachout@assayor.com');
+          $scope.isSubmitting = false;
+          if (!$scope.$$phase) { $scope.$apply(); }
+          alert('Submission failed. Please try again or email us directly at reachout@assayor.com');
         });
       };
 

@@ -133,7 +133,8 @@
       cursor: pointer;
     }
 
-    nav a:hover {
+    nav a:hover,
+    nav a.active {
       color: var(--accent-coral);
     }
 
@@ -375,9 +376,7 @@
       line-height: 1.25;
     }
 
-    /* ========================================================
-       Services Section: Expandable Hover/Click Cards
-       ======================================================== */
+    /* Services Section */
     .services-section {
       background-color: var(--bg-light);
       border-top: 1px solid var(--border-color);
@@ -490,7 +489,6 @@
       transform: translateY(2px);
     }
 
-    /* Expanding Details Body via CSS Grid auto-expansion */
     .service-card-details {
       display: grid;
       grid-template-rows: 0fr;
@@ -520,17 +518,6 @@
       padding: 0.8rem 1.4rem 1.4rem;
     }
 
-    .hover-section-heading {
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: var(--accent-coral);
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin-bottom: 0.75rem;
-      border-bottom: 1.5px solid #f1f5f9;
-      padding-bottom: 0.4rem;
-    }
-
     .service-card-benefits {
       list-style: none;
     }
@@ -552,9 +539,7 @@
       flex-shrink: 0;
     }
 
-    /* ========================================================
-       Deep-Dive Selected Service Details Section
-       ======================================================== */
+    /* Selected Service Details Section */
     .service-details-section {
       background-color: #ffffff;
       scroll-margin-top: 100px;
@@ -575,22 +560,6 @@
       color: #ffffff;
       padding: 2.8rem 3rem 2.2rem;
       position: relative;
-    }
-
-    .service-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(224, 86, 56, 0.15);
-      border: 1px solid rgba(224, 86, 56, 0.4);
-      color: #ff8c73;
-      padding: 0.35rem 0.9rem;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 1rem;
     }
 
     .service-details-header h2 {
@@ -704,9 +673,7 @@
       margin: 0;
     }
 
-    /* ========================================================
-       Why Choose Us Grid: Exactly 3 Columns on Web (3x2)
-       ======================================================== */
+    /* Why Choose Us Grid */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1062,6 +1029,7 @@
 
     <nav ng-class="{'nav-open': isMenuOpen}">
       <ul>
+        <li><a ng-click="scrollTo('home')" class="active">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li ng-class="{'dropdown-open': isServicesOpen}">
           <button type="button" class="services-toggle" ng-click="isServicesOpen = !isServicesOpen" aria-haspopup="true" ng-attr-aria-expanded="{{ isServicesOpen }}">
@@ -1092,6 +1060,7 @@
             </li>
           </ul>
         </li>
+        <li><a href="mission.html">Our Mission</a></li>
         <li><a ng-click="scrollTo('contact')" class="btn-contact">Contact Us</a></li>
       </ul>
     </nav>
@@ -1266,6 +1235,7 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="index.html#services">Services</a></li>
+          <li><a href="mission.html">Our Mission</a></li>
           <li><a href="index.html#contact">Contact</a></li>
         </ul>
       </div>
@@ -1297,15 +1267,13 @@
 
     app.controller('MainController', ['$scope', '$location', '$anchorScroll', function($scope, $location, $anchorScroll) {
       
-      $location.hash('');
-      window.scrollTo(0, 0);
       $scope.companyName = "ASSAYOR";
       $scope.currentYear = new Date().getFullYear();
       $scope.isMenuOpen = false;
       $scope.isServicesOpen = false;
       $scope.selectedServiceKey = 'oracle';
 
-      // Full Service Data Model matching the requested specification
+      // Service Data Model
       $scope.services = {
         'oracle': {
           title: 'Oracle Fusion HCM',
@@ -1447,29 +1415,33 @@
         }
       };
 
-      // Set default selected service
-      $scope.selectedService = $scope.services['oracle'];
+      // Handle query param deep-link from other pages (e.g., ?service=oracle)
+      var params = new URLSearchParams(window.location.search);
+      var svcParam = params.get('service');
+      if (svcParam && $scope.services[svcParam]) {
+        $scope.selectedServiceKey = svcParam;
+        $scope.selectedService = $scope.services[svcParam];
+      } else {
+        $scope.selectedService = $scope.services['oracle'];
+      }
 
-      // Select Service Handler
       $scope.selectService = function(serviceKey) {
         $scope.selectedServiceKey = serviceKey;
         $scope.selectedService = $scope.services[serviceKey];
         $scope.isServicesOpen = false;
       };
 
-      // Toggle Mobile Menu
       $scope.toggleMenu = function() {
         $scope.isMenuOpen = !$scope.isMenuOpen;
       };
 
-      // Smooth scroll navigation
       $scope.scrollTo = function(id) {
         $scope.isMenuOpen = false;
+        $scope.isServicesOpen = false;
         $location.hash(id);
         $anchorScroll();
       };
 
-      // Reasons data
       $scope.reasons = [
         { icon: 'fa-solid fa-business-time', title: 'Business-First Consulting', desc: 'We understand your business before recommending technology.' },
         { icon: 'fa-solid fa-user-tie', title: 'Experienced Leadership', desc: 'Our projects are led by highly experienced consultants with over 15 years of enterprise consulting experience, ensuring strategic direction, strong governance, and delivery excellence.' },
@@ -1479,7 +1451,6 @@
         { icon: 'fa-solid fa-handshake', title: 'Long-Term Partnership', desc: 'Our goal is to become your trusted transformation advisor—not just your implementation partner.' }
       ];
 
-      // Form handler
       $scope.form = {};
       $scope.submitForm = function() {
         var FUNCTION_URL = 'https://REGION-PROJECT.cloudfunctions.net/sendContactEmail';

@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Mission & Core Values - ASSAYOR</title>
+  
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-dark: #0a192f;
+      --secondary-dark: #112240;
+      --accent-coral: #e05638;
+      --accent-coral-hover: #c9462b;
+      --accent-blue: #0066cc;
+      --accent-blue-light: #eef5fc;
+      --text-main: #24292f;
+      --text-muted: #57606a;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 2px 4px rgba(10, 25, 47, 0.04);
+      --shadow-md: 0 10px 25px -5px rgba(10, 25, 47, 0.08);
+      --shadow-lg: 0 20px 35px -10px rgba(10, 25, 47, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --header-height: 80px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); background-color: var(--bg-white); line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    /* =========================================================
+       COMMON UNIFIED HEADER & NAVIGATION
+    ========================================================= */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      background-color: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 15px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 6%;
+      transition: all 0.3s ease;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      height: 100%;
+    }
+
+    .logo-container img {
+      height: 52px;
+      width: auto;
+      max-width: 200px;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+
+    .logo-container:hover img {
+      transform: scale(1.02);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: #f1f5f9;
+      border: 1px solid var(--border-color);
+      font-size: 1.3rem;
+      color: var(--primary-dark);
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav li {
+      position: relative;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--primary-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.25s ease;
+      cursor: pointer;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--accent-coral);
+    }
+
+    .services-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 0;
+      border: 0;
+      background: transparent;
+      color: var(--primary-dark);
+      font: inherit;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: color 0.25s ease;
+    }
+
+    .services-toggle:hover,
+    .services-toggle:focus-visible {
+      color: var(--accent-coral);
+    }
+
+    .services-toggle i {
+      font-size: 0.75rem;
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown-open > .services-toggle i {
+      transform: rotate(180deg);
+    }
+
+    .services-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: -100px;
+      display: block;
+      width: min(880px, calc(100vw - 40px));
+      padding: 0;
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 1001;
+      overflow: hidden;
+    }
+
+    .services-dropdown > .mega-menu {
+      width: 100%;
+    }
+
+    .mega-menu {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 380px;
+      list-style: none;
+    }
+
+    .mega-menu-sidebar {
+      display: flex;
+      flex-direction: column;
+      padding: 30px 22px;
+      background: #0f172a;
+    }
+
+    .mega-menu-tab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      background: #1e293b;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+    }
+
+    .mega-menu-content {
+      padding: 30px;
+      background: #ffffff;
+    }
+
+    .mega-menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .mega-service-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 1.35rem;
+      border-radius: var(--radius-md);
+      background: #f8fafc;
+      border: 1px solid #edf2f7;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .mega-service-card:hover,
+    .mega-service-card:focus-visible {
+      background: var(--accent-blue-light);
+      border-color: rgba(0, 102, 204, 0.2);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+      outline: none;
+    }
+
+    .mega-service-card strong {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--accent-blue);
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .mega-service-card strong::before {
+      content: '\2192';
+      font-size: 1.15rem;
+      transition: transform 0.2s ease;
+    }
+
+    .mega-service-card:hover strong::before {
+      transform: translateX(4px);
+    }
+
+    .mega-service-card p {
+      margin-top: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.45;
+    }
+
+    nav li:hover > .services-dropdown,
+    nav li:focus-within > .services-dropdown,
+    nav li.dropdown-open > .services-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .btn-contact {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff !important;
+      padding: 0.65rem 1.4rem;
+      border-radius: 50px;
+      font-weight: 600;
+      display: inline-block;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-contact:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+    }
+
+    /* Hero Banner */
+    .mission-hero {
+      margin-top: var(--header-height);
+      background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+      color: #ffffff;
+      padding: 5.5rem 6% 4.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .mission-hero h4 {
+      text-transform: uppercase;
+      color: var(--accent-coral);
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 0.8rem;
+    }
+
+    .mission-hero h1 {
+      font-size: clamp(2rem, 3.5vw + 1rem, 3.1rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+
+    .mission-hero p {
+      max-width: 780px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      line-height: 1.65;
+    }
+
+    /* Common Section Wrapper */
+    .section-wrapper {
+      padding: 5rem 6%;
+    }
+
+    .container-boxed {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      max-width: 820px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-title h4 {
+      text-transform: uppercase;
+      color: var(--accent-coral);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.8rem, 2.5vw + 1rem, 2.3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--primary-dark);
+      line-height: 1.25;
+    }
+
+    /* Mission Overview */
+    .mission-overview-section {
+      background: var(--bg-white);
+    }
+
+    .mission-overview-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .mission-prose p {
+      font-size: 1.02rem;
+      color: var(--text-main);
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+    }
+
+    .mission-highlight-card {
+      background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      box-shadow: var(--shadow-md);
+      border-left: 5px solid var(--accent-coral);
+    }
+
+    .mission-highlight-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffdca8;
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .mission-pillars-list {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .mission-pillars-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #f8fafc;
+      margin-bottom: 0.85rem;
+    }
+
+    .mission-pillars-list li i {
+      color: var(--accent-coral);
+      font-size: 1.05rem;
+    }
+
+    .mission-quote-box {
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 1.1rem;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    /* Mission Statement Banner */
+    .mission-statement-card {
+      margin-top: 3.5rem;
+      background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+      border: 1.5px solid #bfdbfe;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 3rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .statement-tag {
+      display: inline-block;
+      background: var(--accent-blue);
+      color: #ffffff;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .statement-text {
+      font-size: clamp(1.1rem, 1.5vw + 0.8rem, 1.35rem);
+      font-weight: 700;
+      color: var(--primary-dark);
+      line-height: 1.6;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* Core Values 8 Tiles */
+    .values-section {
+      background: var(--bg-light);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .values-intro {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 3rem;
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .value-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.8rem 1.5rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(0, 102, 204, 0.35);
+    }
+
+    .value-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+    }
+
+    .value-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-blue-light);
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    .value-card:hover .value-icon {
+      background: var(--accent-coral);
+      color: #ffffff;
+    }
+
+    .value-num {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #cbd5e1;
+    }
+
+    .value-card h3 {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .value-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .value-card p + p {
+      margin-top: 0.5rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-dark);
+      color: #94a3b8;
+      padding: 4.5rem 6% 2.5rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .footer-brand h3 {
+      color: #ffffff;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      font-weight: 800;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      max-width: 320px;
+    }
+
+    .footer-links h4 {
+      color: #ffffff;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 0.75rem; }
+    .footer-links a { color: #94a3b8; text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease; }
+    .footer-links a:hover { color: #ffffff; }
+    .footer-links li i { margin-right: 8px; color: var(--accent-coral); }
+
+    .copyright {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 2rem;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1024px) {
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 860px) {
+      .mission-overview-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --header-height: 70px; }
+      .logo-container img { height: 40px; }
+      .menu-toggle { display: flex; }
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        border-bottom: 1px solid var(--border-color);
+        display: none;
+        padding: 1.2rem 0;
+      }
+      nav.nav-open { display: block; }
+      nav ul { flex-direction: column; gap: 0; align-items: stretch; }
+      nav ul li { width: 100%; }
+      nav a, .services-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0.9rem 6%;
+        border-bottom: 1px solid #f1f5f9;
+        font-size: 1rem;
+      }
+      nav.nav-open .services-dropdown {
+        position: static;
+        display: none;
+        width: 100%;
+        box-shadow: none;
+        border: 0;
+        border-radius: 0;
+        transform: none;
+        background: #f8fafc;
+      }
+      nav.nav-open li.dropdown-open > .services-dropdown {
+        display: block;
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .mega-menu { display: block; min-height: 0; }
+      .mega-menu-sidebar { display: none; }
+      .mega-menu-content { padding: 1rem 6%; background: transparent; }
+      .mega-menu-grid { grid-template-columns: 1fr; gap: 10px; }
+      .mega-service-card { background: #ffffff; padding: 1rem; border-radius: var(--radius-sm); }
+      .btn-contact { margin: 1.2rem 6% 0.5rem; display: block; text-align: center; border-radius: var(--radius-sm); }
+      .values-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .mission-statement-card { padding: 2rem 1.4rem; }
+      .section-wrapper { padding: 3.5rem 5%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header>
+    <a class="logo-container" href="index.html" aria-label="ASSAYOR Home">
+      <img src="./images/logo_new.jpg" alt="ASSAYOR Company Logo">
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav id="navMenu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li class="services-dropdown-parent" id="servicesDropdownParent">
+          <button type="button" class="services-toggle" id="servicesToggle" aria-haspopup="true" aria-expanded="false">
+            <span>Services</span>
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <ul class="services-dropdown">
+            <li class="mega-menu">
+              <div class="mega-menu-sidebar">
+                <div class="mega-menu-tab active">Service Offerings</div>
+              </div>
+              <div class="mega-menu-content">
+                <div class="mega-menu-grid">
+                  <a class="mega-service-card" href="index.html?service=oracle#service-details">
+                    <strong>Oracle Fusion HCM</strong>
+                    <p>Transform workforce operations with connected Oracle HCM Cloud solutions.</p>
+                  </a>
+                  <a class="mega-service-card" href="index.html?service=digital-transformation#service-details">
+                    <strong>Digital Transformation</strong>
+                    <p>Turning ideas into scalable web, mobile, and enterprise digital experiences.</p>
+                  </a>
+                  <a class="mega-service-card" href="index.html?service=software-testing#service-details">
+                    <strong>Software Quality Assurance</strong>
+                    <p>Quality engineered into every stage of delivery for reliable software.</p>
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li><a href="mission.html" class="active">Our Mission</a></li>
+        <li><a href="index.html#contact" class="btn-contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="mission-hero">
+    <h4>Driven by Purpose</h4>
+    <h1>Our Mission &amp; Core Values</h1>
+    <p>Delivering Business Value Through Intelligent Consulting</p>
+  </section>
+
+  <main>
+    <!-- SECTION 1: MISSION OVERVIEW -->
+    <section class="section-wrapper mission-overview-section">
+      <div class="container-boxed">
+        
+        <div class="mission-overview-grid">
+          <div class="mission-prose">
+            <div style="margin-bottom: 1.5rem;">
+              <span style="text-transform: uppercase; color: var(--accent-coral); font-weight: 800; font-size: 0.85rem; letter-spacing: 1.5px;">Strategic Vision</span>
+              <h2 style="font-size: 2rem; font-weight: 800; color: var(--primary-dark); margin-top: 0.3rem;">Improve the Business — Not Just the System</h2>
+            </div>
+            <p>At Assayor, our mission extends beyond implementing technology. Our purpose is to help organizations understand their business challenges, identify opportunities for improvement, and design transformation strategies that create sustainable business value.</p>
+            <p>Every engagement is guided by one simple objective: <strong>Deliver solutions that improve the business—not just the system.</strong></p>
+            <p>We are committed to partnering with our clients throughout their transformation journey by combining strategic consulting, deep technology expertise, structured execution, and continuous improvement.</p>
+          </div>
+
+          <div class="mission-highlight-card">
+            <h3>Our Consistent Commitment</h3>
+            <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 1.2rem;">Whether implementing Oracle Fusion HCM, enabling Digital Transformation, or delivering Quality Engineering services:</p>
+            <ul class="mission-pillars-list">
+              <li><i class="fa-solid fa-circle-check"></i> Understand the business.</li>
+              <li><i class="fa-solid fa-circle-check"></i> Simplify complexity.</li>
+              <li><i class="fa-solid fa-circle-check"></i> Optimize processes.</li>
+              <li><i class="fa-solid fa-circle-check"></i> Deliver measurable outcomes.</li>
+              <li><i class="fa-solid fa-circle-check"></i> Build long-term partnerships.</li>
+            </ul>
+            <div class="mission-quote-box">
+              "We believe every successful project should leave the client's business stronger than before."
+            </div>
+          </div>
+        </div>
+
+        <!-- Mission Statement Banner -->
+        <div class="mission-statement-card">
+          <span class="statement-tag">Mission Statement</span>
+          <p class="statement-text">
+            "To help organizations achieve sustainable business growth by combining strategic consulting, technology excellence, and structured execution that delivers measurable business outcomes."
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: OUR 8 CORE VALUES -->
+    <section class="section-wrapper values-section">
+      <div class="container-boxed">
+        
+        <div class="section-title">
+          <h4>Guiding Principles</h4>
+          <h2>Our Core Values</h2>
+        </div>
+
+        <p class="values-intro">
+          At Assayor, our values define how we think, how we collaborate, and how we serve our clients. They represent the principles that guide every decision, every engagement, and every relationship we build.
+        </p>
+
+        <!-- 8 Core Values Grid -->
+        <div class="values-grid">
+          
+          <!-- Value 1 -->
+          <div class="value-card">
+            <div class="value-card-top">
+              <div class="value-icon"><i class="fa-solid fa-briefcase"></i></div>
+              <span class="value-num">01</span>
+            </div>
+            <h3>Business First</h3>
+            <p>Every recommendation begins with understanding the client's business.</p>
+            <p>We believe technology should always support business strategy—not dictate it.</p>
+          </div>
+
+          <!-- Value 2 -->
+          <div class="value-card">
+            <div class="value-card-top">
+              <div class="value-icon"><i class="fa-solid fa-trophy"></i></div>
+              <span class="value-num">02</span>
+            </div>
+            <h3>Customer Success</h3>
+            <p>Our success is measured by the success of our clients.</p>
+            <p>We strive to become long-term partners who contribute to our clients' growth rather than short-term service providers.</p>
+          </div>
+
+          <!-- Value 3 -->
+          <div class="value-card">
+            <div class="value-card-top">
+              <div class="value-icon"><i class="fa-solid fa-lightbulb"></i></div>
+              <span class="value-num">03</span>
+            </div>
+            <h3>Innovation</h3>
+            <p>We continuously explore better ways to solve business challenges.</p>
+            <p>Innovation is not limited to technology—it includes new ideas, better processes, improved methodologies, and smarter ways of working.</p>
+          </div>
+
+          <!-- Value 4 -->
+          <div class="value-card">
+            <div class="value-card-top">
+              <div class="value-icon"><i class="fa-solid fa-user-shield"></i></div>
+              <span class="value-num">04</span>
+            </div>
+            <h3>Ownership</h3>
+            <p>We take responsibility for every commitment we make. Challenges are not transferred—they are solved.</p>
+            <p>Every consultant at Assayor is expected to think and act like a business owner.</p>
+          </div>
+
+          <!-- Value 5 -->
+          <div class="value-card">
+            <div class="value-card-top">
+              <div class="value-icon"><i class="fa-solid fa-eye"></i></div>
+              <span class="value-num">05</span>
+            </div>
+            <h3>Transparency</h3>
+            <p>Trust is built through honesty. We maintain open communication, clear expectations, and complete visibility throughout every engagement.</p>
+            <p>Our clients always know what we are doing, why we are doing it, and how it contributes to their business objectives.</p>
+          </div>
+
+          <!-- Value 6 -->
+          <div class="value-card">
+            <div class="value-card-top">
+              <div class="value-icon"><i class="fa-solid fa-handshake"></i></div>
+              <span class="value-num">06</span>
+            </div>
+            <h3>Collaboration</h3>
+            <p>Transformation succeeds when people work together.</p>
+            <p>We build collaborative relationships across business teams, leadership, technology partners, and stakeholders to create practical and widely adopted solutions.</p>
+          </div>
+
+          <!-- Value 7 -->
+          <div class="value-card">
+            <div class="value-card-top">
+              <div class="value-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+              <span class="value-num">07</span>
+            </div>
+            <h3>Continuous Improvement</h3>
+            <p>Business transformation never truly ends.</p>
+            <p>We embrace a culture of learning, optimization, and continuous improvement to ensure that our clients continue to realize value long after implementation.</p>
+          </div>
+
+          <!-- Value 8 -->
+          <div class="value-card">
+            <div class="value-card-top">
+              <div class="value-icon"><i class="fa-solid fa-award"></i></div>
+              <span class="value-num">08</span>
+            </div>
+            <h3>Quality Without Compromise</h3>
+            <p>Quality is not an activity. It is a mindset.</p>
+            <p>Every deliverable, recommendation, implementation, and interaction reflects our commitment to excellence.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>ASSAYOR</h3>
+        <p>Empowering businesses with cutting-edge IT solutions, high-reliability software testing, and tailored support.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="mission.html">Our Mission</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="index.html?service=oracle#service-details">Oracle Fusion HCM</a></li>
+          <li><a href="index.html?service=digital-transformation#service-details">Digital Transformation</a></li>
+          <li><a href="index.html?service=software-testing#service-details">Quality Assurance</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact Info</h4>
+        <ul>
+          <li><i class="fa-solid fa-envelope"></i> reachout@assayor.com</li>
+          <li><i class="fa-solid fa-phone"></i> +91 7745816110</li>
+          <li><i class="fa-solid fa-location-dot"></i> DSK Vishwa, Pune, Maharashtra 411041</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2026 ASSAYOR. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const menuToggle = document.getElementById('menuToggle');
+      const navMenu = document.getElementById('navMenu');
+
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function () {
+          navMenu.classList.toggle('nav-open');
+          const icon = menuToggle.querySelector('i');
+          if (navMenu.classList.contains('nav-open')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-xmark');
+          } else {
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+          }
+        });
+      }
+
+      // Services Dropdown Mobile Click Toggle
+      const servicesToggle = document.getElementById('servicesToggle');
+      const servicesDropdownParent = document.getElementById('servicesDropdownParent');
+      if (servicesToggle && servicesDropdownParent) {
+        servicesToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          servicesDropdownParent.classList.toggle('dropdown-open');
+          const isExpanded = servicesDropdownParent.classList.contains('dropdown-open');
+          servicesToggle.setAttribute('aria-expanded', isExpanded);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

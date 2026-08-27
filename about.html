@@ -1,45 +1,62 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - ASSAYOR</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
     :root {
       --primary-dark: #0a192f;
-      --primary-card: #172a45;
+      --secondary-dark: #112240;
       --accent-coral: #e05638;
-      --accent-blue: #0071e3;
+      --accent-coral-hover: #c9462b;
+      --accent-blue: #0066cc;
+      --accent-blue-light: #eef5fc;
       --accent-orange: #ea580c;
-      --text-main: #334155;
+      --text-main: #24292f;
+      --text-muted: #57606a;
       --text-light: #64748b;
       --bg-light: #f8fafc;
-      --white: #ffffff;
+      --bg-white: #ffffff;
       --border-color: #e2e8f0;
+      --shadow-sm: 0 2px 4px rgba(10, 25, 47, 0.04);
+      --shadow-md: 0 10px 25px -5px rgba(10, 25, 47, 0.08);
+      --shadow-lg: 0 20px 35px -10px rgba(10, 25, 47, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --header-height: 80px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; color: var(--text-main); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); background: var(--bg-white); line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
     /* =========================================================
-       HEADER & NAVIGATION
+       COMMON UNIFIED HEADER & NAVIGATION
     ========================================================= */
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+      height: var(--header-height);
+      background-color: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 15px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
       z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.75rem 5%;
-      height: 74px;
+      padding: 0 6%;
+      transition: all 0.3s ease;
     }
 
     .logo-container {
@@ -52,7 +69,28 @@
     .logo-container img {
       height: 52px;
       width: auto;
+      max-width: 200px;
       object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+
+    .logo-container:hover img {
+      transform: scale(1.02);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: #f1f5f9;
+      border: 1px solid var(--border-color);
+      font-size: 1.3rem;
+      color: var(--primary-dark);
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
     }
 
     nav ul {
@@ -62,95 +100,193 @@
       align-items: center;
     }
 
+    nav li {
+      position: relative;
+    }
+
     nav a {
       text-decoration: none;
       color: var(--primary-dark);
       font-weight: 600;
       font-size: 0.95rem;
-      transition: color 0.2s ease;
+      transition: color 0.25s ease;
+      cursor: pointer;
     }
 
     nav a:hover, nav a.active {
       color: var(--accent-coral);
     }
 
+    .services-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 0;
+      border: 0;
+      background: transparent;
+      color: var(--primary-dark);
+      font: inherit;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: color 0.25s ease;
+    }
+
+    .services-toggle:hover,
+    .services-toggle:focus-visible {
+      color: var(--accent-coral);
+    }
+
+    .services-toggle i {
+      font-size: 0.75rem;
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown-open > .services-toggle i {
+      transform: rotate(180deg);
+    }
+
+    .services-dropdown {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: -100px;
+      display: block;
+      width: min(880px, calc(100vw - 40px));
+      padding: 0;
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 1001;
+      overflow: hidden;
+    }
+
+    .services-dropdown > .mega-menu {
+      width: 100%;
+    }
+
+    .mega-menu {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 380px;
+      list-style: none;
+    }
+
+    .mega-menu-sidebar {
+      display: flex;
+      flex-direction: column;
+      padding: 30px 22px;
+      background: #0f172a;
+    }
+
+    .mega-menu-tab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      background: #1e293b;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+    }
+
+    .mega-menu-content {
+      padding: 30px;
+      background: #ffffff;
+    }
+
+    .mega-menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .mega-service-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 1.35rem;
+      border-radius: var(--radius-md);
+      background: #f8fafc;
+      border: 1px solid #edf2f7;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .mega-service-card:hover,
+    .mega-service-card:focus-visible {
+      background: var(--accent-blue-light);
+      border-color: rgba(0, 102, 204, 0.2);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+      outline: none;
+    }
+
+    .mega-service-card strong {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--accent-blue);
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .mega-service-card strong::before {
+      content: '\2192';
+      font-size: 1.15rem;
+      transition: transform 0.2s ease;
+    }
+
+    .mega-service-card:hover strong::before {
+      transform: translateX(4px);
+    }
+
+    .mega-service-card p {
+      margin-top: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.45;
+    }
+
+    nav li:hover > .services-dropdown,
+    nav li:focus-within > .services-dropdown,
+    nav li.dropdown-open > .services-dropdown {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
     .btn-contact {
-      background: var(--accent-coral);
-      color: #fff !important;
-      padding: 0.55rem 1.25rem;
-      border-radius: 6px;
-      transition: background 0.2s ease, transform 0.2s ease !important;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff !important;
+      padding: 0.65rem 1.4rem;
+      border-radius: 50px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s !important;
+      display: inline-block;
     }
 
     .btn-contact:hover {
-      background: #c2410c;
-      transform: translateY(-1px);
-    }
-
-    /* Mobile Menu Toggle */
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--primary-dark);
-      cursor: pointer;
-      padding: 6px;
-    }
-
-    @media (max-width: 860px) {
-      .mobile-menu-btn {
-        display: block;
-      }
-
-      nav {
-        position: fixed;
-        top: 74px;
-        left: 0;
-        width: 100%;
-        background: #ffffff;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-        border-top: 1px solid var(--border-color);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      nav.is-open {
-        max-height: 360px;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 0;
-        padding: 1rem 5% 1.5rem;
-        align-items: flex-start;
-      }
-
-      nav ul li {
-        width: 100%;
-      }
-
-      nav a {
-        display: block;
-        padding: 0.8rem 0;
-        border-bottom: 1px solid #f1f5f9;
-        font-size: 1.05rem;
-      }
-
-      .btn-contact {
-        display: inline-block;
-        margin-top: 0.8rem;
-        text-align: center;
-        width: 100%;
-      }
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+      background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
     }
 
     /* =========================================================
        HERO SECTION
     ========================================================= */
     .hero-section {
-      margin-top: 74px;
+      margin-top: var(--header-height);
       min-height: 60vh;
       display: flex;
       align-items: center;
@@ -224,9 +360,7 @@
       .hero-content .hero-logo img { height: 70px; }
     }
 
-    /* =========================================================
-       SECTION SYSTEM & HEADINGS
-    ========================================================= */
+    /* Section Wrappers */
     .section-wrapper {
       padding: 4.5rem 5%;
     }
@@ -253,9 +387,7 @@
       line-height: 1.3;
     }
 
-    /* =========================================================
-       WHO WE ARE
-    ========================================================= */
+    /* Who We Are */
     .about-details-section {
       background: #ffffff;
     }
@@ -319,13 +451,7 @@
       font-weight: 500;
     }
 
-    @media (max-width: 900px) {
-      .who-we-are-grid { grid-template-columns: 1fr; gap: 2rem; }
-    }
-
-    /* =========================================================
-       OUR PERSPECTIVE
-    ========================================================= */
+    /* Our Perspective */
     .perspective-section {
       background: #f8fafc;
       border-top: 1px solid var(--border-color);
@@ -360,13 +486,7 @@
       color: var(--text-main);
     }
 
-    @media (max-width: 768px) {
-      .perspective-card-grid { grid-template-columns: 1fr; }
-    }
-
-    /* =========================================================
-       OUR INSIGHTS & WHY TRANSFORMATIONS FAIL
-    ========================================================= */
+    /* Insights */
     .insight-section {
       background: #ffffff;
     }
@@ -391,9 +511,6 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 18px;
     }
-
-    @media (max-width: 1100px) { .color-tiles-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .color-tiles-grid { grid-template-columns: 1fr; } }
 
     .color-tile {
       perspective: 1000px;
@@ -497,9 +614,7 @@
     .color-tile.is-flipped .ct-front { pointer-events: none; }
     .color-tile.is-flipped .ct-back { pointer-events: auto; }
 
-    /* =========================================================
-       THE ASSAYOR METHOD™ (REVAMPED 3 PHASES)
-    ========================================================= */
+    /* The Assayor Method (Revamped 3 Phases) */
     .assayor-method-section {
       padding: 5rem 5%;
       background: #f8fafc;
@@ -706,22 +821,7 @@
       font-weight: 700;
     }
 
-    @media (max-width: 992px) {
-      .method-phases-grid {
-        grid-template-columns: 1fr;
-        gap: 1.8rem;
-      }
-      .method-promise-card {
-        padding: 2rem 1.5rem;
-      }
-      .method-promise-lead {
-        font-size: 1.15rem;
-      }
-    }
-
-    /* =========================================================
-       THE ASSAYOR CONSULTING FRAMEWORK
-    ========================================================= */
+    /* Framework Section */
     .framework-section {
       padding: 5rem 5%;
       background: #ffffff;
@@ -857,21 +957,7 @@
       margin-bottom: 0.35rem;
     }
 
-    @media (max-width: 1024px) {
-      .fw-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-      .fw-arrow { display: none; }
-    }
-
-    @media (max-width: 680px) {
-      .fw-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-      .fw-node-wrap { margin-bottom: 0.8rem; }
-      .fw-card { min-height: auto; }
-      .fw-pill-sequence { font-size: 0.95rem; }
-    }
-
-    /* =========================================================
-       COMMITMENT & SUCCESS SECTION
-    ========================================================= */
+    /* Commitment Section */
     .commitment-section {
       padding: 5rem 5%;
       background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
@@ -965,92 +1051,141 @@
       color: #ffffff;
     }
 
-    @media (max-width: 960px) {
-      .commitment-card { grid-template-columns: 1fr; padding: 2.25rem; gap: 2rem; }
-    }
-
-    @media (max-width: 640px) {
-      .commitment-section { padding: 3.5rem 5%; }
-      .commitment-card { padding: 1.75rem; }
-      .commitment-text h2 { font-size: 1.6rem; }
-    }
-
-    /* =========================================================
-       FOOTER
-    ========================================================= */
+    /* Footer */
     footer {
       background: var(--primary-dark);
       color: #a8b2d1;
-      padding: 3.5rem 5% 2rem;
+      padding: 4.5rem 6% 2.5rem;
     }
 
-    .footer-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-bottom: 3.5rem;
     }
 
     .footer-brand h3 {
       color: #ffffff;
+      margin-bottom: 1rem;
       font-size: 1.4rem;
       font-weight: 800;
-      margin-bottom: 0.6rem;
+      letter-spacing: 0.5px;
     }
 
     .footer-brand p {
-      max-width: 340px;
-      color: #94a3b8;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       line-height: 1.6;
+      max-width: 320px;
     }
 
     .footer-links h4 {
       color: #ffffff;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
       font-weight: 700;
     }
 
-    .footer-links ul {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-links a {
-      color: #94a3b8;
-      text-decoration: none;
-      font-size: 0.92rem;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: #ffffff;
-    }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 0.75rem; }
+    .footer-links a { color: #94a3b8; text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-links a:hover { color: #ffffff; }
+    .footer-links li i { margin-right: 8px; color: var(--accent-coral); }
 
     .footer-bottom {
       text-align: center;
-      margin-top: 3rem;
-      padding-top: 1.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 2rem;
       font-size: 0.85rem;
       color: #64748b;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1024px) {
+      .fw-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+      .fw-arrow { display: none; }
+      .color-tiles-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 992px) {
+      .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    }
+
+    @media (max-width: 900px) {
+      .who-we-are-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .perspective-card-grid { grid-template-columns: 1fr; }
+      .commitment-card { grid-template-columns: 1fr; padding: 2.25rem; gap: 2rem; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --header-height: 70px; }
+      .logo-container img { height: 40px; }
+      .menu-toggle { display: flex; }
+      
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        border-bottom: 1px solid var(--border-color);
+        display: none;
+        padding: 1.2rem 0;
+      }
+      nav.nav-open { display: block; }
+      nav ul { flex-direction: column; gap: 0; align-items: stretch; }
+      nav ul li { width: 100%; }
+      nav a, .services-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0.9rem 6%;
+        border-bottom: 1px solid #f1f5f9;
+        font-size: 1rem;
+      }
+      nav.nav-open .services-dropdown {
+        position: static;
+        display: none;
+        width: 100%;
+        box-shadow: none;
+        border: 0;
+        border-radius: 0;
+        transform: none;
+        background: #f8fafc;
+      }
+      nav.nav-open li.dropdown-open > .services-dropdown {
+        display: block;
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .mega-menu { display: block; min-height: 0; }
+      .mega-menu-sidebar { display: none; }
+      .mega-menu-content { padding: 1rem 6%; background: transparent; }
+      .mega-menu-grid { grid-template-columns: 1fr; gap: 10px; }
+      .mega-service-card { background: #ffffff; padding: 1rem; border-radius: var(--radius-sm); }
+      .btn-contact { margin: 1.2rem 6% 0.5rem; display: block; text-align: center; border-radius: var(--radius-sm); }
+      .color-tiles-grid { grid-template-columns: 1fr; }
+      .fw-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .fw-node-wrap { margin-bottom: 0.8rem; }
+      .fw-card { min-height: auto; }
+      .fw-pill-sequence { font-size: 0.95rem; }
+      .commitment-card { padding: 1.75rem; }
+      .commitment-text h2 { font-size: 1.6rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER / NAV -->
+  <!-- Navigation Header -->
   <header>
     <a class="logo-container" href="index.html" aria-label="ASSAYOR Home">
       <img src="./images/logo_new.jpg" alt="ASSAYOR Company Logo">
     </a>
     
-    <button class="mobile-menu-btn" aria-label="Toggle navigation menu" id="mobileMenuBtn">
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
       <i class="fa-solid fa-bars"></i>
     </button>
 
@@ -1058,14 +1193,42 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html" class="active">About Us</a></li>
-        <li><a href="index.html#services">Services</a></li>
-        <!-- <li><a href="index.html#work">Our Work</a></li> -->
+        <li class="services-dropdown-parent" id="servicesDropdownParent">
+          <button type="button" class="services-toggle" id="servicesToggle" aria-haspopup="true" aria-expanded="false">
+            <span>Services</span>
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <ul class="services-dropdown">
+            <li class="mega-menu">
+              <div class="mega-menu-sidebar">
+                <div class="mega-menu-tab active">Service Offerings</div>
+              </div>
+              <div class="mega-menu-content">
+                <div class="mega-menu-grid">
+                  <a class="mega-service-card" href="index.html?service=oracle#service-details">
+                    <strong>Oracle Fusion HCM</strong>
+                    <p>Transform workforce operations with connected Oracle HCM Cloud solutions.</p>
+                  </a>
+                  <a class="mega-service-card" href="index.html?service=digital-transformation#service-details">
+                    <strong>Digital Transformation</strong>
+                    <p>Turning ideas into scalable web, mobile, and enterprise digital experiences.</p>
+                  </a>
+                  <a class="mega-service-card" href="index.html?service=software-testing#service-details">
+                    <strong>Software Quality Assurance</strong>
+                    <p>Quality engineered into every stage of delivery for reliable software.</p>
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li><a href="mission.html">Our Mission</a></li>
         <li><a href="index.html#contact" class="btn-contact">Contact Us</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-content">
       <div class="hero-logo">
@@ -1308,7 +1471,6 @@
           <p style="font-weight: 800; color: var(--accent-coral); font-size: 1.15rem; letter-spacing: 0.5px;">Assay • Architect • Accelerate</p>
         </div>
 
-        <!-- Highlighted Promise Card -->
         <div class="method-promise-card">
           <span class="method-promise-tag">The Assayor Promise Within the Method</span>
           <p class="method-promise-lead">
@@ -1317,7 +1479,6 @@
           <p class="method-promise-sub">Every client engagement follows three structured phases.</p>
         </div>
 
-        <!-- Three Structured Phases Grid -->
         <div class="method-phases-grid">
           
           <!-- Phase 1: ASSAY -->
@@ -1608,7 +1769,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-container">
+    <div class="footer-grid">
       <div class="footer-brand">
         <h3>ASSAYOR</h3>
         <p>Empowering businesses with cutting-edge IT solutions, high-reliability software testing, and tailored support.</p>
@@ -1619,7 +1780,24 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="index.html#services">Services</a></li>
-          <li><a href="index.html#work">Our Work</a></li>
+          <li><a href="mission.html">Our Mission</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="index.html?service=oracle#service-details">Oracle Fusion HCM</a></li>
+          <li><a href="index.html?service=digital-transformation#service-details">Digital Transformation</a></li>
+          <li><a href="index.html?service=software-testing#service-details">Quality Assurance</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact Info</h4>
+        <ul>
+          <li><i class="fa-solid fa-envelope"></i> reachout@assayor.com</li>
+          <li><i class="fa-solid fa-phone"></i> +91 7745816110</li>
+          <li><i class="fa-solid fa-location-dot"></i> DSK Vishwa, Pune, Maharashtra 411041</li>
         </ul>
       </div>
     </div>
@@ -1632,14 +1810,14 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       // 1. Mobile Hamburger Menu Toggle
-      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const menuToggle = document.getElementById('menuToggle');
       const navMenu = document.getElementById('navMenu');
 
-      if (mobileBtn && navMenu) {
-        mobileBtn.addEventListener('click', function () {
-          navMenu.classList.toggle('is-open');
-          const icon = mobileBtn.querySelector('i');
-          if (navMenu.classList.contains('is-open')) {
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function () {
+          navMenu.classList.toggle('nav-open');
+          const icon = menuToggle.querySelector('i');
+          if (navMenu.classList.contains('nav-open')) {
             icon.classList.remove('fa-bars');
             icon.classList.add('fa-xmark');
           } else {
@@ -1649,7 +1827,19 @@
         });
       }
 
-      // 2. Flip Tiles (Why Transformations Fail)
+      // 2. Services Dropdown Mobile Click Toggle
+      const servicesToggle = document.getElementById('servicesToggle');
+      const servicesDropdownParent = document.getElementById('servicesDropdownParent');
+      if (servicesToggle && servicesDropdownParent) {
+        servicesToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          servicesDropdownParent.classList.toggle('dropdown-open');
+          const isExpanded = servicesDropdownParent.classList.contains('dropdown-open');
+          servicesToggle.setAttribute('aria-expanded', isExpanded);
+        });
+      }
+
+      // 3. Flip Tiles (Why Transformations Fail)
       const flipTiles = Array.prototype.slice.call(
         document.querySelectorAll('.color-tiles-grid .color-tile')
       );

@@ -454,7 +454,6 @@
       text-align: left;
     }
 
-    /* Card Themes */
     .tile-rust .ct-front, .tile-rust .ct-back { background: linear-gradient(145deg, #c04329 0%, #a8321c 100%); }
     .tile-orange .ct-front, .tile-orange .ct-back { background: linear-gradient(145deg, #cd7c2b 0%, #b8671b 100%); }
 
@@ -493,108 +492,231 @@
       color: var(--primary-dark);
     }
 
-    /* Flip Pointer handling */
     .ct-front { pointer-events: auto; }
     .ct-back { pointer-events: none; }
     .color-tile.is-flipped .ct-front { pointer-events: none; }
     .color-tile.is-flipped .ct-back { pointer-events: auto; }
 
     /* =========================================================
-       THE ASSAYOR METHOD (COLLAPSIBLE ACCORDION TILES)
+       THE ASSAYOR METHOD™ (REVAMPED 3 PHASES)
     ========================================================= */
     .assayor-method-section {
-      padding: 4.5rem 5%;
+      padding: 5rem 5%;
       background: #f8fafc;
+      border-top: 1px solid var(--border-color);
     }
 
-    .am-tiles-grid {
+    .method-promise-card {
+      max-width: 860px;
+      margin: 0 auto 3.5rem;
+      background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
+      border-radius: 18px;
+      padding: 2.2rem 2.8rem;
+      text-align: center;
+      color: #ffffff;
+      box-shadow: 0 12px 30px rgba(10, 25, 47, 0.12);
+      border-left: 6px solid var(--accent-coral);
+    }
+
+    .method-promise-tag {
+      display: inline-block;
+      text-transform: uppercase;
+      color: #ffdca8;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.8rem;
+    }
+
+    .method-promise-lead {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+
+    .method-promise-lead span {
+      color: var(--accent-coral);
+    }
+
+    .method-promise-sub {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+
+    .method-phases-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      align-items: start;
+      gap: 2rem;
+      align-items: stretch;
     }
 
-    @media (max-width: 900px) { .am-tiles-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .am-tiles-grid { grid-template-columns: 1fr; } }
-
-    .am-tile {
+    .phase-card {
       background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 14px rgba(10, 25, 47, 0.05);
+      border-radius: 16px;
       border: 1px solid var(--border-color);
-      overflow: hidden;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .am-tile:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(10, 25, 47, 0.09);
-    }
-
-    .am-tile-header {
-      width: 100%;
+      box-shadow: 0 6px 20px rgba(10, 25, 47, 0.05);
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.25rem 1.25rem;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      text-align: left;
-      font-family: inherit;
-      gap: 12px;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative;
     }
 
-    .am-tile-header h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
+    .phase-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(10, 25, 47, 0.1);
+      border-color: rgba(224, 86, 56, 0.3);
+    }
+
+    .phase-card-header {
+      padding: 1.8rem 1.6rem 1.4rem;
+      border-bottom: 1px solid #f1f5f9;
+      background: linear-gradient(180deg, #ffffff 0%, #fafcff 100%);
+    }
+
+    .phase-card-1 .phase-badge { background: #fff1ee; color: var(--accent-coral); border: 1px solid #fed7aa; }
+    .phase-card-2 .phase-badge { background: #eff6ff; color: var(--accent-blue); border: 1px solid #bfdbfe; }
+    .phase-card-3 .phase-badge { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+
+    .phase-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0.35rem 0.85rem;
+      border-radius: 50px;
+      margin-bottom: 0.8rem;
+    }
+
+    .phase-card-header h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
       color: var(--primary-dark);
-      margin: 0;
+      margin-bottom: 0.35rem;
+    }
+
+    .phase-tagline {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent-orange);
+      margin-bottom: 0.6rem;
+    }
+
+    .phase-intro {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    .phase-card-body {
+      padding: 1.6rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .phase-list-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary-dark);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .phase-list-title i {
+      color: var(--accent-coral);
+    }
+
+    .phase-bullets {
+      list-style: none;
+      margin-bottom: 1.5rem;
       flex: 1;
     }
 
-    .am-tile-header .am-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: #f1f5f9;
+    .phase-bullets li {
+      font-size: 0.88rem;
+      color: var(--text-main);
+      margin-bottom: 0.55rem;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      color: var(--accent-coral);
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s;
+      align-items: flex-start;
+      gap: 9px;
+      line-height: 1.4;
+    }
+
+    .phase-bullets li i {
+      font-size: 0.75rem;
+      margin-top: 3.5px;
       flex-shrink: 0;
     }
 
-    .am-tile.is-open .am-icon {
-      transform: rotate(180deg);
-      background: var(--accent-coral);
-      color: #fff;
+    .phase-card-1 .phase-bullets li i { color: var(--accent-coral); }
+    .phase-card-2 .phase-bullets li i { color: var(--accent-blue); }
+    .phase-card-3 .phase-bullets li i { color: #16a34a; }
+
+    .phase-deliverable-box {
+      margin-top: auto;
+      padding: 1rem 1.2rem;
+      border-radius: 10px;
+      background: #f8fafc;
+      border: 1.5px dashed var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .am-tile-panel {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      background: #fafbfc;
+    .deliverable-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
     }
 
-    .am-panel-content {
-      padding: 1rem 1.25rem 1.35rem;
-      border-top: 1px solid #edf2f7;
-      color: #4a5568;
-      font-size: 0.95rem;
-      line-height: 1.6;
+    .phase-card-1 .deliverable-icon { background: #fff1ee; color: var(--accent-coral); }
+    .phase-card-2 .deliverable-icon { background: #eff6ff; color: var(--accent-blue); }
+    .phase-card-3 .deliverable-icon { background: #f0fdf4; color: #16a34a; }
+
+    .deliverable-meta span {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-light);
     }
 
-    .am-panel-content ul {
-      margin: 0;
-      padding-left: 1.2rem;
+    .deliverable-meta strong {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--primary-dark);
+      font-weight: 700;
     }
 
-    .am-panel-content li {
-      margin-bottom: 0.4rem;
+    @media (max-width: 992px) {
+      .method-phases-grid {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+      .method-promise-card {
+        padding: 2rem 1.5rem;
+      }
+      .method-promise-lead {
+        font-size: 1.15rem;
+      }
     }
 
     /* =========================================================
@@ -843,72 +965,6 @@
       color: #ffffff;
     }
 
-    .success-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .success-tile {
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 1.5rem 1.25rem;
-      display: flex;
-      gap: 1.1rem;
-      align-items: flex-start;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .success-tile:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(0, 113, 227, 0.08);
-    }
-
-    .success-tile .tile-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: #eff6ff;
-      color: var(--accent-blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .success-tile:hover .tile-icon {
-      background: var(--accent-blue);
-      color: #ffffff;
-    }
-
-    .success-tile p {
-      font-size: 0.93rem;
-      color: #334155;
-      font-weight: 500;
-      line-height: 1.5;
-      margin: 0;
-    }
-
-    .success-impact-badge {
-      text-align: center;
-      margin-top: 2rem;
-      background: linear-gradient(90deg, rgba(224, 86, 56, 0.08) 0%, rgba(0, 113, 227, 0.08) 100%);
-      border: 1px solid rgba(224, 86, 56, 0.2);
-      border-radius: 50px;
-      padding: 1rem 2rem;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      display: inline-block;
-      align-self: center;
-    }
-
-    .success-impact-badge span { color: var(--accent-coral); }
-
     @media (max-width: 960px) {
       .commitment-card { grid-template-columns: 1fr; padding: 2.25rem; gap: 2rem; }
     }
@@ -917,8 +973,6 @@
       .commitment-section { padding: 3.5rem 5%; }
       .commitment-card { padding: 1.75rem; }
       .commitment-text h2 { font-size: 1.6rem; }
-      .success-grid { grid-template-columns: 1fr; }
-      .success-impact-badge { border-radius: 14px; font-size: 0.95rem; padding: 0.85rem 1.25rem; }
     }
 
     /* =========================================================
@@ -1245,103 +1299,111 @@
       </div>
     </section>
 
-    <!-- THE ASSAYOR METHOD SECTION -->
+    <!-- THE ASSAYOR METHOD SECTION (REVAMPED 3 PHASES) -->
     <section class="assayor-method-section" aria-label="The Assayor Method">
       <div class="container-boxed">
         <div style="text-align: center; margin-bottom: 2rem;">
           <span class="section-header-tag">Our Methodology</span>
-          <h2 class="section-main-title" style="margin-bottom: 0.35rem;">The Assayor Method™</h2>
-          <p style="font-weight: 700; color: var(--primary-dark); font-size: 1.05rem;">Assay • Architect • Accelerate</p>
+          <h2 class="section-main-title" style="margin-bottom: 0.35rem;">THE ASSAYOR METHOD™</h2>
+          <p style="font-weight: 800; color: var(--accent-coral); font-size: 1.15rem; letter-spacing: 0.5px;">Assay • Architect • Accelerate</p>
         </div>
 
-        <div class="am-tiles-grid">
-          <!-- Method 1 -->
-          <article class="am-tile">
-            <button class="am-tile-header" aria-expanded="false">
-              <h3>Transformation Practices</h3>
-              <span class="am-icon"><i class="fa-solid fa-chevron-down"></i></span>
-            </button>
-            <div class="am-tile-panel">
-              <div class="am-panel-content">
-                <ul>
-                  <li>Human Capital Transformation</li>
-                  <li>Digital Transformation</li>
-                  <li>Quality Engineering &amp; Assurance</li>
-                </ul>
+        <!-- Highlighted Promise Card -->
+        <div class="method-promise-card">
+          <span class="method-promise-tag">The Assayor Promise Within the Method</span>
+          <p class="method-promise-lead">
+            We don't begin with technology. We begin with understanding. <span>That's why we Assay.</span>
+          </p>
+          <p class="method-promise-sub">Every client engagement follows three structured phases.</p>
+        </div>
+
+        <!-- Three Structured Phases Grid -->
+        <div class="method-phases-grid">
+          
+          <!-- Phase 1: ASSAY -->
+          <article class="phase-card phase-card-1">
+            <div class="phase-card-header">
+              <span class="phase-badge"><i class="fa-solid fa-magnifying-glass-chart"></i> Phase 1</span>
+              <h3>ASSAY</h3>
+              <div class="phase-tagline">Understand Before You Build</div>
+              <p class="phase-intro">This is the most critical phase of every transformation. Before discussing technology, we analyze the business from every possible perspective.</p>
+            </div>
+            <div class="phase-card-body">
+              <div class="phase-list-title"><i class="fa-solid fa-circle-check"></i> We Assess:</div>
+              <ul class="phase-bullets">
+                <li><i class="fa-solid fa-check"></i> Business Vision &amp; Strategic Goals</li>
+                <li><i class="fa-solid fa-check"></i> Business Processes &amp; Structure</li>
+                <li><i class="fa-solid fa-check"></i> Operational Challenges &amp; Pain Points</li>
+                <li><i class="fa-solid fa-check"></i> Existing Technology Landscape</li>
+                <li><i class="fa-solid fa-check"></i> Growth Opportunities &amp; Risks</li>
+                <li><i class="fa-solid fa-check"></i> Expected Business Outcomes</li>
+              </ul>
+              <div class="phase-deliverable-box">
+                <div class="deliverable-icon"><i class="fa-solid fa-file-lines"></i></div>
+                <div class="deliverable-meta">
+                  <span>Deliverable</span>
+                  <strong>Business Assessment Report</strong>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Method 2 -->
-          <article class="am-tile">
-            <button class="am-tile-header" aria-expanded="false">
-              <h3>Current Core Expertise</h3>
-              <span class="am-icon"><i class="fa-solid fa-chevron-down"></i></span>
-            </button>
-            <div class="am-tile-panel">
-              <div class="am-panel-content">
-                <p>Oracle Fusion HCM Cloud</p>
+          <!-- Phase 2: ARCHITECT -->
+          <article class="phase-card phase-card-2">
+            <div class="phase-card-header">
+              <span class="phase-badge"><i class="fa-solid fa-compass-drafting"></i> Phase 2</span>
+              <h3>ARCHITECT</h3>
+              <div class="phase-tagline">Design with Purpose</div>
+              <p class="phase-intro">Once the business is thoroughly understood, we design an end-to-end transformation strategy tailored to your strategic priorities.</p>
+            </div>
+            <div class="phase-card-body">
+              <div class="phase-list-title"><i class="fa-solid fa-circle-check"></i> This Includes:</div>
+              <ul class="phase-bullets">
+                <li><i class="fa-solid fa-check"></i> Future-State Business Processes</li>
+                <li><i class="fa-solid fa-check"></i> Solution &amp; Technology Architecture</li>
+                <li><i class="fa-solid fa-check"></i> Integration &amp; Security Strategy</li>
+                <li><i class="fa-solid fa-check"></i> Governance &amp; Compliance Framework</li>
+                <li><i class="fa-solid fa-check"></i> Change Management Approach</li>
+                <li><i class="fa-solid fa-check"></i> Delivery Roadmap</li>
+              </ul>
+              <div class="phase-deliverable-box">
+                <div class="deliverable-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                <div class="deliverable-meta">
+                  <span>Deliverable</span>
+                  <strong>Transformation Blueprint</strong>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Method 3 -->
-          <article class="am-tile">
-            <button class="am-tile-header" aria-expanded="false">
-              <h3>Delivery Models</h3>
-              <span class="am-icon"><i class="fa-solid fa-chevron-down"></i></span>
-            </button>
-            <div class="am-tile-panel">
-              <div class="am-panel-content">
-                <ul>
-                  <li>Fixed Price</li>
-                  <li>Time &amp; Material</li>
-                  <li>Dedicated Team</li>
-                  <li>Staff Augmentation</li>
-                  <li>Managed Services</li>
-                </ul>
+          <!-- Phase 3: ACCELERATE -->
+          <article class="phase-card phase-card-3">
+            <div class="phase-card-header">
+              <span class="phase-badge"><i class="fa-solid fa-bolt-lightning"></i> Phase 3</span>
+              <h3>ACCELERATE</h3>
+              <div class="phase-tagline">Deliver Measurable Value</div>
+              <p class="phase-intro">Execution is only one part of acceleration. Our focus extends beyond go-live to ensure organizations continue realizing sustainable value.</p>
+            </div>
+            <div class="phase-card-body">
+              <div class="phase-list-title"><i class="fa-solid fa-circle-check"></i> This Phase Includes:</div>
+              <ul class="phase-bullets">
+                <li><i class="fa-solid fa-check"></i> Implementation &amp; Quality Assurance</li>
+                <li><i class="fa-solid fa-check"></i> User Adoption &amp; Enablement</li>
+                <li><i class="fa-solid fa-check"></i> Process &amp; System Optimization</li>
+                <li><i class="fa-solid fa-check"></i> Hypercare Support &amp; Governance</li>
+                <li><i class="fa-solid fa-check"></i> Continuous Improvement</li>
+                <li><i class="fa-solid fa-check"></i> Business Outcome Measurement</li>
+              </ul>
+              <div class="phase-deliverable-box">
+                <div class="deliverable-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="deliverable-meta">
+                  <span>Deliverable</span>
+                  <strong>Sustainable Transformation</strong>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Method 4 -->
-          <article class="am-tile">
-            <button class="am-tile-header" aria-expanded="false">
-              <h3>Delivery Coverage</h3>
-              <span class="am-icon"><i class="fa-solid fa-chevron-down"></i></span>
-            </button>
-            <div class="am-tile-panel">
-              <div class="am-panel-content">
-                <p>Global Remote Delivery<br>Hybrid Engagement<br>On-site Consulting</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Method 5 -->
-          <article class="am-tile">
-            <button class="am-tile-header" aria-expanded="false">
-              <h3>Engagement Philosophy</h3>
-              <span class="am-icon"><i class="fa-solid fa-chevron-down"></i></span>
-            </button>
-            <div class="am-tile-panel">
-              <div class="am-panel-content">
-                <p>Long-term Business Partnership</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- Method 6 -->
-          <article class="am-tile">
-            <button class="am-tile-header" aria-expanded="false">
-              <h3>Success Measurement</h3>
-              <span class="am-icon"><i class="fa-solid fa-chevron-down"></i></span>
-            </button>
-            <div class="am-tile-panel">
-              <div class="am-panel-content">
-                <p>Business Outcomes<br>Not Implementation Completion</p>
-              </div>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -1504,7 +1566,7 @@
     <section class="commitment-section" aria-label="Commitment to Clients and Success Definition">
       <div class="commitment-container">
         
-        <!-- Part 1: Commitment Banner -->
+        <!-- Commitment Banner -->
         <div class="commitment-card">
           <div class="commitment-text">
             <h2>OUR <span>COMMITMENT</span> TO CLIENTS</h2>
@@ -1539,52 +1601,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Part 2: What Success Looks Like -->
-        <!-- <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-          <div style="text-align: center; max-width: 820px; margin-bottom: 2.5rem;">
-            <span class="section-header-tag">Tangible Results</span>
-            <h2 class="section-main-title">WHAT <span style="color: var(--accent-blue);">SUCCESS</span> LOOKS LIKE</h2>
-            <p style="color: var(--text-light); font-size: 0.98rem;">
-              We do not define project success by the number of configurations completed, documents produced, or milestones achieved. Success is achieved when our clients experience tangible business improvements.
-            </p>
-          </div>
-
-          <div class="success-grid">
-            <div class="success-tile">
-              <div class="tile-icon"><i class="fa-solid fa-face-smile"></i></div>
-              <p>Employees enjoy a better workplace experience.</p>
-            </div>
-            <div class="success-tile">
-              <div class="tile-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
-              <p>HR teams spend less time on manual administration.</p>
-            </div>
-            <div class="success-tile">
-              <div class="tile-icon"><i class="fa-solid fa-chart-line"></i></div>
-              <p>Leaders make faster, data-driven decisions.</p>
-            </div>
-            <div class="success-tile">
-              <div class="tile-icon"><i class="fa-solid fa-users-viewfinder"></i></div>
-              <p>Digital platforms improve customer engagement.</p>
-            </div>
-            <div class="success-tile">
-              <div class="tile-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-              <p>Technology investments generate measurable returns.</p>
-            </div>
-            <div class="success-tile">
-              <div class="tile-icon"><i class="fa-solid fa-sliders"></i></div>
-              <p>Business processes become simpler and more efficient.</p>
-            </div>
-            <div class="success-tile">
-              <div class="tile-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
-              <p>Organizations are better prepared for future growth.</p>
-            </div>
-          </div>
-
-          <div class="success-impact-badge">
-            When these outcomes are achieved, <span>technology has fulfilled its purpose.</span>
-          </div>
-        </div> -->
 
       </div>
     </section>
@@ -1666,36 +1682,6 @@
             t.classList.remove('is-flipped');
           });
         }
-      });
-
-      // 3. The Assayor Method Accordion Tiles
-      const methodTiles = document.querySelectorAll('.am-tiles-grid .am-tile');
-
-      methodTiles.forEach(function (tile) {
-        const headerBtn = tile.querySelector('.am-tile-header');
-        const panel = tile.querySelector('.am-tile-panel');
-
-        headerBtn.addEventListener('click', function () {
-          const isOpen = tile.classList.contains('is-open');
-
-          methodTiles.forEach(function (otherTile) {
-            if (otherTile !== tile && otherTile.classList.contains('is-open')) {
-              otherTile.classList.remove('is-open');
-              otherTile.querySelector('.am-tile-header').setAttribute('aria-expanded', 'false');
-              otherTile.querySelector('.am-tile-panel').style.maxHeight = null;
-            }
-          });
-
-          if (!isOpen) {
-            tile.classList.add('is-open');
-            headerBtn.setAttribute('aria-expanded', 'true');
-            panel.style.maxHeight = panel.scrollHeight + 'px';
-          } else {
-            tile.classList.remove('is-open');
-            headerBtn.setAttribute('aria-expanded', 'false');
-            panel.style.maxHeight = null;
-          }
-        });
       });
     });
   </script>

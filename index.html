@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enterprise Software Solutions & Oracle HCM Consulting</title>
+  <title>Assayor | Business Transformation Consulting</title>
   
   <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
@@ -361,7 +361,7 @@
 
     .section-title h4 {
       text-transform: uppercase;
-      color: var(--accent-coral);
+      color: black;
       font-size: 0.8rem;
       font-weight: 800;
       letter-spacing: 2px;
@@ -372,7 +372,7 @@
       font-size: clamp(1.8rem, 2.5vw + 1rem, 2.4rem);
       font-weight: 800;
       letter-spacing: -0.02em;
-      color: var(--primary-dark);
+      color: rgb(224, 86, 56);;
       line-height: 1.25;
     }
 
@@ -406,15 +406,10 @@
     }
 
     .service-card:hover,
-    .service-card:focus-visible,
-    .service-card.is-active {
+    .service-card:focus-visible {
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
       border-color: rgba(0, 102, 204, 0.4);
-    }
-
-    .service-card.is-active {
-      border-left: 4px solid var(--accent-coral);
     }
 
     .service-card:focus-visible {
@@ -436,8 +431,7 @@
       transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .service-card:hover .service-card-image,
-    .service-card.is-active .service-card-image {
+    .service-card:hover .service-card-image {
       transform: scale(1.06);
     }
 
@@ -478,14 +472,12 @@
       transition: transform 0.35s ease;
     }
 
-    .service-card:hover .expand-trigger,
-    .service-card.is-active .expand-trigger {
+    .service-card:hover .expand-trigger {
       background: var(--accent-blue-light);
       color: var(--accent-blue);
     }
 
-    .service-card:hover .expand-trigger i,
-    .service-card.is-active .expand-trigger i {
+    .service-card:hover .expand-trigger i {
       transform: translateY(2px);
     }
 
@@ -496,9 +488,9 @@
       background: #ffffff;
     }
 
+    /* Only expands on hover or keyboard focus */
     .service-card:hover .service-card-details,
-    .service-card:focus-within .service-card-details,
-    .service-card.is-active .service-card-details {
+    .service-card:focus-within .service-card-details {
       grid-template-rows: 1fr;
     }
 
@@ -511,8 +503,7 @@
     }
 
     .service-card:hover .service-card-details-inner,
-    .service-card:focus-within .service-card-details-inner,
-    .service-card.is-active .service-card-details-inner {
+    .service-card:focus-within .service-card-details-inner {
       opacity: 1;
       transform: translateY(0);
       padding: 0.8rem 1.4rem 1.4rem;
@@ -1074,13 +1065,12 @@
   <!-- Services Section (Tiles with Hover/Click Preview) -->
   <section id="services" class="services-section">
     <div class="section-title">
-      <h2>Services</h2>
-      <h4>Our Offerings</h4>
+      <h2>Our Offerings</h2>
     </div>
     <div class="services-grid">
       
       <!-- 01. Oracle Fusion HCM Tile -->
-      <div class="service-card" ng-class="{'is-active': selectedServiceKey === 'oracle'}" ng-click="selectService('oracle'); scrollTo('service-details')" role="button" tabindex="0" aria-label="Oracle Fusion HCM service details">
+      <div class="service-card" ng-click="selectService('oracle'); scrollTo('service-details')" role="button" tabindex="0" aria-label="Oracle Fusion HCM service details">
         <div class="service-card-header">
           <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="Oracle Fusion HCM">
           <div class="service-card-overlay">
@@ -1104,7 +1094,7 @@
       </div>
 
       <!-- 02. Digital Transformation Tile -->
-      <div class="service-card" ng-class="{'is-active': selectedServiceKey === 'digital-transformation'}" ng-click="selectService('digital-transformation'); scrollTo('service-details')" role="button" tabindex="0" aria-label="Digital Transformation service details">
+      <div class="service-card" ng-click="selectService('digital-transformation'); scrollTo('service-details')" role="button" tabindex="0" aria-label="Digital Transformation service details">
         <div class="service-card-header">
           <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="Digital Transformation">
           <div class="service-card-overlay">
@@ -1128,7 +1118,7 @@
       </div>
 
       <!-- 03. Software Quality Assurance Tile -->
-      <div class="service-card" ng-class="{'is-active': selectedServiceKey === 'software-testing'}" ng-click="selectService('software-testing'); scrollTo('service-details')" role="button" tabindex="0" aria-label="Software Quality Assurance service details">
+      <div class="service-card" ng-click="selectService('software-testing'); scrollTo('service-details')" role="button" tabindex="0" aria-label="Software Quality Assurance service details">
         <div class="service-card-header">
           <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="Software Quality Assurance">
           <div class="service-card-overlay">
@@ -1285,37 +1275,32 @@
             'Core HCM & Workforce Deployment',
             'Talent Management & Workforce Development',
             'Workforce Management & Rewards',
-            'Security & Approval Governance',
-            'Advanced Development & Extensibility',
-            'Integration & Analytics'
+            'Foundational Security & Approval Governance',
+            'Advanced Development, Integration & Support'
           ],
           capabilities: [
             {
               title: 'Core HCM & Workforce Deployment',
-              desc: 'Global HR, enterprise structures, workforce lifecycle, assignments, workforce directory, and organizational modeling.'
+              desc: 'Global Human Resources (Core HR) & Enterprise Structures, Global Payroll, HR Help Desk, Workforce Directory & Modelling.'
             },
             {
               title: 'Talent Management & Workforce Development',
-              desc: 'Oracle Recruiting, Learning, Performance & Goals, Profiles, Succession Planning, and Talent Review.'
+              desc: 'Oracle Recruiting Cloud (ORC), Oracle Learning Cloud (OLC), Performance & Goal Management, Talent Profile Management, Succession Planning & Talent Review, Career Development'
             },
             {
               title: 'Workforce Management & Rewards',
-              desc: 'Absence Management, Time & Labor, Workforce Compensation, Benefits, and related workforce processes.'
+              desc: 'Absence Management, Time & Labor (OTL), Workforce Compensation, Benefits.'
             },
             {
-              title: 'Security & Approval Governance',
+              title: 'Foundational Security & Approval Governance',
               desc: 'Role-based security, data roles, Areas of Responsibility, Security Console, and BPM approval workflows.'
             },
             {
-              title: 'Advanced Development & Extensibility',
-              desc: 'HDL, HSDL, Visual Builder Studio, Sandbox configuration, personalization, and custom solutions.'
-            },
-            {
-              title: 'Integration & Analytics',
-              desc: 'Oracle Integration Cloud, HCM Extracts, REST APIs, OTBI, and BI Publisher reporting.'
+              title: 'Advanced Development, Integration & Support',
+              desc: 'Data Conversion (HDL & HSDL), System Integrations (OIC, Extracts, REST APIs), Analytics and Reporting (BI & OTBI Reports), Extensibility & Personalization (Visual Builder Studio, Sandbox).'
             }
           ],
-          approach: 'Business-first HCM transformation — from process discovery and solution design to implementation, integration, adoption, optimization, and ongoing support.'
+          approach: '“From HCM strategy and process design to implementation, integration, security, analytics and continuous support, we help organizations maximize the value of Oracle HCM.”'
         },
 
         'digital-transformation': {
@@ -1325,45 +1310,40 @@
           subtitle: 'We help organizations transform business processes and customer experiences through web applications, mobile solutions, enterprise platforms, integrations, and modern digital experiences.',
           expertiseHeading: 'Our Digital Transformation Capabilities',
           hoverItems: [
-            'Web Application Development',
-            'Mobile App Development',
-            'Enterprise Solutions',
-            'System Integration',
+            'Web Applications',
+            'Mobile Applications',
+            'Enterprise Platforms',
+            'Integrations',
             'UI / UX Design',
-            'Process Automation',
-            'Digital Optimization'
+            'Process Automation'
           ],
           capabilities: [
             {
-              title: 'Web Application Development',
-              desc: 'Scalable, secure, and user-focused web applications built around business requirements.'
+              title: 'Web Applications',
+              desc: 'Enterprise Web Applications, Business Portals and Self Service Platforms, Workflow Driven Applications, Responsive and scalable experiences.'
             },
             {
-              title: 'Mobile App Development',
-              desc: 'iOS and Android applications designed to deliver seamless digital experiences.'
+              title: 'Mobile Applications',
+              desc: 'IOS and Android Application Development, Cross Platform Mobile Experiences, Mobile Business Workflows.'
             },
             {
-              title: 'Enterprise Solutions',
-              desc: 'Business applications and platforms that simplify operations and enable growth.'
+              title: 'Enterprise Platforms',
+              desc: 'Business Process Applications, Workflow and Process Automation, Enterprise Application Development, Cloud Solutions.'
             },
             {
-              title: 'System Integration',
-              desc: 'Connecting applications, platforms, and data to create a seamless digital ecosystem.'
+              title: 'Integrations',
+              desc: 'API & System integrations, Enterprise Data Synchronization, Third party application connectivity, Cloud and Enterprise Integration.'
             },
             {
               title: 'UI / UX Design',
-              desc: 'Intuitive, user-centric experiences designed around how people actually interact with technology.'
+              desc: 'User Experience, User Interface, Responsive Design, Human Centered Digital Experiences.'
             },
             {
               title: 'Process Automation',
               desc: 'Digitizing and streamlining business processes to reduce manual effort and operational complexity.'
-            },
-            {
-              title: 'Digital Optimization',
-              desc: 'Continuous enhancement of applications, processes, and technology investments to maximize business value.'
             }
           ],
-          approach: 'Understand the business. Simplify the process. Design the experience. Build the solution. Accelerate the outcome.'
+          approach: '“We transform business ideas into intuitive, scalable and connected digital experiences — designed around how your business actually operates.”'
         },
 
         'software-testing': {
@@ -1377,9 +1357,7 @@
             'Automation Testing',
             'Performance Testing',
             'Security Validation',
-            'Oracle Application Testing',
-            'Integration Testing',
-            'Regression Testing'
+            'Oracle Application Testing'
           ],
           capabilities: [
             {
@@ -1401,21 +1379,13 @@
             {
               title: 'Oracle Application Testing',
               desc: 'Testing Oracle applications and business processes to ensure reliable enterprise operations.'
-            },
-            {
-              title: 'Integration Testing',
-              desc: 'Validating data flow and interactions across applications, APIs, integrations, and enterprise systems.'
-            },
-            {
-              title: 'Regression Testing',
-              desc: 'Ensuring existing functionality remains stable as applications evolve and new features are introduced.'
             }
           ],
-          approach: 'Test early. Automate intelligently. Validate continuously. Deliver with confidence.'
+          approach: '“Quality is built into the transformation lifecycle - helping organizations identify risks early, validate business outcomes and deliver technology with confidence.”'
         }
       };
 
-      // Handle query param deep-link from other pages (e.g., ?service=oracle)
+      // Deep-link handling
       var params = new URLSearchParams(window.location.search);
       var svcParam = params.get('service');
       if (svcParam && $scope.services[svcParam]) {
@@ -1455,7 +1425,6 @@
       $scope.isSubmitting = false;
 
       $scope.submitForm = function() {
-        // Paste your Google Apps Script Web App URL here:
         var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbytfrSm-XFgaEWsVplE7eXLHHfa-dIpnV30NO8WAVLjyrRNPZTUKjCEBTL96wdIOt-0/exec';
 
         var payload = {
@@ -1470,7 +1439,7 @@
 
         fetch(SCRIPT_URL, {
           method: 'POST',
-          mode: 'no-cors', // Standard for Google Apps Script web endpoints to bypass CORS preflight
+          mode: 'no-cors',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         }).then(function() {

@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - ASSAYOR</title>
   
+  <!-- Preload About Us Banner for Fast Rendering -->
+  <link rel="preload" as="image" href="./images/about_us_banner.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -37,9 +40,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); background: var(--bg-white); line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
-    /* =========================================================
-       COMMON UNIFIED HEADER & NAVIGATION
-    ========================================================= */
+    /* Header & Navigation */
     header {
       position: fixed;
       top: 0;
@@ -282,9 +283,7 @@
       background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
     }
 
-    /* =========================================================
-       HERO SECTION (BANNER)
-    ========================================================= */
+    /* Hero Section (Banner) */
     .hero-section {
       margin-top: var(--header-height);
       width: 100%;
@@ -566,7 +565,7 @@
     .color-tile.is-flipped .ct-front { pointer-events: none; }
     .color-tile.is-flipped .ct-back { pointer-events: auto; }
 
-    /* The Assayor Method (Revamped 3 Phases) */
+    /* The Assayor Method */
     .assayor-method-section {
       padding: 5rem 5%;
       background: #f8fafc;
@@ -1183,7 +1182,7 @@
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="hero-content">
-      <img src="./images/about_us_banner.png" alt="ASSAYOR - Beyond Just Technology, We Build Success" class="hero-banner-img">
+      <img src="./images/about_us_banner.png" alt="ASSAYOR - Beyond Just Technology, We Build Success" class="hero-banner-img" fetchpriority="high">
     </div>
   </section>
 
@@ -1404,7 +1403,7 @@
       </div>
     </section>
 
-    <!-- THE ASSAYOR METHOD SECTION (REVAMPED 3 PHASES) -->
+    <!-- THE ASSAYOR METHOD SECTION -->
     <section class="assayor-method-section" aria-label="The Assayor Method">
       <div class="container-boxed">
         <div style="text-align: center; margin-bottom: 2rem;">
@@ -1709,7 +1708,7 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
@@ -1748,10 +1747,10 @@
     </div>
   </footer>
 
-  <!-- SCRIPT -->
+  <!-- Script -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // 1. Mobile Hamburger Menu Toggle
+      // Mobile Hamburger Menu Toggle
       const menuToggle = document.getElementById('menuToggle');
       const navMenu = document.getElementById('navMenu');
 
@@ -1769,7 +1768,7 @@
         });
       }
 
-      // 2. Services Dropdown Mobile Click Toggle
+      // Services Dropdown Mobile Click Toggle
       const servicesToggle = document.getElementById('servicesToggle');
       const servicesDropdownParent = document.getElementById('servicesDropdownParent');
       if (servicesToggle && servicesDropdownParent) {
@@ -1781,7 +1780,7 @@
         });
       }
 
-      // 3. Flip Tiles (Why Transformations Fail)
+      // Flip Tiles
       const flipTiles = Array.prototype.slice.call(
         document.querySelectorAll('.color-tiles-grid .color-tile')
       );

@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Assayor | Business Transformation Consulting</title>
   
+  <!-- Preload Critical Hero Banner for Instant Paint -->
+  <link rel="preload" as="image" href="./images/comapny_banner.webp">
+
   <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   
@@ -361,7 +364,7 @@
 
     .section-title h4 {
       text-transform: uppercase;
-      color: black;
+      color: var(--accent-coral);
       font-size: 0.8rem;
       font-weight: 800;
       letter-spacing: 2px;
@@ -372,7 +375,7 @@
       font-size: clamp(1.8rem, 2.5vw + 1rem, 2.4rem);
       font-weight: 800;
       letter-spacing: -0.02em;
-      color: rgb(224, 86, 56);;
+      color: var(--primary-dark);
       line-height: 1.25;
     }
 
@@ -488,7 +491,7 @@
       background: #ffffff;
     }
 
-    /* Only expands on hover or keyboard focus */
+    /* Tiles only expand when hovered or focused */
     .service-card:hover .service-card-details,
     .service-card:focus-within .service-card-details {
       grid-template-rows: 1fr;
@@ -1057,9 +1060,9 @@
     </nav>
   </header>
 
-  <!-- Main Hero Section -->
+  <!-- Main Hero Section (Loaded with high priority) -->
   <section id="home" class="hero-section" aria-label="Company banner">
-    <img class="hero-banner" src="./images/comapny_banner.png" alt="Company banner">
+    <img class="hero-banner" src="./images/comapny_banner.webp" alt="Company banner" fetchpriority="high">
   </section>
 
   <!-- Services Section (Tiles with Hover/Click Preview) -->
@@ -1072,7 +1075,7 @@
       <!-- 01. Oracle Fusion HCM Tile -->
       <div class="service-card" ng-click="selectService('oracle'); scrollTo('service-details')" role="button" tabindex="0" aria-label="Oracle Fusion HCM service details">
         <div class="service-card-header">
-          <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="Oracle Fusion HCM">
+          <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="Oracle Fusion HCM" loading="lazy" decoding="async">
           <div class="service-card-overlay">
             <h3>Oracle Fusion HCM</h3>
           </div>
@@ -1096,7 +1099,7 @@
       <!-- 02. Digital Transformation Tile -->
       <div class="service-card" ng-click="selectService('digital-transformation'); scrollTo('service-details')" role="button" tabindex="0" aria-label="Digital Transformation service details">
         <div class="service-card-header">
-          <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="Digital Transformation">
+          <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="Digital Transformation" loading="lazy" decoding="async">
           <div class="service-card-overlay">
             <h3>Digital Transformation</h3>
           </div>
@@ -1120,7 +1123,7 @@
       <!-- 03. Software Quality Assurance Tile -->
       <div class="service-card" ng-click="selectService('software-testing'); scrollTo('service-details')" role="button" tabindex="0" aria-label="Software Quality Assurance service details">
         <div class="service-card-header">
-          <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="Software Quality Assurance">
+          <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="Software Quality Assurance" loading="lazy" decoding="async">
           <div class="service-card-overlay">
             <h3>Software Quality Assurance</h3>
           </div>

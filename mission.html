@@ -3,649 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Mission & Core Values - ASSAYOR</title>
+  <title>Our Mission - ASSAYOR</title>
   
-  <!-- Google Fonts & FontAwesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <style>
-    :root {
-      --primary-dark: #0a192f;
-      --secondary-dark: #112240;
-      --accent-coral: #e05638;
-      --accent-coral-hover: #c9462b;
-      --accent-blue: #0066cc;
-      --accent-blue-light: #eef5fc;
-      --text-main: #24292f;
-      --text-muted: #57606a;
-      --bg-light: #f8fafc;
-      --bg-white: #ffffff;
-      --border-color: #e2e8f0;
-      --shadow-sm: 0 2px 4px rgba(10, 25, 47, 0.04);
-      --shadow-md: 0 10px 25px -5px rgba(10, 25, 47, 0.08);
-      --shadow-lg: 0 20px 35px -10px rgba(10, 25, 47, 0.12);
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 20px;
-      --header-height: 80px;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); background-color: var(--bg-white); line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-
-    /* =========================================================
-       COMMON UNIFIED HEADER & NAVIGATION
-    ========================================================= */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: var(--header-height);
-      background-color: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 1px 15px rgba(0, 0, 0, 0.05);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 6%;
-      transition: all 0.3s ease;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      height: 100%;
-    }
-
-    .logo-container img {
-      height: 52px;
-      width: auto;
-      max-width: 200px;
-      object-fit: contain;
-      transition: transform 0.2s ease;
-    }
-
-    .logo-container:hover img {
-      transform: scale(1.02);
-    }
-
-    .menu-toggle {
-      display: none;
-      background: #f1f5f9;
-      border: 1px solid var(--border-color);
-      font-size: 1.3rem;
-      color: var(--primary-dark);
-      cursor: pointer;
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius-sm);
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.2s ease;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    nav li {
-      position: relative;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--primary-dark);
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.25s ease;
-      cursor: pointer;
-    }
-
-    nav a:hover, nav a.active {
-      color: var(--accent-coral);
-    }
-
-    .services-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.5rem 0;
-      border: 0;
-      background: transparent;
-      color: var(--primary-dark);
-      font: inherit;
-      font-weight: 600;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: color 0.25s ease;
-    }
-
-    .services-toggle:hover,
-    .services-toggle:focus-visible {
-      color: var(--accent-coral);
-    }
-
-    .services-toggle i {
-      font-size: 0.75rem;
-      transition: transform 0.3s ease;
-    }
-
-    .dropdown-open > .services-toggle i {
-      transform: rotate(180deg);
-    }
-
-    .services-dropdown {
-      position: absolute;
-      top: calc(100% + 12px);
-      right: -100px;
-      display: block;
-      width: min(880px, calc(100vw - 40px));
-      padding: 0;
-      background-color: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(10px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
-      z-index: 1001;
-      overflow: hidden;
-    }
-
-    .services-dropdown > .mega-menu {
-      width: 100%;
-    }
-
-    .mega-menu {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      min-height: 380px;
-      list-style: none;
-    }
-
-    .mega-menu-sidebar {
-      display: flex;
-      flex-direction: column;
-      padding: 30px 22px;
-      background: #0f172a;
-    }
-
-    .mega-menu-tab {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.2rem 1rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-md);
-      background: #1e293b;
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.3px;
-    }
-
-    .mega-menu-content {
-      padding: 30px;
-      background: #ffffff;
-    }
-
-    .mega-menu-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .mega-service-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      padding: 1.35rem;
-      border-radius: var(--radius-md);
-      background: #f8fafc;
-      border: 1px solid #edf2f7;
-      text-decoration: none;
-      transition: all 0.25s ease;
-    }
-
-    .mega-service-card:hover,
-    .mega-service-card:focus-visible {
-      background: var(--accent-blue-light);
-      border-color: rgba(0, 102, 204, 0.2);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-sm);
-      outline: none;
-    }
-
-    .mega-service-card strong {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      color: var(--accent-blue);
-      font-size: 0.95rem;
-      font-weight: 700;
-      line-height: 1.35;
-    }
-
-    .mega-service-card strong::before {
-      content: '\2192';
-      font-size: 1.15rem;
-      transition: transform 0.2s ease;
-    }
-
-    .mega-service-card:hover strong::before {
-      transform: translateX(4px);
-    }
-
-    .mega-service-card p {
-      margin-top: 0.5rem;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      line-height: 1.45;
-    }
-
-    nav li:hover > .services-dropdown,
-    nav li:focus-within > .services-dropdown,
-    nav li.dropdown-open > .services-dropdown {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    .btn-contact {
-      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-      color: #ffffff !important;
-      padding: 0.65rem 1.4rem;
-      border-radius: 50px;
-      font-weight: 600;
-      display: inline-block;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .btn-contact:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
-    }
-
-    /* Hero Banner */
-    .mission-hero {
-      margin-top: var(--header-height);
-      background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
-      color: #ffffff;
-      padding: 5.5rem 6% 4.5rem;
-      text-align: center;
-      position: relative;
-    }
-
-    .mission-hero h4 {
-      text-transform: uppercase;
-      color: var(--accent-coral);
-      font-size: 0.85rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 0.8rem;
-    }
-
-    .mission-hero h1 {
-      font-size: clamp(2rem, 3.5vw + 1rem, 3.1rem);
-      font-weight: 800;
-      margin-bottom: 1rem;
-      line-height: 1.25;
-    }
-
-    .mission-hero p {
-      max-width: 780px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      color: #cbd5e1;
-      line-height: 1.65;
-    }
-
-    /* Common Section Wrapper */
-    .section-wrapper {
-      padding: 5rem 6%;
-    }
-
-    .container-boxed {
-      max-width: 1180px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-      max-width: 820px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .section-title h4 {
-      text-transform: uppercase;
-      color: var(--accent-coral);
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 0.6rem;
-    }
-
-    .section-title h2 {
-      font-size: clamp(1.8rem, 2.5vw + 1rem, 2.3rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: var(--primary-dark);
-      line-height: 1.25;
-    }
-
-    /* Mission Overview */
-    .mission-overview-section {
-      background: var(--bg-white);
-    }
-
-    .mission-overview-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .mission-prose p {
-      font-size: 1.02rem;
-      color: var(--text-main);
-      margin-bottom: 1.2rem;
-      line-height: 1.7;
-    }
-
-    .mission-highlight-card {
-      background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
-      color: #ffffff;
-      border-radius: var(--radius-lg);
-      padding: 2.2rem;
-      box-shadow: var(--shadow-md);
-      border-left: 5px solid var(--accent-coral);
-    }
-
-    .mission-highlight-card h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #ffdca8;
-      margin-bottom: 1.2rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .mission-pillars-list {
-      list-style: none;
-      margin-bottom: 1.5rem;
-    }
-
-    .mission-pillars-list li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.98rem;
-      font-weight: 600;
-      color: #f8fafc;
-      margin-bottom: 0.85rem;
-    }
-
-    .mission-pillars-list li i {
-      color: var(--accent-coral);
-      font-size: 1.05rem;
-    }
-
-    .mission-quote-box {
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
-      padding-top: 1.1rem;
-      font-size: 0.95rem;
-      color: #cbd5e1;
-      font-style: italic;
-      line-height: 1.55;
-    }
-
-    /* Mission Statement Banner */
-    .mission-statement-card {
-      margin-top: 3.5rem;
-      background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
-      border: 1.5px solid #bfdbfe;
-      border-radius: var(--radius-lg);
-      padding: 2.5rem 3rem;
-      text-align: center;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .statement-tag {
-      display: inline-block;
-      background: var(--accent-blue);
-      color: #ffffff;
-      padding: 0.35rem 1rem;
-      border-radius: 50px;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 1rem;
-    }
-
-    .statement-text {
-      font-size: clamp(1.1rem, 1.5vw + 0.8rem, 1.35rem);
-      font-weight: 700;
-      color: var(--primary-dark);
-      line-height: 1.6;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    /* Core Values 8 Tiles */
-    .values-section {
-      background: var(--bg-light);
-      border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .values-intro {
-      text-align: center;
-      max-width: 820px;
-      margin: 0 auto 3rem;
-      font-size: 1.02rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-    }
-
-    .value-card {
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 1.8rem 1.5rem;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-
-    .value-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-      border-color: rgba(0, 102, 204, 0.35);
-    }
-
-    .value-card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.2rem;
-    }
-
-    .value-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: var(--radius-sm);
-      background: var(--accent-blue-light);
-      color: var(--accent-blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      transition: background 0.25s ease, color 0.25s ease;
-    }
-
-    .value-card:hover .value-icon {
-      background: var(--accent-coral);
-      color: #ffffff;
-    }
-
-    .value-num {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #cbd5e1;
-    }
-
-    .value-card h3 {
-      font-size: 1.12rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 0.6rem;
-    }
-
-    .value-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
-
-    .value-card p + p {
-      margin-top: 0.5rem;
-    }
-
-    /* Footer */
-    footer {
-      background-color: var(--primary-dark);
-      color: #94a3b8;
-      padding: 4.5rem 6% 2.5rem;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr repeat(3, 1fr);
-      gap: 2.5rem;
-      margin-bottom: 3.5rem;
-    }
-
-    .footer-brand h3 {
-      color: #ffffff;
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
-      font-weight: 800;
-    }
-
-    .footer-brand p {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      max-width: 320px;
-    }
-
-    .footer-links h4 {
-      color: #ffffff;
-      margin-bottom: 1.2rem;
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-    .footer-links ul { list-style: none; }
-    .footer-links li { margin-bottom: 0.75rem; }
-    .footer-links a { color: #94a3b8; text-decoration: none; font-size: 0.9rem; transition: color 0.2s ease; }
-    .footer-links a:hover { color: #ffffff; }
-    .footer-links li i { margin-right: 8px; color: var(--accent-coral); }
-
-    .copyright {
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 2rem;
-      font-size: 0.85rem;
-      color: #64748b;
-    }
-
-    /* Responsive Breakpoints */
-    @media (max-width: 1024px) {
-      .values-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 860px) {
-      .mission-overview-grid { grid-template-columns: 1fr; gap: 2rem; }
-    }
-
-    @media (max-width: 768px) {
-      :root { --header-height: 70px; }
-      .logo-container img { height: 40px; }
-      .menu-toggle { display: flex; }
-      nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #ffffff;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        border-bottom: 1px solid var(--border-color);
-        display: none;
-        padding: 1.2rem 0;
-      }
-      nav.nav-open { display: block; }
-      nav ul { flex-direction: column; gap: 0; align-items: stretch; }
-      nav ul li { width: 100%; }
-      nav a, .services-toggle {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        padding: 0.9rem 6%;
-        border-bottom: 1px solid #f1f5f9;
-        font-size: 1rem;
-      }
-      nav.nav-open .services-dropdown {
-        position: static;
-        display: none;
-        width: 100%;
-        box-shadow: none;
-        border: 0;
-        border-radius: 0;
-        transform: none;
-        background: #f8fafc;
-      }
-      nav.nav-open li.dropdown-open > .services-dropdown {
-        display: block;
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .mega-menu { display: block; min-height: 0; }
-      .mega-menu-sidebar { display: none; }
-      .mega-menu-content { padding: 1rem 6%; background: transparent; }
-      .mega-menu-grid { grid-template-columns: 1fr; gap: 10px; }
-      .mega-service-card { background: #ffffff; padding: 1rem; border-radius: var(--radius-sm); }
-      .btn-contact { margin: 1.2rem 6% 0.5rem; display: block; text-align: center; border-radius: var(--radius-sm); }
-      .values-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .mission-statement-card { padding: 2rem 1.4rem; }
-      .section-wrapper { padding: 3.5rem 5%; }
-    }
-  </style>
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="css/mission.css">
 </head>
 <body>
 
@@ -701,157 +67,515 @@
   <!-- Hero Banner -->
   <section class="mission-hero">
     <h4>Driven by Purpose</h4>
-    <h1>Our Mission &amp; Core Values</h1>
+    <h1>Our Mission &amp; Guiding Principles</h1>
     <p>Delivering Business Value Through Intelligent Consulting</p>
   </section>
 
   <main>
-    <!-- SECTION 1: MISSION OVERVIEW -->
-    <section class="section-wrapper mission-overview-section">
+    <!-- 1. THE ASSAYOR PHILOSOPHY -->
+    <section class="section-wrapper philosophy-section" aria-label="The Assayor Philosophy">
       <div class="container-boxed">
         
-        <div class="mission-overview-grid">
-          <div class="mission-prose">
-            <div style="margin-bottom: 1.5rem;">
-              <span style="text-transform: uppercase; color: var(--accent-coral); font-weight: 800; font-size: 0.85rem; letter-spacing: 1.5px;">Strategic Vision</span>
-              <h2 style="font-size: 2rem; font-weight: 800; color: var(--primary-dark); margin-top: 0.3rem;">Improve the Business — Not Just the System</h2>
+        <div class="section-title-group" style="text-align: center;">
+          <h2>THE ASSAYOR PHILOSOPHY</h2>
+          <h4>Business Before Technology. Outcomes Always.</h4>
+        </div>
+
+        <div class="philosophy-brief-box">
+          <p>We don't believe in implementing technology first.</p>
+          <p><strong>We believe in understanding businesses first.</strong></p>
+          <p class="highlight-line">Technology becomes meaningful only when it accelerates business success.</p>
+        </div>
+
+        <div class="pillars-header">
+          <h3>Our Three Pillars:</h3>
+          <p>Everything we do is guided by three principles.</p>
+        </div>
+
+        <!-- Three Pillars Interactive Grid -->
+        <div class="three-pillars-grid">
+          
+          <!-- Pillar 1 -->
+          <div class="pillar-philosophy-card card-1">
+            <div class="pillar-circle-icon">
+              <i class="fa-solid fa-building"></i>
             </div>
-            <p>At Assayor, our mission extends beyond implementing technology. Our purpose is to help organizations understand their business challenges, identify opportunities for improvement, and design transformation strategies that create sustainable business value.</p>
-            <p>Every engagement is guided by one simple objective: <strong>Deliver solutions that improve the business—not just the system.</strong></p>
-            <p>We are committed to partnering with our clients throughout their transformation journey by combining strategic consulting, deep technology expertise, structured execution, and continuous improvement.</p>
+            <h4>Business First</h4>
+            <p>Understand the business before recommending technology.</p>
           </div>
 
-          <div class="mission-highlight-card">
-            <h3>Our Consistent Commitment</h3>
-            <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 1.2rem;">Whether implementing Oracle Fusion HCM, enabling Digital Transformation, or delivering Quality Engineering services:</p>
-            <ul class="mission-pillars-list">
-              <li><i class="fa-solid fa-circle-check"></i> Understand the business.</li>
-              <li><i class="fa-solid fa-circle-check"></i> Simplify complexity.</li>
-              <li><i class="fa-solid fa-circle-check"></i> Optimize processes.</li>
-              <li><i class="fa-solid fa-circle-check"></i> Deliver measurable outcomes.</li>
-              <li><i class="fa-solid fa-circle-check"></i> Build long-term partnerships.</li>
-            </ul>
-            <div class="mission-quote-box">
-              "We believe every successful project should leave the client's business stronger than before."
+          <!-- Pillar 2 -->
+          <div class="pillar-philosophy-card card-2">
+            <div class="pillar-circle-icon">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <h4>Technology Second</h4>
+            <p>Use technology as an enabler—not the starting point.</p>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="pillar-philosophy-card card-3">
+            <div class="pillar-circle-icon">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h4>Business Outcomes Always</h4>
+            <p>Measure success through business impact rather than implementation milestones.</p>
+          </div>
+
+        </div>
+
+        <!-- Visual VS Comparison Diagram Box -->
+        <div class="philosophy-vs-box">
+          
+          <!-- Traditional Approach -->
+          <div class="vs-column vs-traditional">
+            <span class="vs-badge">Traditional Approach</span>
+            <div class="vs-steps-flow">
+              <div class="vs-step-item">
+                <div class="vs-step-circle"><i class="fa-solid fa-code"></i></div>
+                <span class="vs-step-label">Technology</span>
+              </div>
+              <i class="fa-solid fa-angles-right vs-arrow"></i>
+              <div class="vs-step-item">
+                <div class="vs-step-circle"><i class="fa-solid fa-gears"></i></div>
+                <span class="vs-step-label">Implementation</span>
+              </div>
+              <i class="fa-solid fa-angles-right vs-arrow"></i>
+              <div class="vs-step-item">
+                <div class="vs-step-circle"><i class="fa-solid fa-circle-check"></i></div>
+                <span class="vs-step-label">Completion</span>
+              </div>
+            </div>
+            <div class="vs-footer-pill">
+              Focus on delivering technology and completing projects.
+            </div>
+          </div>
+
+          <!-- VS Badge -->
+          <div class="vs-separator-badge">VS</div>
+
+          <!-- Assayor Approach -->
+          <div class="vs-column vs-assayor">
+            <span class="vs-badge">Assayor Approach</span>
+            <div class="vs-steps-flow">
+              <div class="vs-step-item">
+                <div class="vs-step-circle circle-biz"><i class="fa-solid fa-city"></i></div>
+                <span class="vs-step-label">Business</span>
+              </div>
+              <i class="fa-solid fa-angles-right vs-arrow"></i>
+              <div class="vs-step-item">
+                <div class="vs-step-circle circle-tech"><i class="fa-solid fa-microchip"></i></div>
+                <span class="vs-step-label">Technology</span>
+              </div>
+              <i class="fa-solid fa-angles-right vs-arrow"></i>
+              <div class="vs-step-item">
+                <div class="vs-step-circle circle-out"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                <span class="vs-step-label">Outcomes</span>
+              </div>
+            </div>
+            <div class="vs-footer-pill">
+              Focus on delivering measurable <strong>business outcomes</strong>.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. THE ASSAYOR METHOD SECTION -->
+    <section class="assayor-method-section" aria-label="The Assayor Method">
+      <div class="container-boxed">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <div class="section-title-group" style="text-align: center; margin-bottom: 0.5rem;">
+            <h2>THE ASSAYOR METHOD™</h2>
+            <h4>Our Methodology</h4>
+          </div>
+          <p style="font-weight: 800; color: var(--accent-coral); font-size: 1.15rem; letter-spacing: 0.5px;">Assay • Architect • Accelerate</p>
+        </div>
+
+        <div class="method-promise-card">
+          <span class="method-promise-tag">The Assayor Promise Within the Method</span>
+          <p class="method-promise-lead">
+            We don't begin with technology. We begin with understanding. <span>That's why we Assay.</span>
+          </p>
+          <p class="method-promise-sub">Every client engagement follows three structured phases.</p>
+        </div>
+
+        <div class="method-phases-grid">
+          
+          <!-- Phase 1: ASSAY -->
+          <article class="phase-card phase-card-1">
+            <div class="phase-card-header">
+              <span class="phase-badge"><i class="fa-solid fa-magnifying-glass-chart"></i> Phase 1</span>
+              <h3>ASSAY</h3>
+              <div class="phase-tagline">Understand Before You Build</div>
+              <p class="phase-intro">This is the most critical phase of every transformation. Before discussing technology, we analyze the business from every possible perspective.</p>
+            </div>
+            <div class="phase-card-body">
+              <div class="phase-list-title"><i class="fa-solid fa-circle-check"></i> We Assess:</div>
+              <ul class="phase-bullets">
+                <li><i class="fa-solid fa-check"></i> Business Vision &amp; Strategic Goals</li>
+                <li><i class="fa-solid fa-check"></i> Business Processes &amp; Structure</li>
+                <li><i class="fa-solid fa-check"></i> Operational Challenges &amp; Pain Points</li>
+                <li><i class="fa-solid fa-check"></i> Existing Technology Landscape</li>
+                <li><i class="fa-solid fa-check"></i> Growth Opportunities &amp; Risks</li>
+                <li><i class="fa-solid fa-check"></i> Expected Business Outcomes</li>
+              </ul>
+              <div class="phase-deliverable-box">
+                <div class="deliverable-icon"><i class="fa-solid fa-file-lines"></i></div>
+                <div class="deliverable-meta">
+                  <span>Deliverable</span>
+                  <strong>Business Assessment Report</strong>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Phase 2: ARCHITECT -->
+          <article class="phase-card phase-card-2">
+            <div class="phase-card-header">
+              <span class="phase-badge"><i class="fa-solid fa-compass-drafting"></i> Phase 2</span>
+              <h3>ARCHITECT</h3>
+              <div class="phase-tagline">Design with Purpose</div>
+              <p class="phase-intro">Once the business is thoroughly understood, we design an end-to-end transformation strategy tailored to your strategic priorities.</p>
+            </div>
+            <div class="phase-card-body">
+              <div class="phase-list-title"><i class="fa-solid fa-circle-check"></i> This Includes:</div>
+              <ul class="phase-bullets">
+                <li><i class="fa-solid fa-check"></i> Future-State Business Processes</li>
+                <li><i class="fa-solid fa-check"></i> Solution &amp; Technology Architecture</li>
+                <li><i class="fa-solid fa-check"></i> Integration &amp; Security Strategy</li>
+                <li><i class="fa-solid fa-check"></i> Governance &amp; Compliance Framework</li>
+                <li><i class="fa-solid fa-check"></i> Change Management Approach</li>
+                <li><i class="fa-solid fa-check"></i> Delivery Roadmap</li>
+              </ul>
+              <div class="phase-deliverable-box">
+                <div class="deliverable-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                <div class="deliverable-meta">
+                  <span>Deliverable</span>
+                  <strong>Transformation Blueprint</strong>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Phase 3: ACCELERATE -->
+          <article class="phase-card phase-card-3">
+            <div class="phase-card-header">
+              <span class="phase-badge"><i class="fa-solid fa-bolt-lightning"></i> Phase 3</span>
+              <h3>ACCELERATE</h3>
+              <div class="phase-tagline">Deliver Measurable Value</div>
+              <p class="phase-intro">Execution is only one part of acceleration. Our focus extends beyond go-live to ensure organizations continue realizing sustainable value.</p>
+            </div>
+            <div class="phase-card-body">
+              <div class="phase-list-title"><i class="fa-solid fa-circle-check"></i> This Phase Includes:</div>
+              <ul class="phase-bullets">
+                <li><i class="fa-solid fa-check"></i> Implementation &amp; Quality Assurance</li>
+                <li><i class="fa-solid fa-check"></i> User Adoption &amp; Enablement</li>
+                <li><i class="fa-solid fa-check"></i> Process &amp; System Optimization</li>
+                <li><i class="fa-solid fa-check"></i> Hypercare Support &amp; Governance</li>
+                <li><i class="fa-solid fa-check"></i> Continuous Improvement</li>
+                <li><i class="fa-solid fa-check"></i> Business Outcome Measurement</li>
+              </ul>
+              <div class="phase-deliverable-box">
+                <div class="deliverable-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="deliverable-meta">
+                  <span>Deliverable</span>
+                  <strong>Sustainable Transformation</strong>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. THE ASSAYOR CONSULTING FRAMEWORK SECTION -->
+    <section class="framework-section" aria-label="The Assayor Consulting Framework">
+      <div class="container-boxed">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <div class="section-title-group" style="text-align: center; margin-bottom: 0.5rem;">
+            <h2>THE <span style="color: var(--accent-coral);">ASSAYOR</span> CONSULTING FRAMEWORK™</h2>
+            <h4>Five Dimensions. Complete Transformation.</h4>
+          </div>
+          <p style="max-width: 820px; margin: 0 auto; color: var(--text-light); font-size: 0.95rem;">
+            Every engagement at Assayor is guided by five consulting dimensions. Unlike traditional technology projects that focus primarily on implementation, our framework ensures every recommendation considers the broader business context.
+          </p>
+        </div>
+
+        <div class="fw-grid">
+          <!-- 1. Business -->
+          <div class="fw-col">
+            <div class="fw-node-wrap">
+              <div class="fw-circle">
+                <i class="fa-solid fa-city"></i>
+                <span>Business</span>
+              </div>
+              <i class="fa-solid fa-arrow-right fw-arrow"></i>
+            </div>
+            <div class="fw-card">
+              <div>
+                <p style="font-weight: 700; font-size: 0.85rem; color: #f97316; margin-bottom: 0.5rem; text-transform: uppercase;">Understanding:</p>
+                <ul>
+                  <li><i class="fa-solid fa-play"></i> Business Vision</li>
+                  <li><i class="fa-solid fa-play"></i> Strategic Objectives</li>
+                  <li><i class="fa-solid fa-play"></i> Growth Plans</li>
+                  <li><i class="fa-solid fa-play"></i> Market Position</li>
+                  <li><i class="fa-solid fa-play"></i> Business Challenges</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. People -->
+          <div class="fw-col">
+            <div class="fw-node-wrap">
+              <div class="fw-circle">
+                <i class="fa-solid fa-users"></i>
+                <span>People</span>
+              </div>
+              <i class="fa-solid fa-arrow-right fw-arrow"></i>
+            </div>
+            <div class="fw-card">
+              <div>
+                <p style="font-weight: 700; font-size: 0.85rem; color: #ea580c; margin-bottom: 0.5rem; text-transform: uppercase;">Understanding:</p>
+                <ul>
+                  <li><i class="fa-solid fa-play"></i> Employees</li>
+                  <li><i class="fa-solid fa-play"></i> Managers</li>
+                  <li><i class="fa-solid fa-play"></i> Leadership</li>
+                  <li><i class="fa-solid fa-play"></i> Customers</li>
+                  <li><i class="fa-solid fa-play"></i> Stakeholders</li>
+                </ul>
+              </div>
+              <div class="fw-footer-note">
+                Transformation succeeds only when people embrace it.
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Process -->
+          <div class="fw-col">
+            <div class="fw-node-wrap">
+              <div class="fw-circle">
+                <i class="fa-solid fa-gear"></i>
+                <span>Process</span>
+              </div>
+              <i class="fa-solid fa-arrow-right fw-arrow"></i>
+            </div>
+            <div class="fw-card">
+              <div>
+                <p style="font-weight: 700; font-size: 0.85rem; color: #dc2626; margin-bottom: 0.5rem; text-transform: uppercase;">Evaluating:</p>
+                <ul>
+                  <li><i class="fa-solid fa-play"></i> Current Processes</li>
+                  <li><i class="fa-solid fa-play"></i> Future-State Processes</li>
+                  <li><i class="fa-solid fa-play"></i> Governance</li>
+                  <li><i class="fa-solid fa-play"></i> Compliance</li>
+                  <li><i class="fa-solid fa-play"></i> Operational Efficiency</li>
+                </ul>
+              </div>
+              <div class="fw-footer-note">
+                Simplify. Standardize. Streamline.
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Technology -->
+          <div class="fw-col">
+            <div class="fw-node-wrap">
+              <div class="fw-circle">
+                <i class="fa-solid fa-network-wired"></i>
+                <span>Technology</span>
+              </div>
+              <i class="fa-solid fa-arrow-right fw-arrow"></i>
+            </div>
+            <div class="fw-card">
+              <div>
+                <p style="font-size: 0.88rem; color: var(--text-main); margin-bottom: 0.75rem; line-height: 1.4;">
+                  Selecting and implementing technology that best supports business objectives.
+                </p>
+              </div>
+              <div class="fw-footer-note">
+                Technology is an enabler—not the objective.
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Outcomes -->
+          <div class="fw-col">
+            <div class="fw-node-wrap">
+              <div class="fw-circle">
+                <i class="fa-solid fa-bullseye"></i>
+                <span>Outcomes</span>
+              </div>
+            </div>
+            <div class="fw-card">
+              <div>
+                <p style="font-weight: 700; font-size: 0.85rem; color: #991b1b; margin-bottom: 0.5rem; text-transform: uppercase;">Measurable Outcomes:</p>
+                <ul>
+                  <li><i class="fa-solid fa-play"></i> Increased Productivity</li>
+                  <li><i class="fa-solid fa-play"></i> Reduced Cost</li>
+                  <li><i class="fa-solid fa-play"></i> Better Experience</li>
+                  <li><i class="fa-solid fa-play"></i> Faster Decisions</li>
+                  <li><i class="fa-solid fa-play"></i> Improved Compliance</li>
+                  <li><i class="fa-solid fa-play"></i> Higher Customer Satisfaction</li>
+                  <li><i class="fa-solid fa-play"></i> Business Growth</li>
+                </ul>
+              </div>
+              <div class="fw-footer-note">
+                Every engagement concludes by evaluating measurable outcomes.
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Mission Statement Banner -->
-        <div class="mission-statement-card">
-          <span class="statement-tag">Mission Statement</span>
-          <p class="statement-text">
+        <div class="fw-bottom-pill">
+          <div class="fw-pill-sequence">
+            <span style="color:#f97316; font-weight:900;">&lt;&lt;&lt;</span>
+            <span>Business</span> &rarr;
+            <span>People</span> &rarr;
+            <span>Process</span> &rarr;
+            <span>Technology</span> &rarr;
+            <span>Outcomes</span>
+            <span style="color:#f97316; font-weight:900;">&gt;&gt;&gt;</span>
+          </div>
+          <p style="font-size: 0.92rem; color: #475569; margin-top: 0.25rem;">
+            This is the sequence that defines the <strong style="color: var(--accent-coral);">Assayor</strong> Consulting Framework™.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. THE ASSAYOR PROMISE™ SECTION -->
+    <section class="section-wrapper promise-section" aria-label="The Assayor Promise">
+      <div class="container-boxed">
+        <div class="section-title-group" style="text-align: center;">
+          <h2>THE ASSAYOR PROMISE™</h2>
+          <h4>Commitment to Delivering Lasting Value</h4>
+        </div>
+
+        <div class="promise-card-wrapper">
+          <p class="promise-lead-text">
+            Every engagement we undertake is guided by a commitment to deliver lasting value. <strong>We Promise To:</strong>
+          </p>
+
+          <ul class="promise-checklist">
+            <li><i class="fa-solid fa-circle-check"></i> Understand your business before recommending technology.</li>
+            <li><i class="fa-solid fa-circle-check"></i> Align every solution with your strategic objectives.</li>
+            <li><i class="fa-solid fa-circle-check"></i> Deliver with integrity, transparency, and accountability.</li>
+            <li><i class="fa-solid fa-circle-check"></i> Build solutions that are scalable, sustainable, and future-ready.</li>
+            <li><i class="fa-solid fa-circle-check"></i> Measure success through business outcomes—not project completion.</li>
+            <li><i class="fa-solid fa-circle-check"></i> Continue supporting your growth long after implementation.</li>
+          </ul>
+
+          <div class="promise-bottom-badge">
+            Our promise is simple: We succeed only when your business succeeds.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. OUR MISSION SECTION -->
+    <section class="section-wrapper mission-detail-section" aria-label="Our Mission">
+      <div class="container-boxed">
+        
+        <div class="section-title-group" style="text-align: center;">
+          <h2>OUR MISSION</h2>
+          <h4>Strategic Vision &amp; Purpose</h4>
+        </div>
+
+        <div class="mission-quote-banner">
+          <p>
             "To help organizations achieve sustainable business growth by combining strategic consulting, technology excellence, and structured execution that delivers measurable business outcomes."
+          </p>
+        </div>
+
+        <div class="mission-split-grid">
+          <div class="mission-left-col">
+            <div class="mission-block-item">
+              <h3><i class="fa-solid fa-lightbulb"></i> Delivering Business Value Through Intelligent Consulting</h3>
+              <p>At Assayor, our mission extends beyond implementing technology. Our purpose is to help organizations understand their business challenges, identify opportunities for improvement, and design transformation strategies that create sustainable business value.</p>
+            </div>
+
+            <div class="mission-block-item">
+              <h3><i class="fa-solid fa-bullseye"></i> Guided by One Simple Objective:</h3>
+              <p><strong>Deliver solutions that improve the business—not just the system.</strong></p>
+              <p style="margin-top: 0.5rem;">We are committed to partnering with our clients throughout their transformation journey by combining strategic consulting, deep technology expertise, structured execution, and continuous improvement.</p>
+            </div>
+          </div>
+
+          <div class="mission-right-col">
+            <div class="mission-checklist-card">
+              <h4>Whether implementing Oracle Fusion HCM, enabling Digital Transformation, or delivering Quality Engineering services, our mission remains consistent:</h4>
+              <ul>
+                <li><i class="fa-solid fa-check"></i> Understand the business.</li>
+                <li><i class="fa-solid fa-check"></i> Simplify complexity.</li>
+                <li><i class="fa-solid fa-check"></i> Optimize processes.</li>
+                <li><i class="fa-solid fa-check"></i> Deliver measurable outcomes.</li>
+                <li><i class="fa-solid fa-check"></i> Build long-term partnerships.</li>
+              </ul>
+              <div class="mission-closing-note">
+                We believe every successful project should leave the client's business stronger than before.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. OUR LONG-TERM ASPIRATION SECTION -->
+    <section class="section-wrapper aspiration-section" aria-label="Our Long-Term Aspiration">
+      <div class="container-boxed">
+        
+        <div class="section-title-group" style="text-align: center;">
+          <h2>Our Long-Term Aspiration</h2>
+          <h4>Shaping the Future of Business Transformation</h4>
+        </div>
+
+        <div class="aspiration-card">
+          <p>Over the next decade, our ambition is to establish Assayor as a globally trusted business transformation consulting organization.</p>
+          <p>We envision a future where clients engage Assayor not simply because they require technical expertise, but because they seek a <strong>strategic partner capable of helping them improve their business, optimize operations, strengthen governance, accelerate digital transformation, and maximize the return on every technology investment.</strong></p>
+          
+          <div class="aspiration-pills-row">
+            <span class="aspiration-pill">Technology may evolve.</span>
+            <span class="aspiration-pill">Platforms may change.</span>
+            <span class="aspiration-pill">Industries may transform.</span>
+          </div>
+          <p style="margin-top: 1.2rem; font-weight: 800; color: var(--primary-dark); font-size: 1.15rem;">
+            Our purpose will remain unchanged.
           </p>
         </div>
 
       </div>
     </section>
 
-    <!-- SECTION 2: OUR 8 CORE VALUES -->
-    <section class="section-wrapper values-section">
+    <!-- 7. MESSAGE FROM THE FOUNDER SECTION -->
+    <section class="section-wrapper founder-section" aria-label="Message from the Founder">
       <div class="container-boxed">
         
-        <div class="section-title">
-          <h4>Guiding Principles</h4>
-          <h2>Our Core Values</h2>
+        <div class="section-title-group" style="text-align: center;">
+          <h2>MESSAGE FROM THE FOUNDER</h2>
+          <h4>Leadership Perspective</h4>
         </div>
 
-        <p class="values-intro">
-          At Assayor, our values define how we think, how we collaborate, and how we serve our clients. They represent the principles that guide every decision, every engagement, and every relationship we build.
-        </p>
-
-        <!-- 8 Core Values Grid -->
-        <div class="values-grid">
+        <div class="founder-card">
+          <p>When I began my consulting career, I believed that delivering a successful project meant implementing the right technology.</p>
+          <p>Over the years, I realized that technology alone does not transform organizations.</p>
+          <p><strong>Real transformation happens when businesses gain clarity, simplify complexity, and use technology as a strategic enabler rather than an isolated solution.</strong></p>
+          <p>That realization inspired the creation of Assayor.</p>
+          <p>Our purpose is not to implement software. Our purpose is to help organizations think differently about transformation.</p>
+          <p>We challenge assumptions, understand business goals, improve processes, and ensure every technology investment contributes to meaningful business outcomes.</p>
+          <p>The name "Assayor" reflects our belief that every business deserves careful analysis before any solution is designed.</p>
+          <p>We are committed to building long-term partnerships based on trust, transparency, expertise, and measurable results.</p>
+          <p>Whether you are beginning your transformation journey or looking to maximize an existing investment, we look forward to partnering with you.</p>
+          <p>Thank you for considering Assayor Software Solutions LLP.</p>
           
-          <!-- Value 1 -->
-          <div class="value-card">
-            <div class="value-card-top">
-              <div class="value-icon"><i class="fa-solid fa-briefcase"></i></div>
-              <span class="value-num">01</span>
-            </div>
-            <h3>Business First</h3>
-            <p>Every recommendation begins with understanding the client's business.</p>
-            <p>We believe technology should always support business strategy—not dictate it.</p>
+          <div class="founder-signature">
+            <span>— Founder &amp; CEO</span>
+            <small>Assayor Software Solutions LLP</small>
           </div>
-
-          <!-- Value 2 -->
-          <div class="value-card">
-            <div class="value-card-top">
-              <div class="value-icon"><i class="fa-solid fa-trophy"></i></div>
-              <span class="value-num">02</span>
-            </div>
-            <h3>Customer Success</h3>
-            <p>Our success is measured by the success of our clients.</p>
-            <p>We strive to become long-term partners who contribute to our clients' growth rather than short-term service providers.</p>
-          </div>
-
-          <!-- Value 3 -->
-          <div class="value-card">
-            <div class="value-card-top">
-              <div class="value-icon"><i class="fa-solid fa-lightbulb"></i></div>
-              <span class="value-num">03</span>
-            </div>
-            <h3>Innovation</h3>
-            <p>We continuously explore better ways to solve business challenges.</p>
-            <p>Innovation is not limited to technology—it includes new ideas, better processes, improved methodologies, and smarter ways of working.</p>
-          </div>
-
-          <!-- Value 4 -->
-          <div class="value-card">
-            <div class="value-card-top">
-              <div class="value-icon"><i class="fa-solid fa-user-shield"></i></div>
-              <span class="value-num">04</span>
-            </div>
-            <h3>Ownership</h3>
-            <p>We take responsibility for every commitment we make. Challenges are not transferred—they are solved.</p>
-            <p>Every consultant at Assayor is expected to think and act like a business owner.</p>
-          </div>
-
-          <!-- Value 5 -->
-          <div class="value-card">
-            <div class="value-card-top">
-              <div class="value-icon"><i class="fa-solid fa-eye"></i></div>
-              <span class="value-num">05</span>
-            </div>
-            <h3>Transparency</h3>
-            <p>Trust is built through honesty. We maintain open communication, clear expectations, and complete visibility throughout every engagement.</p>
-            <p>Our clients always know what we are doing, why we are doing it, and how it contributes to their business objectives.</p>
-          </div>
-
-          <!-- Value 6 -->
-          <div class="value-card">
-            <div class="value-card-top">
-              <div class="value-icon"><i class="fa-solid fa-handshake"></i></div>
-              <span class="value-num">06</span>
-            </div>
-            <h3>Collaboration</h3>
-            <p>Transformation succeeds when people work together.</p>
-            <p>We build collaborative relationships across business teams, leadership, technology partners, and stakeholders to create practical and widely adopted solutions.</p>
-          </div>
-
-          <!-- Value 7 -->
-          <div class="value-card">
-            <div class="value-card-top">
-              <div class="value-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
-              <span class="value-num">07</span>
-            </div>
-            <h3>Continuous Improvement</h3>
-            <p>Business transformation never truly ends.</p>
-            <p>We embrace a culture of learning, optimization, and continuous improvement to ensure that our clients continue to realize value long after implementation.</p>
-          </div>
-
-          <!-- Value 8 -->
-          <div class="value-card">
-            <div class="value-card-top">
-              <div class="value-icon"><i class="fa-solid fa-award"></i></div>
-              <span class="value-num">08</span>
-            </div>
-            <h3>Quality Without Compromise</h3>
-            <p>Quality is not an activity. It is a mindset.</p>
-            <p>Every deliverable, recommendation, implementation, and interaction reflects our commitment to excellence.</p>
-          </div>
-
         </div>
 
       </div>
@@ -916,7 +640,6 @@
         });
       }
 
-      // Services Dropdown Mobile Click Toggle
       const servicesToggle = document.getElementById('servicesToggle');
       const servicesDropdownParent = document.getElementById('servicesDropdownParent');
       if (servicesToggle && servicesDropdownParent) {

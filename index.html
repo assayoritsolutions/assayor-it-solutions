@@ -6,7 +6,7 @@
   <title>Assayor | Business Transformation Consulting</title>
   
   <!-- Preload Critical Hero Banner for Instant Paint -->
-  <link rel="preload" as="image" href="./images/company_banner.webp" media="(min-width: 769px)">
+  <link rel="preload" as="image" href="./images/comapny_banner.webp" media="(min-width: 769px)">
   <link rel="preload" as="image" href="./images/company_banner_mobile.webp" media="(max-width: 768px)">
 
   <!-- AngularJS -->
@@ -39,7 +39,7 @@
       <ul>
         <li><a ng-click="scrollTo('home')" class="active">Home</a></li>
         <li><a href="about.html">About Us</a></li>
-        <li ng-class="{'dropdown-open': isServicesOpen}">
+        <li class="services-dropdown-parent" ng-class="{'dropdown-open': isServicesOpen}">
           <button type="button" class="services-toggle" ng-click="isServicesOpen = !isServicesOpen" aria-haspopup="true" ng-attr-aria-expanded="{{ isServicesOpen }}">
             <span>Services</span>
             <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
@@ -120,7 +120,7 @@
     </div>
   </section>
 
-  <!-- Services Section (Tiles with Hover/Click Preview) -->
+  <!-- Services Section (Tiles with Expand/Collapse Animation on Hover & Tap) -->
   <section id="services" class="services-section">
     <div class="section-title">
       <h2>Our Offerings</h2>
@@ -129,108 +129,152 @@
     <div class="services-grid">
       
       <!-- 01. Oracle Fusion HCM Tile -->
-      <div class="service-card" ng-click="selectService('oracle'); scrollTo('service-details')" role="button" tabindex="0" aria-label="Oracle Fusion HCM service details">
-        <div class="service-card-header">
+      <div class="service-card" 
+           ng-class="{'is-expanded': expandedCard === 'oracle'}"
+           role="button" 
+           tabindex="0" 
+           aria-label="Oracle Fusion HCM service details">
+        <div class="service-card-header" ng-click="selectService('oracle'); scrollTo('service-details')">
           <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="Oracle Fusion HCM" loading="lazy" decoding="async">
           <div class="service-card-overlay">
             <h3>Oracle Fusion HCM</h3>
           </div>
         </div>
-        <div class="expand-trigger">
+        <div class="expand-trigger" ng-click="toggleCard('oracle', $event)">
           <span>Explore Expertise</span>
-          <i class="fa-solid fa-arrow-down"></i>
+          <i class="fa-solid fa-chevron-down expand-arrow"></i>
         </div>
-        <div class="service-card-details">
-          <div class="service-card-details-inner">
-            <ul class="service-card-benefits">
-              <li ng-repeat="item in services.oracle.hoverItems">
-                <i class="fa-solid fa-check-circle"></i>
-                <span>{{ item }}</span>
-              </li>
-            </ul>
-          </div>
+        <div class="service-card-details" ng-click="selectService('oracle'); scrollTo('service-details')">
+          <ul class="service-card-benefits">
+            <li ng-repeat="item in services.oracle.hoverItems">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>{{ item }}</span>
+            </li>
+          </ul>
         </div>
       </div>
 
       <!-- 02. Digital Transformation Tile -->
-      <div class="service-card" ng-click="selectService('digital-transformation'); scrollTo('service-details')" role="button" tabindex="0" aria-label="Digital Transformation service details">
-        <div class="service-card-header">
+      <div class="service-card" 
+           ng-class="{'is-expanded': expandedCard === 'digital-transformation'}"
+           role="button" 
+           tabindex="0" 
+           aria-label="Digital Transformation service details">
+        <div class="service-card-header" ng-click="selectService('digital-transformation'); scrollTo('service-details')">
           <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="Digital Transformation" loading="lazy" decoding="async">
           <div class="service-card-overlay">
             <h3>Digital Transformation</h3>
           </div>
         </div>
-        <div class="expand-trigger">
+        <div class="expand-trigger" ng-click="toggleCard('digital-transformation', $event)">
           <span>Explore Capabilities</span>
-          <i class="fa-solid fa-arrow-down"></i>
+          <i class="fa-solid fa-chevron-down expand-arrow"></i>
         </div>
-        <div class="service-card-details">
-          <div class="service-card-details-inner">
-            <ul class="service-card-benefits">
-              <li ng-repeat="item in services['digital-transformation'].hoverItems">
-                <i class="fa-solid fa-check-circle"></i>
-                <span>{{ item }}</span>
-              </li>
-            </ul>
-          </div>
+        <div class="service-card-details" ng-click="selectService('digital-transformation'); scrollTo('service-details')">
+          <ul class="service-card-benefits">
+            <li ng-repeat="item in services['digital-transformation'].hoverItems">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>{{ item }}</span>
+            </li>
+          </ul>
         </div>
       </div>
 
       <!-- 03. Software Quality Assurance Tile -->
-      <div class="service-card" ng-click="selectService('software-testing'); scrollTo('service-details')" role="button" tabindex="0" aria-label="Software Quality Assurance service details">
-        <div class="service-card-header">
+      <div class="service-card" 
+           ng-class="{'is-expanded': expandedCard === 'software-testing'}"
+           role="button" 
+           tabindex="0" 
+           aria-label="Software Quality Assurance service details">
+        <div class="service-card-header" ng-click="selectService('software-testing'); scrollTo('service-details')">
           <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="Software Quality Assurance" loading="lazy" decoding="async">
           <div class="service-card-overlay">
             <h3>Software Quality Assurance</h3>
           </div>
         </div>
-        <div class="expand-trigger">
+        <div class="expand-trigger" ng-click="toggleCard('software-testing', $event)">
           <span>Explore Quality Engineering</span>
-          <i class="fa-solid fa-arrow-down"></i>
+          <i class="fa-solid fa-chevron-down expand-arrow"></i>
         </div>
-        <div class="service-card-details">
-          <div class="service-card-details-inner">
-            <ul class="service-card-benefits">
-              <li ng-repeat="item in services['software-testing'].hoverItems">
-                <i class="fa-solid fa-check-circle"></i>
-                <span>{{ item }}</span>
-              </li>
-            </ul>
-          </div>
+        <div class="service-card-details" ng-click="selectService('software-testing'); scrollTo('service-details')">
+          <ul class="service-card-benefits">
+            <li ng-repeat="item in services['software-testing'].hoverItems">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>{{ item }}</span>
+            </li>
+          </ul>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Deep-Dive Selected Service Details Section -->
+  <!-- Deep-Dive Selected Service Details Section (Broader View with Quick Switcher Tabs) -->
   <section id="service-details" class="service-details-section">
     <div class="service-details-container">
       
+      <!-- Quick Service Switcher Tabs -->
+      <div class="details-tab-nav">
+        <button type="button" 
+                class="tab-nav-btn" 
+                ng-class="{'active': selectedServiceKey === 'oracle'}" 
+                ng-click="selectService('oracle')">
+          <i class="fa-solid fa-users-gear"></i>
+          <span>Oracle Fusion HCM</span>
+        </button>
+        <button type="button" 
+                class="tab-nav-btn" 
+                ng-class="{'active': selectedServiceKey === 'digital-transformation'}" 
+                ng-click="selectService('digital-transformation')">
+          <i class="fa-solid fa-network-wired"></i>
+          <span>Digital Transformation</span>
+        </button>
+        <button type="button" 
+                class="tab-nav-btn" 
+                ng-class="{'active': selectedServiceKey === 'software-testing'}" 
+                ng-click="selectService('software-testing')">
+          <i class="fa-solid fa-vial-circle-check"></i>
+          <span>Quality Assurance</span>
+        </button>
+      </div>
+
       <!-- Top Title Header -->
       <div class="service-details-header">
-        <h2><i class="fa-solid {{ selectedService.icon }}" style="font-size: 1.8rem;"></i> {{ selectedService.title }}</h2>
-        <div class="service-tagline">{{ selectedService.tagline }}</div>
+        <div class="header-main-meta">
+          <div class="service-icon-badge">
+            <i class="fa-solid {{ selectedService.icon }}"></i>
+          </div>
+          <div>
+            <h2>{{ selectedService.title }}</h2>
+            <div class="service-tagline">{{ selectedService.tagline }}</div>
+          </div>
+        </div>
         <p class="service-subtitle">{{ selectedService.subtitle }}</p>
       </div>
 
       <!-- In-Depth Capability Details -->
       <div class="service-details-body">
         <div class="expertise-title">
-          <i class="fa-solid fa-layer-group"></i>
+          <div class="expertise-icon-dot"></div>
           <span>{{ selectedService.expertiseHeading }}</span>
         </div>
 
         <div class="capabilities-grid">
           <div class="capability-item" ng-repeat="cap in selectedService.capabilities">
-            <h4><i class="fa-solid fa-circle-dot"></i> {{ cap.title }}</h4>
+            <div class="capability-item-header">
+              <i class="fa-solid fa-circle-check"></i>
+              <h4>{{ cap.title }}</h4>
+            </div>
             <p>{{ cap.desc }}</p>
           </div>
         </div>
 
         <!-- Our Approach -->
         <div class="approach-box">
-          <h4>Our Approach</h4>
+          <div class="approach-badge">
+            <i class="fa-solid fa-compass-drafting"></i>
+            <span>Our Approach</span>
+          </div>
           <p>{{ selectedService.approach }}</p>
         </div>
       </div>
@@ -284,18 +328,69 @@
   <!-- Contact Us Section -->
   <section id="contact" class="contact-section">
     <div class="contact-container">
-      <div class="section-title" style="margin-bottom: 2rem;">
-        <h2>Contact Us</h2>
-        <h4>Get In Touch</h4>
+      <div class="contact-split-wrapper">
+        
+        <!-- Left Side: Information & Brand Details -->
+        <div class="contact-info-panel">
+          <span class="contact-sub-badge">Let's Connect</span>
+          <h2>Get in Touch with Us</h2>
+          <p class="contact-lead-desc">
+            Have a project in mind or looking to transform your business operations? Send us a message and our consulting team will respond promptly.
+          </p>
+
+          <div class="contact-info-items">
+            <div class="info-item">
+              <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div class="info-text">
+                <small>Email Us</small>
+                <a href="mailto:reachout@assayor.com">reachout@assayor.com</a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+              <div class="info-text">
+                <small>Call Us</small>
+                <a href="tel:+917745816110">+91 7745816110</a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="info-text">
+                <small>Location</small>
+                <span>DSK Vishwa, Pune, Maharashtra 411041</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-quick-tagline">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>We respect your privacy. No spam guaranteed.</span>
+          </div>
+        </div>
+
+        <!-- Right Side: User Input Form Card -->
+        <div class="contact-form-panel">
+          <div class="form-panel-header">
+            <h3>Send Us a Message</h3>
+            <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+          </div>
+
+          <form class="contact-form" ng-submit="submitForm()">
+            <input type="text" placeholder="Full Name *" ng-model="form.name" required>
+            <input type="email" placeholder="Email Address *" ng-model="form.email" required>
+            <input type="tel" placeholder="Phone Number" ng-model="form.phone">
+            <input type="text" placeholder="Your Website / Company" ng-model="form.website">
+            <textarea class="full-width" rows="4" placeholder="Your Message Here *" ng-model="form.message" required></textarea>
+            <button type="submit" class="cta-btn full-width" ng-disabled="isSubmitting">
+              <span ng-if="!isSubmitting">SEND MESSAGE <i class="fa-solid fa-paper-plane" style="margin-left: 6px;"></i></span>
+              <span ng-if="isSubmitting">SENDING... <i class="fa-solid fa-spinner fa-spin"></i></span>
+            </button>
+          </form>
+        </div>
+
       </div>
-      <form class="contact-form" ng-submit="submitForm()">
-        <input type="text" placeholder="Name" ng-model="form.name" required>
-        <input type="email" placeholder="E-mail" ng-model="form.email" required>
-        <input type="tel" placeholder="Phone Number" ng-model="form.phone">
-        <input type="text" placeholder="Your Website" ng-model="form.website">
-        <textarea class="full-width" rows="5" placeholder="Your Message Here" ng-model="form.message" required></textarea>
-        <button type="submit" class="cta-btn full-width" style="margin-top: 0.5rem;">SEND MESSAGE</button>
-      </form>
     </div>
   </section>
 
@@ -349,6 +444,7 @@
       $scope.isMenuOpen = false;
       $scope.isServicesOpen = false;
       $scope.selectedServiceKey = 'oracle';
+      $scope.expandedCard = null;
 
       $scope.services = {
         'oracle': {
@@ -371,7 +467,7 @@
             },
             {
               title: 'Talent Management & Workforce Development',
-              desc: 'Oracle Recruiting Cloud (ORC), Oracle Learning Cloud (OLC), Performance & Goal Management, Talent Profile Management, Succession Planning & Talent Review, Career Development'
+              desc: 'Oracle Recruiting Cloud (ORC), Oracle Learning Cloud (OLC), Performance & Goal Management, Talent Profile Management, Succession Planning & Talent Review, Career Development.'
             },
             {
               title: 'Workforce Management & Rewards',
@@ -484,6 +580,13 @@
         $scope.selectedServiceKey = serviceKey;
         $scope.selectedService = $scope.services[serviceKey];
         $scope.isServicesOpen = false;
+      };
+
+      $scope.toggleCard = function(cardKey, event) {
+        if (event) {
+          event.stopPropagation();
+        }
+        $scope.expandedCard = ($scope.expandedCard === cardKey) ? null : cardKey;
       };
 
       $scope.toggleMenu = function() {

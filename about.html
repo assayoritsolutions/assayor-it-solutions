@@ -72,8 +72,8 @@
   <section class="hero-section" aria-label="About Us Banner">
     <picture style="width: 100%; display: block; line-height: 0;">
       <source media="(max-width: 768px)" srcset="./images/about_mobile_banner.webp">
-      <source media="(min-width: 769px)" srcset="./images/about_us_banner.png">
-      <img src="./images/about_us_banner.png" alt="ASSAYOR - Beyond Just Technology, We Build Success" class="hero-banner-img" fetchpriority="high">
+      <source media="(min-width: 769px)" srcset="./images/about_us_banner.webp">
+      <img src="./images/about_us_banner.webp" alt="ASSAYOR - Beyond Just Technology, We Build Success" class="hero-banner-img" fetchpriority="high">
     </picture>
   </section>
 
@@ -252,7 +252,7 @@
                 </div>
                 <div class="ct-back" aria-hidden="true">
                   <div class="back-content">
-                    <p>Transformation is not a one-time event. Businesses evolve.</p>
+                    <p>Transformation is not a one-time event. Businesses evolve continuously, and technology implementations must evolve alongside them.</p>
                   </div>
                   <button class="color-btn back-close">Close</button>
                 </div>
@@ -316,51 +316,128 @@
       </div>
     </section>
 
-    <!-- 4. WHY CHOOSE ASSAYOR SECTION -->
+    <!-- 4. WHY CHOOSE ASSAYOR SECTION (RADIAL ORBITAL ANIMATION) -->
     <section class="why-choose-section" aria-label="Why Choose Assayor">
       <div class="container-boxed">
-        <div class="section-title-group" style="text-align: center; margin-bottom: 3rem;">
+        <div class="section-title-group" style="text-align: center; margin-bottom: 2rem;">
           <h2>WHY CHOOSE ASSAYOR</h2>
           <h4>More Than Consultants. Your Business Transformation Partner.</h4>
         </div>
-        <div class="features-grid">
-          
-          <div class="feature-card">
-            <i class="fa-solid fa-business-time"></i>
-            <h3>Business-First Consulting</h3>
-            <p>We understand your business before recommending technology.</p>
+
+        <div class="radial-orbit-wrapper">
+          <!-- Background decorative connecting ring -->
+          <div class="orbit-ring-guide" aria-hidden="true"></div>
+
+          <!-- Central Core Hub -->
+          <div class="orbit-center-hub">
+            <div class="hub-pulse"></div>
+            <div class="hub-inner">
+              <img src="./images/logo_new.jpg" alt="ASSAYOR" class="hub-logo">
+              <span class="hub-title">ASSAYOR</span>
+              <small class="hub-tag">Strategic Core</small>
+            </div>
           </div>
 
-          <div class="feature-card">
-            <i class="fa-solid fa-user-tie"></i>
-            <h3>Experienced Leadership</h3>
-            <p>Our projects are led by highly experienced consultants with over 15 years of enterprise consulting experience, ensuring strategic direction, strong governance, and delivery excellence.</p>
-          </div>
+          <!-- 8 Radial Connected Circular Nodes -->
+          <div class="orbit-nodes-container">
 
-          <div class="feature-card">
-            <i class="fa-solid fa-shield-halved"></i>
-            <h3>Senior-Led Delivery</h3>
-            <p>We believe complex business transformations require experienced leadership. Every engagement is guided by senior professionals who own delivery, stakeholder communication, and business outcomes.</p>
-          </div>
+            <!-- Node 1: Top (0 deg) -->
+            <div class="orbit-node node-1">
+              <div class="orbit-connector-line">
+                <i class="fa-solid fa-chevron-up connector-arrow"></i>
+              </div>
+              <div class="orbit-circle-card">
+                <div class="node-icon"><i class="fa-solid fa-business-time"></i></div>
+                <h3>Business-First</h3>
+                <p>We understand your business before recommending technology.</p>
+              </div>
+            </div>
 
-          <div class="feature-card">
-            <i class="fa-solid fa-chart-line"></i>
-            <h3>End-to-End Transformation</h3>
-            <p>From advisory and implementation to optimization and managed services, we support the complete transformation lifecycle.</p>
-          </div>
+            <!-- Node 2: Top-Right (45 deg) -->
+            <div class="orbit-node node-2">
+              <div class="orbit-connector-line">
+                <i class="fa-solid fa-arrow-trend-up connector-arrow"></i>
+              </div>
+              <div class="orbit-circle-card">
+                <div class="node-icon"><i class="fa-solid fa-user-tie"></i></div>
+                <h3>15+ Yrs Leadership</h3>
+                <p>Led by consultants with over 15 years of enterprise expertise.</p>
+              </div>
+            </div>
 
-          <div class="feature-card">
-            <i class="fa-solid fa-thumbs-up"></i>
-            <h3>Honest Recommendations</h3>
-            <p>We recommend solutions that best serve the client's interests, even when that means suggesting a more cost-effective engagement model.</p>
-          </div>
+            <!-- Node 3: Right (90 deg) -->
+            <div class="orbit-node node-3">
+              <div class="orbit-connector-line">
+                <i class="fa-solid fa-chevron-right connector-arrow"></i>
+              </div>
+              <div class="orbit-circle-card">
+                <div class="node-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Senior Delivery</h3>
+                <p>Senior professionals who own delivery and business outcomes.</p>
+              </div>
+            </div>
 
-          <div class="feature-card">
-            <i class="fa-solid fa-handshake"></i>
-            <h3>Long-Term Partnership</h3>
-            <p>Our goal is to become your trusted transformation advisor—not just your implementation partner.</p>
-          </div>
+            <!-- Node 4: Bottom-Right (135 deg) -->
+            <div class="orbit-node node-4">
+              <div class="orbit-connector-line">
+                <i class="fa-solid fa-arrow-down-long connector-arrow"></i>
+              </div>
+              <div class="orbit-circle-card">
+                <div class="node-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>End-to-End</h3>
+                <p>Complete lifecycle from advisory to managed support.</p>
+              </div>
+            </div>
 
+            <!-- Node 5: Bottom (180 deg) -->
+            <div class="orbit-node node-5">
+              <div class="orbit-connector-line">
+                <i class="fa-solid fa-chevron-down connector-arrow"></i>
+              </div>
+              <div class="orbit-circle-card">
+                <div class="node-icon"><i class="fa-solid fa-thumbs-up"></i></div>
+                <h3>Honest Advice</h3>
+                <p>Cost-effective engagement models tailored to client success.</p>
+              </div>
+            </div>
+
+            <!-- Node 6: Bottom-Left (225 deg) -->
+            <div class="orbit-node node-6">
+              <div class="orbit-connector-line">
+                <i class="fa-solid fa-arrow-down-long connector-arrow"></i>
+              </div>
+              <div class="orbit-circle-card">
+                <div class="node-icon"><i class="fa-solid fa-handshake"></i></div>
+                <h3>True Partner</h3>
+                <p>Your trusted advisor long after project go-live.</p>
+              </div>
+            </div>
+
+            <!-- Node 7: Left (270 deg) -->
+            <div class="orbit-node node-7">
+              <div class="orbit-connector-line">
+                <i class="fa-solid fa-chevron-left connector-arrow"></i>
+              </div>
+              <div class="orbit-circle-card">
+                <div class="node-icon"><i class="fa-solid fa-bullseye"></i></div>
+                <h3>Outcome Focused</h3>
+                <p>Delivering measurable business value and operational gains.</p>
+              </div>
+            </div>
+
+            <!-- Node 8: Top-Left (315 deg) -->
+            <div class="orbit-node node-8">
+              <div class="orbit-connector-line">
+                <i class="fa-solid fa-arrow-trend-up connector-arrow"></i>
+              </div>
+              <div class="orbit-circle-card">
+                <div class="node-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <h3>Agile & Scalable</h3>
+                <p>Future-ready solutions tailored to evolving enterprise demands.</p>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>
@@ -469,6 +546,26 @@
           });
         }
       });
+
+      // Scroll-triggered Radial Orbit Animation
+      const orbitWrapper = document.querySelector('.radial-orbit-wrapper');
+      if (orbitWrapper) {
+        const orbitObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              orbitWrapper.classList.add('is-visible');
+            } else {
+              orbitWrapper.classList.remove('is-visible');
+            }
+          });
+        }, {
+          root: null,
+          rootMargin: '0px 0px -50px 0px',
+          threshold: 0.15
+        });
+
+        orbitObserver.observe(orbitWrapper);
+      }
     });
   </script>
 </body>

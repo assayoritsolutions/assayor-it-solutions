@@ -78,8 +78,8 @@
   <section id="home" class="hero-section" aria-label="Company banner">
     <picture class="hero-picture">
       <source media="(max-width: 768px)" srcset="./images/company_banner_mobile.webp">
-      <source media="(min-width: 769px)" srcset="./images/company_banner.png">
-      <img class="hero-banner" src="./images/company_banner.png" alt="Company banner" fetchpriority="high">
+      <source media="(min-width: 769px)" srcset="./images/comapny_banner.webp">
+      <img class="hero-banner" src="./images/comapny_banner.webp" alt="Company banner" fetchpriority="high">
     </picture>
   </section>
 
@@ -106,12 +106,12 @@
           <div class="pillar-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
           <span class="pillar-text">Assay</span>
         </div>
-        <span class="pillar-separator">•</span>
+        <span class="pillar-separator sep-1">•</span>
         <div class="pillar-card pillar-2">
           <div class="pillar-icon"><i class="fa-solid fa-compass-drafting"></i></div>
           <span class="pillar-text">Architect</span>
         </div>
-        <span class="pillar-separator">•</span>
+        <span class="pillar-separator sep-2">•</span>
         <div class="pillar-card pillar-3">
           <div class="pillar-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
           <span class="pillar-text">Accelerate</span>
@@ -532,6 +532,30 @@
       };
 
     }]);
+
+    // Re-triggerable scroll observer for Pillars Section
+    document.addEventListener('DOMContentLoaded', function () {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.15
+      };
+
+      const scrollObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          } else {
+            entry.target.classList.remove('is-visible');
+          }
+        });
+      }, observerOptions);
+
+      const pillarsContainer = document.querySelector('.pillars-container');
+      if (pillarsContainer) {
+        scrollObserver.observe(pillarsContainer);
+      }
+    });
   </script>
 </body>
 </html>

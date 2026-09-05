@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Assayor | Business Transformation Consulting</title>
   
-  <link rel="preload" as="image" href="./images/comapny_banner.webp" media="(min-width: 769px)">
-  <link rel="preload" as="image" href="./images/company_banner_mobile.webp" media="(max-width: 768px)">
+  <!-- Cache-busting added here (?v=2) -->
+  <link rel="preload" as="image" href="./images/comapny_banner.webp?v=2" media="(min-width: 769px)">
+  <link rel="preload" as="image" href="./images/company_banner_mobile.webp?v=2" media="(max-width: 768px)">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,9 +74,10 @@
   <!-- Responsive Hero Section -->
   <section id="home" class="hero-section" aria-label="Company banner">
     <picture class="hero-picture">
-      <source media="(max-width: 768px)" srcset="./images/company_banner_mobile.webp">
-      <source media="(min-width: 769px)" srcset="./images/comapny_banner.webp">
-      <img class="hero-banner" src="./images/comapny_banner.webp" alt="Company banner" fetchpriority="high">
+      <!-- Cache-busting added here (?v=2) -->
+      <source media="(max-width: 768px)" srcset="./images/company_banner_mobile.webp?v=2">
+      <source media="(min-width: 769px)" srcset="./images/comapny_banner.webp?v=2">
+      <img class="hero-banner" src="./images/comapny_banner.webp?v=2" alt="Company banner" fetchpriority="high">
     </picture>
     
     <div class="hero-content">

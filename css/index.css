@@ -456,7 +456,7 @@ footer { background: var(--secondary-dark); color: #ffffff; padding: 4.5rem 5% 2
   
   /* Hero Section scaling for mobile overlay */
   .hero-section { justify-content: center; align-items: flex-end; padding-bottom: 1rem; } 
-  .hero-content { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(0.1px); padding: 2rem; border-radius: 12px; text-align: center; margin-top: 20px;top: 10px; }
+  .hero-content { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(0.1px); padding: 2rem; border-radius: 12px; text-align: center; margin-top: 20px;top: 30px; }
   .hero-content h1 { font-size: 2rem; }
   .hero-actions { justify-content: center; }
 

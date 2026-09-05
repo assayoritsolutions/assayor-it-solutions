@@ -44,6 +44,12 @@ body {
 a { text-decoration: none; color: inherit; cursor: pointer; }
 .text-center { text-align: center; }
 
+/* Container utility */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 /* Buttons */
 .btn-primary {
   background-color: var(--accent-orange);
@@ -203,7 +209,8 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 650px;
+  max-width: 468px;
+  margin-bottom: 57px;
 }
 
 .hero-content h1 {
@@ -217,7 +224,7 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
 .hero-content h1 span { color: var(--accent-orange); }
 .hero-subtitle {
   font-size: 1.15rem;
-  color: var(--text-muted);
+  color: black;
   margin-bottom: 2.5rem;
   line-height: 1.6;
 }
@@ -255,7 +262,7 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
    Gradient & Solid Text for Section Titles
    ======================================================== */
 .section-title h2 {
-  background: linear-gradient(to right, var(--accent-orange), var(--orange-800));
+  background: linear-gradient(to right, var(--accent-orange), #db1414);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -328,6 +335,55 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
 .help-icon { font-size: 2rem; color: var(--accent-orange); margin-bottom: 1rem; }
 .help-item h3 { font-size: 1.15rem; color: var(--primary-dark); margin-bottom: 1rem; }
 .help-item p { font-size: 0.9rem; color: var(--text-muted); }
+
+/* How We Engage Section */
+.engage-section { 
+  padding: 5rem 5%; 
+  background: var(--bg-light); 
+  border-top: 1px solid var(--line);
+}
+.eyebrow {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--accent-orange);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 1rem;
+}
+.engage { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 2rem; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+}
+.engage .card { 
+  background: #ffffff; 
+  padding: 2.5rem 2rem; 
+  border-radius: 12px; 
+  border: 1px solid var(--line); 
+  box-shadow: var(--shadow-sm); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
+}
+.engage .card:hover { 
+  transform: translateY(-5px); 
+  box-shadow: var(--shadow-lg); 
+  border-color: var(--accent-orange); 
+}
+.engage .card h3 { 
+  font-size: 1.25rem; 
+  color: var(--primary-dark); 
+  margin-bottom: 1rem; 
+}
+.engage .card p { 
+  font-size: 0.95rem; 
+  color: var(--text-muted); 
+}
 
 /* Final CTA */
 .final-cta-section { padding: 5rem 5%; background: var(--primary-brand); text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }

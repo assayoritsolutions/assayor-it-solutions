@@ -186,7 +186,7 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
   display: flex;
   align-items: flex-end;
   justify-content: flex-end; 
-  padding: 4rem 5% 1rem 5%; /* Pushed down to the bottom by reducing bottom padding */
+  padding: 4rem 5% 1rem 5%; 
   overflow: hidden;
 }
 
@@ -388,7 +388,7 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
 /* Final CTA */
 .final-cta-section { padding: 5rem 5%; background: var(--primary-brand); text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .cta-content { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 2rem; }
-.cta-text p { font-size: 1.1rem; color: #ffffff; } /* Text changed to bright white */
+.cta-text p { font-size: 1.1rem; color: #ffffff; } 
 
 /* Contact Us Section */
 .contact-section { position: relative; padding: 5.5rem 5%; background-color: var(--primary-dark); background-image: linear-gradient(135deg, rgba(4, 23, 42, 0.94) 0%, rgba(9, 35, 63, 0.92) 100%), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center; background-repeat: no-repeat; color: #ffffff; }
@@ -402,6 +402,7 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
 .contact-info-items { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2rem; }
 .info-item { display: flex; align-items: center; gap: 1rem; }
 .info-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.12); display: flex; align-items: center; justify-content: center; color: var(--accent-orange); font-size: 1.1rem; flex-shrink: 0; }
+.info-text { text-align: left; } /* Fixed Contact Text Alignment */
 .info-text small { display: block; font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
 .info-text a, .info-text span { font-size: 0.98rem; font-weight: 600; color: #f1f5f9; text-decoration: none; transition: color 0.25s ease; }
 .info-text a:hover { color: var(--accent-orange); }
@@ -439,7 +440,7 @@ footer { background: var(--secondary-dark); color: #ffffff; padding: 4.5rem 5% 2
   .method-line { display: none; }
   .contact-split-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
   .contact-info-panel { padding-right: 0; text-align: center; }
-  .contact-info-items { align-items: center; }
+  .contact-info-items { align-items: baseline; }
   .contact-quick-tagline { justify-content: center; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
 }
@@ -454,8 +455,8 @@ footer { background: var(--secondary-dark); color: #ffffff; padding: 4.5rem 5% 2
   .services-dropdown { position: static; width: 100%; box-shadow: none; border: none; padding: 0.5rem 0; margin-top: 0.5rem; }
   
   /* Hero Section scaling for mobile overlay */
-  .hero-section { justify-content: center; align-items: flex-end; padding-bottom: 1rem; } /* Pushed further down on mobile too */
-  .hero-content { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(5px); padding: 2rem; border-radius: 12px; text-align: center; }
+  .hero-section { justify-content: center; align-items: flex-end; padding-bottom: 1rem; } 
+  .hero-content { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(0.1px); padding: 2rem; border-radius: 12px; text-align: center; margin-top: 20px;top: 10px; }
   .hero-content h1 { font-size: 2rem; }
   .hero-actions { justify-content: center; }
 

@@ -1,0 +1,596 @@
+<!DOCTYPE html> 
+<html ng-app="companyApp" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Assayor Consulting</title>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body ng-controller="MainController">
+
+  <!-- Navigation Header -->
+  <header>
+    <a class="logo-container" href="index.html" aria-label="Go to Home">
+      <img src="./images/logo_new.jpg" alt="Assayor Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-fallback" style="display: none;">Assay<span>or</span></div>
+    </a>
+
+    <button class="menu-toggle" ng-click="toggleMenu()" aria-label="Toggle navigation">
+      <i class="fa-solid" ng-class="isMenuOpen ? 'fa-xmark' : 'fa-bars'"></i>
+    </button>
+
+    <nav ng-class="{'nav-open': isMenuOpen}">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li class="services-dropdown-parent" ng-class="{'dropdown-open': isServicesOpen}">
+          <button type="button" class="services-toggle" ng-click="isServicesOpen = !isServicesOpen" aria-haspopup="true" ng-attr-aria-expanded="{{ isServicesOpen }}">
+            <span class="active">Services</span>
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <ul class="services-dropdown">
+            <li class="mega-menu">
+              <!-- Mega Menu Sidebar -->
+              <div class="mega-menu-sidebar">
+                <div class="mega-menu-tab active">Consulting Practices</div>
+                <a ng-click="scrollTo('engagement-model')" class="mega-menu-tab link">Our Engagement Model</a>
+              </div>
+              <div class="mega-menu-content">
+                <div class="mega-menu-grid">
+                  <a class="mega-service-card" ng-click="scrollTo('oracle-hcm')">
+                    <strong>Oracle Fusion HCM</strong>
+                    <p>Transform workforce operations with connected Oracle HCM Cloud solutions.</p>
+                  </a>
+                  <a class="mega-service-card" ng-click="scrollTo('digital-transformation')">
+                    <strong>Digital Transformation</strong>
+                    <p>Turning ideas into scalable web, mobile, and enterprise digital experiences.</p>
+                  </a>
+                  <a class="mega-service-card" ng-click="scrollTo('quality-engineering')">
+                    <strong>Quality Engineering</strong>
+                    <p>Quality engineered into every stage of delivery for reliable software.</p>
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li><a href="index.html#method">Our Method</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="index.html#contact" class="btn-contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Services Hero Section (White Background, Inverted Text) -->
+  <section class="services-hero">
+    <!-- Abstract Digital Grid Background -->
+    <div class="hero-bg-grid"></div>
+    
+    <div class="container relative-z">
+      <!-- <div class="eyebrow">Assayor Services</div> -->
+      <h1>Technology is valuable when it <span class="highlight-text">moves the business forward.</span></h1>
+      <p>From advisory and architecture through implementation, testing, and continuous improvement, Assayor brings business and technology together.</p>
+      
+      <!-- Centered Actions -->
+      <div class="hero-actions justify-center" style="margin-top: 2.5rem;">
+        <a ng-click="scrollTo('oracle-hcm')" class="btn-primary">Explore Practices</a>
+        <a href="index.html#contact" class="btn-outline dark-outline">Talk to an Expert</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Oracle HCM Practice Section -->
+  <section id="oracle-hcm" class="practice-banner-section">
+    <div class="practice-banner" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80');">
+      <div class="banner-overlay"></div>
+      <div class="banner-content">
+        <span class="eyebrow">Oracle Fusion HCM</span>
+        <h2>Transform HR. Enable people. Simplify operations.</h2>
+        <p>Our major practice for business-led Oracle Cloud HCM transformation — covering end-to-end implementation, functional and technical delivery, quality assurance, integrations, data migration, SSO, release activities and ongoing managed support.</p>
+      </div>
+    </div>
+    
+    <div class="container practice-content">
+      <div class="service-grid">
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-users"></i>
+          <h4>Core HR</h4>
+          <p>Streamline employee lifecycle management and centralize global workforce data.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-star"></i>
+          <h4>Talent</h4>
+          <p>Attract, retain, and develop top performers through robust talent management strategies.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-money-check-dollar"></i>
+          <h4>Payroll</h4>
+          <p>Automate and simplify complex global payroll processing for accuracy and compliance.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-hand-holding-dollar"></i>
+          <h4>Compensation</h4>
+          <p>Design competitive and equitable compensation structures aligned with business goals.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-gift"></i>
+          <h4>Benefits</h4>
+          <p>Administer flexible, competitive benefit plans to enhance overall employee satisfaction.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-user-clock"></i>
+          <h4>Absence</h4>
+          <p>Effectively track, manage, and report on employee leave and absence policies.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-regular fa-calendar-days"></i>
+          <h4>Time & Labor</h4>
+          <p>Optimize workforce scheduling and accurately capture time data to boost productivity.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-user-plus"></i>
+          <h4>Recruiting</h4>
+          <p>Source, track, and hire the best candidates with a modernized applicant experience.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h4>Learning</h4>
+          <p>Empower employee development through integrated and personalized learning paths.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-headset"></i>
+          <h4>Help Desk</h4>
+          <p>Resolve HR inquiries efficiently to maintain high employee support standards.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-chart-pie"></i>
+          <h4>Reporting</h4>
+          <p>Drive strategic decisions with real-time, actionable analytics and reporting.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-link"></i>
+          <h4>Integrations</h4>
+          <p>Seamlessly connect your Oracle environment with third-party enterprise systems.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-shield-halved"></i>
+          <h4>Security</h4>
+          <p>Ensure robust role-based access controls and enterprise-grade data protection.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-database"></i>
+          <h4>Data & Migration</h4>
+          <p>Transition legacy system data smoothly and securely into your new cloud ecosystem.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Oracle HCM Lifecycle -->
+    <div class="container lifecycle-section">
+      <div class="text-center" style="margin-bottom: 2rem;">
+        <h3 class="plain-lifecycle-title">Oracle HCM Lifecycle</h3>
+      </div>
+      
+      <div class="lifecycle-split fade-up-item">
+        <!-- Title & Subtitle (Left Side) -->
+        <div class="lifecycle-text">
+          <h2>Built, integrated, tested and continuously improved.</h2>
+          <p>Assayor supports the complete product lifecycle rather than stopping at go-live, combining functional delivery with technical integration, data, security, testing, and post-production support.</p>
+        </div>
+
+        <!-- Grouped Pointers (Right Side) -->
+        <div class="lifecycle-pointers">
+          <div class="pointer-group">
+            <div class="check-item light-check"><i class="fa-solid fa-check"></i> Functional & technical design</div>
+            <div class="check-item light-check"><i class="fa-solid fa-check"></i> Legacy system integration</div>
+            <div class="check-item light-check"><i class="fa-solid fa-check"></i> Data migration & validation</div>
+            <div class="check-item light-check"><i class="fa-solid fa-check"></i> SSO integration</div>
+          </div>
+          <div class="pointer-group">
+            <div class="check-item light-check"><i class="fa-solid fa-check"></i> End-to-end quality testing</div>
+            <div class="check-item light-check"><i class="fa-solid fa-check"></i> Quarterly release support</div>
+            <div class="check-item light-check"><i class="fa-solid fa-check"></i> Enhancements & optimization</div>
+            <div class="check-item light-check"><i class="fa-solid fa-check"></i> Managed application support</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Digital Transformation Practice Section -->
+  <section id="digital-transformation" class="practice-banner-section bg-alt">
+    <div class="practice-banner" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80');">
+      <div class="banner-overlay"></div>
+      <div class="banner-content">
+        <span class="eyebrow">Digital Practice</span>
+        <h2>Turning ideas into scalable digital experiences.</h2>
+        <p>We help organizations transform business processes and customer experiences through web applications, mobile solutions, enterprise platforms, integrations, and modern digital experiences.</p>
+      </div>
+    </div>
+    
+    <div class="container practice-content">
+      <div class="service-grid">
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-laptop-code"></i>
+          <h4>Web Application Development</h4>
+          <p>Scalable, secure, and user-focused web applications built around business requirements.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+          <h4>Mobile App Development</h4>
+          <p>iOS and Android applications designed to deliver seamless digital experiences.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-sitemap"></i>
+          <h4>Enterprise Solutions</h4>
+          <p>Business applications and platforms that simplify operations and enable growth.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-network-wired"></i>
+          <h4>System Integration</h4>
+          <p>Connecting applications, platforms, and data to create a seamless digital ecosystem.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-object-group"></i>
+          <h4>UI / UX Design</h4>
+          <p>Intuitive, user-centric experiences designed around how people actually interact with technology.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-gears"></i>
+          <h4>Process Automation</h4>
+          <p>Digitizing and streamlining business processes to reduce manual effort and operational complexity.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-chart-line"></i>
+          <h4>Digital Optimization</h4>
+          <p>Continuous enhancement of applications, processes, and technology investments to maximize business value.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality Engineering Practice Section -->
+  <section id="quality-engineering" class="practice-banner-section">
+    <div class="practice-banner" style="background-image: url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1600&q=80');">
+      <div class="banner-overlay"></div>
+      <div class="banner-content">
+        <span class="eyebrow">Assurance Practice</span>
+        <h2>Quality Engineering</h2>
+        <p>Build quality, reliability, and confidence into every stage of your transformation journey.</p>
+      </div>
+    </div>
+    
+    <div class="container practice-content">
+      <div class="service-grid">
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-clipboard-check"></i>
+          <h4>Test Strategy</h4>
+          <p>Develop comprehensive testing plans tailored to your project timeline and risk profile.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-cogs"></i>
+          <h4>Automation Testing</h4>
+          <p>Accelerate release cycles and reduce manual overhead with robust automated test suites.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-plug-circle-check"></i>
+          <h4>API & Integration Testing</h4>
+          <p>Validate the connections and data flow between microservices and external platforms.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-shield-virus"></i>
+          <h4>Regression Testing</h4>
+          <p>Ensure new code deployments do not negatively impact existing functionality.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-tachometer-fast"></i>
+          <h4>Performance Testing</h4>
+          <p>Guarantee system scalability and responsiveness under peak operational loads.</p>
+        </div>
+        <div class="service-card fade-up-item">
+          <i class="fa-solid fa-stamp"></i>
+          <h4>Release Validation</h4>
+          <p>Perform strict pre-deployment confidence checks for defect-free production launches.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Assayor Engagement Model Section -->
+  <section id="engagement-model" class="engage-section alt-bg">
+    <div class="container">
+      <div class="section-title fade-up-item">
+        <h2>ASSAYOR ENGAGEMENT MODEL</h2>
+        <h4>Engagement Models Designed Around Your Business</h4>
+        <p class="engage-intro">Every organization operates differently. Project complexity, timelines, internal capabilities, and priorities vary. We believe the engagement model should adapt to your business—not the other way around. We recommend the best fit based on your objectives, risk profile, and investment strategy.</p>
+      </div>
+
+      <div class="engagement-grid">
+        
+        <!-- Model 1: Fixed Price -->
+        <div class="eng-card fade-up-item">
+          <div class="eng-header">
+            <h3><i class="fa-solid fa-file-signature"></i> Fixed Price</h3>
+            <p>Best suited for projects with clearly defined scope, timelines, and specific deliverables.</p>
+          </div>
+          <div class="eng-content">
+            <div class="eng-section">
+              <strong>Ideal For:</strong>
+              <div class="eng-tags">
+                <span>Oracle Implementations</span> <span>Web Dev</span> <span>Mobile Apps</span> <span>Product Dev</span>
+              </div>
+            </div>
+            <div class="eng-section">
+              <strong>Advantages:</strong>
+              <ul>
+                <li>Predictable project cost</li>
+                <li>Clearly defined deliverables</li>
+                <li>Structured project governance</li>
+                <li>Milestone-based execution</li>
+                <li>Lower commercial uncertainty</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model 2: T&M -->
+        <div class="eng-card fade-up-item">
+          <div class="eng-header">
+            <h3><i class="fa-solid fa-stopwatch"></i> Time & Material (T&M)</h3>
+            <p>Ideal when scope is expected to evolve. Pay only for the actual effort invested.</p>
+          </div>
+          <div class="eng-content">
+            <div class="eng-section">
+              <strong>Best For:</strong>
+              <div class="eng-tags">
+                <span>Consulting</span> <span>Discovery Workshops</span> <span>Agile Delivery</span> <span>Advisory Services</span>
+              </div>
+            </div>
+            <div class="eng-section">
+              <strong>Advantages:</strong>
+              <ul>
+                <li>High flexibility</li>
+                <li>Faster project initiation</li>
+                <li>Continuous prioritization</li>
+                <li>Better support for changing requirements</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model 3: Dedicated Team -->
+        <div class="eng-card fade-up-item">
+          <div class="eng-header">
+            <h3><i class="fa-solid fa-users-gear"></i> Dedicated Team</h3>
+            <p>A dedicated team works exclusively as a seamless extension of your own organization.</p>
+          </div>
+          <div class="eng-content">
+            <div class="eng-section">
+              <strong>Best For:</strong>
+              <div class="eng-tags">
+                <span>Digital Transformation</span> <span>Enterprise Programs</span> <span>Continuous Engineering</span>
+              </div>
+            </div>
+            <div class="eng-section">
+              <strong>Advantages:</strong>
+              <ul>
+                <li>Consistent project knowledge</li>
+                <li>Long-term collaboration</li>
+                <li>Better productivity</li>
+                <li>Strong business understanding</li>
+                <li>Faster decision-making</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model 4: Staff Augmentation -->
+        <div class="eng-card fade-up-item">
+          <div class="eng-header">
+            <h3><i class="fa-solid fa-user-plus"></i> Staff Augmentation</h3>
+            <p>Providing experienced consultants to instantly strengthen your existing project teams.</p>
+          </div>
+          <div class="eng-content">
+            <div class="eng-section">
+              <strong>Typical Roles:</strong>
+              <div class="eng-tags">
+                <span>Solution Architects</span> <span>Functional/Tech Consultants</span> <span>Project Managers</span> <span>Business Analysts</span>
+              </div>
+            </div>
+            <div class="eng-section">
+              <strong>Advantages:</strong>
+              <ul>
+                <li>Rapid onboarding</li>
+                <li>Flexible scaling</li>
+                <li>Reduced recruitment effort</li>
+                <li>Immediate access to expertise</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Model 5: Managed Services -->
+        <div class="eng-card fade-up-item">
+          <div class="eng-header">
+            <h3><i class="fa-solid fa-server"></i> Managed Services</h3>
+            <p>Comprehensive post-implementation support, maintenance, and continuous optimization.</p>
+          </div>
+          <div class="eng-content">
+            <div class="eng-section">
+              <strong>Includes:</strong>
+              <div class="eng-tags">
+                <span>Application Support</span> <span>Incident Resolution</span> <span>Release Mgmt</span> <span>Performance Monitoring</span>
+              </div>
+            </div>
+            <div class="eng-section">
+              <strong>Advantages:</strong>
+              <ul>
+                <li>Continuous system improvement</li>
+                <li>Guaranteed SLAs</li>
+                <li>Strategic technology advisory</li>
+                <li>Reduced internal IT burden</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recommendation Philosophy -->
+        <div class="philosophy-box fade-up-item">
+          <h3>Our Recommendation Philosophy</h3>
+          <p>One of Assayor's distinguishing characteristics is our commitment to recommending the engagement model that creates the greatest value for you. If we believe another commercial approach will better suit your objectives or reduce your investment while maintaining quality, we will recommend it—even if it means a smaller initial engagement for us. We believe long-term trust is built through honest advice, not maximizing short-term revenue.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section class="case-studies-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Case Studies</h2>
+        <h4>See how capability becomes outcomes.</h4>
+      </div>
+      <div class="case-studies-grid">
+        <div class="case-card fade-up-item">
+          <div class="case-badge">Oracle HCM</div>
+          <h3>Global Workforce Standardization</h3>
+          <div class="case-step"><strong>Challenge:</strong> Disparate legacy HR systems across 12 countries leading to poor data visibility.</div>
+          <div class="case-step"><strong>Approach:</strong> Core HR and Talent modules deployment with unified security architecture and global data migration.</div>
+          <div class="case-step outcome"><strong>Outcome:</strong> 100% data visibility, 40% reduction in manual HR operations, unified employee experience.</div>
+        </div>
+        <div class="case-card fade-up-item">
+          <div class="case-badge">Digital Transformation</div>
+          <h3>Legacy Application Modernization</h3>
+          <div class="case-step"><strong>Challenge:</strong> Outdated on-premise systems bottlenecking customer onboarding.</div>
+          <div class="case-step"><strong>Approach:</strong> API-led architecture redesign and automated workflow implementation.</div>
+          <div class="case-step outcome"><strong>Outcome:</strong> Scalable cloud infrastructure achieved, reducing customer onboarding time by 65%.</div>
+        </div>
+        <div class="case-card fade-up-item">
+          <div class="case-badge">Quality Engineering</div>
+          <h3>Continuous Testing Integration</h3>
+          <div class="case-step"><strong>Challenge:</strong> High defect leakage in production during frequent release cycles.</div>
+          <div class="case-step"><strong>Approach:</strong> Implemented end-to-end automation testing and performance validation.</div>
+          <div class="case-step outcome"><strong>Outcome:</strong> Defect leakage reduced by 92%, release confidence restored, saving hundreds of developer hours.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Final CTA -->
+  <section class="final-cta-section">
+    <div class="cta-content">
+      <div class="cta-text">
+        <h2>Have a transformation challenge?</h2>
+        <p>Let's discuss the business problem, technology landscape, and outcome you want to achieve.</p>
+      </div>
+      <div class="cta-button-wrapper">
+        <a href="mailto:reachout@assayor.com" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">Start a Conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="./images/logo_new.jpg" alt="Assayor Logo" class="footer-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="logo-fallback" style="display: none; color: #fff; margin-bottom: 1rem;">Assay<span style="color: var(--accent-orange);">or</span></div>
+        <p>Empowering businesses with cutting-edge IT solutions, high-reliability software testing, and tailored support.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="index.html#method">Our Method</a></li>
+          <li><a href="insights.html">Insights</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a ng-click="scrollTo('oracle-hcm')">Oracle Fusion HCM</a></li>
+          <li><a ng-click="scrollTo('digital-transformation')">Digital Transformation</a></li>
+          <li><a ng-click="scrollTo('quality-engineering')">Quality Assurance</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact Info</h4>
+        <ul>
+          <li><i class="fa-solid fa-envelope"></i> reachout@assayor.com</li>
+          <li><i class="fa-solid fa-phone"></i> +91 7745816110</li>
+          <li><i class="fa-solid fa-location-dot"></i> DSK Vishwa, Pune, Maharashtra 411041</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">&copy; {{ currentYear }} Assayor. All rights reserved.</div>
+  </footer>
+
+  <script>
+    var app = angular.module('companyApp', []);
+    app.controller('MainController', ['$scope', function($scope) {
+      if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+      $scope.currentYear = new Date().getFullYear();
+      $scope.isMenuOpen = false;
+      $scope.isServicesOpen = false;
+      $scope.toggleMenu = function() { $scope.isMenuOpen = !$scope.isMenuOpen; };
+
+      $scope.scrollTo = function(id) {
+        $scope.isMenuOpen = false; $scope.isServicesOpen = false;
+        var element = document.getElementById(id);
+        if (element) {
+          var headerOffset = document.querySelector('header').offsetHeight || 75;
+          var elementPosition = element.getBoundingClientRect().top;
+          var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      };
+
+      window.onload = function() {
+        if(window.location.hash) {
+          setTimeout(function() {
+            var hash = window.location.hash.substring(1);
+            $scope.scrollTo(hash);
+          }, 150); 
+        }
+      };
+    }]);
+
+    // Intersection Observer for scroll animation (Fade Up Effect)
+    document.addEventListener("DOMContentLoaded", function() {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        // Group entries that are intersecting to stagger their animation
+        let delayCounter = 0;
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('in-view');
+            }, delayCounter * 100); 
+            delayCounter++;
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-up-item').forEach(item => {
+        observer.observe(item);
+      });
+    });
+  </script>
+</body>
+</html>

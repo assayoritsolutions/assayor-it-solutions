@@ -5,19 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Assayor | Business Transformation Consulting</title>
   
-  <!-- Preload Critical Hero Banners for Instant Paint -->
   <link rel="preload" as="image" href="./images/comapny_banner.webp" media="(min-width: 769px)">
   <link rel="preload" as="image" href="./images/company_banner_mobile.webp" media="(max-width: 768px)">
-  
-  <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-  
-  <!-- Google Fonts & FontAwesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <link rel="stylesheet" href="css/index.css">
 </head>
 
@@ -25,8 +19,7 @@
 
   <!-- Navigation Header -->
   <header>
-    <a class="logo-container" ng-click="scrollTo('home')" aria-label="Go to Home">
-      <!-- Image Logo with seamless Text Fallback if the image fails to load -->
+    <a class="logo-container" href="index.html" aria-label="Go to Home">
       <img src="./images/logo_new.jpg" alt="Assayor Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
       <div class="logo-fallback" style="display: none;">Assay<span>or</span></div>
     </a>
@@ -46,20 +39,22 @@
           </button>
           <ul class="services-dropdown">
             <li class="mega-menu">
+              <!-- Mega Menu Sidebar -->
               <div class="mega-menu-sidebar">
                 <div class="mega-menu-tab active">Consulting Practices</div>
+                <a href="services.html#engagement-model" class="mega-menu-tab link">Our Engagement Model</a>
               </div>
               <div class="mega-menu-content">
                 <div class="mega-menu-grid">
-                  <a class="mega-service-card" ng-click="scrollTo('services')">
+                  <a class="mega-service-card" href="services.html#oracle-hcm">
                     <strong>Oracle Fusion HCM</strong>
                     <p>Transform workforce operations with connected Oracle HCM Cloud solutions.</p>
                   </a>
-                  <a class="mega-service-card" ng-click="scrollTo('services')">
+                  <a class="mega-service-card" href="services.html#digital-transformation">
                     <strong>Digital Transformation</strong>
                     <p>Turning ideas into scalable web, mobile, and enterprise digital experiences.</p>
                   </a>
-                  <a class="mega-service-card" ng-click="scrollTo('services')">
+                  <a class="mega-service-card" href="services.html#quality-engineering">
                     <strong>Quality Engineering</strong>
                     <p>Quality engineered into every stage of delivery for reliable software.</p>
                   </a>
@@ -75,7 +70,7 @@
     </nav>
   </header>
 
-  <!-- Responsive Hero Section (Desktop & Mobile Adaptive Banner) -->
+  <!-- Responsive Hero Section -->
   <section id="home" class="hero-section" aria-label="Company banner">
     <picture class="hero-picture">
       <source media="(max-width: 768px)" srcset="./images/company_banner_mobile.webp">
@@ -97,34 +92,10 @@
 
   <!-- Trust Strip -->
   <div class="trust-strip">
-    <div class="trust-item">
-      <i class="fa-solid fa-briefcase"></i>
-      <div>
-        <strong>Business First</strong>
-        <span>No tech without business logic</span>
-      </div>
-    </div>
-    <div class="trust-item">
-      <i class="fa-solid fa-bullseye"></i>
-      <div>
-        <strong>Outcome Focused</strong>
-        <span>Measurable results delivery</span>
-      </div>
-    </div>
-    <div class="trust-item">
-      <i class="fa-solid fa-layer-group"></i>
-      <div>
-        <strong>Deep Expertise</strong>
-        <span>30+ years of combined experience</span>
-      </div>
-    </div>
-    <div class="trust-item">
-      <i class="fa-solid fa-handshake-angle"></i>
-      <div>
-        <strong>End-to-End Partnership</strong>
-        <span>From strategy to support, we're with you all the way</span>
-      </div>
-    </div>
+    <div class="trust-item"><i class="fa-solid fa-briefcase"></i><div><strong>Business First</strong><span>No tech without business logic</span></div></div>
+    <div class="trust-item"><i class="fa-solid fa-bullseye"></i><div><strong>Outcome Focused</strong><span>Measurable results delivery</span></div></div>
+    <div class="trust-item"><i class="fa-solid fa-layer-group"></i><div><strong>Deep Expertise</strong><span>30+ years of combined experience</span></div></div>
+    <div class="trust-item"><i class="fa-solid fa-handshake-angle"></i><div><strong>End-to-End Partnership</strong><span>From strategy to support, we're with you all the way</span></div></div>
   </div>
 
   <!-- Consulting Practices -->
@@ -138,19 +109,19 @@
         <div class="practice-icon"><i class="fa-solid fa-users-gear"></i></div>
         <h3>Oracle Fusion HCM</h3>
         <p>Transforming the way you manage and empower your workforce with Oracle Cloud.</p>
-        <a href="oracle-hcm.html" class="practice-link">Explore Oracle HCM <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="services.html#oracle-hcm" class="practice-link">Explore Oracle HCM <i class="fa-solid fa-arrow-right"></i></a>
       </div>
       <div class="practice-card">
         <div class="practice-icon"><i class="fa-solid fa-network-wired"></i></div>
         <h3>Digital Transformation</h3>
         <p>Turning ideas into scalable, responsive, and seamless digital experiences.</p>
-        <a href="digital-transformation.html" class="practice-link">Explore Digital Transformation <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="services.html#digital-transformation" class="practice-link">Explore Digital Transformation <i class="fa-solid fa-arrow-right"></i></a>
       </div>
       <div class="practice-card">
         <div class="practice-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
         <h3>Quality Engineering</h3>
         <p>Built-in quality, reliability, and confidence delivered across every stage of value creation.</p>
-        <a href="quality-engineering.html" class="practice-link">Explore Quality Engineering <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="services.html#quality-engineering" class="practice-link">Explore Quality Engineering <i class="fa-solid fa-arrow-right"></i></a>
       </div>
     </div>
   </section>
@@ -183,8 +154,6 @@
         <p>We implement, integrate and transition solutions to deliver measurable value and scale.</p>
       </div>
     </div>
-    
-    <!-- Added View More Link -->
     <div class="text-center" style="margin-top: 2.5rem;">
       <a href="about.html" class="practice-link" style="font-size: 1rem;">View more to know about Assayor <i class="fa-solid fa-arrow-right"></i></a>
     </div>
@@ -214,7 +183,7 @@
         <div class="expertise-item"><i class="fa-solid fa-database"></i><span>Data & Migration</span></div>
       </div>
       <div class="text-center" style="margin-top: 2rem;">
-        <a href="oracle-hcm.html" class="practice-link" style="font-size: 1rem;">View All Oracle HCM Expertise <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="services.html#oracle-hcm" class="practice-link" style="font-size: 1rem;">View All Oracle HCM Expertise <i class="fa-solid fa-arrow-right"></i></a>
       </div>
     </div>
   </section>
@@ -223,45 +192,14 @@
   <section class="stats-section">
     <div class="section-title" style="margin-bottom: 3rem;">
       <h2 class="new-h2-color">Backed by Industry Experts</h2>
-      <!-- Text color updated to bright white (#ffffff) -->
       <h4 style="color: #ffffff; font-weight: 400; margin-top: 0.5rem;">A seasoned team with a proven track record of driving global transformations.</h4>
     </div>
     <div class="stats-grid">
-      <div class="stat-item">
-        <i class="fa-solid fa-clock-rotate-left"></i>
-        <div class="stat-info">
-          <h4>15+ YEARS OF EXPERIENCE</h4>
-          <span>Deep IT & delivery expertise.</span>
-        </div>
-      </div>
-      <div class="stat-item">
-        <i class="fa-regular fa-building"></i>
-        <div class="stat-info">
-          <h4>ENTERPRISE DELIVERY EXPERIENCE</h4>
-          <span>MNCs Experience. Enterprise standards. Real-world delivery.</span>
-        </div>
-      </div>
-      <div class="stat-item">
-        <i class="fa-solid fa-tasks"></i>
-        <div class="stat-info">
-          <h4>END-TO-END PROJECT OWNERSHIP</h4>
-          <span>From strategy to successful delivery.</span>
-        </div>
-      </div>
-      <div class="stat-item">
-        <i class="fa-solid fa-earth-americas"></i>
-        <div class="stat-info">
-          <h4>GLOBAL DELIVERY EXPERIENCE</h4>
-          <span>EMEA · APAC · North America · Middle East / UAE · India</span>
-        </div>
-      </div>
-      <div class="stat-item">
-        <i class="fa-solid fa-cubes"></i>
-        <div class="stat-info">
-          <h4>MULTI-PRACTICE EXPERTISE</h4>
-          <span>Oracle HCM · Digital Transformation · Quality Engineering.</span>
-        </div>
-      </div>
+      <div class="stat-item"><i class="fa-solid fa-clock-rotate-left"></i><div class="stat-info"><h4>15+ YEARS OF EXPERIENCE</h4><span>Deep IT & delivery expertise.</span></div></div>
+      <div class="stat-item"><i class="fa-regular fa-building"></i><div class="stat-info"><h4>ENTERPRISE DELIVERY EXPERIENCE</h4><span>MNCs Experience. Enterprise standards. Real-world delivery.</span></div></div>
+      <div class="stat-item"><i class="fa-solid fa-tasks"></i><div class="stat-info"><h4>END-TO-END PROJECT OWNERSHIP</h4><span>From strategy to successful delivery.</span></div></div>
+      <div class="stat-item"><i class="fa-solid fa-earth-americas"></i><div class="stat-info"><h4>GLOBAL DELIVERY EXPERIENCE</h4><span>EMEA · APAC · North America · Middle East / UAE · India</span></div></div>
+      <div class="stat-item"><i class="fa-solid fa-cubes"></i><div class="stat-info"><h4>MULTI-PRACTICE EXPERTISE</h4><span>Oracle HCM · Digital Transformation · Quality Engineering.</span></div></div>
     </div>
   </section>
 
@@ -272,26 +210,10 @@
       <h4>Built around the people driving transformation.</h4>
     </div>
     <div class="help-grid">
-      <div class="help-item">
-        <div class="help-icon"><i class="fa-solid fa-user-tie"></i></div>
-        <h3>HR & People Leaders</h3>
-        <p>Executing HR strategy, optimizing employee experience, and driving talent outcomes.</p>
-      </div>
-      <div class="help-item">
-        <div class="help-icon"><i class="fa-solid fa-server"></i></div>
-        <h3>CIO & IT Leaders</h3>
-        <p>Modernizing architecture, integrating ecosystems, and ensuring system reliability.</p>
-      </div>
-      <div class="help-item">
-        <div class="help-icon"><i class="fa-solid fa-chart-line"></i></div>
-        <h3>Business Leaders</h3>
-        <p>Aligning technology investments with operational efficiency and ROI.</p>
-      </div>
-      <div class="help-item">
-        <div class="help-icon"><i class="fa-solid fa-people-arrows"></i></div>
-        <h3>Transformation Teams</h3>
-        <p>Navigating organizational change and executing complex implementation programs.</p>
-      </div>
+      <div class="help-item"><div class="help-icon"><i class="fa-solid fa-user-tie"></i></div><h3>HR & People Leaders</h3><p>Executing HR strategy, optimizing employee experience, and driving talent outcomes.</p></div>
+      <div class="help-item"><div class="help-icon"><i class="fa-solid fa-server"></i></div><h3>CIO & IT Leaders</h3><p>Modernizing architecture, integrating ecosystems, and ensuring system reliability.</p></div>
+      <div class="help-item"><div class="help-icon"><i class="fa-solid fa-chart-line"></i></div><h3>Business Leaders</h3><p>Aligning technology investments with operational efficiency and ROI.</p></div>
+      <div class="help-item"><div class="help-icon"><i class="fa-solid fa-people-arrows"></i></div><h3>Transformation Teams</h3><p>Navigating organizational change and executing complex implementation programs.</p></div>
     </div>
   </section>
 
@@ -302,24 +224,14 @@
         <h2>When We Engage</h2>
         <h4>The right expertise at the right time for the challenge you have.</h4>
       </div>
-      
       <div class="engage">
-        <div class="card">
-          <h3>Advisory & Assessment</h3>
-          <p>Assess your landscape, identify opportunities and create a practical roadmap.</p>
-        </div>
-        <div class="card">
-          <h3>Project Delivery</h3>
-          <p>Bring experienced consultants into transformation programs from design through deployment.</p>
-        </div>
-        <div class="card">
-          <h3>Managed Services</h3>
-          <p>Ongoing support, optimization, enhancements and continuous improvement.</p>
-        </div>
-        <div class="card">
-          <h3>Specialist Expertise</h3>
-          <p>Access focused functional or technical expertise when and where you need it.</p>
-        </div>
+        <div class="card"><h3>Advisory & Assessment</h3><p>Assess your landscape, identify opportunities and create a practical roadmap.</p></div>
+        <div class="card"><h3>Project Delivery</h3><p>Bring experienced consultants into transformation programs from design through deployment.</p></div>
+        <div class="card"><h3>Managed Services</h3><p>Ongoing support, optimization, enhancements and continuous improvement.</p></div>
+        <div class="card"><h3>Specialist Expertise</h3><p>Access focused functional or technical expertise when and where you need it.</p></div>
+      </div>
+      <div class="text-center" style="margin-top: 2rem;">
+        <a href="services.html#engagement-model" class="btn-outline" style="color: var(--primary-dark); border-color: var(--primary-dark);">Explore Our Engagement Models</a>
       </div>
     </div>
   </section>
@@ -341,53 +253,18 @@
   <section id="contact" class="contact-section">
     <div class="contact-container">
       <div class="contact-split-wrapper">
-        
-        <!-- Left Side: Information & Brand Details -->
         <div class="contact-info-panel">
           <h2>Get in Touch with Us</h2>
-          <p class="contact-lead-desc">
-            Have a project in mind or looking to transform your business operations? Send us a message and our consulting team will respond promptly.
-          </p>
-
+          <p class="contact-lead-desc">Have a project in mind or looking to transform your business operations? Send us a message and our consulting team will respond promptly.</p>
           <div class="contact-info-items">
-            <div class="info-item">
-              <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
-              <div class="info-text">
-                <small>Email Us</small>
-                <a href="mailto:reachout@assayor.com">reachout@assayor.com</a>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
-              <div class="info-text">
-                <small>Call Us</small>
-                <a href="tel:+917745816110">+91 7745816110</a>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
-              <div class="info-text">
-                <small>Location</small>
-                <span>DSK Vishwa, Pune, Maharashtra 411041</span>
-              </div>
-            </div>
+            <div class="info-item"><div class="info-icon"><i class="fa-solid fa-envelope"></i></div><div class="info-text"><small>Email Us</small><a href="mailto:reachout@assayor.com">reachout@assayor.com</a></div></div>
+            <div class="info-item"><div class="info-icon"><i class="fa-solid fa-phone"></i></div><div class="info-text"><small>Call Us</small><a href="tel:+917745816110">+91 7745816110</a></div></div>
+            <div class="info-item"><div class="info-icon"><i class="fa-solid fa-location-dot"></i></div><div class="info-text"><small>Location</small><span>DSK Vishwa, Pune, Maharashtra 411041</span></div></div>
           </div>
-
-          <div class="contact-quick-tagline">
-            <i class="fa-solid fa-shield-halved"></i>
-            <span>We respect your privacy. No spam guaranteed.</span>
-          </div>
+          <div class="contact-quick-tagline"><i class="fa-solid fa-shield-halved"></i><span>We respect your privacy. No spam guaranteed.</span></div>
         </div>
-
-        <!-- Right Side: User Input Form Card -->
         <div class="contact-form-panel">
-          <div class="form-panel-header">
-            <h3>Send Us a Message</h3>
-            <p>Fill out the form below and we'll get back to you within 24 hours.</p>
-          </div>
-
+          <div class="form-panel-header"><h3>Send Us a Message</h3><p>Fill out the form below and we'll get back to you within 24 hours.</p></div>
           <form class="contact-form" ng-submit="submitForm()">
             <input type="text" placeholder="Full Name *" ng-model="form.name" required>
             <input type="email" placeholder="Email Address *" ng-model="form.email" required>
@@ -400,7 +277,6 @@
             </button>
           </form>
         </div>
-
       </div>
     </div>
   </section>
@@ -409,7 +285,6 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <!-- Image Logo with seamless Text Fallback if the image fails to load -->
         <img src="./images/logo_new.jpg" alt="Assayor Logo" class="footer-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
         <div class="logo-fallback" style="display: none; color: #fff; margin-bottom: 1rem;">Assay<span style="color: var(--accent-orange);">or</span></div>
         <p>Empowering businesses with cutting-edge IT solutions, high-reliability software testing, and tailored support.</p>
@@ -417,19 +292,19 @@
       <div class="footer-links">
         <h4>Quick Links</h4>
         <ul>
-          <li><a ng-click="scrollTo('home')">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
-          <li><a ng-click="scrollTo('services')">Services</a></li>
-          <li><a ng-click="scrollTo('method')">Our Method</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="index.html#method">Our Method</a></li>
           <li><a href="insights.html">Insights</a></li>
         </ul>
       </div>
       <div class="footer-links">
         <h4>Services</h4>
         <ul>
-          <li><a href="oracle-hcm.html">Oracle Fusion HCM</a></li>
-          <li><a href="digital-transformation.html">Digital Transformation</a></li>
-          <li><a href="quality-engineering.html">Quality Assurance</a></li>
+          <li><a href="services.html#oracle-hcm">Oracle Fusion HCM</a></li>
+          <li><a href="services.html#digital-transformation">Digital Transformation</a></li>
+          <li><a href="services.html#quality-engineering">Quality Assurance</a></li>
         </ul>
       </div>
       <div class="footer-links">
@@ -441,85 +316,47 @@
         </ul>
       </div>
     </div>
-    <div class="copyright">
-      &copy; {{ currentYear }} Assayor. All rights reserved.
-    </div>
+    <div class="copyright">&copy; {{ currentYear }} Assayor. All rights reserved.</div>
   </footer>
 
-  <!-- AngularJS Application Code -->
   <script>
     var app = angular.module('companyApp', []);
-
-    app.controller('MainController', ['$scope', '$location', '$anchorScroll', function($scope, $location, $anchorScroll) {
-      
-      // Ensure page always starts at the top on a hard refresh and avoids browser scroll restoration logic caching the spot
-      if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
-      }
-      window.scrollTo(0, 0);
-
+    app.controller('MainController', ['$scope', function($scope) {
+      if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
       $scope.currentYear = new Date().getFullYear();
       $scope.isMenuOpen = false;
       $scope.isServicesOpen = false;
-
-      $scope.toggleMenu = function() {
-        $scope.isMenuOpen = !$scope.isMenuOpen;
-      };
-
+      $scope.toggleMenu = function() { $scope.isMenuOpen = !$scope.isMenuOpen; };
       $scope.scrollTo = function(id) {
-        $scope.isMenuOpen = false;
-        $scope.isServicesOpen = false;
-        
-        // Native JavaScript scroll replacement that doesn't modify the URL hash.
+        $scope.isMenuOpen = false; $scope.isServicesOpen = false;
         var element = document.getElementById(id);
         if (element) {
-          // Calculate standard header offset so sections aren't hidden behind the sticky nav 
           var headerOffset = document.querySelector('header').offsetHeight || 75;
           var elementPosition = element.getBoundingClientRect().top;
           var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        } else {
+            window.location.href = "index.html#" + id;
         }
       };
       
-      // Contact Form Handling
       $scope.form = {};
       $scope.isSubmitting = false;
-
       $scope.submitForm = function() {
         var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbytfrSm-XFgaEWsVplE7eXLHHfa-dIpnV30NO8WAVLjyrRNPZTUKjCEBTL96wdIOt-0/exec';
-
-        var payload = {
-          name: $scope.form.name,
-          email: $scope.form.email,
-          phone: $scope.form.phone,
-          website: $scope.form.website,
-          message: $scope.form.message
-        };
-
+        var payload = { name: $scope.form.name, email: $scope.form.email, phone: $scope.form.phone, website: $scope.form.website, message: $scope.form.message };
         $scope.isSubmitting = true;
-
-        fetch(SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        }).then(function() {
-          $scope.form = {};
-          $scope.isSubmitting = false;
+        fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+        .then(function() {
+          $scope.form = {}; $scope.isSubmitting = false;
           if (!$scope.$$phase) { $scope.$apply(); }
           alert('Thank you! Your message has been received and our team will get in touch soon.');
         }).catch(function(err) {
-          console.error(err);
-          $scope.isSubmitting = false;
+          console.error(err); $scope.isSubmitting = false;
           if (!$scope.$$phase) { $scope.$apply(); }
           alert('Submission failed. Please try again or email us directly at reachout@assayor.com');
         });
       };
-      
     }]);
   </script>
 </body>

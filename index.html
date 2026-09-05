@@ -25,7 +25,7 @@
 
   <!-- Navigation Header -->
   <header>
-    <a class="logo-container" ng-click="scrollTo('home')" ng-href="#home" aria-label="Go to Home">
+    <a class="logo-container" ng-click="scrollTo('home')" aria-label="Go to Home">
       <!-- Image Logo with seamless Text Fallback if the image fails to load -->
       <img src="./images/logo_new.jpg" alt="Assayor Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
       <div class="logo-fallback" style="display: none;">Assay<span>or</span></div>
@@ -51,15 +51,15 @@
               </div>
               <div class="mega-menu-content">
                 <div class="mega-menu-grid">
-                  <a class="mega-service-card" href="#services" ng-click="scrollTo('services')">
+                  <a class="mega-service-card" ng-click="scrollTo('services')">
                     <strong>Oracle Fusion HCM</strong>
                     <p>Transform workforce operations with connected Oracle HCM Cloud solutions.</p>
                   </a>
-                  <a class="mega-service-card" href="#services" ng-click="scrollTo('services')">
+                  <a class="mega-service-card" ng-click="scrollTo('services')">
                     <strong>Digital Transformation</strong>
                     <p>Turning ideas into scalable web, mobile, and enterprise digital experiences.</p>
                   </a>
-                  <a class="mega-service-card" href="#services" ng-click="scrollTo('services')">
+                  <a class="mega-service-card" ng-click="scrollTo('services')">
                     <strong>Quality Engineering</strong>
                     <p>Quality engineered into every stage of delivery for reliable software.</p>
                   </a>
@@ -332,7 +332,7 @@
         <p>Let's discuss your business challenges, technology landscape, and transformation goals.</p>
       </div>
       <div class="cta-button-wrapper">
-        <a ng-click="scrollTo('contact')" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;" href="mailto:reachout@assayor.com">Start a Conversation</a>
+        <a ng-click="scrollTo('contact')" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;" href="javascript:void(0)">Start a Conversation</a>
       </div>
     </div>
   </section>
@@ -451,6 +451,13 @@
     var app = angular.module('companyApp', []);
 
     app.controller('MainController', ['$scope', '$location', '$anchorScroll', function($scope, $location, $anchorScroll) {
+      
+      // Ensure page always starts at the top on a hard refresh and avoids browser scroll restoration logic caching the spot
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+
       $scope.currentYear = new Date().getFullYear();
       $scope.isMenuOpen = false;
       $scope.isServicesOpen = false;
@@ -462,8 +469,20 @@
       $scope.scrollTo = function(id) {
         $scope.isMenuOpen = false;
         $scope.isServicesOpen = false;
-        $location.hash(id);
-        $anchorScroll();
+        
+        // Native JavaScript scroll replacement that doesn't modify the URL hash.
+        var element = document.getElementById(id);
+        if (element) {
+          // Calculate standard header offset so sections aren't hidden behind the sticky nav 
+          var headerOffset = document.querySelector('header').offsetHeight || 75;
+          var elementPosition = element.getBoundingClientRect().top;
+          var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
       };
       
       // Contact Form Handling

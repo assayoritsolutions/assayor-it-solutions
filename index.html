@@ -5,20 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Assayor | Business Transformation Consulting</title>
   
-  <!-- Preload Critical Hero Banner for Instant Paint -->
+  <!-- Preload Critical Hero Banners for Instant Paint -->
   <link rel="preload" as="image" href="./images/comapny_banner.webp" media="(min-width: 769px)">
   <link rel="preload" as="image" href="./images/company_banner_mobile.webp" media="(max-width: 768px)">
-
+  
   <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   
   <!-- Google Fonts & FontAwesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- External Stylesheet -->
   <link rel="stylesheet" href="css/index.css">
 </head>
 
@@ -27,10 +26,11 @@
   <!-- Navigation Header -->
   <header>
     <a class="logo-container" ng-click="scrollTo('home')" ng-href="#home" aria-label="Go to Home">
-      <img src="./images/logo_new.jpg" alt="Company Logo">
+      <!-- Image Logo with seamless Text Fallback if the image fails to load -->
+      <img src="./images/logo_new.jpg" alt="Assayor Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-fallback" style="display: none;">Assay<span>or</span></div>
     </a>
 
-    <!-- Mobile Hamburger Button -->
     <button class="menu-toggle" ng-click="toggleMenu()" aria-label="Toggle navigation">
       <i class="fa-solid" ng-class="isMenuOpen ? 'fa-xmark' : 'fa-bars'"></i>
     </button>
@@ -47,20 +47,20 @@
           <ul class="services-dropdown">
             <li class="mega-menu">
               <div class="mega-menu-sidebar">
-                <div class="mega-menu-tab active">Service Offerings</div>
+                <div class="mega-menu-tab active">Consulting Practices</div>
               </div>
               <div class="mega-menu-content">
                 <div class="mega-menu-grid">
-                  <a class="mega-service-card" href="#service-details" ng-click="selectService('oracle'); scrollTo('service-details')">
+                  <a class="mega-service-card" href="#services" ng-click="scrollTo('services')">
                     <strong>Oracle Fusion HCM</strong>
                     <p>Transform workforce operations with connected Oracle HCM Cloud solutions.</p>
                   </a>
-                  <a class="mega-service-card" href="#service-details" ng-click="selectService('digital-transformation'); scrollTo('service-details')">
+                  <a class="mega-service-card" href="#services" ng-click="scrollTo('services')">
                     <strong>Digital Transformation</strong>
                     <p>Turning ideas into scalable web, mobile, and enterprise digital experiences.</p>
                   </a>
-                  <a class="mega-service-card" href="#service-details" ng-click="selectService('software-testing'); scrollTo('service-details')">
-                    <strong>Software Quality Assurance</strong>
+                  <a class="mega-service-card" href="#services" ng-click="scrollTo('services')">
+                    <strong>Quality Engineering</strong>
                     <p>Quality engineered into every stage of delivery for reliable software.</p>
                   </a>
                 </div>
@@ -68,8 +68,9 @@
             </li>
           </ul>
         </li>
-        <li><a href="mission.html">Our Mission</a></li>
-        <li><a ng-click="scrollTo('contact')" class="btn-contact">Contact Us</a></li>
+        <li><a ng-click="scrollTo('method')">Our Method</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a ng-click="scrollTo('contact')" class="btn-contact">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -81,246 +82,230 @@
       <source media="(min-width: 769px)" srcset="./images/comapny_banner.webp">
       <img class="hero-banner" src="./images/comapny_banner.webp" alt="Company banner" fetchpriority="high">
     </picture>
-  </section>
-
-  <!-- Why The Name Assayor / Motive Section -->
-  <section class="motive-section">
-    <div class="motive-container">
-      <div class="motive-header">
-        <h2>WHY THE NAME "ASSAYOR"?</h2>
-        <h4>Carefully Examining. Analyzing. Evaluating.</h4>
-      </div>
-      
-      <p class="motive-definition">
-        The word "Assay" is commonly used in scientific research to describe the process of carefully examining, analyzing, and evaluating a material to understand its characteristics, composition, and potential.
+    
+    <div class="hero-content">
+      <h1>Business Transformation.<br><span>Engineered Around Your Business.</span></h1>
+      <p class="hero-subtitle">
+        We help organizations turn business challenges into measurable outcomes through Oracle Fusion HCM, Digital Transformation and Quality Engineering — combining business understanding, technology expertise and disciplined execution.
       </p>
-
-      <div class="motive-quote-box">
-        <p>"Our role is to "assay" your business before we architect solutions and accelerate outcomes."</p>
-        <span>That philosophy is embedded in everything we do through The Assayor Method™:</span>
-      </div>
-
-      <!-- Animated Pillars -->
-      <div class="pillars-container">
-        <div class="pillar-card pillar-1">
-          <div class="pillar-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
-          <span class="pillar-text">Assay</span>
-        </div>
-        <span class="pillar-separator sep-1">•</span>
-        <div class="pillar-card pillar-2">
-          <div class="pillar-icon"><i class="fa-solid fa-compass-drafting"></i></div>
-          <span class="pillar-text">Architect</span>
-        </div>
-        <span class="pillar-separator sep-2">•</span>
-        <div class="pillar-card pillar-3">
-          <div class="pillar-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
-          <span class="pillar-text">Accelerate</span>
-        </div>
+      <div class="hero-actions">
+        <a ng-click="scrollTo('services')" class="btn-primary">Explore Our Services</a>
+        <a ng-click="scrollTo('contact')" class="btn-outline">Talk to an Expert</a>
       </div>
     </div>
   </section>
 
-  <!-- Services Section (Tiles with Expand/Collapse Animation on Hover & Tap) -->
-  <section id="services" class="services-section">
+  <!-- Trust Strip -->
+  <div class="trust-strip">
+    <div class="trust-item">
+      <i class="fa-solid fa-briefcase"></i>
+      <div>
+        <strong>Business First</strong>
+        <span>No tech without business logic</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <i class="fa-solid fa-bullseye"></i>
+      <div>
+        <strong>Outcome Focused</strong>
+        <span>Measurable results delivery</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <i class="fa-solid fa-layer-group"></i>
+      <div>
+        <strong>Deep Expertise</strong>
+        <span>30+ years of combined experience</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <i class="fa-solid fa-handshake-angle"></i>
+      <div>
+        <strong>End-to-End Partnership</strong>
+        <span>From strategy to support, we're with you all the way</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Consulting Practices -->
+  <section id="services" class="practices-section">
     <div class="section-title">
-      <h2>Our Offerings</h2>
-      <h4>Comprehensive Transformation Capabilities</h4>
+      <h2>Our Consulting Practices</h2>
+      <h4>Three core practices. One transformation partner.</h4>
     </div>
-    <div class="services-grid">
-      
-      <!-- 01. Oracle Fusion HCM Tile -->
-      <div class="service-card" 
-           ng-class="{'is-expanded': expandedCard === 'oracle'}"
-           role="button" 
-           tabindex="0" 
-           aria-label="Oracle Fusion HCM service details">
-        <div class="service-card-header" ng-click="selectService('oracle'); scrollTo('service-details')">
-          <img class="service-card-image" src="./images/OR_IMG3.jpg" alt="Oracle Fusion HCM" loading="lazy" decoding="async">
-          <div class="service-card-overlay">
-            <h3>Oracle Fusion HCM</h3>
-          </div>
-        </div>
-        <div class="expand-trigger" ng-click="toggleCard('oracle', $event)">
-          <span>Explore Expertise</span>
-          <i class="fa-solid fa-chevron-down expand-arrow"></i>
-        </div>
-        <div class="service-card-details" ng-click="selectService('oracle'); scrollTo('service-details')">
-          <ul class="service-card-benefits">
-            <li ng-repeat="item in services.oracle.hoverItems">
-              <i class="fa-solid fa-circle-check"></i>
-              <span>{{ item }}</span>
-            </li>
-          </ul>
-        </div>
+    <div class="practices-grid">
+      <div class="practice-card">
+        <div class="practice-icon"><i class="fa-solid fa-users-gear"></i></div>
+        <h3>Oracle Fusion HCM</h3>
+        <p>Transforming the way you manage and empower your workforce with Oracle Cloud.</p>
+        <a href="oracle-hcm.html" class="practice-link">Explore Oracle HCM <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-
-      <!-- 02. Digital Transformation Tile -->
-      <div class="service-card" 
-           ng-class="{'is-expanded': expandedCard === 'digital-transformation'}"
-           role="button" 
-           tabindex="0" 
-           aria-label="Digital Transformation service details">
-        <div class="service-card-header" ng-click="selectService('digital-transformation'); scrollTo('service-details')">
-          <img class="service-card-image" src="./images/DT_IMG4.jpg" alt="Digital Transformation" loading="lazy" decoding="async">
-          <div class="service-card-overlay">
-            <h3>Digital Transformation</h3>
-          </div>
-        </div>
-        <div class="expand-trigger" ng-click="toggleCard('digital-transformation', $event)">
-          <span>Explore Capabilities</span>
-          <i class="fa-solid fa-chevron-down expand-arrow"></i>
-        </div>
-        <div class="service-card-details" ng-click="selectService('digital-transformation'); scrollTo('service-details')">
-          <ul class="service-card-benefits">
-            <li ng-repeat="item in services['digital-transformation'].hoverItems">
-              <i class="fa-solid fa-circle-check"></i>
-              <span>{{ item }}</span>
-            </li>
-          </ul>
-        </div>
+      <div class="practice-card">
+        <div class="practice-icon"><i class="fa-solid fa-network-wired"></i></div>
+        <h3>Digital Transformation</h3>
+        <p>Turning ideas into scalable, responsive, and seamless digital experiences.</p>
+        <a href="digital-transformation.html" class="practice-link">Explore Digital Transformation <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-
-      <!-- 03. Software Quality Assurance Tile -->
-      <div class="service-card" 
-           ng-class="{'is-expanded': expandedCard === 'software-testing'}"
-           role="button" 
-           tabindex="0" 
-           aria-label="Software Quality Assurance service details">
-        <div class="service-card-header" ng-click="selectService('software-testing'); scrollTo('service-details')">
-          <img class="service-card-image" src="./images/QA_IMG1.jpeg" alt="Software Quality Assurance" loading="lazy" decoding="async">
-          <div class="service-card-overlay">
-            <h3>Software Quality Assurance</h3>
-          </div>
-        </div>
-        <div class="expand-trigger" ng-click="toggleCard('software-testing', $event)">
-          <span>Explore Quality Engineering</span>
-          <i class="fa-solid fa-chevron-down expand-arrow"></i>
-        </div>
-        <div class="service-card-details" ng-click="selectService('software-testing'); scrollTo('service-details')">
-          <ul class="service-card-benefits">
-            <li ng-repeat="item in services['software-testing'].hoverItems">
-              <i class="fa-solid fa-circle-check"></i>
-              <span>{{ item }}</span>
-            </li>
-          </ul>
-        </div>
+      <div class="practice-card">
+        <div class="practice-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
+        <h3>Quality Engineering</h3>
+        <p>Built-in quality, reliability, and confidence delivered across every stage of value creation.</p>
+        <a href="quality-engineering.html" class="practice-link">Explore Quality Engineering <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-
     </div>
   </section>
 
-  <!-- Deep-Dive Selected Service Details Section (Broader View with Quick Switcher Tabs) -->
-  <section id="service-details" class="service-details-section">
-    <div class="service-details-container">
-      
-      <!-- Quick Service Switcher Tabs -->
-      <div class="details-tab-nav">
-        <button type="button" 
-                class="tab-nav-btn" 
-                ng-class="{'active': selectedServiceKey === 'oracle'}" 
-                ng-click="selectService('oracle')">
-          <i class="fa-solid fa-users-gear"></i>
-          <span>Oracle Fusion HCM</span>
-        </button>
-        <button type="button" 
-                class="tab-nav-btn" 
-                ng-class="{'active': selectedServiceKey === 'digital-transformation'}" 
-                ng-click="selectService('digital-transformation')">
-          <i class="fa-solid fa-network-wired"></i>
-          <span>Digital Transformation</span>
-        </button>
-        <button type="button" 
-                class="tab-nav-btn" 
-                ng-class="{'active': selectedServiceKey === 'software-testing'}" 
-                ng-click="selectService('software-testing')">
-          <i class="fa-solid fa-vial-circle-check"></i>
-          <span>Quality Assurance</span>
-        </button>
-      </div>
-
-      <!-- Top Title Header -->
-      <div class="service-details-header">
-        <div class="header-main-meta">
-          <div class="service-icon-badge">
-            <i class="fa-solid {{ selectedService.icon }}"></i>
-          </div>
-          <div>
-            <h2>{{ selectedService.title }}</h2>
-            <div class="service-tagline">{{ selectedService.tagline }}</div>
-          </div>
-        </div>
-        <p class="service-subtitle">{{ selectedService.subtitle }}</p>
-      </div>
-
-      <!-- In-Depth Capability Details -->
-      <div class="service-details-body">
-        <div class="expertise-title">
-          <div class="expertise-icon-dot"></div>
-          <span>{{ selectedService.expertiseHeading }}</span>
-        </div>
-
-        <div class="capabilities-grid">
-          <div class="capability-item" ng-repeat="cap in selectedService.capabilities">
-            <div class="capability-item-header">
-              <i class="fa-solid fa-circle-check"></i>
-              <h4>{{ cap.title }}</h4>
-            </div>
-            <p>{{ cap.desc }}</p>
-          </div>
-        </div>
-
-        <!-- Our Approach -->
-        <div class="approach-box">
-          <div class="approach-badge">
-            <i class="fa-solid fa-compass-drafting"></i>
-            <span>Our Approach</span>
-          </div>
-          <p>{{ selectedService.approach }}</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Our Commitments To Clients Section -->
-  <section class="commitment-section" aria-label="Our Commitments To Clients">
+  <!-- The Assayor Method -->
+  <section id="method" class="method-section">
     <div class="section-title">
-      <h2>Our Commitments To Clients</h2>
-      <h4>Partners in Long-Term Value &amp; Excellence</h4>
+      <h2>The Assayor Method</h2>
+      <h4>A business-first approach to transformation that delivers lasting impact.</h4>
+    </div>
+    <div class="method-timeline">
+      <div class="method-step">
+        <div class="method-circle circle-assay"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div class="method-name">ASSAY</div>
+        <strong>Understand the Business</strong>
+        <p>We assess your business, operating landscape, needs and challenges to identify true transformation goals.</p>
+      </div>
+      <div class="method-line"></div>
+      <div class="method-step">
+        <div class="method-circle circle-architect"><i class="fa-solid fa-compass-drafting"></i></div>
+        <div class="method-name">ARCHITECT</div>
+        <strong>Design the Right Solution</strong>
+        <p>We architect a future-state model aligned to your business needs, processes and technology.</p>
+      </div>
+      <div class="method-line"></div>
+      <div class="method-step">
+        <div class="method-circle circle-accelerate"><i class="fa-solid fa-rocket"></i></div>
+        <div class="method-name">ACCELERATE</div>
+        <strong>Deliver Measurable Outcomes</strong>
+        <p>We implement, integrate and transition solutions to deliver measurable value and scale.</p>
+      </div>
     </div>
     
-    <div class="commitment-card">
-      <div class="commitment-text">
-        <h2>OUR <span>COMMITMENT</span> TO CLIENTS</h2>
-        <p>
-          When organizations engage Assayor, they gain more than consultants. They gain a team committed to understanding their business, challenging assumptions, simplifying complexity, and delivering measurable value.
-        </p>
-        <div class="commitment-quote">
-          "Our goal is to become a trusted advisor who contributes to your business long after the project is complete."
+    <!-- Added View More Link -->
+    <div class="text-center" style="margin-top: 2.5rem;">
+      <a href="about.html" class="practice-link" style="font-size: 1rem;">View more to know about Assayor <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <!-- Expertise at a Glance -->
+  <section class="expertise-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>ORACLE CLOUD HUMAN CAPITAL MANAGEMENT</h2>
+        <h4>A major Assayor practice — backed by broad functional and technical capability.</h4>
+      </div>
+      <div class="expertise-grid">
+        <div class="expertise-item"><i class="fa-solid fa-users"></i><span>Core HR</span></div>
+        <div class="expertise-item"><i class="fa-solid fa-star"></i><span>Talent</span></div>
+        <div class="expertise-item"><i class="fa-solid fa-money-check-dollar"></i><span>Payroll</span></div>
+        <div class="expertise-item"><i class="fa-solid fa-hand-holding-dollar"></i><span>Compensation</span></div>
+        <div class="expertise-item"><i class="fa-solid fa-gift"></i><span>Benefits</span></div>
+        <div class="expertise-item"><i class="fa-solid fa-user-clock"></i><span>Absence</span></div>
+        <div class="expertise-item"><i class="fa-solid fa-user-clock"></i><span>Time & Labor</span></div>
+        <div class="expertise-item"><i class="fa-solid fa-user-plus"></i><span>Recruiting</span></div>
+        <div class="expertise-item"><i class="fa-solid fa-graduation-cap"></i><span>Learning</span></div>
+        <div class="expertise-item"><i class="fa-solid fa-chart-pie"></i><span>Help Desk</span></div>
+        <div class="expertise-item"><i class="fa-solid fa-chart-pie"></i><span>Reporting</span></div>
+        <div class="expertise-item"><i class="fa-solid fa-link"></i><span>Integrations</span></div>
+        <div class="expertise-item"><i class="fa-solid fa-shield-halved"></i><span>Security</span></div>
+        <div class="expertise-item"><i class="fa-solid fa-database"></i><span>Data & Migration</span></div>
+      </div>
+      <div class="text-center" style="margin-top: 2rem;">
+        <a href="oracle-hcm.html" class="practice-link" style="font-size: 1rem;">View All Oracle HCM Expertise <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Backed by Industry Experts -->
+  <section class="stats-section">
+    <div class="section-title" style="margin-bottom: 3rem;">
+      <h2 class="new-h2-color">Backed by Industry Experts</h2>
+      <!-- Text color updated to bright white (#ffffff) -->
+      <h4 style="color: #ffffff; font-weight: 400; margin-top: 0.5rem;">A seasoned team with a proven track record of driving global transformations.</h4>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        <div class="stat-info">
+          <h4>15+ YEARS OF EXPERIENCE</h4>
+          <span>Our expert team brings 15+ years of hands-on IT, technology and delivery experience across enterprise environments.</span>
         </div>
       </div>
+      <div class="stat-item">
+        <i class="fa-regular fa-building"></i>
+        <div class="stat-info">
+          <h4>ENTERPRISE DELIVERY EXPERIENCE</h4>
+          <span>Experience working with multiple MNCs and complex enterprise environments, understanding governance,
+processes, stakeholders and delivery standards.</span>
+        </div>
+      </div>
+      <div class="stat-item">
+        <i class="fa-solid fa-earth-americas"></i>
+        <div class="stat-info">
+          <h4>END-TO-END PROJECT OWNERSHIP</h4>
+          <span>Experience owning projects from discovery and solution design through implementation, integration, testing, deployment and post go-live support.</span>
+        </div>
+      </div>
+      <div class="stat-item">
+        <i class="fa-solid fa-tasks"></i>
+        <div class="stat-info">
+          <h4>GLOBAL DELIVERY EXPERIENCE</h4>
+          <span>Delivered and supported projects across multiple global regions:<br>EMEA • APAC • North America
+Middle East / UAE • India</span>
+        </div>
+      </div>
+      <div class="stat-item">
+        <i class="fa-solid fa-cubes"></i>
+        <div class="stat-info">
+          <h4>MULTI-PRACTICE EXPERTISE</h4>
+          <span>Expertise spanning all three Assayor consulting practices to deliver holistic solutions that drive measurable business outcomes.</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <div class="commitment-steps">
-        <div class="commit-pill">
-          <span class="commit-num">01</span>
-          <span class="commit-title">Listening before advising.</span>
-        </div>
-        <div class="commit-pill">
-          <span class="commit-num">02</span>
-          <span class="commit-title">Understanding before designing.</span>
-        </div>
-        <div class="commit-pill">
-          <span class="commit-num">03</span>
-          <span class="commit-title">Collaborating before deciding.</span>
-        </div>
-        <div class="commit-pill">
-          <span class="commit-num">04</span>
-          <span class="commit-title">Delivering before celebrating.</span>
-        </div>
-        <div class="commit-pill">
-          <span class="commit-num">05</span>
-          <span class="commit-title">Improving before concluding.</span>
-        </div>
+  <!-- Who We Help -->
+  <section class="who-we-help-section">
+    <div class="section-title">
+      <h2>Who We Help</h2>
+      <h4>Built around the people driving transformation.</h4>
+    </div>
+    <div class="help-grid">
+      <div class="help-item">
+        <div class="help-icon"><i class="fa-solid fa-user-tie"></i></div>
+        <h3>HR & People Leaders</h3>
+        <p>Executing HR strategy, optimizing employee experience, and driving talent outcomes.</p>
+      </div>
+      <div class="help-item">
+        <div class="help-icon"><i class="fa-solid fa-server"></i></div>
+        <h3>CIO & IT Leaders</h3>
+        <p>Modernizing architecture, integrating ecosystems, and ensuring system reliability.</p>
+      </div>
+      <div class="help-item">
+        <div class="help-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <h3>Business Leaders</h3>
+        <p>Aligning technology investments with operational efficiency and ROI.</p>
+      </div>
+      <div class="help-item">
+        <div class="help-icon"><i class="fa-solid fa-people-arrows"></i></div>
+        <h3>Transformation Teams</h3>
+        <p>Navigating organizational change and executing complex implementation programs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ready to Transform CTA Section -->
+  <section class="final-cta-section">
+    <div class="cta-content">
+      <div class="cta-text">
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Let's discuss your business challenges, technology landscape, and transformation goals.</p>
+      </div>
+      <div class="cta-button-wrapper">
+        <a ng-click="scrollTo('contact')" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">Start a Conversation</a>
       </div>
     </div>
   </section>
@@ -398,25 +383,27 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <h3>{{ companyName }}</h3>
+        <!-- Image Logo with seamless Text Fallback if the image fails to load -->
+        <img src="./images/logo_new.jpg" alt="Assayor Logo" class="footer-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="logo-fallback" style="display: none; color: #fff; margin-bottom: 1rem;">Assay<span style="color: var(--accent-orange);">or</span></div>
         <p>Empowering businesses with cutting-edge IT solutions, high-reliability software testing, and tailored support.</p>
       </div>
       <div class="footer-links">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a ng-click="scrollTo('home')">Home</a></li>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="index.html#services">Services</a></li>
-          <li><a href="mission.html">Our Mission</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
+          <li><a ng-click="scrollTo('services')">Services</a></li>
+          <li><a ng-click="scrollTo('method')">Our Method</a></li>
+          <li><a href="insights.html">Insights</a></li>
         </ul>
       </div>
       <div class="footer-links">
         <h4>Services</h4>
         <ul>
-          <li><a href="#service-details" ng-click="selectService('oracle'); scrollTo('service-details')">Oracle Fusion HCM</a></li>
-          <li><a href="#service-details" ng-click="selectService('digital-transformation'); scrollTo('service-details')">Digital Transformation</a></li>
-          <li><a href="#service-details" ng-click="selectService('software-testing'); scrollTo('service-details')">Quality Assurance</a></li>
+          <li><a href="oracle-hcm.html">Oracle Fusion HCM</a></li>
+          <li><a href="digital-transformation.html">Digital Transformation</a></li>
+          <li><a href="quality-engineering.html">Quality Assurance</a></li>
         </ul>
       </div>
       <div class="footer-links">
@@ -429,7 +416,7 @@
       </div>
     </div>
     <div class="copyright">
-      &copy; {{ currentYear }} {{ companyName }}. All rights reserved.
+      &copy; {{ currentYear }} Assayor. All rights reserved.
     </div>
   </footer>
 
@@ -438,156 +425,9 @@
     var app = angular.module('companyApp', []);
 
     app.controller('MainController', ['$scope', '$location', '$anchorScroll', function($scope, $location, $anchorScroll) {
-      
-      $scope.companyName = "ASSAYOR";
       $scope.currentYear = new Date().getFullYear();
       $scope.isMenuOpen = false;
       $scope.isServicesOpen = false;
-      $scope.selectedServiceKey = 'oracle';
-      $scope.expandedCard = null;
-
-      $scope.services = {
-        'oracle': {
-          title: 'Oracle Fusion HCM',
-          icon: 'fa-users-gear',
-          tagline: 'Transforming the way organizations manage their people.',
-          subtitle: 'We help organizations design, implement, integrate, optimize, and support Oracle Fusion HCM solutions aligned with their business processes and workforce strategy.',
-          expertiseHeading: 'Our Oracle HCM Expertise',
-          hoverItems: [
-            'Core HCM & Workforce Deployment',
-            'Talent Management & Workforce Development',
-            'Workforce Management & Rewards',
-            'Foundational Security & Approval Governance',
-            'Advanced Development, Integration & Support'
-          ],
-          capabilities: [
-            {
-              title: 'Core HCM & Workforce Deployment',
-              desc: 'Global Human Resources (Core HR) & Enterprise Structures, Global Payroll, HR Help Desk, Workforce Directory & Modelling.'
-            },
-            {
-              title: 'Talent Management & Workforce Development',
-              desc: 'Oracle Recruiting Cloud (ORC), Oracle Learning Cloud (OLC), Performance & Goal Management, Talent Profile Management, Succession Planning & Talent Review, Career Development.'
-            },
-            {
-              title: 'Workforce Management & Rewards',
-              desc: 'Absence Management, Time & Labor (OTL), Workforce Compensation, Benefits.'
-            },
-            {
-              title: 'Foundational Security & Approval Governance',
-              desc: 'Role-based security, data roles, Areas of Responsibility, Security Console, and BPM approval workflows.'
-            },
-            {
-              title: 'Advanced Development, Integration & Support',
-              desc: 'Data Conversion (HDL & HSDL), System Integrations (OIC, Extracts, REST APIs), Analytics and Reporting (BI & OTBI Reports), Extensibility & Personalization (Visual Builder Studio, Sandbox).'
-            }
-          ],
-          approach: '“From HCM strategy and process design to implementation, integration, security, analytics and continuous support, we help organizations maximize the value of Oracle HCM.”'
-        },
-
-        'digital-transformation': {
-          title: 'Digital Transformation',
-          icon: 'fa-network-wired',
-          tagline: 'Turning ideas into scalable digital experiences.',
-          subtitle: 'We help organizations transform business processes and customer experiences through web applications, mobile solutions, enterprise platforms, integrations, and modern digital experiences.',
-          expertiseHeading: 'Our Digital Transformation Capabilities',
-          hoverItems: [
-            'Web Applications',
-            'Mobile Applications',
-            'Enterprise Platforms',
-            'Integrations',
-            'UI / UX Design',
-            'Process Automation'
-          ],
-          capabilities: [
-            {
-              title: 'Web Applications',
-              desc: 'Enterprise Web Applications, Business Portals and Self Service Platforms, Workflow Driven Applications, Responsive and scalable experiences.'
-            },
-            {
-              title: 'Mobile Applications',
-              desc: 'IOS and Android Application Development, Cross Platform Mobile Experiences, Mobile Business Workflows.'
-            },
-            {
-              title: 'Enterprise Platforms',
-              desc: 'Business Process Applications, Workflow and Process Automation, Enterprise Application Development, Cloud Solutions.'
-            },
-            {
-              title: 'Integrations',
-              desc: 'API & System integrations, Enterprise Data Synchronization, Third party application connectivity, Cloud and Enterprise Integration.'
-            },
-            {
-              title: 'UI / UX Design',
-              desc: 'User Experience, User Interface, Responsive Design, Human Centered Digital Experiences.'
-            },
-            {
-              title: 'Process Automation',
-              desc: 'Digitizing and streamlining business processes to reduce manual effort and operational complexity.'
-            }
-          ],
-          approach: '“We transform business ideas into intuitive, scalable and connected digital experiences — designed around how your business actually operates.”'
-        },
-
-        'software-testing': {
-          title: 'Software Quality Assurance',
-          icon: 'fa-vial-circle-check',
-          tagline: 'Quality engineered into every stage of delivery.',
-          subtitle: 'We help organizations reduce technology risk and deliver reliable digital solutions through comprehensive software testing and quality engineering.',
-          expertiseHeading: 'Our Quality Engineering Capabilities',
-          hoverItems: [
-            'Functional Testing',
-            'Automation Testing',
-            'Performance Testing',
-            'Security Validation',
-            'Oracle Application Testing'
-          ],
-          capabilities: [
-            {
-              title: 'Functional Testing',
-              desc: 'Validating business functionality, workflows, requirements, and end-to-end processes.'
-            },
-            {
-              title: 'Automation Testing',
-              desc: 'Automated testing frameworks that improve coverage, consistency, and release velocity.'
-            },
-            {
-              title: 'Performance Testing',
-              desc: 'Assessing application performance, scalability, stability, and responsiveness under varying workloads.'
-            },
-            {
-              title: 'Security Validation',
-              desc: 'Identifying security risks and validating application security controls.'
-            },
-            {
-              title: 'Oracle Application Testing',
-              desc: 'Testing Oracle applications and business processes to ensure reliable enterprise operations.'
-            }
-          ],
-          approach: '“Quality is built into the transformation lifecycle - helping organizations identify risks early, validate business outcomes and deliver technology with confidence.”'
-        }
-      };
-
-      var params = new URLSearchParams(window.location.search);
-      var svcParam = params.get('service');
-      if (svcParam && $scope.services[svcParam]) {
-        $scope.selectedServiceKey = svcParam;
-        $scope.selectedService = $scope.services[svcParam];
-      } else {
-        $scope.selectedService = $scope.services['oracle'];
-      }
-
-      $scope.selectService = function(serviceKey) {
-        $scope.selectedServiceKey = serviceKey;
-        $scope.selectedService = $scope.services[serviceKey];
-        $scope.isServicesOpen = false;
-      };
-
-      $scope.toggleCard = function(cardKey, event) {
-        if (event) {
-          event.stopPropagation();
-        }
-        $scope.expandedCard = ($scope.expandedCard === cardKey) ? null : cardKey;
-      };
 
       $scope.toggleMenu = function() {
         $scope.isMenuOpen = !$scope.isMenuOpen;
@@ -599,7 +439,8 @@
         $location.hash(id);
         $anchorScroll();
       };
-
+      
+      // Contact Form Handling
       $scope.form = {};
       $scope.isSubmitting = false;
 
@@ -633,32 +474,8 @@
           alert('Submission failed. Please try again or email us directly at reachout@assayor.com');
         });
       };
-
+      
     }]);
-
-    // Re-triggerable scroll observer for Pillars Section
-    document.addEventListener('DOMContentLoaded', function () {
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -40px 0px',
-        threshold: 0.15
-      };
-
-      const scrollObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-          } else {
-            entry.target.classList.remove('is-visible');
-          }
-        });
-      }, observerOptions);
-
-      const pillarsContainer = document.querySelector('.pillars-container');
-      if (pillarsContainer) {
-        scrollObserver.observe(pillarsContainer);
-      }
-    });
   </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="companyApp">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,7 @@
   <link rel="preload" as="image" href="./images/about_us_banner.webp" media="(min-width: 769px)">
   <link rel="preload" as="image" href="./images/about_mobile_banner.webp" media="(max-width: 768px)">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,44 +18,47 @@
   <!-- External Stylesheet -->
   <link rel="stylesheet" href="css/about.css">
 </head>
-<body>
+<body ng-controller="MainController">
 
   <!-- Navigation Header -->
   <header>
-    <a class="logo-container" href="index.html" aria-label="ASSAYOR Home">
-      <img src="./images/logo_new.jpg" alt="ASSAYOR Company Logo">
+    <a class="logo-container" href="index.html" aria-label="Go to Home">
+      <img src="./images/logo_new.jpg" alt="Assayor Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-fallback" style="display: none;">Assay<span>or</span></div>
     </a>
-    
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
-      <i class="fa-solid fa-bars"></i>
+
+    <button class="menu-toggle" ng-click="toggleMenu()" aria-label="Toggle navigation">
+      <i class="fa-solid" ng-class="isMenuOpen ? 'fa-xmark' : 'fa-bars'"></i>
     </button>
 
-    <nav id="navMenu">
+    <nav ng-class="{'nav-open': isMenuOpen}">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html" class="active">About Us</a></li>
-        <li class="services-dropdown-parent" id="servicesDropdownParent">
-          <button type="button" class="services-toggle" id="servicesToggle" aria-haspopup="true" aria-expanded="false">
+        <li class="services-dropdown-parent" ng-class="{'dropdown-open': isServicesOpen}">
+          <button type="button" class="services-toggle" ng-click="isServicesOpen = !isServicesOpen" aria-haspopup="true" ng-attr-aria-expanded="{{ isServicesOpen }}">
             <span>Services</span>
             <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
           </button>
           <ul class="services-dropdown">
             <li class="mega-menu">
+              <!-- Mega Menu Sidebar -->
               <div class="mega-menu-sidebar">
-                <div class="mega-menu-tab active">Service Offerings</div>
+                <div class="mega-menu-tab active">Consulting Practices</div>
+                <a href="services.html#engagement-model" class="mega-menu-tab link">Our Engagement Model</a>
               </div>
               <div class="mega-menu-content">
                 <div class="mega-menu-grid">
-                  <a class="mega-service-card" href="index.html?service=oracle#service-details">
+                  <a class="mega-service-card" href="services.html#oracle-hcm">
                     <strong>Oracle Fusion HCM</strong>
                     <p>Transform workforce operations with connected Oracle HCM Cloud solutions.</p>
                   </a>
-                  <a class="mega-service-card" href="index.html?service=digital-transformation#service-details">
+                  <a class="mega-service-card" href="services.html#digital-transformation">
                     <strong>Digital Transformation</strong>
                     <p>Turning ideas into scalable web, mobile, and enterprise digital experiences.</p>
                   </a>
-                  <a class="mega-service-card" href="index.html?service=software-testing#service-details">
-                    <strong>Software Quality Assurance</strong>
+                  <a class="mega-service-card" href="services.html#quality-engineering">
+                    <strong>Quality Engineering</strong>
                     <p>Quality engineered into every stage of delivery for reliable software.</p>
                   </a>
                 </div>
@@ -62,13 +66,14 @@
             </li>
           </ul>
         </li>
-        <li><a href="mission.html">Our Mission</a></li>
-        <li><a href="index.html#contact" class="btn-contact">Contact Us</a></li>
+        <li><a href="index.html#method">Our Method</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a ng-click="scrollTo('contact')" class="btn-contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Responsive Hero Section (Desktop & Mobile Adaptive Banner) -->
+  <!-- Responsive Hero Section -->
   <section class="hero-section" aria-label="About Us Banner">
     <picture style="width: 100%; display: block; line-height: 0;">
       <source media="(max-width: 768px)" srcset="./images/about_mobile_banner.webp">
@@ -81,12 +86,12 @@
     <!-- 1. WHO WE ARE SECTION -->
     <section class="section-wrapper about-details-section">
       <div class="container-boxed">
-        <div class="section-title-group">
+        <div class="section-title-group fade-up-item">
           <h2>Who We Are</h2>
           <h4>We Believe Technology Should Follow Business Strategy</h4>
         </div>
         
-        <div class="who-we-are-content">
+        <div class="who-we-are-content fade-up-item">
           <div class="who-prose-block">
             <p><strong>Assayor Software Solutions LLP</strong> is a business transformation consulting company founded on a simple yet powerful belief: <strong>Technology creates value only when it is aligned with business objectives.</strong></p>
             <p>Organizations today invest significantly in enterprise applications, digital platforms, websites, mobile applications, automation, and quality engineering. However, many organizations struggle to realize the full value of those investments because technology implementations often begin before the business itself is fully understood.</p>
@@ -105,213 +110,159 @@
       </div>
     </section>
 
-    <!-- 2. OUR INSIGHTS & WHY TRANSFORMATIONS FAIL -->
+    <!-- 2. COMBINED OUR STORY & OUR PERSPECTIVE SECTION -->
     <section class="section-wrapper insight-section">
       <div class="container-boxed">
-        <div class="section-title-group">
-          <h2>Our Insights</h2>
-          <h4>Why Transformations Fail</h4>
-        </div>
         
-        <div class="insight-intro-block">
-          <p>Technology has never been more powerful.</p>
-          <p>Organizations today have access to world-class enterprise applications, cloud platforms, automation tools, artificial intelligence, analytics, mobile technologies, and digital ecosystems capable of transforming the way businesses operate.</p>
-          <p>Yet, despite these investments, many transformation initiatives fail to deliver the expected business value.</p>
-          <p>The challenge is rarely the technology itself.</p>
-          <p>More often, transformation falls short because organizations attempt to solve technology problems before understanding business problems.</p>
-          <p>Technology becomes the destination instead of the enabler.</p>
-          <p>At Assayor, we believe successful transformation begins by asking better business questions—not by selecting better software.</p>
+        <div class="section-title-group fade-up-item">
+          <h2>Our Story</h2>
+          <h4>Why Assayor Exists</h4>
         </div>
 
-        <div class="tiles-section-title">
+        <div class="insight-intro-block fade-up-item" style="margin-bottom: 3.5rem;">
+          <p>We created Assayor to bridge the gap between technology investment and business outcomes.</p>
+          <p>After years of working with organizations, implementing enterprise solutions, advising business leaders and delivering complex transformation programs, we observed a recurring gap:</p>
+          <p>Organizations were investing heavily in technology, but the focus was often on implementing the technology—not on maximizing the business value it was expected to create.</p>
+        </div>
+        
+        <h3 class="fade-up-item" style="font-size: 1.6rem; margin-bottom: 1rem; color: var(--primary-dark);">Why Transformations Fail</h3>
+        <div class="insight-intro-block fade-up-item">
+          <p>Technology has never been more capable. Organizations have access to powerful enterprise platforms, cloud, automation, AI, analytics and digital ecosystems.</p>
+          <p>Yet many transformation initiatives still fail to deliver the expected business value.</p>
+          <p>The problem is rarely the technology itself.</p>
+          <p>The real problem is starting with the technology before understanding the business problem.</p>
+          <p>When technology becomes the destination instead of the enabler, transformation loses its purpose.</p>
+        </div>
+
+        <div class="tiles-section-title fade-up-item">
           <h3>The Eight Reasons Why Transformations Fail</h3>
         </div>
 
+        <!-- NEW SHUTTER TILES SECTION -->
         <div class="flow-wrap">
-          <div class="color-tiles-grid">
+          <div class="shutter-tiles-grid">
             
             <!-- Tile 1 -->
-            <div class="color-tile tile-rust">
-              <div class="ct-inner">
-                <div class="ct-front">
-                  <h3>Technology Before Business</h3>
-                  <button class="color-btn">Know More</button>
-                </div>
-                <div class="ct-back" aria-hidden="true">
-                  <div class="back-content">
-                    <p>Many organizations begin by selecting a technology platform and then attempt to reshape their business around its capabilities. This often results in unnecessary customization, inefficient processes, resistance to change, and underutilized features. At Assayor, we reverse this approach. We begin with the business. Only then do we identify the technology best suited to achieve the desired outcomes.</p>
-                  </div>
-                  <button class="color-btn back-close">Close</button>
-                </div>
+            <div class="shutter-tile fade-up-item">
+              <div class="shutter-content">
+                <h3>Technology Before Strategy</h3>
+                <p>Organizations choose technology before clearly defining the business problem, objectives and desired outcomes.</p>
+              </div>
+              <div class="shutter-cover">
+                <img src="./images/reason_1.webp" alt="Technology Before Strategy">
               </div>
             </div>
 
             <!-- Tile 2 -->
-            <div class="color-tile tile-orange">
-              <div class="ct-inner">
-                <div class="ct-front">
-                  <h3>Automating the Wrong Process</h3>
-                  <button class="color-btn">Know More</button>
-                </div>
-                <div class="ct-back" aria-hidden="true">
-                  <div class="back-content">
-                    <p>Organizations frequently automate inefficient processes instead of improving them. Digital transformation should never mean digitizing existing inefficiencies. Before recommending any solution, we analyze current business processes, identify operational bottlenecks, eliminate unnecessary complexity, and design improved future-state processes. Technology should support optimized business operations—not inefficient ones.</p>
-                  </div>
-                  <button class="color-btn back-close">Close</button>
-                </div>
+            <div class="shutter-tile fade-up-item">
+              <div class="shutter-content">
+                <h3>Wrong Problems, Automated</h3>
+                <p>Technology can make a process faster—but if the process itself is wrong, automation only makes the wrong process faster.</p>
+              </div>
+              <div class="shutter-cover">
+                <img src="./images/reason_2.webp" alt="Wrong Problems, Automated">
               </div>
             </div>
 
             <!-- Tile 3 -->
-            <div class="color-tile tile-rust">
-              <div class="ct-inner">
-                <div class="ct-front">
-                  <h3>No Clear Business Goal</h3>
-                  <button class="color-btn">Know More</button>
-                </div>
-                <div class="ct-back" aria-hidden="true">
-                  <div class="back-content">
-                    <p>Transformation projects often begin with respect to the technology objectives rather than the business objectives.</p>
-                    <p>The real objectives should cover Business problem, Operational Challenges, Efficiency Improvements and Business value generation through technology investments. Technology becomes meaningful only when linked to measurable business outcomes.</p>
-                  </div>
-                  <button class="color-btn back-close">Close</button>
-                </div>
+            <div class="shutter-tile fade-up-item">
+              <div class="shutter-content">
+                <h3>No Clear Outcome</h3>
+                <p>When success is defined by go-live rather than business impact, transformation becomes a project instead of a business investment.</p>
+              </div>
+              <div class="shutter-cover">
+                <img src="./images/reason_3.webp" alt="No Clear Outcome">
               </div>
             </div>
 
             <!-- Tile 4 -->
-            <div class="color-tile tile-orange">
-              <div class="ct-inner">
-                <div class="ct-front">
-                  <h3>Working in Silos</h3>
-                  <button class="color-btn">Know More</button>
-                </div>
-                <div class="ct-back" aria-hidden="true">
-                  <div class="back-content">
-                    <p>Transformation affects multiple functions across an organization. Leadership, Human Resources, Finance, Operations, IT, and End Users each bring different expectations and priorities. When these stakeholders operate independently, organizations often implement fragmented solutions that fail to deliver enterprise-wide value. Successful transformation requires alignment—not just implementation.</p>
-                  </div>
-                  <button class="color-btn back-close">Close</button>
-                </div>
+            <div class="shutter-tile fade-up-item">
+              <div class="shutter-content">
+                <h3>Silos Break Transformation</h3>
+                <p>Business, HR, IT, finance and implementation teams working independently create gaps, conflicting priorities and disconnected solutions.</p>
+              </div>
+              <div class="shutter-cover">
+                <img src="./images/reason_1.webp" alt="Silos Break Transformation">
               </div>
             </div>
 
             <!-- Tile 5 -->
-            <div class="color-tile tile-orange">
-              <div class="ct-inner">
-                <div class="ct-front">
-                  <h3>People Left Behind</h3>
-                  <button class="color-btn">Know More</button>
-                </div>
-                <div class="ct-back" aria-hidden="true">
-                  <div class="back-content">
-                    <p>A technically successful implementation can still fail if users do not adopt the solution. Without effective communication, training, change management, and continuous engagement, even the most advanced technology becomes underutilized. People determine the success of technology—not the other way around.</p>
-                  </div>
-                  <button class="color-btn back-close">Close</button>
-                </div>
+            <div class="shutter-tile fade-up-item">
+              <div class="shutter-content">
+                <h3>People Left Behind</h3>
+                <p>Technology transforms systems. People transform businesses. Without adoption and change management, even the best solution can fail.</p>
+              </div>
+              <div class="shutter-cover">
+                <img src="./images/reason_1.webp" alt="People Left Behind">
               </div>
             </div>
 
             <!-- Tile 6 -->
-            <div class="color-tile tile-rust">
-              <div class="ct-inner">
-                <div class="ct-front">
-                  <h3>Go-Live ≠ Success</h3>
-                  <button class="color-btn">Know More</button>
-                </div>
-                <div class="ct-back" aria-hidden="true">
-                  <div class="back-content">
-                    <p>A technically successful implementation can still fail if users do not adopt the solution. Without effective communication, training, change management, and continuous engagement, even the most advanced technology becomes underutilized. People determine the success of technology—not the other way around.</p>
-                  </div>
-                  <button class="color-btn back-close">Close</button>
-                </div>
+            <div class="shutter-tile fade-up-item">
+              <div class="shutter-content">
+                <h3>Go-Live Isn't Success</h3>
+                <p>Launching the system is only the beginning. The real measure is whether the business performs better after implementation.</p>
+              </div>
+              <div class="shutter-cover">
+                <img src="./images/reason_1.webp" alt="Go-Live Isn't Success">
               </div>
             </div>
 
             <!-- Tile 7 -->
-            <div class="color-tile tile-orange">
-              <div class="ct-inner">
-                <div class="ct-front">
-                  <h3>Leaving Technology Untapped</h3>
-                  <button class="color-btn">Know More</button>
-                </div>
-                <div class="ct-back" aria-hidden="true">
-                  <div class="back-content">
-                    <p>Many organizations invest in cutting-edge technology but fail to fully leverage its potential due to inadequate change management and user adoption strategies.</p>
-                  </div>
-                  <button class="color-btn back-close">Close</button>
-                </div>
+            <div class="shutter-tile fade-up-item">
+              <div class="shutter-content">
+                <h3>Value Left Untapped</h3>
+                <p>Organizations often implement powerful capabilities but use only a fraction of what their technology investment can deliver.</p>
+              </div>
+              <div class="shutter-cover">
+                <img src="./images/reason_1.webp" alt="Value Left Untapped">
               </div>
             </div>
 
             <!-- Tile 8 -->
-            <div class="color-tile tile-rust">
-              <div class="ct-inner">
-                <div class="ct-front">
-                  <h3>Transformation Stops at Go-Live</h3>
-                  <button class="color-btn">Know More</button>
-                </div>
-                <div class="ct-back" aria-hidden="true">
-                  <div class="back-content">
-                    <p>Transformation is not a one-time event. Businesses evolve.</p>
-                  </div>
-                  <button class="color-btn back-close">Close</button>
-                </div>
+            <div class="shutter-tile fade-up-item">
+              <div class="shutter-content">
+                <h3>Transformation Stops Too Soon</h3>
+                <p>True transformation doesn't end at go-live. Continuous improvement is what turns technology investment into lasting business value.</p>
+              </div>
+              <div class="shutter-cover">
+                <img src="./images/reason_1.webp" alt="Transformation Stops Too Soon">
               </div>
             </div>
 
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- 3. OUR PERSPECTIVE SECTION -->
-    <section class="section-wrapper perspective-section">
-      <div class="container-boxed">
-        <div class="section-title-group">
-          <h2>Our Perspective</h2>
-          <h4>Technology Should Always Serve the Business</h4>
-        </div>
+        <!-- Our Perspective Integrated -->
+        <div class="perspective-content-block fade-up-item" style="margin-top: 5.5rem;">
+          <div class="section-title-group" style="text-align: center;">
+            <h2>Our Perspective</h2>
+            <h4>Technology Should Serve the Business</h4>
+          </div>
 
-        <div class="perspective-content-block">
-          
           <div class="perspective-question-card">
-            <p>At Assayor, we believe every transformation initiative should answer one fundamental question before any technology decision is made:</p>
+            <p>Before making any technology decision, we believe every transformation should answer one fundamental question:</p>
             <div class="perspective-core-question">
-              "How will this investment improve the client's business?"
+              "How will this investment improve the business?"
             </div>
-            <p>Only after answering that question do we begin designing the solution.</p>
-            <p class="perspective-callout">Because technology should always serve the business. Never the other way around.</p>
+            <p>Will it increase revenue, reduce costs, improve productivity, accelerate decisions or enable growth?</p>
+            <p class="perspective-callout" style="margin-top: 1rem;">Only when the business value is clear should technology become part of the answer.</p>
           </div>
 
           <div class="perspective-subheading">
-            <h3>The Business We Chose to Build</h3>
+            <h3 class="gradient-text">The Business We Chose to Build</h3>
             <h4>More Than a Technology Consulting Company</h4>
           </div>
 
           <div class="perspective-prose">
-            <p><strong>Assayor Software Solutions LLP</strong> was established with a vision that extends beyond traditional technology consulting.</p>
-            <p>Our journey began after years of working with organizations across industries, implementing enterprise solutions, advising business leaders, solving complex challenges, and witnessing both successful and unsuccessful transformation initiatives.</p>
-            <p>One common pattern became increasingly clear:</p>
-            <p><strong>Most consulting engagements focused primarily on delivering technology. Very few focused on maximizing business value.</strong></p>
-            <p>Projects were measured by implementation milestones, system configurations, project timelines, and technical deliverables.</p>
+            <p>This belief shaped the company we wanted to build.</p>
+            <p>Assayor is designed to be more than an implementation partner. We aim to be a business transformation partner—one that understands the business problem, challenges assumptions, identifies opportunities and helps organizations realize the full value of their technology investments.</p>
+            <p>Because successful transformation is not measured by what technology was implemented.</p>
           </div>
 
-          <div class="perspective-grid-questions">
-            <h5>Yet the questions that mattered most were often left unanswered:</h5>
-            <ul>
-              <li><i class="fa-solid fa-circle-question"></i> Has the business become more efficient?</li>
-              <li><i class="fa-solid fa-circle-question"></i> Are employees more productive?</li>
-              <li><i class="fa-solid fa-circle-question"></i> Have operational costs reduced?</li>
-              <li><i class="fa-solid fa-circle-question"></i> Is decision-making faster?</li>
-              <li><i class="fa-solid fa-circle-question"></i> Has the technology investment delivered measurable value?</li>
-              <li><i class="fa-solid fa-circle-question"></i> Is the organization better positioned for future growth?</li>
-            </ul>
+          <div class="perspective-conclusion-box" style="margin-top: 2rem;">
+            It is measured by what changed for the business.
           </div>
-
-          <div class="perspective-conclusion-box">
-            These questions inspired the creation of Assayor. We believed organizations deserved more than implementation partners. They deserved advisors who could understand their business, challenge assumptions, identify opportunities, and help them realize the full value of every technology investment. That belief continues to define who we are today.
-          </div>
-
         </div>
       </div>
     </section>
@@ -319,22 +270,29 @@
     <!-- 4. WHY CHOOSE ASSAYOR SECTION (RADIAL ORBITAL ANIMATION) -->
     <section class="why-choose-section" aria-label="Why Choose Assayor">
       <div class="container-boxed">
-        <div class="section-title-group" style="text-align: center; margin-bottom: 2rem;">
+        <div class="section-title-group fade-up-item" style="text-align: center; margin-bottom: 2rem;">
           <h2>WHY CHOOSE ASSAYOR</h2>
-          <h4>More Than Consultants. Your Business Transformation Partner.</h4>
+          <h4>A partner that thinks beyond implementation.</h4>
         </div>
 
         <div class="radial-orbit-wrapper">
-          <!-- Background decorative connecting ring -->
-          <div class="orbit-ring-guide" aria-hidden="true"></div>
+          <!-- Rays projecting outward -->
+          <div class="orbit-rays-container">
+            <div class="ray ray-1"></div>
+            <div class="ray ray-2"></div>
+            <div class="ray ray-3"></div>
+            <div class="ray ray-4"></div>
+            <div class="ray ray-5"></div>
+            <div class="ray ray-6"></div>
+            <div class="ray ray-7"></div>
+            <div class="ray ray-8"></div>
+          </div>
 
-          <!-- Central Core Hub -->
+          <!-- Central Core Hub with our Logo -->
           <div class="orbit-center-hub">
             <div class="hub-pulse"></div>
             <div class="hub-inner">
               <img src="./images/logo_new.jpg" alt="ASSAYOR" class="hub-logo">
-              <span class="hub-title">ASSAYOR</span>
-              <small class="hub-tag">Strategic Core</small>
             </div>
           </div>
 
@@ -343,9 +301,6 @@
 
             <!-- Node 1: Top (0 deg) -->
             <div class="orbit-node node-1">
-              <div class="orbit-connector-line">
-                <i class="fa-solid fa-chevron-up connector-arrow"></i>
-              </div>
               <div class="orbit-circle-card">
                 <div class="node-icon"><i class="fa-solid fa-business-time"></i></div>
                 <h3>Business-First</h3>
@@ -355,9 +310,6 @@
 
             <!-- Node 2: Top-Right (45 deg) -->
             <div class="orbit-node node-2">
-              <div class="orbit-connector-line">
-                <i class="fa-solid fa-arrow-trend-up connector-arrow"></i>
-              </div>
               <div class="orbit-circle-card">
                 <div class="node-icon"><i class="fa-solid fa-user-tie"></i></div>
                 <h3>15+ Yrs Leadership</h3>
@@ -367,9 +319,6 @@
 
             <!-- Node 3: Right (90 deg) -->
             <div class="orbit-node node-3">
-              <div class="orbit-connector-line">
-                <i class="fa-solid fa-chevron-right connector-arrow"></i>
-              </div>
               <div class="orbit-circle-card">
                 <div class="node-icon"><i class="fa-solid fa-shield-halved"></i></div>
                 <h3>Senior Delivery</h3>
@@ -379,9 +328,6 @@
 
             <!-- Node 4: Bottom-Right (135 deg) -->
             <div class="orbit-node node-4">
-              <div class="orbit-connector-line">
-                <i class="fa-solid fa-arrow-down-long connector-arrow"></i>
-              </div>
               <div class="orbit-circle-card">
                 <div class="node-icon"><i class="fa-solid fa-chart-line"></i></div>
                 <h3>End-to-End</h3>
@@ -391,9 +337,6 @@
 
             <!-- Node 5: Bottom (180 deg) -->
             <div class="orbit-node node-5">
-              <div class="orbit-connector-line">
-                <i class="fa-solid fa-chevron-down connector-arrow"></i>
-              </div>
               <div class="orbit-circle-card">
                 <div class="node-icon"><i class="fa-solid fa-thumbs-up"></i></div>
                 <h3>Honest Advice</h3>
@@ -403,9 +346,6 @@
 
             <!-- Node 6: Bottom-Left (225 deg) -->
             <div class="orbit-node node-6">
-              <div class="orbit-connector-line">
-                <i class="fa-solid fa-arrow-down-long connector-arrow"></i>
-              </div>
               <div class="orbit-circle-card">
                 <div class="node-icon"><i class="fa-solid fa-handshake"></i></div>
                 <h3>True Partner</h3>
@@ -415,9 +355,6 @@
 
             <!-- Node 7: Left (270 deg) -->
             <div class="orbit-node node-7">
-              <div class="orbit-connector-line">
-                <i class="fa-solid fa-chevron-left connector-arrow"></i>
-              </div>
               <div class="orbit-circle-card">
                 <div class="node-icon"><i class="fa-solid fa-bullseye"></i></div>
                 <h3>Outcome Focused</h3>
@@ -427,9 +364,6 @@
 
             <!-- Node 8: Top-Left (315 deg) -->
             <div class="orbit-node node-8">
-              <div class="orbit-connector-line">
-                <i class="fa-solid fa-arrow-trend-up connector-arrow"></i>
-              </div>
               <div class="orbit-circle-card">
                 <div class="node-icon"><i class="fa-solid fa-lightbulb"></i></div>
                 <h3>Agile & Scalable</h3>
@@ -443,11 +377,57 @@
     </section>
   </main>
 
+  <!-- Ready to Transform CTA Section -->
+  <section class="final-cta-section fade-up-item">
+    <div class="cta-content">
+      <div class="cta-text">
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Let's discuss your business challenges, technology landscape, and transformation goals.</p>
+      </div>
+      <div class="cta-button-wrapper">
+        <a ng-click="scrollTo('contact')" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;" href="javascript:void(0)">Start a Conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section id="contact" class="contact-section">
+    <div class="contact-container">
+      <div class="contact-split-wrapper fade-up-item">
+        <div class="contact-info-panel">
+          <h2>Get in Touch with Us</h2>
+          <p class="contact-lead-desc">Have a project in mind or looking to transform your business operations? Send us a message and our consulting team will respond promptly.</p>
+          <div class="contact-info-items">
+            <div class="info-item"><div class="info-icon"><i class="fa-solid fa-envelope"></i></div><div class="info-text"><small>Email Us</small><a href="mailto:reachout@assayor.com">reachout@assayor.com</a></div></div>
+            <div class="info-item"><div class="info-icon"><i class="fa-solid fa-phone"></i></div><div class="info-text"><small>Call Us</small><a href="tel:+917745816110">+91 7745816110</a></div></div>
+            <div class="info-item"><div class="info-icon"><i class="fa-solid fa-location-dot"></i></div><div class="info-text"><small>Location</small><span>DSK Vishwa, Pune, Maharashtra 411041</span></div></div>
+          </div>
+          <div class="contact-quick-tagline"><i class="fa-solid fa-shield-halved"></i><span>We respect your privacy. No spam guaranteed.</span></div>
+        </div>
+        <div class="contact-form-panel">
+          <div class="form-panel-header"><h3>Send Us a Message</h3><p>Fill out the form below and we'll get back to you within 24 hours.</p></div>
+          <form class="contact-form" ng-submit="submitForm()">
+            <input type="text" placeholder="Full Name *" ng-model="form.name" required>
+            <input type="email" placeholder="Email Address *" ng-model="form.email" required>
+            <input type="tel" placeholder="Phone Number" ng-model="form.phone">
+            <input type="text" placeholder="Your Website / Company" ng-model="form.website">
+            <textarea class="full-width" rows="4" placeholder="Your Message Here *" ng-model="form.message" required></textarea>
+            <button type="submit" class="cta-btn full-width" ng-disabled="isSubmitting">
+              <span ng-if="!isSubmitting">SEND MESSAGE <i class="fa-solid fa-paper-plane" style="margin-left: 6px;"></i></span>
+              <span ng-if="isSubmitting">SENDING... <i class="fa-solid fa-spinner fa-spin"></i></span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <h3>ASSAYOR</h3>
+        <img src="./images/logo_new.jpg" alt="Assayor Logo" class="footer-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <div class="logo-fallback" style="display: none; color: #fff; margin-bottom: 1rem;">Assay<span style="color: var(--accent-orange);">or</span></div>
         <p>Empowering businesses with cutting-edge IT solutions, high-reliability software testing, and tailored support.</p>
       </div>
       <div class="footer-links">
@@ -455,17 +435,17 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="index.html#services">Services</a></li>
-          <li><a href="mission.html">Our Mission</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="index.html#method">Our Method</a></li>
+          <li><a href="insights.html">Insights</a></li>
         </ul>
       </div>
       <div class="footer-links">
         <h4>Services</h4>
         <ul>
-          <li><a href="index.html?service=oracle#service-details">Oracle Fusion HCM</a></li>
-          <li><a href="index.html?service=digital-transformation#service-details">Digital Transformation</a></li>
-          <li><a href="index.html?service=software-testing#service-details">Quality Assurance</a></li>
+          <li><a href="services.html#oracle-hcm">Oracle Fusion HCM</a></li>
+          <li><a href="services.html#digital-transformation">Digital Transformation</a></li>
+          <li><a href="services.html#quality-engineering">Quality Assurance</a></li>
         </ul>
       </div>
       <div class="footer-links">
@@ -477,74 +457,71 @@
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
-      &copy; 2026 ASSAYOR Software Solutions LLP. All rights reserved.
-    </div>
+    <div class="copyright">&copy; {{ currentYear }} Assayor. All rights reserved.</div>
   </footer>
 
-  <!-- Script -->
+  <!-- Angular Script Configuration -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const menuToggle = document.getElementById('menuToggle');
-      const navMenu = document.getElementById('navMenu');
+    var app = angular.module('companyApp', []);
+    app.controller('MainController', ['$scope', function($scope) {
+      if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+      $scope.currentYear = new Date().getFullYear();
+      $scope.isMenuOpen = false;
+      $scope.isServicesOpen = false;
+      $scope.toggleMenu = function() { $scope.isMenuOpen = !$scope.isMenuOpen; };
+      $scope.scrollTo = function(id) {
+        $scope.isMenuOpen = false; $scope.isServicesOpen = false;
+        var element = document.getElementById(id);
+        if (element) {
+          var headerOffset = document.querySelector('header').offsetHeight || 75;
+          var elementPosition = element.getBoundingClientRect().top;
+          var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      };
+      
+      $scope.form = {};
+      $scope.isSubmitting = false;
+      $scope.submitForm = function() {
+        var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbytfrSm-XFgaEWsVplE7eXLHHfa-dIpnV30NO8WAVLjyrRNPZTUKjCEBTL96wdIOt-0/exec';
+        var payload = { name: $scope.form.name, email: $scope.form.email, phone: $scope.form.phone, website: $scope.form.website, message: $scope.form.message };
+        $scope.isSubmitting = true;
+        fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+        .then(function() {
+          $scope.form = {}; $scope.isSubmitting = false;
+          if (!$scope.$$phase) { $scope.$apply(); }
+          alert('Thank you! Your message has been received and our team will get in touch soon.');
+        }).catch(function(err) {
+          console.error(err); $scope.isSubmitting = false;
+          if (!$scope.$$phase) { $scope.$apply(); }
+          alert('Submission failed. Please try again or email us directly at reachout@assayor.com');
+        });
+      };
+    }]);
 
-      if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', function () {
-          navMenu.classList.toggle('nav-open');
-          const icon = menuToggle.querySelector('i');
-          if (navMenu.classList.contains('nav-open')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-xmark');
-          } else {
-            icon.classList.remove('fa-xmark');
-            icon.classList.add('fa-bars');
+    document.addEventListener('DOMContentLoaded', function () {
+      // General Fade-Up Animations Observer
+      const fadeObserverOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.15
+      };
+
+      const fadeObserver = new IntersectionObserver((entries, observer) => {
+        let delayCounter = 0;
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('in-view');
+            }, delayCounter * 100); 
+            delayCounter++;
+            observer.unobserve(entry.target);
           }
         });
-      }
+      }, fadeObserverOptions);
 
-      const servicesToggle = document.getElementById('servicesToggle');
-      const servicesDropdownParent = document.getElementById('servicesDropdownParent');
-      if (servicesToggle && servicesDropdownParent) {
-        servicesToggle.addEventListener('click', function(e) {
-          e.preventDefault();
-          servicesDropdownParent.classList.toggle('dropdown-open');
-          const isExpanded = servicesDropdownParent.classList.contains('dropdown-open');
-          servicesToggle.setAttribute('aria-expanded', isExpanded);
-        });
-      }
-
-      const flipTiles = Array.prototype.slice.call(
-        document.querySelectorAll('.color-tiles-grid .color-tile')
-      );
-
-      flipTiles.forEach(function (tile) {
-        const frontBtn = tile.querySelector('.ct-front .color-btn');
-        const closeBtn = tile.querySelector('.ct-back .back-close');
-
-        if (frontBtn) {
-          frontBtn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            flipTiles.forEach(function (t) {
-              if (t !== tile) t.classList.remove('is-flipped');
-            });
-            tile.classList.toggle('is-flipped');
-          });
-        }
-
-        if (closeBtn) {
-          closeBtn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            tile.classList.remove('is-flipped');
-          });
-        }
-      });
-
-      document.addEventListener('click', function (e) {
-        if (!e.target.closest('.color-tile')) {
-          flipTiles.forEach(function (t) {
-            t.classList.remove('is-flipped');
-          });
-        }
+      document.querySelectorAll('.fade-up-item').forEach(item => {
+        fadeObserver.observe(item);
       });
 
       // Scroll-triggered Radial Orbit Animation
@@ -552,18 +529,10 @@
       if (orbitWrapper) {
         const orbitObserver = new IntersectionObserver(function (entries) {
           entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              orbitWrapper.classList.add('is-visible');
-            } else {
-              orbitWrapper.classList.remove('is-visible');
-            }
+            if (entry.isIntersecting) { orbitWrapper.classList.add('is-visible'); } 
+            else { orbitWrapper.classList.remove('is-visible'); }
           });
-        }, {
-          root: null,
-          rootMargin: '0px 0px -50px 0px',
-          threshold: 0.15
-        });
-
+        }, { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.15 });
         orbitObserver.observe(orbitWrapper);
       }
     });

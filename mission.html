@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Assayor — Our Mission</title>
+<title>Assayor — Our Vision</title>
 
 <!-- Google Fonts & FontAwesome Icons for consistent Header -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,7 +60,7 @@
           </li>
         </ul>
       </li>
-      <li><a href="mission.html" class="active">Our Mission</a></li>
+      <li><a href="mission.html" class="active">Our Vision</a></li>
       <li><a href="index.html#contact" class="btn-contact">Contact Us</a></li>
     </ul>
   </nav>
@@ -69,18 +69,69 @@
 <main id="top">
 <section class="hero">
   <div class="reveal">
-    <div class="eyebrow">Our Mission</div>
+    <div class="eyebrow">Our Vision</div>
     <h1>Transforming Business Through <span class="gradient-text">Better Thinking.</span></h1>
     <p>We help organizations understand their business, simplify complexity and use technology to create measurable, lasting outcomes.</p>
     <div class="hero-actions">
-      <a class="btn primary" href="#perspective">Explore Our Mission ↓</a>
+      <a class="btn primary" href="#perspective">Explore Our Vision ↓</a>
       <a class="btn secondary" href="#method">See Our Method</a>
     </div>
   </div>
-  <div class="hero-art reveal">
-    <div class="orbit">
-      <div class="core">BUSINESS<br>OUTCOMES<br><small>ALWAYS</small></div>
-      <div class="node n1">BUSINESS</div><div class="node n2">PEOPLE</div><div class="node n3">TECHNOLOGY</div><div class="node n4">PROCESS</div>
+  
+  <!-- Interactive Accordion Slider for Sections -->
+  <div class="reveal">
+    <div class="hero-accordion" id="heroAccordion">
+      
+      <!-- Tile 1: Perspective -->
+      <div class="tile active" data-index="0" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80');">
+        <div class="tile-collapsed-label">01</div>
+        <div class="tile-content">
+          <h3>The Assayor Philosophy</h3>
+          <p>Technology Should Follow Business Strategy.</p>
+          <a href="#perspective" class="btn tile-btn">Know More</a>
+        </div>
+      </div>
+
+      <!-- Tile 2: Method -->
+      <div class="tile" data-index="1" style="background-image: url('https://images.unsplash.com/photo-1512758117984-971d40789728?auto=format&fit=crop&w=800&q=80');">
+        <div class="tile-collapsed-label">02</div>
+        <div class="tile-content">
+          <h3>The Assayor Method™</h3>
+          <p>Understand. Design. Accelerate.</p>
+          <a href="#method" class="btn tile-btn">Know More</a>
+        </div>
+      </div>
+
+      <!-- Tile 3: Excellence -->
+      <div class="tile" data-index="2" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80');">
+        <div class="tile-collapsed-label">03</div>
+        <div class="tile-content">
+          <h3>Consulting Framework</h3>
+          <p>Engineered for Business. Built for Impact.</p>
+          <a href="#excellence" class="btn tile-btn">Know More</a>
+        </div>
+      </div>
+
+      <!-- Tile 4: Promise -->
+      <div class="tile" data-index="3" style="background-image: url('https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=800&q=80');">
+        <div class="tile-collapsed-label">04</div>
+        <div class="tile-content">
+          <h3>The Assayor Promise™</h3>
+          <p>We Don't Just Deliver Solutions. We Deliver Promises.</p>
+          <a href="#promise" class="btn tile-btn">Know More</a>
+        </div>
+      </div>
+
+      <!-- Tile 5: Vision -->
+      <div class="tile" data-index="4" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80');">
+        <div class="tile-collapsed-label">05</div>
+        <div class="tile-content">
+          <h3>Our Vision</h3>
+          <p>Building What Comes Next. Together.</p>
+          <a href="#vision" class="btn tile-btn">Know More</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -286,17 +337,155 @@
 
   <!-- Technology Excellence Section / Consulting Framework -->
   <section class="section" id="excellence">
-    <div class="grid2">
-      <div class="reveal">
-        <div class="num">03</div>
-        <div class="kicker">The Assayor Consulting Framework™</div>
-        <h2>Engineered for Business. <span class="gradient-text">Built for Impact.</span></h2>
-        <p class="copy">Our technology excellence combines deep domain expertise, experienced consulting leadership and practical delivery capabilities so technology decisions support the transformation they are intended to achieve.</p>
-      </div>
+    <div class="reveal">
+      <div class="num">03</div>
+      <h2>The <span class="gradient-text">Assayor</span> Consulting Framework™</h2>
+      <p class="lead">Engineered for Business. Built for Impact.</p>
+      <!-- <div class="kicker">The Assayor Consulting Framework™</div> -->
+      <!-- <h2>Engineered for Business. <span class="gradient-text">Built for Impact.</span></h2> -->
+      <p class="copy">Our technology excellence combines deep domain expertise, experienced consulting leadership and practical delivery capabilities so technology decisions support the transformation they are intended to achieve.</p>
+    </div>
+    
+    <div class="reveal framework-wrapper" style="padding-top: 40px;">
       
-      <div class="reveal" style="padding-top: 20px;">
-        <img src="./images/consulting_framework.webp" alt="Assayor Consulting Framework" class="philosophy-img">
+      <!-- Generated Animated Framework Content Starts Here -->
+      <div class="framework-container">
+        <!-- Main Framework Area -->
+        <div class="flow-grid">
+            
+            <!-- Column 1: Business -->
+            <div class="fc-column col-1" style="--col-color: var(--color-biz);">
+                <div class="circle-block">
+                    <i class="fa-regular fa-building"></i>
+                    <div class="label">Business</div>
+                </div>
+                <div class="arrow-right"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="vertical-connector"></div>
+                <div class="details-card">
+                    <ul>
+                        <li>Business Vision</li>
+                        <li>Strategic Objectives</li>
+                        <li>Growth Plans</li>
+                        <li>Market Position</li>
+                        <li>Business Challenges</li>
+                    </ul>
+                    <div class="card-footer">
+                        We align strategy with market realities to build a strong foundation.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2: People -->
+            <div class="fc-column col-2" style="--col-color: var(--color-peo);">
+                <div class="circle-block">
+                    <i class="fa-solid fa-user-group"></i>
+                    <div class="label">People</div>
+                </div>
+                <div class="arrow-right"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="vertical-connector"></div>
+                <div class="details-card">
+                    <ul>
+                        <li>Employees</li>
+                        <li>Managers</li>
+                        <li>Leadership</li>
+                        <li>Customers</li>
+                        <li>Stakeholders</li>
+                    </ul>
+                    <div class="card-footer">
+                        We empower and engage people to drive ownership, collaboration and change.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 3: Process -->
+            <div class="fc-column col-3" style="--col-color: var(--color-pro);">
+                <div class="circle-block">
+                    <i class="fa-solid fa-gear"></i>
+                    <div class="label">Process</div>
+                </div>
+                <div class="arrow-right"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="vertical-connector"></div>
+                <div class="details-card">
+                    <ul>
+                        <li>Current Processes</li>
+                        <li>Future-State Processes</li>
+                        <li>Governance</li>
+                        <li>Compliance</li>
+                        <li>Operational Efficiency</li>
+                    </ul>
+                    <div class="card-footer">
+                        We simplify, standardize, and optimize processes to drive performance.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 4: Technology -->
+            <div class="fc-column col-4" style="--col-color: var(--color-tech);">
+                <div class="circle-block">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <div class="label">Technology</div>
+                </div>
+                <div class="arrow-right"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="vertical-connector"></div>
+                <div class="details-card">
+                    <ul>
+                        <li>Right Technology</li>
+                        <li>Solution Architecture</li>
+                        <li>Integrations</li>
+                        <li>Security</li>
+                        <li>Scalability</li>
+                    </ul>
+                    <div class="card-footer">
+                        We leverage the right technology to enable agility and innovation.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 5: Outcomes -->
+            <div class="fc-column col-5" style="--col-color: var(--color-out);">
+                <div class="circle-block">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <div class="label">Outcomes</div>
+                </div>
+                <div class="vertical-connector"></div>
+                <div class="details-card">
+                    <ul>
+                        <li>Increased Productivity</li>
+                        <li>Reduced Cost</li>
+                        <li>Better Experience</li>
+                        <li>Faster Decisions</li>
+                        <li>Sustainable Growth</li>
+                    </ul>
+                    <div class="card-footer">
+                        We measure success by the outcomes that matter to your business.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer Sequence -->
+        <div class="framework-footer-banner">
+            <div class="sequence">
+                <span class="seq-chevron">&lt;&lt;&lt;</span>
+                <span class="seq-item" style="color: var(--color-biz);">Business</span>
+                <span class="seq-arrow">→</span>
+                <span class="seq-item" style="color: var(--color-peo);">People</span>
+                <span class="seq-arrow">→</span>
+                <span class="seq-item" style="color: var(--color-pro);">Process</span>
+                <span class="seq-arrow">→</span>
+                <span class="seq-item" style="color: var(--color-tech);">Technology</span>
+                <span class="seq-arrow">→</span>
+                <span class="seq-item" style="color: var(--color-out);">Outcomes</span>
+                <span class="seq-chevron" style="color: var(--color-out);">&gt;&gt;&gt;</span>
+            </div>
+            <div class="sub-text">
+                This is the sequence that defines the <strong>Assayor</strong> Consulting Framework™.
+            </div>
+        </div>
       </div>
+      <!-- Generated Animated Framework Content Ends Here -->
+
     </div>
   </section>
 
@@ -415,6 +604,45 @@ document.addEventListener('DOMContentLoaded', function () {
       servicesToggle.setAttribute('aria-expanded', isExpanded);
     });
   }
+});
+
+// Auto-play and Click logic for Hero Accordion Tiles
+document.addEventListener('DOMContentLoaded', function() {
+  const tiles = document.querySelectorAll('.hero-accordion .tile');
+  let currentIndex = 0;
+  let accordionInterval;
+  const timePerSlide = 3500; // 3.5 seconds
+
+  function activateTile(index) {
+    tiles.forEach(t => t.classList.remove('active'));
+    tiles[index].classList.add('active');
+    currentIndex = index;
+  }
+
+  function nextTile() {
+    let nextIndex = (currentIndex + 1) % tiles.length;
+    activateTile(nextIndex);
+  }
+
+  function startAutoPlay() {
+    accordionInterval = setInterval(nextTile, timePerSlide);
+  }
+
+  function resetAutoPlay() {
+    clearInterval(accordionInterval);
+    startAutoPlay();
+  }
+
+  // Handle manual clicks
+  tiles.forEach((tile, index) => {
+    tile.addEventListener('click', () => {
+      activateTile(index);
+      resetAutoPlay(); // Restart timer so it doesn't instantly jump after click
+    });
+  });
+
+  // Start the animation immediately
+  startAutoPlay();
 });
 </script>
 </body>

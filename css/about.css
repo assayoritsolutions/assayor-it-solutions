@@ -203,7 +203,7 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
 }
 
 /* Gradient text */
-.section-title-group h2, .tiles-section-title h3, .gradient-text {
+.section-title-group h2, .gradient-text {
   background: linear-gradient(to right, var(--accent-orange), #db1414);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -221,6 +221,30 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
   font-weight: 600;
   color: #000000;
 }
+
+/* Reusable Centered Styled Titles */
+.centered-styled-title-wrapper {
+  text-align: center;
+  margin: 3rem auto 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.centered-styled-title {
+  font-size: 1.35rem;
+  color: var(--accent-blue);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.title-line {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, var(--accent-orange), #db1414);
+  border-radius: 2px;
+}
+
 
 /* 1. Who We Are Section */
 .about-details-section {
@@ -263,11 +287,6 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
   color: var(--text-main);
 }
 
-.tiles-section-title {
-  margin: 3rem 0 1.5rem;
-  text-align: center;
-}
-
 .shutter-tiles-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -276,7 +295,7 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
 
 .shutter-tile {
   position: relative;
-  height: 400px; /* Made taller to accommodate vertical images */
+  height: 400px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -345,30 +364,17 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
    3. Perspective Section
    ======================================================== */
 
-.perspective-question-card {
-  background: var(--primary-dark);
-  color: #ffffff;
-  padding: 2.5rem;
-  border-radius: 16px;
+.perspective-subheading { 
   text-align: center;
-  margin-bottom: 3.5rem;
 }
 
-.perspective-core-question {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--accent-orange);
-  margin: 1.25rem 0;
+.perspective-subheading h4 { 
+  font-size: 1.1rem; 
+  font-weight: 600; 
+  color: #000000; 
+  margin-bottom: 2rem;
+  margin-top: 1rem;
 }
-
-.perspective-callout {
-  color: #cbd5e1;
-  font-style: italic;
-  font-size: 1.05rem;
-}
-
-.perspective-subheading h3 { font-size: 1.75rem; font-weight: 800; }
-.perspective-subheading h4 { font-size: 1.1rem; font-weight: 600; color: #000000; margin-bottom: 1.5rem; }
 
 .perspective-prose p { font-size: 1.05rem; margin-bottom: 1rem; }
 

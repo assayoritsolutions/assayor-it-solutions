@@ -10,317 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/mission.css">
 
-<style>
-:root {
-  /* Header & Unified Variables */
-  --primary-dark: #0f172a;
-  --accent-coral: #ea580c;
-  --accent-blue: #0066cc;
-  --accent-blue-light: #eef5fc;
-  --text-main: #334155;
-  --text-muted: #57606a;
-  --border-color: #e2e8f0;
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --header-height: 80px;
-
-  /* Mission Page specific Variables */
-  --navy: #111827; 
-  --ink: #172033; 
-  --orange: #ff7a00;
-  --red: #c91522; 
-  --soft: #fff7f0; 
-  --line: #eceff3; 
-  --white: #fff;
-  --grad: linear-gradient(135deg, #ff8a00 0%, #ff4b00 48%, #c91522 100%);
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { 
-  margin: 0; 
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; 
-  color: var(--ink); 
-  background: #fff; 
-  line-height: 1.55; 
-}
-a { text-decoration: none; color: inherit; }
-
-/* ========================================================
-   Header & Unified Mega-Menu Navigation
-   ======================================================== */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.85rem 5%;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
-  height: var(--header-height);
-}
-
-.logo-container img {
-  height: 48px;
-  width: auto;
-  display: block;
-}
-
-.menu-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--primary-dark);
-  cursor: pointer;
-}
-
-nav ul {
-  display: flex;
-  list-style: none;
-  align-items: center;
-  gap: 1.75rem;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li { position: relative; }
-
-nav ul li a, .services-toggle {
-  text-decoration: none;
-  color: var(--primary-dark);
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: color 0.25s ease;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-family: inherit;
-  padding: 0.5rem 0;
-}
-
-nav ul li a:hover, nav ul li a.active, .services-toggle:hover {
-  color: var(--accent-coral);
-}
-
-.services-toggle i {
-  font-size: 0.75rem;
-  transition: transform 0.3s ease;
-}
-li.dropdown-open > .services-toggle i, li:hover > .services-toggle i {
-  transform: rotate(180deg);
-}
-
-.btn-contact {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: #ffffff !important;
-  padding: 0.65rem 1.4rem !important;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-}
-.btn-contact:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
-}
-
-/* Mega-Menu Dropdown */
-.services-dropdown {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: -80px;
-  display: block;
-  width: min(880px, calc(100vw - 40px));
-  padding: 0;
-  background-color: #ffffff;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  z-index: 1001;
-  overflow: hidden;
-}
-nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdown {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-.mega-menu { display: grid; grid-template-columns: 220px 1fr; min-height: 340px; list-style: none; padding: 0; margin: 0; }
-.mega-menu-sidebar { display: flex; flex-direction: column; padding: 30px 22px; background: #0f172a; }
-.mega-menu-tab { display: flex; align-items: center; justify-content: center; padding: 1.2rem 1rem; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-md); background: #1e293b; color: #ffffff; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; }
-.mega-menu-content { padding: 30px; background: #ffffff; }
-.mega-menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-
-.mega-service-card {
-  display: flex;
-  flex-direction: column;
-  padding: 1.35rem;
-  border-radius: var(--radius-md);
-  background: #f8fafc;
-  border: 1px solid #edf2f7;
-  transition: all 0.25s ease;
-}
-.mega-service-card:hover {
-  background: var(--accent-blue-light);
-  border-color: rgba(0, 102, 204, 0.2);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
-}
-.mega-service-card strong { display: flex; align-items: center; gap: 0.45rem; color: var(--accent-blue); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
-.mega-service-card strong::before { content: '\2192'; font-size: 1.15rem; transition: transform 0.2s ease; }
-.mega-service-card:hover strong::before { transform: translateX(4px); }
-.mega-service-card p { margin: 0.35rem 0 0; color: var(--text-muted); font-size: 0.85rem; line-height: 1.45; }
-
-/* Mobile Menu Adjustments */
-@media (max-width: 768px) {
-  .menu-toggle { display: block; }
-  nav { position: absolute; top: 100%; left: 0; right: 0; background: #ffffff; border-bottom: 1px solid var(--border-color); padding: 1.2rem 0; display: none; box-shadow: var(--shadow-md); }
-  nav.nav-open { display: block; }
-  nav ul { flex-direction: column; align-items: stretch; gap: 0; }
-  nav ul li { width: 100%; }
-  nav a, .services-toggle { display: flex; justify-content: space-between; width: 100%; padding: 0.9rem 6%; border-bottom: 1px solid #f1f5f9; font-size: 1rem; }
-  nav.nav-open .services-dropdown { position: static; display: none; width: 100%; box-shadow: none; border: 0; transform: none; background: #f8fafc; opacity: 1; pointer-events: auto; padding: 0; }
-  nav.nav-open li.dropdown-open > .services-dropdown { display: block; }
-  .mega-menu { display: block; min-height: 0; }
-  .mega-menu-sidebar { display: none; }
-  .mega-menu-content { padding: 1rem 6%; background: transparent; }
-  .mega-menu-grid { grid-template-columns: 1fr; }
-  .btn-contact { margin: 1.2rem 6% 0.5rem; text-align: center; border-radius: var(--radius-sm); }
-}
-
-/* ========================================================
-   Mission Page Specific Styles
-   ======================================================== */
-.progress { position: fixed; z-index: 1002; top: var(--header-height); left: 0; height: 3px; background: var(--grad); width: 0; transition: width .1s; }
-
-.hero { min-height: 82vh; padding: 150px 7vw 90px; display: grid; grid-template-columns: 1fr 1.05fr; align-items: center; gap: 50px; background: radial-gradient(circle at 20% 20%, rgba(255,122,0,.12), transparent 30%), linear-gradient(180deg, #fff 0%, #fffaf7 100%); overflow: hidden; margin-top: var(--header-height); }
-.eyebrow { color: var(--accent-coral); text-transform: uppercase; letter-spacing: .14em; font-size: 13px; font-weight: 800; }
-h1 { font-size: clamp(48px, 6vw, 82px); line-height: .98; margin: 14px 0 22px; letter-spacing: -.045em; }
-.gradient-text { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.hero p { font-size: 20px; color: var(--muted); max-width: 650px; }
-.hero-actions { display: flex; gap: 14px; margin-top: 30px; align-items: center; }
-.btn { padding: 14px 22px; border-radius: 999px; font-weight: 750; }
-.btn.primary { background: var(--grad); color: #fff; }
-.btn.secondary { border: 1px solid #dfe3e8; background: #fff; }
-
-.hero-art { min-height: 430px; position: relative; display: flex; align-items: center; justify-content: center; }
-.orbit { width: min(430px, 80vw); aspect-ratio: 1; border: 1px solid #ffd7bd; border-radius: 50%; position: relative; animation: spin 28s linear infinite; }
-.orbit:before, .orbit:after { content: ""; position: absolute; inset: 42px; border: 1px dashed #ffb37c; border-radius: 50%; }
-.orbit:after { inset: 92px; border: 1px solid #f7e1d3; }
-.core { position: absolute; inset: 50%; transform: translate(-50%,-50%); width: 150px; height: 150px; border-radius: 50%; background: var(--grad); color: #fff; display: grid; place-items: center; text-align: center; font-weight: 800; box-shadow: 0 20px 50px rgba(220,65,0,.25); }
-.node { position: absolute; width: 94px; height: 94px; border-radius: 50%; background: #fff; border: 6px solid #ff6d00; display: grid; place-items: center; text-align: center; font-size: 12px; font-weight: 800; box-shadow: 0 12px 28px rgba(17,24,39,.1); }
-.n1 { top: -10px; left: 50%; transform: translateX(-50%); } .n2 { right: 0; top: 50%; transform: translateY(-50%); border-color: #e53a00; } .n3 { bottom: -10px; left: 50%; transform: translateX(-50%); border-color: #cf1824; } .n4 { left: 0; top: 50%; transform: translateY(-50%); border-color: #ff8a00; }
-
-.mission { padding: 70px 5vw; }
-.section { max-width: 1180px; margin: 0 auto; padding: 92px 0; border-top: 1px solid var(--line); }
-.section:first-child { border-top: 0; }
-.grid2 { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: center; }
-
-.num { font-size: 92px; font-weight: 900; line-height: .8; color: #ffe8d8; letter-spacing: -.06em; }
-.kicker { font-size: 13px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-coral); }
-h2 { font-size: clamp(36px, 4vw, 58px); line-height: 1.02; letter-spacing: -.04em; margin: 10px 0 16px; }
-.lead { font-size: 21px; color: #e54b0b; font-weight: 700; margin: 0 0 18px; }
-.copy { font-size: 16px; color: var(--muted); max-width: 650px; }
-.quote { margin-top: 24px; padding: 18px 20px; border-left: 4px solid #f36a00; background: #fff8f2; border-radius: 0 14px 14px 0; font-weight: 800; }
-
-/* Right side Image CSS */
-.philosophy-img { width: 135%; height: auto; border-radius: 16px; box-shadow: 0 18px 55px rgba(20,30,50,.08); display: block; }
-
-/* Staggered Detailed Method CSS - Horizontal */
-.method-detailed-phases {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 40px;
-}
-.detailed-phase {
-  opacity: 0;
-  transform: translateX(-40px); /* Horizontal animation */
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  background: #fff;
-  border: 1px solid #eee;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  border-top: 6px solid var(--orange);
-  display: flex;
-  flex-direction: column;
-}
-.method-detailed-phases.show .detailed-phase {
-  opacity: 1;
-  transform: translateX(0);
-}
-/* Stagger Delays */
-.method-detailed-phases.show .phase-1 { transition-delay: 0.1s; }
-.method-detailed-phases.show .phase-2 { transition-delay: 0.3s; }
-.method-detailed-phases.show .phase-3 { transition-delay: 0.5s; }
-
-.phase-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.phase-num { font-size: 12px; font-weight: 800; background: var(--grad); color: #fff; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;}
-.detailed-phase h3 { margin: 0; font-size: 20px; color: var(--primary-dark); }
-.detailed-phase h4 { font-size: 14px; color: #e54b0b; margin: 0 0 12px 0; font-weight: 700; }
-.detailed-phase p { font-size: 14px; color: var(--text-main); margin-bottom: 16px; line-height: 1.5; }
-.assess-box { flex-grow: 1; margin-bottom: 20px; }
-.assess-box strong { display: block; margin-bottom: 8px; font-size: 13px; color: var(--primary-dark); }
-.assess-box ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
-.assess-box li { position: relative; padding-left: 16px; font-size: 13px; color: var(--text-muted); line-height: 1.4; }
-.assess-box li::before { content: "•"; color: #e54b0b; position: absolute; left: 0; font-size: 16px; line-height: 1; top: 1px; }
-.deliverable { background: #fff8f2; padding: 12px 14px; border-radius: 8px; font-size: 13px; color: var(--primary-dark); border: 1px dashed #ffb37c; margin-top: auto; }
-
-/* Remaining Components */
-.promise { display: grid; grid-template-columns: 1fr 1.15fr; gap: 35px; align-items: center; }
-.promise-ring { width: min(380px, 100%); aspect-ratio: 1; border-radius: 50%; margin: auto; background: conic-gradient(from -30deg, #ff8a00, #ff4b00, #c91522, #ff8a00); padding: 12px; animation: slowspin 22s linear infinite; }
-.promise-inner { width: 100%; height: 100%; border-radius: 50%; background: #fff; display: grid; place-items: center; text-align: center; padding: 40px; }
-.promise-inner strong { font-size: 30px; line-height: 1.2; color: var(--primary-dark); } .promise-inner small { color: #697181; margin-top: 8px; display: block; }
-.principles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 22px; }
-.principle { padding: 17px; border-radius: 15px; background: #fff8f2; border-left: 4px solid #ff6d00; color: var(--primary-dark); }
-
-.vision { background: linear-gradient(145deg, #fff7f0, #fff); border-radius: 28px; padding: 35px; border: 1px solid #f1e5dc; }
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 25px; }
-.card { padding: 24px; border: 1px solid #eee; border-radius: 20px; background: #fff; transition: .35s; }
-.card:hover { transform: translateY(-7px); box-shadow: 0 20px 45px rgba(20,30,50,.08); }
-.card h3 { margin: 0 0 8px; font-size: 18px; color: var(--primary-dark); } .card p { margin: 0; color: var(--muted); font-size: 14px; }
-.founder { margin-top: 25px; padding: 26px 30px; border-radius: 22px; background: var(--grad); color: #fff; }
-.founder p { font-size: 20px; font-weight: 650; margin: 0; line-height: 1.4; } .founder small { display: block; margin-top: 12px; opacity: .85; }
-
-.footer { padding: 60px 7vw 30px; background: #101827; color: #fff; text-align: center; }
-.footer .brand img { filter: none; margin: 0 auto 18px; height: 48px; }
-.footer p { color: #b8c0ce; margin-bottom: 8px; }
-.footerline { height: 4px; background: var(--grad); margin-top: 40px; }
-
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
-.reveal.show { opacity: 1; transform: none; }
-
-@keyframes spin { to { transform: rotate(360deg); } } 
-@keyframes slowspin { to { transform: rotate(360deg); } }
-
-@media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; padding-top: 120px; }
-  .grid2, .promise { grid-template-columns: 1fr; }
-  .cards { grid-template-columns: 1fr; }
-  .method-detailed-phases { grid-template-columns: 1fr; gap: 20px; }
-  .num { font-size: 70px; }
-  .mission { padding: 30px 5vw; }
-  .section { padding: 70px 0; }
-}
-</style>
 </head>
 <body>
 
@@ -352,15 +43,15 @@ h2 { font-size: clamp(36px, 4vw, 58px); line-height: 1.02; letter-spacing: -.04e
             </div>
             <div class="mega-menu-content">
               <div class="mega-menu-grid">
-                <a class="mega-service-card" href="index.html?service=oracle#service-details">
+                <a class="mega-service-card" href="services.html#oracle-hcm">
                   <strong>Oracle Fusion HCM</strong>
                   <p>Transform workforce operations with connected Oracle HCM Cloud solutions.</p>
                 </a>
-                <a class="mega-service-card" href="index.html?service=digital-transformation#service-details">
+                <a class="mega-service-card" href="services.html#digital-transformation">
                   <strong>Digital Transformation</strong>
                   <p>Turning ideas into scalable web, mobile, and enterprise digital experiences.</p>
                 </a>
-                <a class="mega-service-card" href="index.html?service=software-testing#service-details">
+                <a class="mega-service-card" href="services.html#quality-engineering">
                   <strong>Software Quality Assurance</strong>
                   <p>Quality engineered into every stage of delivery for reliable software.</p>
                 </a>
@@ -409,7 +100,101 @@ h2 { font-size: clamp(36px, 4vw, 58px); line-height: 1.02; letter-spacing: -.04e
       </div>
       
       <div class="reveal" style="padding-top: 20px;">
-        <img src="./images/assayor_philosophy.webp" alt="Assayor Philosophy" class="philosophy-img">
+        <!-- Embedded Animated Infographic HTML -->
+        <div class="ig-wrapper">
+          <!-- Top 3 Pillars Section -->
+          <div class="ig-top-pillars">
+              <div class="ig-pillar ig-pillar-business">
+                  <div class="ig-icon-circle">
+                      <svg viewBox="0 0 24 24" fill="#f39c12"><path d="M12 2L2 12h3v8h14v-8h3L12 2zm1 14h-2v-2h2v2zm0-4h-2v-2h2v2z"/></svg>
+                  </div>
+                  <div class="ig-pillar-title">BUSINESS</div>
+                  <div class="ig-pillar-subtitle">Understand Goals & Opportunities</div>
+              </div>
+              <div class="ig-chevron ig-chevron-1">»</div>
+              <div class="ig-pillar ig-pillar-technology">
+                  <div class="ig-icon-circle">
+                      <svg viewBox="0 0 24 24" fill="#e74c3c"><path d="M15 9H9v6h6V9zm-2 4h-2v-2h2v2zm8-2V9h-2V7h2V5h-2V3h-2v2h-2V3h-2v2H9V3H7v2H5V3H3v2h2v2H3v2h2v2H3v2h2v2H3v2h2v2H3v2h2v-2h2v2h2v-2h2v2h2v-2h2v2h2v-2h2v-2h-2v-2h2v-2h-2v-2h2zM7 17H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/></svg>
+                  </div>
+                  <div class="ig-pillar-title">TECHNOLOGY</div>
+                  <div class="ig-pillar-subtitle">Right Tools. Right Solutions.</div>
+              </div>
+              <div class="ig-chevron ig-chevron-2">»</div>
+              <div class="ig-pillar ig-pillar-outcomes">
+                  <div class="ig-icon-circle">
+                      <svg viewBox="0 0 24 24" fill="#c0392b"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6.18-6.18 4 4L20 9.41 22.29 11.7 23 3.5z"/></svg>
+                  </div>
+                  <div class="ig-pillar-title">OUTCOMES</div>
+                  <div class="ig-pillar-subtitle">Measurable Value & Growth.</div>
+              </div>
+          </div>
+  
+          <!-- Comparison Section -->
+          <div class="ig-comparison">
+              <div class="ig-approach-col ig-traditional">
+                  <div class="ig-approach-header">TRADITIONAL APPROACH</div>
+                  
+                  <div class="ig-workflow">
+                      <div class="ig-step">
+                          <div class="ig-step-circle">&lt;/&gt;</div>
+                          <div class="ig-step-label">TECHNOLOGY</div>
+                      </div>
+                      <div class="ig-arrow">»</div>
+                      <div class="ig-step">
+                          <div class="ig-step-circle">&#9881;</div>
+                          <div class="ig-step-label">IMPLEMENT</div>
+                      </div>
+                      <div class="ig-arrow">»</div>
+                      <div class="ig-step">
+                          <div class="ig-step-circle">&#10003;</div>
+                          <div class="ig-step-label">COMPLETION</div>
+                      </div>
+                  </div>
+  
+                  <div class="ig-focus-box">Focus on delivering technology and completing projects.</div>
+              </div>
+  
+              <div class="ig-vs-circle">VS</div>
+  
+              <div class="ig-approach-col ig-assayor">
+                  <div class="ig-approach-header">ASSAYOR APPROACH</div>
+  
+                  <div class="ig-workflow">
+                      <div class="ig-step">
+                          <div class="ig-step-circle">
+                              <svg viewBox="0 0 24 24" fill="#f39c12"><path d="M12 2L2 12h3v8h14v-8h3L12 2zm1 14h-2v-2h2v2zm0-4h-2v-2h2v2z"/></svg>
+                          </div>
+                          <div class="ig-step-label">BUSINESS</div>
+                      </div>
+                      <div class="ig-arrow">»</div>
+                      <div class="ig-step">
+                          <div class="ig-step-circle">
+                              <svg viewBox="0 0 24 24" fill="#e74c3c"><path d="M15 9H9v6h6V9zm-2 4h-2v-2h2v2zm8-2V9h-2V7h2V5h-2V3h-2v2h-2V3h-2v2H9V3H7v2H5V3H3v2h2v2H3v2h2v2H3v2h2v2H3v2h2v2H3v2h2v-2h2v2h2v-2h2v2h2v-2h2v2h2v-2h2v-2h-2v-2h2v-2h-2v-2h2zM7 17H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/></svg>
+                          </div>
+                          <div class="ig-step-label">TECHNOLOGY</div>
+                      </div>
+                      <div class="ig-arrow">»</div>
+                      <div class="ig-step">
+                          <div class="ig-step-circle">
+                              <svg viewBox="0 0 24 24" fill="#c0392b"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6.18-6.18 4 4L20 9.41 22.29 11.7 23 3.5z"/></svg>
+                          </div>
+                          <div class="ig-step-label">OUTCOMES</div>
+                      </div>
+                  </div>
+  
+                  <div class="ig-focus-box">Focus on delivering measurable business outcomes.</div>
+              </div>
+          </div>
+  
+          <!-- Footer Banner -->
+          <div class="ig-footer-banner">
+              <div class="ig-footer-icon ig-footer-left-icon">&#128161;</div>
+              <div class="ig-footer-text">
+                  We start with your business. We choose the right technology. We deliver <span class="ig-highlight-red">outcomes</span> that create <span class="ig-highlight-orange">lasting impact.</span>
+              </div>
+              <div class="ig-footer-icon ig-footer-right-icon">&#127919;</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

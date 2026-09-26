@@ -1,7 +1,9 @@
 :root {
   /* Header & Unified Variables */
   --primary-dark: #0f172a;
+  --primary-brand: #09233f;
   --accent-coral: #ea580c;
+  --accent-orange: #f47b20;
   --accent-blue: #0066cc;
   --accent-blue-light: #eef5fc;
   --text-main: #334155;
@@ -156,8 +158,10 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
 }
 
 .mega-menu { display: grid; grid-template-columns: 220px 1fr; min-height: 340px; list-style: none; padding: 0; margin: 0; }
-.mega-menu-sidebar { display: flex; flex-direction: column; padding: 30px 22px; background: #0f172a; }
-.mega-menu-tab { display: flex; align-items: center; justify-content: center; padding: 1.2rem 1rem; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-md); background: #1e293b; color: #ffffff; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; }
+.mega-menu-sidebar { display: flex; flex-direction: column; gap: 0.75rem; padding: 30px 22px; background: #04172a; }
+.mega-menu-tab { padding: 1.2rem 1rem; border-radius: var(--radius-md); background: transparent; color: rgba(255, 255, 255, 0.65); font-weight: 700; font-size: 0.95rem; text-transform: uppercase; cursor: pointer; text-decoration: none; display: block; transition: all 0.2s ease; border: none; }
+.mega-menu-tab:hover { background: rgba(255, 255, 255, 0.08); color: #ffffff; }
+.mega-menu-tab.active { background: var(--primary-brand); color: #ffffff; }
 .mega-menu-content { padding: 30px; background: #ffffff; }
 .mega-menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 
@@ -176,9 +180,7 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
   transform: translateY(-2px);
   box-shadow: var(--shadow-sm);
 }
-.mega-service-card strong { display: flex; align-items: center; gap: 0.45rem; color: var(--accent-blue); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
-.mega-service-card strong::before { content: '\2192'; font-size: 1.15rem; transition: transform 0.2s ease; }
-.mega-service-card:hover strong::before { transform: translateX(4px); }
+.mega-service-card strong { display: flex; align-items: center; gap: 0.45rem; color: var(--accent-orange) !important; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem; }
 .mega-service-card p { margin: 0.35rem 0 0; color: var(--text-muted); font-size: 0.85rem; line-height: 1.45; }
 
 /* Mobile Menu Adjustments */
@@ -192,7 +194,7 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
   nav.nav-open .services-dropdown { position: static; display: none; width: 100%; box-shadow: none; border: 0; transform: none; background: #f8fafc; opacity: 1; pointer-events: auto; padding: 0; }
   nav.nav-open li.dropdown-open > .services-dropdown { display: block; }
   .mega-menu { display: block; min-height: 0; }
-  .mega-menu-sidebar { display: none; }
+  .mega-menu-sidebar { padding: 1rem 6%; }
   .mega-menu-content { padding: 1rem 6%; background: transparent; }
   .mega-menu-grid { grid-template-columns: 1fr; }
   .btn-contact { margin: 1.2rem 6% 0.5rem; text-align: center; border-radius: var(--radius-sm); }

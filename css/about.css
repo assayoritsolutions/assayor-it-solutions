@@ -133,16 +133,16 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
 }
 
 .mega-menu { display: grid; grid-template-columns: 220px 1fr; min-height: 300px; list-style: none; }
-.mega-menu-sidebar { display: flex; flex-direction: column; padding: 30px 22px; background: var(--primary-dark); }
-.mega-menu-tab { padding: 1.2rem 1rem; border-radius: var(--radius-md); background: var(--primary-brand); color: #ffffff; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; cursor: default; }
-.mega-menu-tab.link { background: transparent; color: rgba(255,255,255,0.65); cursor: pointer; text-decoration: none; display: block; margin-top: 0.75rem;}
-.mega-menu-tab.link:hover { background: rgba(255,255,255,0.08); color: #ffffff; }
+.mega-menu-sidebar { display: flex; flex-direction: column; gap: 0.75rem; padding: 30px 22px; background: var(--primary-dark); }
+.mega-menu-tab { padding: 1.2rem 1rem; border-radius: var(--radius-md); background: transparent; color: rgba(255,255,255,0.65); font-weight: 700; font-size: 0.95rem; text-transform: uppercase; cursor: pointer; text-decoration: none; display: block; transition: all 0.2s ease; }
+.mega-menu-tab:hover { background: rgba(255,255,255,0.08); color: #ffffff; }
+.mega-menu-tab.active { background: var(--primary-brand); color: #ffffff; }
 
 .mega-menu-content { padding: 30px; background: #ffffff; }
 .mega-menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.mega-service-card { padding: 1.35rem; border-radius: var(--radius-md); background: var(--bg-light); border: 1px solid var(--border-color); text-decoration: none; transition: all 0.25s ease; }
+.mega-service-card { padding: 1.35rem; border-radius: var(--radius-md); background: var(--bg-light); border: 1px solid var(--border-color); text-decoration: none; transition: all 0.25s ease; display: block; }
 .mega-service-card:hover { background: var(--accent-blue-light); transform: translateY(-2px); }
-.mega-service-card strong { color: var(--accent-blue); font-size: 0.95rem; font-weight: 700; display: block; margin-bottom: 0.4rem; }
+.mega-service-card strong { color: var(--accent-orange) !important; font-size: 1.05rem; font-weight: 700; display: block; margin-bottom: 0.5rem; }
 .mega-service-card p { color: var(--text-muted); font-size: 0.85rem; }
 
 .btn-contact {
@@ -310,7 +310,6 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
   transform: translateY(-5px);
 }
 
-/* The image layer that sits on top */
 .shutter-cover {
   position: absolute;
   inset: 0;
@@ -326,12 +325,10 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
   display: block;
 }
 
-/* Slide the cover up out of view on hover */
 .shutter-tile:hover .shutter-cover {
   transform: translateY(-100%);
 }
 
-/* The text layer sitting underneath */
 .shutter-content {
   position: absolute;
   inset: 0;
@@ -426,7 +423,6 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
   justify-content: center;
 }
 
-/* Central Hub Circle */
 .orbit-center-hub {
   position: relative;
   z-index: 10;
@@ -471,7 +467,6 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
   border-radius: 5px;
 }
 
-/* Rays Projecting Outward with Arrows */
 .orbit-rays-container {
   position: absolute;
   top: 50%; left: 50%;
@@ -489,7 +484,7 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
 }
 
 .ray::after {
-  content: '\f0da'; /* Solid Right Arrow from FontAwesome */
+  content: '\f0da';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
   position: absolute;
@@ -499,7 +494,6 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
   font-size: 1.15rem;
 }
 
-/* 8 Direction Angles */
 .ray-1 { transform: rotate(-90deg); }
 .ray-2 { transform: rotate(-45deg); }
 .ray-3 { transform: rotate(0deg); }
@@ -513,14 +507,12 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
   width: 350px; 
 }
 
-/* Radial Nodes Positioning Container */
 .orbit-nodes-container {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-/* Individual Node Wrapper */
 .orbit-node {
   position: absolute;
   top: 50%; left: 50%;
@@ -534,7 +526,6 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
   opacity: 0;
 }
 
-/* Circular Card Styling - Enhanced 3D Shadows & Orange Border */
 .orbit-circle-card {
   width: 100%;
   height: 100%;
@@ -587,7 +578,6 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
   line-height: 1.35;
 }
 
-/* Coordinate Positions */
 .orbit-node.node-1 { transform: translate(0px, 0px) scale(0.4); }
 .orbit-node.node-2 { transform: translate(0px, 0px) scale(0.4); }
 .orbit-node.node-3 { transform: translate(0px, 0px) scale(0.4); }
@@ -651,7 +641,7 @@ nav ul li:hover > .services-dropdown, nav ul li.dropdown-open > .services-dropdo
    ======================================================== */
 footer { background: var(--secondary-dark); color: #ffffff; padding: 4.5rem 5% 2rem; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; max-width: 1200px; margin: 0 auto 3rem; }
-.footer-logo { height: 48px; width: auto; margin-bottom: 1rem; display: block; flex-shrink: 0; }
+.footer-logo { height: 58px; width: auto; margin-bottom: 0rem; display: block; flex-shrink: 0; }
 .footer-brand p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
 .footer-links h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 1.25rem; color: #ffffff; }
 .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
@@ -689,7 +679,10 @@ footer { background: var(--secondary-dark); color: #ffffff; padding: 4.5rem 5% 2
   nav ul li { width: 100%; }
   nav a, .services-toggle { padding: 0.9rem 6%; border-bottom: 1px solid var(--bg-light); font-size: 1rem; width: 100%; justify-content: space-between; }
   
-  .services-dropdown { position: static; width: 100%; box-shadow: none; border: none; padding: 0.5rem 0; margin-top: 0.5rem; }
+  .services-dropdown { position: static; width: 100%; box-shadow: none; border: none; padding: 0.5rem 0; margin-top: 0.5rem; display: none; opacity: 1; pointer-events: auto; transform: none; }
+  nav.nav-open li.dropdown-open > .services-dropdown { display: block; }
+  .mega-menu { grid-template-columns: 1fr; min-height: auto; }
+  .mega-menu-grid { grid-template-columns: 1fr; }
   .contact-form { grid-template-columns: 1fr; }
   .contact-form .full-width { grid-column: span 1; }
   .footer-grid { grid-template-columns: 1fr; }

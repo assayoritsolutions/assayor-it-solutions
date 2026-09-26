@@ -35,7 +35,7 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html" class="active">About Us</a></li>
-        <li class="services-dropdown-parent" ng-class="{'dropdown-open': isServicesOpen}">
+        <li class="services-dropdown-parent" ng-class="{'dropdown-open': isServicesOpen}" ng-mouseleave="activeMegaTab = 'practices'">
           <button type="button" class="services-toggle" ng-click="isServicesOpen = !isServicesOpen" aria-haspopup="true" ng-attr-aria-expanded="{{ isServicesOpen }}">
             <span>Services</span>
             <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
@@ -44,11 +44,12 @@
             <li class="mega-menu">
               <!-- Mega Menu Sidebar -->
               <div class="mega-menu-sidebar">
-                <div class="mega-menu-tab active">Consulting Practices</div>
-                <a href="services.html#engagement-model" class="mega-menu-tab link">Our Engagement Model</a>
+                <div class="mega-menu-tab" ng-class="{'active': activeMegaTab === 'practices'}" ng-mouseenter="activeMegaTab = 'practices'" ng-click="activeMegaTab = 'practices'">Consulting Practices</div>
+                <a href="services.html#engagement-model" class="mega-menu-tab" ng-class="{'active': activeMegaTab === 'engagement'}" ng-mouseenter="activeMegaTab = 'engagement'">Our Engagement Model</a>
               </div>
               <div class="mega-menu-content">
-                <div class="mega-menu-grid">
+                <!-- Consulting Practices Tiles -->
+                <div class="mega-menu-grid" ng-show="activeMegaTab === 'practices'">
                   <a class="mega-service-card" href="services.html#oracle-hcm">
                     <strong>Oracle Fusion HCM</strong>
                     <p>Transform workforce operations with connected Oracle HCM Cloud solutions.</p>
@@ -60,6 +61,29 @@
                   <a class="mega-service-card" href="services.html#quality-engineering">
                     <strong>Quality Engineering</strong>
                     <p>Quality engineered into every stage of delivery for reliable software.</p>
+                  </a>
+                </div>
+                <!-- Engagement Model Tiles -->
+                <div class="mega-menu-grid" ng-show="activeMegaTab === 'engagement'">
+                  <a class="mega-service-card" href="services.html#engagement-model">
+                    <strong>Fixed Price</strong>
+                    <p>Best suited for projects with clearly defined scope, timelines, and specific deliverables.</p>
+                  </a>
+                  <a class="mega-service-card" href="services.html#engagement-model">
+                    <strong>Time &amp; Material (T&amp;M)</strong>
+                    <p>Ideal when scope is expected to evolve. Pay only for the actual effort invested.</p>
+                  </a>
+                  <a class="mega-service-card" href="services.html#engagement-model">
+                    <strong>Dedicated Team</strong>
+                    <p>A dedicated team works exclusively as a seamless extension of your own organization.</p>
+                  </a>
+                  <a class="mega-service-card" href="services.html#engagement-model">
+                    <strong>Staff Augmentation</strong>
+                    <p>Providing experienced consultants to instantly strengthen your existing project teams.</p>
+                  </a>
+                  <a class="mega-service-card" href="services.html#engagement-model">
+                    <strong>Managed Services</strong>
+                    <p>Comprehensive post-implementation support, maintenance, and continuous optimization.</p>
                   </a>
                 </div>
               </div>
@@ -418,9 +442,9 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="./images/logo_new.jpg" alt="Assayor Logo" class="footer-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <img src="./images/new_trans_logo.png" alt="Assayor Logo" class="footer-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
         <div class="logo-fallback" style="display: none; color: #fff; margin-bottom: 1rem;">Assay<span style="color: var(--accent-orange);">or</span></div>
-        <p>Empowering businesses with cutting-edge IT solutions, high-reliability software testing, and tailored support.</p>
+        <p>Delivering solutions that improve the business—not just the system.</p>
       </div>
       <div class="footer-links">
         <h4>Quick Links</h4>
@@ -459,6 +483,7 @@
       $scope.currentYear = new Date().getFullYear();
       $scope.isMenuOpen = false;
       $scope.isServicesOpen = false;
+      $scope.activeMegaTab = 'practices';
       $scope.toggleMenu = function() { $scope.isMenuOpen = !$scope.isMenuOpen; };
       $scope.scrollTo = function(id) {
         $scope.isMenuOpen = false; $scope.isServicesOpen = false;
